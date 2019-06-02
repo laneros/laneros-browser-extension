@@ -1,17 +1,13 @@
 {
   "name": "LANeros.com",
   "description": "Sitio web para discutir temas sobre celulares, juegos, tecnología y conocer nuevos amigos.",
-  "version": "1.0",
-  "app": {
-    "launch": {
-      "web_url": "http://laneros.com/"
-    }
-  },
-  "icons": {
-    "128": "Laneros.png"
-  },
-  "permissions": [
-    "unlimitedStorage",
-    "notifications"
-  ]
+  "version": "1.1",
+  "browser_action":	{
+		"default_icon": "Laneros.png",
+		"popup": "laneros.html"
+	},
+
+	"icons":{
+		"128":"Laneros.png"
+	}
 }
