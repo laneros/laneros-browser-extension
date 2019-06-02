@@ -2,13 +2,19 @@
 
 All notable changes to `laneros-browser-extension` will be documented in this file.
 
-## 2.0.1 | 2011-11-25
+## 2.0.2 | 2011-11-26
+
+### Changed
+
+- Fixed "true" value
+
+## 2.0.1 | 2011-11-26
 
 ### Changed
 
 - Notifications function
 
-## 2.0 | 2011-11-25
+## 2.0 | 2011-11-26
 
 ### Added
 

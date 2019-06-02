@@ -54,7 +54,7 @@ function updateIcon(count) {
  * Reiniciar Intervalos
  */
 function reboot() {
-    var TimeRev = getLocalValue("TimeRev");
+    var TimeRev = parseInt(getLocalValue("TimeRev"));
 
     clearInterval(interval);
     showNotifications();
@@ -64,8 +64,8 @@ function reboot() {
  * Guardra Opciones
  */
 function setOptions() {
-    var TimeShow  = getLocalValue("TimeShow");
-    var TimeRev   = getLocalValue("TimeRev");
+    var TimeShow  = parseInt(getLocalValue("TimeShow"));
+    var TimeRev   = parseInt(getLocalValue("TimeRev"));
     var ShowNot   = getLocalValue("ShowNot");
     var ShowSubs  = getLocalValue("ShowSubs");
     var ShowPopup = getLocalValue("ShowPopup");
@@ -87,15 +87,15 @@ function setOptions() {
     $("#minutes_show").val(parseInt(arrTime[2]));
     $("#hours_show").val(parseInt(arrTime[1]));
 
-    if (ShowNot == "true") {
+    if (ShowNot == "true" || ShowNot == true) {
         $("#ShowNot").attr("checked", true);
     }
 
-    if (ShowSubs == "true") {
+    if (ShowSubs == "true" || ShowSubs == true) {
         $("#ShowSubs").attr("checked", true);
     }
 
-    if (ShowPopup == "true") {
+    if (ShowPopup == "true" || ShowPopup == true) {
         $("#ShowPopup").attr("checked", true);
     }
 
@@ -154,10 +154,9 @@ function showNotifications() {
             .html("Error al obtener los temas suscritos de LANeros.com");
     }).complete(function() {
         var ShowPopup = getLocalValue("ShowPopup");
+        var TimeShow = parseInt(getLocalValue("TimeShow"));
 
-        if (ShowPopup == "true" || ShowPopup) {
-            var TimeShow = getLocalValue("TimeShow");
-
+        if (ShowPopup == "true" || ShowPopup == true && TimeShow > 0) {
             notification = webkitNotifications.createHTMLNotification(
                 'notification.html'
             );
@@ -182,7 +181,7 @@ function getNotifications(data, textStatus, jqXHR) {
     var notifications = $(data).find("#notifications_menu");
     var counter = 0;
 
-    if (ShowNot == "true" || ShowNot) {
+    if (ShowNot == "true" || ShowNot == true) {
         $("#showNotifications").show();
     }
 
@@ -236,7 +235,7 @@ function getSubscriptions(data, textStatus, jqXHR) {
     var ShowSubs = getLocalValue("ShowSubs");
     var subscriptions = $(data).find("[id^='thread_gotonew_']");
 
-    if (ShowSubs == "true" || ShowSubs) {
+    if (ShowSubs == "true" || ShowSubs == true) {
         $("#showSubscriptions").show();
     }
 
