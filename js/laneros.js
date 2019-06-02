@@ -155,7 +155,7 @@ function showNotifications() {
     }).complete(function() {
         var ShowPopup = getLocalValue("ShowPopup");
 
-        if (ShowPopup == "true") {
+        if (ShowPopup == "true" || ShowPopup) {
             var TimeShow = getLocalValue("TimeShow");
 
             notification = webkitNotifications.createHTMLNotification(
@@ -182,7 +182,7 @@ function getNotifications(data, textStatus, jqXHR) {
     var notifications = $(data).find("#notifications_menu");
     var counter = 0;
 
-    if (ShowNot == "true") {
+    if (ShowNot == "true" || ShowNot) {
         $("#showNotifications").show();
     }
 
@@ -236,7 +236,7 @@ function getSubscriptions(data, textStatus, jqXHR) {
     var ShowSubs = getLocalValue("ShowSubs");
     var subscriptions = $(data).find("[id^='thread_gotonew_']");
 
-    if (ShowSubs == "true") {
+    if (ShowSubs == "true" || ShowSubs) {
         $("#showSubscriptions").show();
     }
 
