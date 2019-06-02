@@ -4,10 +4,11 @@
 <link rel="stylesheet" type="text/css" href="style.css" />
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 <script type="text/javascript">
+    //URL Noticias: http://www.laneros.com/ticker/lastrss/bridge.php?id=laneros
 	function ObtenerNotificaciones()
 	{
 		var request = $.ajax({
-		  url: "http://www.laneros.com",
+		  url: "http://www.laneros.com/subscription.php?do=viewsubscription",
 		  type: "GET",
 		  dataType: "html"
 		});
@@ -19,56 +20,74 @@
 			  if(notification_menu.length == 0)
 			  {
 				$("#content").html("No hay notificaciones nuevas");
-				return;
 			  }
-			  
-			  var notification_categories = notification_menu.find("a");
-
-			  $("#content").html(""); //Quito el "Cargando..."
-			  for(i=0; i<notification_categories.length/2; i++)
+			  else
 			  {
-			    var url = notification_categories[i*2];
-				var title = $(notification_categories[i*2]).html();
-				var unread_count = $(notification_categories[i*2+1]).html();
-				var text = "";
-				var value_class = "value";
-				
-				if(unread_count!="0")
-				{
-					value_class+=" unread";
-				}
-				
-				text="<div><p class='name'><a href='"+url+"' target='_blank'>"+title+"</a></p>"+"<p class='"+value_class+"'>"+unread_count+"</p></div><div style='clear:both'></div>";
-				$("#content").append(text); //Meto la notificación con su número correspondiente
-			  }
+				  var notification_categories = notification_menu.find("a");
+
+				  $("#content").html(""); //Quito el "Cargando..."
+				  for(i=0; i<notification_categories.length/2; i++)
+				  {
+					var url = $(notification_categories[i*2]).attr("href");
+					url="http://www.laneros.com/"+url;
+					var title = $(notification_categories[i*2]).html();
+					var unread_count = $(notification_categories[i*2+1]).html();
+					var text = "";
+					var value_class = "value";
+					
+					if(unread_count!="0")
+					{
+						value_class+=" unread";
+					}
+					
+					text="<div><p class='name'><a href='"+url+"' target='_blank'>"+title+"</a></p>"+"<p class='"+value_class+"'>"+unread_count+"</p></div><div style='clear:both'></div>";
+					$("#content").append(text); //Meto la notificación con su número correspondiente
+				  }
+				  
+			  }			  
+			  
+			  MostrarTemasSuscritosNoLeidos(obj);
 		});
 
 		request.fail(function(jqXHR, textStatus) {
 		  $("#content").html("<p>Error al obtener notificaciones de Laneros.com</p>");
+		  $("#content_suscriptions").html("<p>Error al obtener los temas suscritos de Laneros.com</p>");
 		});
 	}
 	
-	$(function()
+	function MostrarTemasSuscritosNoLeidos(html)
 	{
-		ObtenerNotificaciones();
-		setTimeout("ObtenerNotificaciones()", 10000);
-		/*
-		if(!localStorage.getItem("Valor"))
+		var ListaTemas = html.find("a[id^='thread_gotonew_']");
+		
+		if(ListaTemas.length == 0)
 		{
-			$("#content").html("<p>No hay VALOR</p>");
-			localStorage.setItem("Valor", 100);
+			$("#content_suscriptions").html("No hay temas suscritos sin leer");
 		}
 		else
 		{
-			$("#content").html("<p>Si hay VALOR: "+localStorage.getItem("Valor")+"</p>");
-			localStorage.removeItem("Valor", 100);
+			$("#content_suscriptions").html(""); //Borro el contenido
+			$.each(ListaTemas, 
+				function(index, value)
+				{
+					//alert(($(value).parent().children("a")).length);
+					var title = $(value).parent().children("a:nth-child(3)").html();
+					if(title==null)
+					{
+						title = $(value).parent().children("a:nth-child(2)").html();
+					}
+					var url = $(value).parent().children("a:nth-child(2)").attr("href");
+					
+					var text = "<div><p class='name'><a href='http://laneros.com/"+url+"' target='_blank'>"+title+"</a></p></div><div style='clear:both'></div>";
+					$("#content_suscriptions").append(text);
+				}
+			);
 		}
-		*/
-		
+	}
 
-		
-		//setTimeout("notification.cancel();", 3000);
-		
+	
+	$(function()
+	{
+		ObtenerNotificaciones();		
 	});		
 </script>
 </head>
@@ -81,6 +100,15 @@
 <!-- The latest tutorials are going to be inserted here -->
 Cargando notificaciones...
 </div>
+
+<div style="height: 10px; border-bottom: 3px solid #000"></div>
+
+<h1>Temas suscritos sin leer</h1>
+<div id="content_suscriptions">
+<!-- The latest tutorials are going to be inserted here -->
+Cargando suscripciones...
+</div>
+
 
 </body>
 </html>

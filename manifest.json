@@ -1,7 +1,8 @@
 {
-  "name": "LANeros.com",
+  "name": "LANeros.com -dev",
   "description": "Sitio web para discutir temas sobre celulares, juegos, tecnología y conocer nuevos amigos.",
-  "version": "1.3",
+  "version": "1.3.1",
+  "update_url": "http://eolikgroup.com/laneros/updates.xml",
   "permissions": [ "http://www.laneros.com/", "notifications" ],
   "background_page": "background.html",  
   "browser_action":	{
