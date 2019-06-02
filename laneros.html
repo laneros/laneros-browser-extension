@@ -4,7 +4,7 @@
 <link rel="stylesheet" type="text/css" href="style.css" />
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 <script type="text/javascript">
-	$(function()
+	function ObtenerNotificaciones()
 	{
 		var request = $.ajax({
 		  url: "http://www.laneros.com",
@@ -46,6 +46,29 @@
 		request.fail(function(jqXHR, textStatus) {
 		  $("#content").html("<p>Error al obtener notificaciones de Laneros.com</p>");
 		});
+	}
+	
+	$(function()
+	{
+		ObtenerNotificaciones();
+		setTimeout("ObtenerNotificaciones()", 10000);
+		/*
+		if(!localStorage.getItem("Valor"))
+		{
+			$("#content").html("<p>No hay VALOR</p>");
+			localStorage.setItem("Valor", 100);
+		}
+		else
+		{
+			$("#content").html("<p>Si hay VALOR: "+localStorage.getItem("Valor")+"</p>");
+			localStorage.removeItem("Valor", 100);
+		}
+		*/
+		
+
+		
+		//setTimeout("notification.cancel();", 3000);
+		
 	});		
 </script>
 </head>

@@ -1,0 +1,68 @@
+<!DOCTYPE html> <!-- The new doctype -->
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<script type="text/javascript">
+	const TIEMPO_REVISADA = 120000; //Cada cuanto se va a revisar por nuevas actualizaciones (milisegundos)
+	const TIEMPO_NOTIFICACION = 15000; //Cuanto dura la notificacion en pantalla (milisegundos)
+
+	var notification = null;
+	function ObtenerNotificaciones()
+	{
+		var request = $.ajax({
+		  url: "http://www.laneros.com",
+		  type: "GET",
+		  dataType: "html"
+		});
+
+		request.done(function(msg) {
+			  allText = msg; 
+			  var obj = $(allText);
+			  var notification_menu = obj.find("#notifications_menu");
+			  if(notification_menu.length != 0)
+				{
+					var cantidad = 0;
+					var notification_categories = notification_menu.find("a");
+			  
+					for(i=0; i<notification_categories.length/2; i++)
+					{
+						var unread_count = $(notification_categories[i*2+1]).html();
+						if(unread_count!="0")
+						{
+							cantidad += parseInt(unread_count);
+							break;
+						}
+					}
+					
+					if(cantidad>0)
+					{
+						notification = webkitNotifications.createNotification(
+							'Laneros.png',  // icono
+							'Notificaciones - LANeros',  //titulo
+							'Tienes '+cantidad+' notificaciones nuevas!'  //mensaje
+						);
+						notification.show();
+						setTimeout("CerrarNotificacion()", TIEMPO_NOTIFICACION);
+					}
+				}
+		});
+	}
+	
+	function CerrarNotificacion()
+	{
+		notification.cancel();
+		notification = null;
+	}
+	
+	$(function()
+	{
+		ObtenerNotificaciones();
+		setInterval("ObtenerNotificaciones()", TIEMPO_REVISADA);
+	});		
+</script>
+</head>
+
+<body>
+</body>
+</html>
