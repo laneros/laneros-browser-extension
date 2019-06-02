@@ -15,6 +15,7 @@ objLANeros.TimeShow = TIEMPO_NOTIFICACION;
 objLANeros.ShowNot = "true";
 objLANeros.ShowSubs = "true";
 objLANeros.ShowPopup = "true";
+objLANeros.isRunning = "false";
 /*
  * Variables
  */
@@ -105,10 +106,10 @@ function setOptions() {
         TimeRev = parseInt($("#miliseconds_rev").val()) + (parseInt($("#seconds_rev").val()) * 1000)
             + (parseInt($("#minutes_rev").val()) * 60 * 1000) + (parseInt($("#hours_rev").val()) * 60 * 60 * 1000);
 
-        if (TimeShow > 0) {
+        if (TimeShow >= 0) {
             setLocalValue("TimeShow", TimeShow);
         }
-        if (TimeRev > 0) {
+        if (TimeRev >= 0) {
             setLocalValue("TimeRev", TimeRev);
         }
 
@@ -153,10 +154,10 @@ function showNotifications() {
         $("#subscriptions").removeClass().addClass("error")
             .html("Error al obtener los temas suscritos de LANeros.com");
     }).complete(function() {
-        var ShowPopup = getLocalValue("ShowPopup");
-        var TimeShow = parseInt(getLocalValue("TimeShow"));
-
         if (globalCounter < counter) {
+            var ShowPopup = getLocalValue("ShowPopup");
+            var TimeShow = parseInt(getLocalValue("TimeShow"));
+
             globalCounter = counter;
 
             if (ShowPopup == "true" && TimeShow > 0) {
@@ -165,6 +166,7 @@ function showNotifications() {
                 );
                 notification.show();
                 setTimeout("closeNotification()", TimeShow);
+                setLocalValue("isRunning", true);
             }
         }
         if (counter == 0) {
@@ -178,6 +180,7 @@ function showNotifications() {
  * Cerrar Notificacion Popup Inferior
  */
 function closeNotification() {
+    setLocalValue("isRunning", false);
     notification.cancel();
     notification = null;
 }
@@ -270,36 +273,24 @@ function getSubscriptions(data, textStatus, jqXHR) {
     }
 }
 /*
- * Funciones de Conversion de Tiempo (2 digitos)
- */
-function two(x) {
-    return ((x > 9) ? "" : "0" ) + x;
-}
-/*
- * Funciones de Conversion de Tiempo (3 digitos)
- */
-function three(x) {
-    return ((x > 99 ) ? "" : "0" ) + two(x);
-}
-/*
  * Funcion de Conversion de MS a d:hh:mm:ss:ms
  */
 function getTime(ms) {
     var sec = Math.floor(ms/1000)
     ms = ms % 1000
-    t = three(ms)
+    t = ms;
 
     var min = Math.floor(sec/60)
     sec = sec % 60
-    t = two(sec) + ":" + t
+    t = sec + ":" + t
 
     var hr = Math.floor(min/60)
     min = min % 60
-    t = two(min) + ":" + t
+    t = min + ":" + t
 
     var day = Math.floor(hr/60)
     hr = hr % 60
-    t = two(hr) + ":" + t
+    t = hr + ":" + t
     t = day + ":" + t
 
     return t;

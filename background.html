@@ -14,9 +14,16 @@
          */
         $(document).ready(function() {
             var TimeRev = getLocalValue("TimeRev");
-            showNotifications();
-            setInterval("showNotifications()", TimeRev);
-        });
+            if (getLocalValue("isRunning") == "false") {
+                showNotifications();
+                setInterval("showNotifications()", TimeRev);
+            }
+           else {
+                closeNotification();
+                showNotifications();
+                setInterval("showNotifications()", TimeRev);
+            }
+         });
     </script>
   </body>
 </html>
