@@ -1,0 +1,74 @@
+<!DOCTYPE html><!-- The new doctype -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="style.css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+function Guardar() {
+  
+  //Obtengo el valor del input
+  var rev_value = $("#rev_value").val();
+  if (rev_value=="") { 		//Si no asignaron nada, asigno el Default
+    rev_value = chrome.extension.getBackgroundPage().TIEMPO_REVISADA;
+  }
+  
+  //Obtengo el valor del input
+  var pop_value = $("#pop_value").val();
+  if (pop_value=="") {		//Si no asignaron nada, asigno el Default
+    pop_value = chrome.extension.getBackgroundPage().TIEMPO_NOTIFICACION;
+  }
+  
+  //Lo guardo
+  localStorage["rev_value"] = rev_value;
+  localStorage["pop_value"] = pop_value;
+  
+  Cargar();	//Recargo los valores almacenados (por si dejaron algún valor vacío)
+  
+  chrome.extension.getBackgroundPage().Reiniciar();
+  
+  //Aviso al usuario que se guardó correctamente
+  $("#status").html("Guardado!").delay(1000).queue(function(){$("#status").html("")});
+}
+
+// Carga las opciones
+function Cargar() {
+  var rev_value = localStorage["rev_value"];
+  if (!rev_value) {
+    rev_value = chrome.extension.getBackgroundPage().TIEMPO_REVISADA;
+  }
+  
+  var pop_value = localStorage["pop_value"];
+  if (!pop_value) {
+    pop_value = chrome.extension.getBackgroundPage().TIEMPO_NOTIFICACION;
+  }
+
+  $("#rev_value").val(rev_value);
+  $("#pop_value").val(pop_value);
+}
+
+function Setup()
+{
+   $("#guardar").click(Guardar);   
+   Cargar();
+}
+
+$(function()
+  { 
+    Setup();
+  }
+);  
+
+</script>
+<h1>Configuración extensión Laneros</h1>
+<div class="settings">
+Intervalo Revisión <input id="rev_value" type="number">
+Duración Popup <input id="pop_value" type="number">
+</div>
+<input id="guardar" type="button" value="Guardar">
+<span id="status"></span>
+</body>
+</html>

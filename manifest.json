@@ -1,16 +1,16 @@
 {
-  "name": "LANeros.com -dev",
-  "description": "Sitio web para discutir temas sobre celulares, juegos, tecnología y conocer nuevos amigos.",
-  "version": "1.3.2",
-  "update_url": "http://eolikgroup.com/laneros/updates.xml",
-  "permissions": [ "http://www.laneros.com/", "notifications" ],
-  "background_page": "background.html",  
-  "browser_action":	{
+    "name": "LANeros.com",
+    "description": "Sitio web para discutir temas sobre celulares, juegos, tecnología y conocer nuevos amigos.",
+    "version": "1.3.5",
+    "update_url": "http://dl.dropbox.com/u/27487800/LanerosChromeExtension/updates.xml",
+    "permissions": [ "http://www.laneros.com/", "notifications" ],
+    "background_page": "background.html",  
+    "browser_action":	{
 		"default_icon": "Laneros.png",
 		"popup": "laneros.html"
 	},
-
-	"icons":{
-		"128":"Laneros.png"
+    "options_page": "options.html",	
+    "icons":{
+ 		"128":"Laneros.png"
 	}
 }

@@ -9,11 +9,41 @@
 <body></body>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 <script type="text/javascript">
+	//Opciones por defecto
     const TIEMPO_REVISADA = 120000; //Cada cuanto se va a revisar por nuevas actualizaciones (milisegundos)
     const TIEMPO_NOTIFICACION = 15000; //Cuanto dura la notificacion en pantalla (milisegundos)
 
+	var interval;
+	
+	function UpdateIcon(count)
+	{
+		if(count==0)
+			chrome.browserAction.setIcon({path:"icons/default.png"});
+		else if(count<9)
+			chrome.browserAction.setIcon({path:"icons/icon" + count + ".png"});
+		else
+			chrome.browserAction.setIcon({path:"icons/icon_many.png"});
+	}
+	
+	function GetRevValue()
+	{
+		if(localStorage["rev_value"] == undefined)
+			return(TIEMPO_REVISADA);
+		else
+		    return(localStorage["rev_value"]);
+	}
+	
+	function GetPopValue()
+	{
+		if(localStorage["pop_value"] == undefined)
+			return(TIEMPO_NOTIFICACION);
+		else
+		    return(localStorage["pop_value"]);
+	}
+		
     var notification = null;
     function ObtenerNotificaciones() {
+
         var request = $.ajax({
           url: "http://www.laneros.com/subscription.php?do=viewsubscription",
           type: "GET",
@@ -59,31 +89,14 @@
                 notification = webkitNotifications.createNotification(
                     'Laneros.png',  // icono
                     'Notificaciones - LANeros',  //titulo
-                    texto
+					texto
                 );
                 notification.show();
-                setTimeout("CerrarNotificacion()", TIEMPO_NOTIFICACION);
+                setTimeout("CerrarNotificacion()", GetPopValue());
             }
+			
+			UpdateIcon(cantidad_notificaciones + cantidad_suscripciones);
         });
-    }
-
-    function MostrarTemasSuscritosNoLeidos(html) {
-        //var Lista = html.find("table tbody tr td div div div table tbody tr td form table tbody");
-        var ListaTemas = html.find("a[id^='thread_gotonew_']");
-
-        if(ListaTemas.length == 0) {
-            $("#content_suscriptions").html("No hay temas suscritos sin leer");
-        }
-        else {
-            $("#content_suscriptions").html(""); //Borro el contenido
-            $.each(ListaTemas, function(index, value) {
-                var title = $(value).parent().children("a:nth-child(3)").html();
-                var url = $(value).parent().children("a:nth-child(2)").attr("href");
-
-                var text = "<div><p class='name'><a href='http://laneros.com/"+url+"' target='_blank'>"+title+"</a></p></div><div style='clear:both'></div>";
-                $("#content_suscriptions").append(text);
-            });
-        }
     }
 
     function CerrarNotificacion() {
@@ -91,9 +104,16 @@
         notification = null;
     }
 
-    $(function() {
+	function Reiniciar()
+	{
+		clearInterval(interval);
         ObtenerNotificaciones();
-        setInterval("ObtenerNotificaciones()", TIEMPO_REVISADA);
+        interval=setInterval("ObtenerNotificaciones()", GetRevValue());
+	}
+	
+    $(function() {
+		Reiniciar();
     });
+
 </script>
 </html>

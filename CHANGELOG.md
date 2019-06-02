@@ -2,6 +2,13 @@
 
 All notable changes to `laneros-browser-extension` will be documented in this file.
 
+## 1.3.5 | 2011-11-25
+
+### Added
+
+- Number of notifications on extension icon
+- Setting page 
+
 ## 1.3.2 | 2011-11-25
 
 ### Added

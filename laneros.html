@@ -16,7 +16,9 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 <script type="text/javascript">
     //URL Noticias: http://www.laneros.com/ticker/lastrss/bridge.php?id=laneros
+	var Notification_count = 0; 
     function ObtenerNotificaciones() {
+		Notification_count = 0;
         var request = $.ajax({
             url: "http://www.laneros.com/subscription.php?do=viewsubscription",
             type: "GET",
@@ -46,6 +48,7 @@
                     if(unread_count != 0) {
                         value_class = "value unread";
 						text="<div><p class='name'><a href='"+url+"' target='_blank' title='"+title+"'>"+title+"</a></p>"+"<p class='"+value_class+"'>"+unread_count+"</p></div><div style='clear:both'></div>";
+						Notification_count++;
                     }
 
                     $("#content").append(text); //Meto la notificaci�n con su número correspondiente
@@ -80,13 +83,17 @@
 
                 var text = "<div><p class='name'><a href='http://laneros.com/"+url+"' target='_blank' title='"+title+"'>"+title+"</a></p></div><div style='clear:both'></div>";
                 $("#content_suscriptions").append(text);
+				Notification_count++;
             });
-        }
+        }	
+		chrome.extension.getBackgroundPage().UpdateIcon(Notification_count);		
     }
 
     $(function() {
         ObtenerNotificaciones();
     });
+	
+	
 </script>
 </body>
 </html>
