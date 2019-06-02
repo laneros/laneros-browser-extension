@@ -18,7 +18,7 @@ objLANeros.ShowPopup = "true";
 /*
  * Variables
  */
-var interval, notification;
+var interval, notification, globalCounter = 0;
 /*
  * Obtener un valor Guardado
  */
@@ -156,13 +156,21 @@ function showNotifications() {
         var ShowPopup = getLocalValue("ShowPopup");
         var TimeShow = parseInt(getLocalValue("TimeShow"));
 
-        if (ShowPopup == "true" && TimeShow > 0) {
-            notification = webkitNotifications.createHTMLNotification(
-                'notification.html'
-            );
-            notification.show();
-            setTimeout("closeNotification()", TimeShow);
+        if (globalCounter < counter) {
+            globalCounter = counter;
+
+            if (ShowPopup == "true" && TimeShow > 0) {
+                notification = webkitNotifications.createHTMLNotification(
+                    'notification.html'
+                );
+                notification.show();
+                setTimeout("closeNotification()", TimeShow);
+            }
         }
+        if (counter == 0) {
+            globalCounter = 0;
+        }
+
         updateIcon(counter);
     });
 }
@@ -189,38 +197,35 @@ function getNotifications(data, textStatus, jqXHR) {
         $("#notifications").addClass("none").html("No hay notificaciones nuevas");
     }
     else {
-        $("#notifications").html("");
         var p = document.createElement("p");
-        var unreads = $(p).clone();
+        var title;
+        $("#notifications").html("");
 
         $(allNotifications).find("td a").each(function(index) {
-            var title, unread = 0;
+            var unread = 0;
             var url = "http://www.laneros.com/" + $(this).attr("href");
 
             var div = document.createElement("div");
             var a = document.createElement("a");
 
+            var unreads = $(p).clone();
             var clear = $(div).clone();
 
             if (index % 2 == 0) {
                 title = $(this).html();
-
-                $(a).attr("target", "_blank").attr("title", title)
-                    .attr("href", url).html(title).appendTo(p);
-                $(p).addClass("name").appendTo(div);
             }
             else {
                 unread = parseInt($(this).html());
-                $(unreads).addClass("value unread").html(unread).appendTo(div);
 
                 if (unread > 0) {
                     counter += unread;
-                    $(p).appendTo("#notifications");
+                    $(a).attr("target", "_blank").attr("title", title)
+                        .attr("href", url).html(title).appendTo(p);
+                    $(p).addClass("name").appendTo(div);
+
                     $(div).appendTo("#notifications");
+                    $(unreads).addClass("value unread").html(unread).appendTo(div);
                     $(clear).addClass("both").appendTo("#notifications");
-                }
-                else {
-                    $(p).html("");
                 }
             }
         });

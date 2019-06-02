@@ -26,14 +26,22 @@
          * Ejecutar al Cargar el Documento
          */
         $(document).ready(function() {
+            var counter = 0;
+
             $.get("http://www.laneros.com/subscription.php?do=viewsubscription", function(data, textStatus, jqXHR) {
-                getNotifications(data, textStatus, jqXHR);
+                var subscriptions = $(data).find("[id^='thread_gotonew_']");
+
+                counter = getNotifications(data, textStatus, jqXHR);
                 getSubscriptions(data, textStatus, jqXHR);
+
+                counter += parseInt($(subscriptions).size());
             }).error(function() {
                 $("#notifications").removeClass().addClass("error")
                     .html("Error al obtener notificaciones de LANeros.com");
                 $("#notifications").removeClass().addClass("error")
                     .html("Error al obtener los temas suscritos de LANeros.com");
+            }).complete(function() {
+                updateIcon(counter);
             });
         });
     </script>
