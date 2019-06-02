@@ -1,19 +1,62 @@
 <!DOCTYPE html> <!-- The new doctype -->
 <html>
-<head> <!-- No title and meta tags are necessary for the extension -->
-
+<head>
 <link rel="stylesheet" type="text/css" href="style.css" />
-<script src="jquery.min.js"></script> <!-- Including jQuery -->
-<script src="script.js"></script> <!-- Our script file -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function()
+	{
+		var request = $.ajax({
+		  url: "http://www.laneros.com",
+		  type: "GET",
+		  dataType: "html"
+		});
 
+		request.done(function(msg) {
+			  allText = msg; 
+			  var obj = $(allText);
+			  var notification_menu = obj.find("#notifications_menu");
+			  if(notification_menu.length == 0)
+			  {
+				$("#content").html("No hay notificaciones nuevas");
+				return;
+			  }
+			  
+			  var notification_categories = notification_menu.find("a");
+
+			  $("#content").html(""); //Quito el "Cargando..."
+			  for(i=0; i<notification_categories.length/2; i++)
+			  {
+			    var url = notification_categories[i*2];
+				var title = $(notification_categories[i*2]).html();
+				var unread_count = $(notification_categories[i*2+1]).html();
+				var text = "";
+				var value_class = "value";
+				
+				if(unread_count!="0")
+				{
+					value_class+=" unread";
+				}
+				
+				text="<div><p class='name'><a href='"+url+"' target='_blank'>"+title+"</a></p>"+"<p class='"+value_class+"'>"+unread_count+"</p></div><div style='clear:both'></div>";
+				$("#content").append(text); //Meto la notificación con su número correspondiente
+			  }
+		});
+
+		request.fail(function(jqXHR, textStatus) {
+		  $("#content").html("<p>Error al obtener notificaciones de Laneros.com</p>");
+		});
+	});		
+</script>
 </head>
 
 <body>
 
-<h1>Ultimos temas en LANeros</h1>
+<h1>Notificaciones en LANeros</h1>
 
 <div id="content">
 <!-- The latest tutorials are going to be inserted here -->
+Cargando notificaciones...
 </div>
 
 </body>

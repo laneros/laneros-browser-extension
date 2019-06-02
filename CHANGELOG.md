@@ -2,6 +2,12 @@
 
 All notable changes to `laneros-browser-extension` will be documented in this file.
 
+## 1.2 | 2011-10-27
+
+### Added
+
+- Notifications on Popup
+
 ## 1.1 | 2011-10-26
 
 ### Added
