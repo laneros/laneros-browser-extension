@@ -5,20 +5,17 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
-  <body>
-    <a href="http://www.laneros.com" title="LANeros.com" target="_blank">
-        <h1><div class="img">
-            <img src="images/laneros.png" alt="LANeros.com" width="32" height="32"></div>LANeros.com</h1></a>
-    <div id="showNotifications" class="hidden">
-        <h2>Notificaciones</h2>
-        <div id="notifications" class="notifications info">Cargando notificaciones ...</div>
+  <body class="notification">
+    <div class="notifyIcon">
+        <a href="http://www.laneros.com" title="LANeros.com" target="_blank">
+            <img src="images/laneros.png" alt="LANeros.com" width="32" height="32">
+        </a>
+    </div>
+    <div class="notifyData">
+        <div id="notifications" class="notifications2 info">Cargando notificaciones ...</div>
         <div class="clear"></div>
+        <div id="subscriptions" class="subscriptions2 info">Cargando suscripciones ...</div>
     </div>
-    <div id="showSubscriptions" class="hidden">
-        <h2>Temas suscritos sin leer</h2>
-        <div id="subscriptions" class="subscriptions info">Cargando suscripciones ...</div>
-    </div>
-
     <script language="javascript" type="text/javascript" src="js/jquery.min.js"></script>
     <script language="javascript" type="text/javascript" src="js/laneros.js"></script>
     <script language="javascript" type="text/javascript">
@@ -30,9 +27,9 @@
                 getNotifications(data, textStatus, jqXHR);
                 getSubscriptions(data, textStatus, jqXHR);
             }).error(function() {
-                $("#notifications").removeClass().addClass("error")
+                $("#content").removeClass().addClass("error")
                     .html("Error al obtener notificaciones de LANeros.com");
-                $("#subscriptions").removeClass().addClass("error")
+                $("#content_suscriptions").removeClass().addClass("error")
                     .html("Error al obtener los temas suscritos de LANeros.com");
             });
         });

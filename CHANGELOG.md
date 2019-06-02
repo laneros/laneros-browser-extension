@@ -2,12 +2,27 @@
 
 All notable changes to `laneros-browser-extension` will be documented in this file.
 
+## 2.0 | 2011-11-25
+
+### Added
+
+- Some extension options
+- jQuery
+
+### Changed
+
+- Notification icons
+- Notification Popup
+- Options page
+- Javascript functions (notifications, subscriptions, popup, options)
+
 ## 1.3.5 | 2011-11-25
 
 ### Added
 
 - Number of notifications on extension icon
-- Setting page 
+- Notification icons
+- Setting page
 
 ## 1.3.2 | 2011-11-25
 

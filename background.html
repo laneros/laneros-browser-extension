@@ -1,119 +1,22 @@
 <!DOCTYPE html> <!-- The new doctype -->
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="style.css" />
-</head>
-
-<body></body>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-<script type="text/javascript">
-	//Opciones por defecto
-    const TIEMPO_REVISADA = 120000; //Cada cuanto se va a revisar por nuevas actualizaciones (milisegundos)
-    const TIEMPO_NOTIFICACION = 15000; //Cuanto dura la notificacion en pantalla (milisegundos)
-
-	var interval;
-	
-	function UpdateIcon(count)
-	{
-		if(count==0)
-			chrome.browserAction.setIcon({path:"icons/default.png"});
-		else if(count<9)
-			chrome.browserAction.setIcon({path:"icons/icon" + count + ".png"});
-		else
-			chrome.browserAction.setIcon({path:"icons/icon_many.png"});
-	}
-	
-	function GetRevValue()
-	{
-		if(localStorage["rev_value"] == undefined)
-			return(TIEMPO_REVISADA);
-		else
-		    return(localStorage["rev_value"]);
-	}
-	
-	function GetPopValue()
-	{
-		if(localStorage["pop_value"] == undefined)
-			return(TIEMPO_NOTIFICACION);
-		else
-		    return(localStorage["pop_value"]);
-	}
-		
-    var notification = null;
-    function ObtenerNotificaciones() {
-
-        var request = $.ajax({
-          url: "http://www.laneros.com/subscription.php?do=viewsubscription",
-          type: "GET",
-          dataType: "html"
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <script language="javascript" type="text/javascript" src="js/jquery.min.js"></script>
+    <script language="javascript" type="text/javascript" src="js/laneros.js"></script>
+    <script language="javascript" type="text/javascript">
+        /*
+         * Ejecutar al Cargar el Documento
+         */
+        $(document).ready(function() {
+            var TimeRev = getLocalValue("TimeRev");
+            showNotifications();
+            setInterval("showNotifications()", TimeRev);
         });
-
-        request.done(function(msg) {
-            allText = msg;
-            var obj = $(allText);
-            var notification_menu = obj.find("#notifications_menu");
-            var cantidad_notificaciones = 0;
-			
-            if(notification_menu.length != 0) {
-                var notification_categories = notification_menu.find("a");
-
-                for(i = 0; i < notification_categories.length / 2; i++) {
-                    var unread_count = $(notification_categories[i * 2 + 1]).html();
-                    if(unread_count != "0") {
-                        cantidad_notificaciones += parseInt(unread_count);
-                        break;
-                    }
-                }
-            }
-
-            var ListaSuscripciones = obj.find("a[id^='thread_gotonew_']");
-            var cantidad_suscripciones = ListaSuscripciones.length;
-
-            if(cantidad_notificaciones > 0 || cantidad_suscripciones > 0) {
-                texto = "";
-				
-                if(cantidad_notificaciones > 0) {
-                    texto += (cantidad_notificaciones > 1) ? ('Tienes ' + cantidad_notificaciones + ' notificaciones nuevas!') : ("Tienes 1 notificación nueva!");  //mensaje
-				}
-                if(cantidad_suscripciones > 0) {
-                    if(texto != "") {
-                        texto += " y "+((cantidad_suscripciones > 1) ? (cantidad_suscripciones + ' temas suscritos sin leer!') : ('1 tema suscrito sin leer!'));  //mensaje;
-					}
-					else {
-						texto = (cantidad_suscripciones > 1) ? ('Tienes ' + cantidad_suscripciones + ' temas suscritos sin leer!') : ('Tienes 1 tema suscrito sin leer!');  //mensaje
-					}
-                }
-
-                notification = webkitNotifications.createNotification(
-                    'Laneros.png',  // icono
-                    'Notificaciones - LANeros',  //titulo
-					texto
-                );
-                notification.show();
-                setTimeout("CerrarNotificacion()", GetPopValue());
-            }
-			
-			UpdateIcon(cantidad_notificaciones + cantidad_suscripciones);
-        });
-    }
-
-    function CerrarNotificacion() {
-        notification.cancel();
-        notification = null;
-    }
-
-	function Reiniciar()
-	{
-		clearInterval(interval);
-        ObtenerNotificaciones();
-        interval=setInterval("ObtenerNotificaciones()", GetRevValue());
-	}
-	
-    $(function() {
-		Reiniciar();
-    });
-
-</script>
+    </script>
+  </body>
 </html>

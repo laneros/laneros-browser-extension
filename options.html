@@ -1,74 +1,39 @@
 <!DOCTYPE html><!-- The new doctype -->
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="style.css" />
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-</head>
-<body>
-<script type="text/javascript">
-function Guardar() {
-  
-  //Obtengo el valor del input
-  var rev_value = $("#rev_value").val();
-  if (rev_value=="") { 		//Si no asignaron nada, asigno el Default
-    rev_value = chrome.extension.getBackgroundPage().TIEMPO_REVISADA;
-  }
-  
-  //Obtengo el valor del input
-  var pop_value = $("#pop_value").val();
-  if (pop_value=="") {		//Si no asignaron nada, asigno el Default
-    pop_value = chrome.extension.getBackgroundPage().TIEMPO_NOTIFICACION;
-  }
-  
-  //Lo guardo
-  localStorage["rev_value"] = rev_value;
-  localStorage["pop_value"] = pop_value;
-  
-  Cargar();	//Recargo los valores almacenados (por si dejaron algún valor vacío)
-  
-  chrome.extension.getBackgroundPage().Reiniciar();
-  
-  //Aviso al usuario que se guardó correctamente
-  $("#status").html("Guardado!").delay(1000).queue(function(){$("#status").html("")});
-}
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body class="options">
+    <a href="http://www.laneros.com" title="LANeros.com" target="_blank">
+        <h1><div class="img">
+            <img src="images/laneros.png" alt="LANeros.com" width="32" height="32"></div>LANeros.com</h1></a>
+    <div class="notifications2 info">Intervalo de Revisión</div>
+    <div class="notifications2 settings"><input type="number" value="0" max="23" min="0" id="hours_rev"> Horas
+        <br><input type="number" value="0" max="59" min="0" id="minutes_rev"> Minutos
+        <br><input type="number" value="0" max="59" min="0" id="seconds_rev"> Segundos
+        <br><input type="number" value="0" max="999" min="0" id="miliseconds_rev"> Milisegundos</div>
+    <div class="notifications2 info">Duración del Popup</div>
+    <div class="notifications2 settings"><input type="number" value="0" max="23" min="0" id="hours_show"> Horas
+        <br><input type="number" value="0" max="59" min="0" id="minutes_show"> Minutos
+        <br><input type="number" value="0" max="59" min="0" id="seconds_show"> Segundos
+        <br><input type="number" value="0" max="999" min="0" id="miliseconds_show"> Milisegundos</div>
 
-// Carga las opciones
-function Cargar() {
-  var rev_value = localStorage["rev_value"];
-  if (!rev_value) {
-    rev_value = chrome.extension.getBackgroundPage().TIEMPO_REVISADA;
-  }
-  
-  var pop_value = localStorage["pop_value"];
-  if (!pop_value) {
-    pop_value = chrome.extension.getBackgroundPage().TIEMPO_NOTIFICACION;
-  }
+    <div class="notifications2 settings"><input type="checkbox" id="ShowNot"> Mostrar Notificaciones</div>
+    <div class="notifications2 settings"><input type="checkbox" id="ShowSubs"> Mostrar Suscripciones</div>
+    <div class="notifications2 settings"><input type="checkbox" id="ShowPopup"> Mostrar Notificación Popup</div>
 
-  $("#rev_value").val(rev_value);
-  $("#pop_value").val(pop_value);
-}
+    <div class="notifications2 settings"><input id="save" type="button" value="  Guardar  "></div>
+    <div class="notifications2 settings" id="status"></div>
 
-function Setup()
-{
-   $("#guardar").click(Guardar);   
-   Cargar();
-}
-
-$(function()
-  { 
-    Setup();
-  }
-);  
-
-</script>
-<h1>Configuración extensión Laneros</h1>
-<div class="settings">
-Intervalo Revisión <input id="rev_value" type="number">
-Duración Popup <input id="pop_value" type="number">
-</div>
-<input id="guardar" type="button" value="Guardar">
-<span id="status"></span>
-</body>
+    <script language="javascript" type="text/javascript" src="js/jquery.min.js"></script>
+    <script language="javascript" type="text/javascript" src="js/laneros.js"></script>
+    <script language="javascript" type="text/javascript">
+        /*
+         * Ejecutar al Cargar el Documento
+         */
+        $(document).ready(setOptions);
+    </script>
+  </body>
 </html>
