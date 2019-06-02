@@ -12,9 +12,9 @@ const TIEMPO_NOTIFICACION = 15000;
 objLANeros = new Object();
 objLANeros.TimeRev = TIEMPO_REVISADA;
 objLANeros.TimeShow = TIEMPO_NOTIFICACION;
-objLANeros.ShowNot = true;
-objLANeros.ShowSubs = true;
-objLANeros.ShowPopup = true;
+objLANeros.ShowNot = "true";
+objLANeros.ShowSubs = "true";
+objLANeros.ShowPopup = "true";
 /*
  * Variables
  */
@@ -87,15 +87,15 @@ function setOptions() {
     $("#minutes_show").val(parseInt(arrTime[2]));
     $("#hours_show").val(parseInt(arrTime[1]));
 
-    if (ShowNot == "true" || ShowNot == true) {
+    if (ShowNot == "true") {
         $("#ShowNot").attr("checked", true);
     }
 
-    if (ShowSubs == "true" || ShowSubs == true) {
+    if (ShowSubs == "true") {
         $("#ShowSubs").attr("checked", true);
     }
 
-    if (ShowPopup == "true" || ShowPopup == true) {
+    if (ShowPopup == "true") {
         $("#ShowPopup").attr("checked", true);
     }
 
@@ -148,15 +148,15 @@ function showNotifications() {
         counter = getNotifications(data, textStatus, jqXHR);
         counter += parseInt($(subscriptions).size());
     }).error(function() {
-        $("#content").removeClass().addClass("error")
+        $("#notifications").removeClass().addClass("error")
             .html("Error al obtener notificaciones de LANeros.com");
-        $("#content_suscriptions").removeClass().addClass("error")
+        $("#subscriptions").removeClass().addClass("error")
             .html("Error al obtener los temas suscritos de LANeros.com");
     }).complete(function() {
         var ShowPopup = getLocalValue("ShowPopup");
         var TimeShow = parseInt(getLocalValue("TimeShow"));
 
-        if (ShowPopup == "true" || ShowPopup == true && TimeShow > 0) {
+        if (ShowPopup == "true" && TimeShow > 0) {
             notification = webkitNotifications.createHTMLNotification(
                 'notification.html'
             );
@@ -178,22 +178,22 @@ function closeNotification() {
  */
 function getNotifications(data, textStatus, jqXHR) {
     var ShowNot = getLocalValue("ShowNot");
-    var notifications = $(data).find("#notifications_menu");
+    var allNotifications = $(data).find("#notifications_menu");
     var counter = 0;
 
-    if (ShowNot == "true" || ShowNot == true) {
+    if (ShowNot == "true") {
         $("#showNotifications").show();
     }
 
-    if ($(notifications).size() == 0) {
-        $("#notifications").addClas("none").html("No hay notificaciones nuevas");
+    if ($(allNotifications).size() == 0) {
+        $("#notifications").addClass("none").html("No hay notificaciones nuevas");
     }
     else {
         $("#notifications").html("");
         var p = document.createElement("p");
         var unreads = $(p).clone();
 
-        $(notifications).find("td a").each(function(index) {
+        $(allNotifications).find("td a").each(function(index) {
             var title, unread = 0;
             var url = "http://www.laneros.com/" + $(this).attr("href");
 
@@ -235,7 +235,7 @@ function getSubscriptions(data, textStatus, jqXHR) {
     var ShowSubs = getLocalValue("ShowSubs");
     var subscriptions = $(data).find("[id^='thread_gotonew_']");
 
-    if (ShowSubs == "true" || ShowSubs == true) {
+    if (ShowSubs == "true") {
         $("#showSubscriptions").show();
     }
 

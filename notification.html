@@ -27,9 +27,9 @@
                 getNotifications(data, textStatus, jqXHR);
                 getSubscriptions(data, textStatus, jqXHR);
             }).error(function() {
-                $("#content").removeClass().addClass("error")
+                $("#notifications").removeClass().addClass("error")
                     .html("Error al obtener notificaciones de LANeros.com");
-                $("#content_suscriptions").removeClass().addClass("error")
+                $("#subscriptions").removeClass().addClass("error")
                     .html("Error al obtener los temas suscritos de LANeros.com");
             });
         });
