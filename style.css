@@ -1,85 +1,73 @@
-
-*{
+* {
 	margin:0;
 	padding:0;
 }
-
-body{
-	/* Setting default text color, background and a font stack */
+body {
 	font-size:12px;
 	color:#666;
-
-	/* A webkit gradient: */
 	background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#EEE), to(#DDD));
-
 	text-shadow:1px 1px 0 white;
 	font-family:Arial, Helvetica, sans-serif;
 	overflow-x:hidden;
-	
 	width: 300px;
 }
-
-.tutorial{
-	width:500px;
-	padding:10px 20px;
-	margin-bottom:10px;
-}
-
-img{
-	width:100px;
-	height:100px;
-	float:left;
-/* segunda parte del css */
-
-	/* Webkit CSS3 Reflection */
-	-webkit-box-reflect: below 0 -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.75, transparent), to(rgba(255, 255, 255, 0.3))) 0 0 0 0 stretch stretch;
-}
-
-p,a{
-	/*padding:10px 0 0 120px;*/
+p, a {
 	display:block;
 }
-
-a,a:visited{
-	color:#09F;
+a, a:visited {
+	color:#2666AF;
 	text-decoration:none;
 }
-
-a:hover{
+a:hover {
 	text-decoration:underline;
 }
-
-h1{
-	/* Webkit gradient: */
+h1 {
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#EEE), to(#DDD));
-
-	border-bottom: 1px solid #F0F0F0;
+	border-bottom: 1px dotted #F0F0F0;
 	font-size: 24px;
 	font-weight: normal;
-	margin-bottom: 30px;
-	padding: 30px 0px;
+	padding: 15px 0px;
 	text-align: center;
 	text-shadow: white 0px 1px 1px;
 }
-
-h2{
-	font-size:24px;
+h2 {
+	font-size:18px;
 	font-weight:normal;
-	right:40px;
-	padding-left:120px;
+	text-align: center;
+	padding-top: 10px;
+	color: #000;
 }
-
-h1,h2{
-	font-family:"Myriad Pro",Arial,Helvetica,sans-serif;
+h1, h2 {
+	font-family:"Myriad Pro", Arial, Helvetica, sans-serif;
 }
-
-.name{
-float: left;
+.img {
+	float: left;
+	margin-left: 55px;
 }
-
-.value{
-float: right
+.name {
+	float: left;
 }
-.unread, .unread a{
-color: red;
+.value {
+	float: right
+}
+.unread, .unread a {
+	color: red;
+}
+#content, #content_suscriptions {
+	padding-top: 15px;
+	padding-left: 10px;
+	padding-bottom: 10px;
+	padding-right: 10px;
+}
+.clear {
+	border-bottom: 3px solid #000;
+}
+.error {
+	color: #FF8080;
+}
+.info {
+	color: #2666AF;
+}
+.none {
+	color: #808080;
 }

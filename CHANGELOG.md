@@ -2,6 +2,21 @@
 
 All notable changes to `laneros-browser-extension` will be documented in this file.
 
+## 1.3.2 | 2011-11-25
+
+### Added
+
+- Laneros Logo 
+
+### Changed
+
+- CSS: colors, classes, fonts, etc
+- HTML: UTF-8
+
+### Removed
+
+- Text without notifications
+
 ## 1.3.1 | 2011-10-30
 
 ### Added

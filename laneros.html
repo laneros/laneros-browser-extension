@@ -1,114 +1,92 @@
-<!DOCTYPE html> <!-- The new doctype -->
+<!DOCTYPE html><!-- The new doctype -->
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+<a href="http://www.laneros.com" title="LANeros.com" target="_blank"><h1><div class="img"><img src="Laneros.png" alt="" width="32" height="32"></div>LANeros.com</h1></a>
+<h2>Notificaciones</h2>
+<div id="content" class="info">Cargando notificaciones..</div>
+<div class="clear"></div>
+<h2>Temas suscritos sin leer</h2>
+<div id="content_suscriptions" class="info">Cargando suscripciones...</div>
+
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 <script type="text/javascript">
     //URL Noticias: http://www.laneros.com/ticker/lastrss/bridge.php?id=laneros
-	function ObtenerNotificaciones()
-	{
-		var request = $.ajax({
-		  url: "http://www.laneros.com/subscription.php?do=viewsubscription",
-		  type: "GET",
-		  dataType: "html"
-		});
+    function ObtenerNotificaciones() {
+        var request = $.ajax({
+            url: "http://www.laneros.com/subscription.php?do=viewsubscription",
+            type: "GET",
+            dataType: "html"
+        });
 
-		request.done(function(msg) {
-			  allText = msg; 
-			  var obj = $(allText);
-			  var notification_menu = obj.find("#notifications_menu");
-			  if(notification_menu.length == 0)
-			  {
-				$("#content").html("No hay notificaciones nuevas");
-			  }
-			  else
-			  {
-				  var notification_categories = notification_menu.find("a");
+        request.done(function(msg) {
+              allText = msg;
+              var obj = $(allText);
+              var notification_menu = obj.find("#notifications_menu");
 
-				  $("#content").html(""); //Quito el "Cargando..."
-				  for(i=0; i<notification_categories.length/2; i++)
-				  {
-					var url = $(notification_categories[i*2]).attr("href");
-					url="http://www.laneros.com/"+url;
-					var title = $(notification_categories[i*2]).html();
-					var unread_count = $(notification_categories[i*2+1]).html();
-					var text = "";
-					var value_class = "value";
-					
-					if(unread_count!="0")
-					{
-						value_class+=" unread";
-					}
-					
-					text="<div><p class='name'><a href='"+url+"' target='_blank'>"+title+"</a></p>"+"<p class='"+value_class+"'>"+unread_count+"</p></div><div style='clear:both'></div>";
-					$("#content").append(text); //Meto la notificación con su número correspondiente
-				  }
-				  
-			  }			  
-			  
-			  MostrarTemasSuscritosNoLeidos(obj);
-		});
+              if(notification_menu.length == 0) {
+                $("#content").addClass("none").html("No hay notificaciones nuevas");
+              }
+              else {
+                  var notification_categories = notification_menu.find("a");
 
-		request.fail(function(jqXHR, textStatus) {
-		  $("#content").html("<p>Error al obtener notificaciones de Laneros.com</p>");
-		  $("#content_suscriptions").html("<p>Error al obtener los temas suscritos de Laneros.com</p>");
-		});
-	}
-	
-	function MostrarTemasSuscritosNoLeidos(html)
-	{
-		var ListaTemas = html.find("a[id^='thread_gotonew_']");
-		
-		if(ListaTemas.length == 0)
-		{
-			$("#content_suscriptions").html("No hay temas suscritos sin leer");
-		}
-		else
-		{
-			$("#content_suscriptions").html(""); //Borro el contenido
-			$.each(ListaTemas, 
-				function(index, value)
-				{
-					//alert(($(value).parent().children("a")).length);
-					var title = $(value).parent().children("a:nth-child(3)").html();
-					if(title==null)
-					{
-						title = $(value).parent().children("a:nth-child(2)").html();
-					}
-					var url = $(value).parent().children("a:nth-child(2)").attr("href");
-					
-					var text = "<div><p class='name'><a href='http://laneros.com/"+url+"' target='_blank'>"+title+"</a></p></div><div style='clear:both'></div>";
-					$("#content_suscriptions").append(text);
-				}
-			);
-		}
-	}
+                  $("#content").html(""); //Quito el "Cargando..."
+                  for(i = 0; i < notification_categories.length / 2; i++) {
+                    var url = $(notification_categories[i * 2]).attr("href");
+                    var title = $(notification_categories[i * 2]).html();
+                    var unread_count = $(notification_categories[i * 2 + 1]).html();
+                    var text = "";
 
-	
-	$(function()
-	{
-		ObtenerNotificaciones();		
-	});		
+                    url = "http://www.laneros.com/"+url;
+
+                    if(unread_count != 0) {
+                        value_class = "value unread";
+						text="<div><p class='name'><a href='"+url+"' target='_blank' title='"+title+"'>"+title+"</a></p>"+"<p class='"+value_class+"'>"+unread_count+"</p></div><div style='clear:both'></div>";
+                    }
+
+                    $("#content").append(text); //Meto la notificaciï¿½n con su nÃºmero correspondiente
+                  }
+              }
+
+              MostrarTemasSuscritosNoLeidos(obj);
+        });
+
+        request.fail(function(jqXHR, textStatus) {
+          $("#content").removeClass().addClass("error").html("Error al obtener notificaciones de Laneros.com");
+          $("#content_suscriptions").removeClass().addClass("error").html("Error al obtener los temas suscritos de Laneros.com");
+        });
+    }
+
+    function MostrarTemasSuscritosNoLeidos(html) {
+        var ListaTemas = html.find("a[id^='thread_gotonew_']");
+
+        if(ListaTemas.length == 0) {
+            $("#content_suscriptions").addClass("none").html("No hay temas suscritos sin leer");
+        }
+        else {
+            $("#content_suscriptions").html(""); //Borro el contenido
+            $.each(ListaTemas, function(index, value) {
+                //alert(($(value).parent().children("a")).length);
+                var title = $(value).parent().children("a:nth-child(3)").html();
+                var url = $(value).parent().children("a:nth-child(2)").attr("href");
+
+                if(title == null) {
+                    title = $(value).parent().children("a:nth-child(2)").html();
+                }
+
+                var text = "<div><p class='name'><a href='http://laneros.com/"+url+"' target='_blank' title='"+title+"'>"+title+"</a></p></div><div style='clear:both'></div>";
+                $("#content_suscriptions").append(text);
+            });
+        }
+    }
+
+    $(function() {
+        ObtenerNotificaciones();
+    });
 </script>
-</head>
-
-<body>
-
-<h1>Notificaciones en LANeros</h1>
-
-<div id="content">
-<!-- The latest tutorials are going to be inserted here -->
-Cargando notificaciones...
-</div>
-
-<div style="height: 10px; border-bottom: 3px solid #000"></div>
-
-<h1>Temas suscritos sin leer</h1>
-<div id="content_suscriptions">
-<!-- The latest tutorials are going to be inserted here -->
-Cargando suscripciones...
-</div>
-
-
 </body>
 </html>
