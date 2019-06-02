@@ -1,0 +1,65 @@
+{
+    "extName": {
+        "message": "LANeros.com (No Oficial)"
+    },
+    "extDesc": {
+        "message": "Sitio web para discutir temas sobre celulares, juegos, tecnología y conocer nuevos amigos."
+    },
+    "loading": {
+        "message": "Cargando Datos"
+    },
+    "error": {
+        "message": "Error al obtener los datos de LANeros.com"
+    },
+    "notification": {
+        "message": "Notificaciones"
+    },
+    "subscription": {
+        "message": "Suscripciones"
+    },
+    "zeroNots": {
+        "message": "No hay notificaciones nuevas"
+    },
+    "zeroSubs": {
+        "message": "No hay temas suscritos sin leer"
+    },
+    "success": {
+        "message": "Cambios Realizados"
+    },
+    "revision": {
+        "message": "Intervalo de Revisión"
+    },
+    "duration": {
+        "message": "Duración del Popup"
+    },
+    "popup": {
+        "message": "Intervalo de Muestra del Popup"
+    },
+    "others": {
+        "message": "Otros"
+    },
+    "hours": {
+        "message": "Horas"
+    },
+    "minutes": {
+        "message": "Minutos"
+    },
+    "seconds": {
+        "message": "Segundos"
+    },
+    "miliseconds": {
+        "message": "Milisegundos"
+    },
+    "showNot": {
+        "message": "Mostrar Notificaciones"
+    },
+    "showSubs": {
+        "message": "Mostrar Suscripciones"
+    },
+    "showPopup": {
+        "message": "Mostrar Notificación Popup"
+    },
+    "save": {
+        "message": "  Guardar  "
+    }
+}

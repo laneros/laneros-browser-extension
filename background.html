@@ -1,29 +1,19 @@
-<!DOCTYPE html> <!-- The new doctype -->
-<html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="style.css" />
-  </head>
-  <body>
-    <script language="javascript" type="text/javascript" src="js/jquery.min.js"></script>
-    <script language="javascript" type="text/javascript" src="js/laneros.js"></script>
-    <script language="javascript" type="text/javascript">
-        /*
-         * Ejecutar al Cargar el Documento
-         */
-        $(document).ready(function() {
-            var TimeRev = getLocalValue("TimeRev");
-            if (getLocalValue("isRunning") == "false") {
-                showNotifications();
-                setInterval("showNotifications()", TimeRev);
-            }
-           else {
-                closeNotification();
-                showNotifications();
-                setInterval("showNotifications()", TimeRev);
-            }
-         });
-    </script>
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8" />
+        <title>LANeros.com Chrome Extension</title>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+    </head>
+    <body>
+        <script language="javascript" type="text/javascript" src="js/jquery.min.js"></script>
+        <script language="javascript" type="text/javascript" src="js/laneros.js"></script>
+        <script language="javascript" type="text/javascript">
+            /*
+             * Ejecutar al Cargar el Documento
+             */
+            $(document).ready(bgFunction);
+        </script>
+    </body>
 </html>

@@ -1,0 +1,65 @@
+{
+    "extName": {
+        "message": "LANeros.com (UnOfficial)"
+    },
+    "extDesc": {
+        "message": "Web site to discuss about phones, games, technology and meet new friends."
+    },
+    "loading": {
+        "message": "Loading Data"
+    },
+    "error": {
+        "message": "Failed to get data from LANeros.com"
+    },
+    "notification": {
+        "message": "Notifications"
+    },
+    "subscription": {
+        "message": "Subscriptions"
+    },
+    "zeroNots": {
+        "message": "There are no new notifications"
+    },
+    "zeroSubs": {
+        "message": "You do not have subscriptions without reading"
+    },
+    "success": {
+        "message": "Done"
+    },
+    "revision": {
+        "message": "Review Interval"
+    },
+    "duration": {
+        "message": "Popup Display Time"
+    },
+    "popup": {
+        "message": "Popup Display Interval"
+    },
+    "others": {
+        "message": "Others"
+    },
+    "hours": {
+        "message": "Hours"
+    },
+    "minutes": {
+        "message": "Minutes"
+    },
+    "seconds": {
+        "message": "Seconds"
+    },
+    "miliseconds": {
+        "message": "Miliseconds"
+    },
+    "showNot": {
+        "message": "Show Notifications"
+    },
+    "showSubs": {
+        "message": "Show Subscriptions"
+    },
+    "showPopup": {
+        "message": "Show Pop-up"
+    },
+    "save": {
+        "message": "  Save  "
+    }
+}

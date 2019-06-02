@@ -2,6 +2,16 @@
 
 All notable changes to `laneros-browser-extension` will be documented in this file.
 
+## 2.5.1 | 2011-11-28
+
+### Added
+
+- Localization (EN, ES)
+
+### Changed
+
+- CSS, JS, HTML with minor changes
+
 ## 2.0.5 | 2011-11-26
 
 ### Added

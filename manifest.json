@@ -1,11 +1,12 @@
 {
-    "name": "LANeros.com Dev (Beta)",
-    "description": "Sitio web para discutir temas sobre celulares, juegos, tecnología y conocer nuevos amigos.",
-    "version": "2.0.5",
+    "name": "__MSG_extName__",
+    "description": "__MSG_extDesc__",
+    "version": "2.5.1",
     "update_url": "http://dl.dropbox.com/u/27487800/LanerosChromeExtension/updates.xml",
     "permissions": ["http://www.laneros.com/", "notifications"],
     "background_page": "background.html",
     "options_page": "options.html",
+    "default_locale": "es",
 
     "browser_action": {
         "default_icon": "images/laneros.png",

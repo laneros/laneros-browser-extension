@@ -1,49 +1,36 @@
-<!DOCTYPE html><!-- The new doctype -->
-<html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="style.css" />
-  </head>
-  <body>
-    <a href="http://www.laneros.com" title="LANeros.com" target="_blank">
-        <h1><div class="img">
-            <img src="images/laneros.png" alt="LANeros.com" width="32" height="32"></div>LANeros.com</h1></a>
-    <div id="showNotifications" class="hidden">
-        <h2>Notificaciones</h2>
-        <div id="notifications" class="notifications info">Cargando notificaciones ...</div>
-        <div class="clear"></div>
-    </div>
-    <div id="showSubscriptions" class="hidden">
-        <h2>Temas suscritos sin leer</h2>
-        <div id="subscriptions" class="subscriptions info">Cargando suscripciones ...</div>
-    </div>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8" />
+        <title>LANeros.com Chrome Extension</title>
+        <link rel="stylesheet" type="text/css" href="style.css" />
+    </head>
+    <body>
+        <div class="header">
+            <div><a href="http://www.laneros.com" title="LANeros.com" target="_blank">
+                    <h1><img src="images/laneros.png" alt="LANeros.com" width="32" height="32" class="logo" />LANeros.com</h1>
+                </a>
+            </div>
+        </div>
+        <div id="showLoading" class="hidden"><img src="images/ajax-loader.gif" alt="" width="32" height="32" /><h3 class="info"></h3></div>
+        <div id="showResponse" class="hidden">
+            <div class="notification">
+                <h2></h2>
+            </div>
+            <div class="clear hidden"></div>
+            <div class="subscription">
+                <h2></h2>
+            </div>
+        </div>
 
-    <script language="javascript" type="text/javascript" src="js/jquery.min.js"></script>
-    <script language="javascript" type="text/javascript" src="js/laneros.js"></script>
-    <script language="javascript" type="text/javascript">
-        /*
-         * Ejecutar al Cargar el Documento
-         */
-        $(document).ready(function() {
-            var counter = 0;
-
-            $.get("http://www.laneros.com/subscription.php?do=viewsubscription", function(data, textStatus, jqXHR) {
-                var subscriptions = $(data).find("[id^='thread_gotonew_']");
-
-                counter = getNotifications(data, textStatus, jqXHR);
-                getSubscriptions(data, textStatus, jqXHR);
-
-                counter += parseInt($(subscriptions).size());
-            }).error(function() {
-                $("#notifications").removeClass().addClass("error")
-                    .html("Error al obtener notificaciones de LANeros.com");
-                $("#notifications").removeClass().addClass("error")
-                    .html("Error al obtener los temas suscritos de LANeros.com");
-            }).complete(function() {
-                updateIcon(counter);
-            });
-        });
-    </script>
-  </body>
+        <script language="javascript" type="text/javascript" src="js/jquery.min.js"></script>
+        <script language="javascript" type="text/javascript" src="js/laneros.js"></script>
+        <script language="javascript" type="text/javascript">
+            /*
+             * Ejecutar al Cargar el Documento
+             */
+            $(document).ready(parseLANeros);
+        </script>
+    </body>
 </html>
