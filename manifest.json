@@ -1,7 +1,7 @@
 {
     "name": "__MSG_extName__",
     "description": "__MSG_extDesc__",
-    "version": "2.5.1",
+    "version": "2.5.2",
     "update_url": "http://dl.dropbox.com/u/27487800/LanerosChromeExtension/updates.xml",
     "permissions": ["http://www.laneros.com/", "notifications"],
     "background_page": "background.html",

@@ -61,6 +61,10 @@ function updateIcon() {
         chrome.browserAction.setBadgeBackgroundColor({ color: [255, 0, 0, 255]});
         chrome.browserAction.setBadgeText({ text: '' + counter});
     }
+    else {
+        chrome.browserAction.setBadgeBackgroundColor({ color: [255, 0, 0, 0]});
+        chrome.browserAction.setBadgeText({ text: ''});
+    }
 }
 /*
  * Obtener los Datos de Notificaciones y Suscripciones
@@ -180,7 +184,7 @@ function getSubscriptions(data, textStatus, jqXHR) {
 }
 function bgFunction() {
     var TimeRev = parseInt(getLocalValue("TimeRev"));
-    var TimePopup =  parseInt(etLocalValue("TimePopup"));
+    var TimePopup =  parseInt(getLocalValue("TimePopup"));
     var jqxhr = parseLANeros();
 
     jqxhr.complete(function() {

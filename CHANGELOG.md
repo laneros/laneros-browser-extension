@@ -2,6 +2,12 @@
 
 All notable changes to `laneros-browser-extension` will be documented in this file.
 
+## 2.5.2 | 2011-11-28
+
+### Changed
+
+- Badge update fix
+
 ## 2.5.1 | 2011-11-28
 
 ### Added
