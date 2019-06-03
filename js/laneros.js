@@ -133,7 +133,7 @@ function getNotifications(data, textStatus, jqXHR) {
                         counter += unread;
                         $(a).attr("target", "_blank").attr("title", title)
                             .attr("href", url).html(title).appendTo(names);
-                        $(names).addClass("name").appendTo(div);
+                        $(names).addClass("name both").appendTo(div);
 
                         $(unreads).addClass("value unread").html(unread).appendTo(div);
                         $(div).appendTo("#notifications").addClass("both");
@@ -184,7 +184,7 @@ function getSubscriptions(data, textStatus, jqXHR) {
 
                 $(a).attr("target", "_blank").attr("title", title)
                     .attr("href", url).html(title).appendTo(names);
-                $(names).addClass("name").appendTo(div);
+                $(names).addClass("name both").appendTo(div);
 
                 $(div).appendTo("#subscriptions");
             });
