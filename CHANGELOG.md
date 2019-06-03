@@ -2,6 +2,16 @@
 
 All notable changes to `laneros-browser-extension` will be documented in this file.
 
+## 2.6.1 | 2011-12-02
+
+### Changed
+
+- Subscriptions bug fix
+
+## Removed
+
+- Unofficial title
+
 ## 2.6 | 2011-11-29
 
 ### Added

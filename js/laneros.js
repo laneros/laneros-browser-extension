@@ -177,7 +177,9 @@ function getSubscriptions(data, textStatus, jqXHR) {
 
                 var container = $(this).parent();
                 var url = "http://www.laneros.com/" + $(this).attr("href");
-                var title = $(container).find("a:eq(2)").html();
+				var title = $(container).children("a:nth-child(3)").html();
+				if(title==null)
+					title = $(container).children("a:nth-child(2)").html();
 
                 $(a).attr("target", "_blank").attr("title", title)
                     .attr("href", url).html(title).appendTo(names);
