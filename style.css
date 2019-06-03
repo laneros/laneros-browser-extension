@@ -34,10 +34,14 @@ h3 {
     padding-top: 5px;
     color: #000;
 }
-
+img {
+    vertical-align: middle;
+}
 
 .header {
     clear: both;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 .logo {
     border: none;
@@ -63,10 +67,12 @@ h3 {
 }
 .name {
     float: left;
+    padding-bottom: 5px;
 }
 .value {
     float: right;
     color: #F00;
+    padding-bottom: 5px;
 }
 .both {
     clear: both;

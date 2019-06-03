@@ -20,7 +20,7 @@ $(document).ready(function() {
     $("#showLoading").ajaxStart(function() {
         $(this).show();
         $("#showResponse").hide();
-        $(this).find("h3").html(getMessage("loading"));
+        $(this).find(".info").html(getMessage("loading"));
     })
     .ajaxStop(function() {
         $(this).hide();
@@ -62,7 +62,6 @@ function updateIcon() {
         chrome.browserAction.setBadgeText({ text: '' + counter});
     }
     else {
-        chrome.browserAction.setBadgeBackgroundColor({ color: [255, 0, 0, 0]});
         chrome.browserAction.setBadgeText({ text: ''});
     }
 }
@@ -71,12 +70,19 @@ function updateIcon() {
  */
 function parseLANeros() {
     var jqxhr = $.get("http://www.laneros.com/subscription.php", function(data, textStatus, jqXHR) {
-        var subscriptions = $(data).find("[id^='thread_gotonew_']");
+        var login = $(data).find("td.panelsurround form[action='login.php?do=login']");
 
-        counter = getNotifications(data, textStatus, jqXHR);
-        counter += parseInt($(subscriptions).size());
+        if ($(login).size() == 0) {
+             var subscriptions = $(data).find("[id^='thread_gotonew_']");
 
-        getSubscriptions(data, textStatus, jqXHR);
+            counter = getNotifications(data, textStatus, jqXHR);
+            counter += parseInt($(subscriptions).size());
+
+            getSubscriptions(data, textStatus, jqXHR);
+        }
+        else {
+            doLogin(login);
+        }
     }).complete(function() {
         updateIcon();
     });
@@ -149,7 +155,7 @@ function getNotifications(data, textStatus, jqXHR) {
 function getSubscriptions(data, textStatus, jqXHR) {
     var div = document.createElement("div");
 
-    var subscriptions = $(data).find("[id^='thread_gotonew_']");
+    var subscriptions = $(data).find("a[id^='thread_gotonew_']");
     var ShowSubs = getLocalValue("ShowSubs");
 
     if (ShowSubs == "true") {
@@ -164,20 +170,19 @@ function getSubscriptions(data, textStatus, jqXHR) {
 
             $(subscriptions).each(function(index) {
                 var div = document.createElement("div");
-                var p = document.createElement("p");
                 var a = document.createElement("a");
 
                 var clear = $(div).clone();
+                var names = $(div).clone();
 
                 var container = $(this).parent();
                 var url = "http://www.laneros.com/" + $(this).attr("href");
                 var title = $(container).find("a:eq(2)").html();
 
                 $(a).attr("target", "_blank").attr("title", title)
-                    .attr("href", url).html(title).appendTo(p);
-                $(p).addClass("name").appendTo(div);
+                    .attr("href", url).html(title).appendTo(names);
+                $(names).addClass("name").appendTo(div);
                 $(div).appendTo("#subscriptions");
-                $(clear).addClass("both").appendTo("#subscriptions");
             });
         }
     }
@@ -370,6 +375,23 @@ function setOptions() {
         $("#status").html(getMessage("success"));
         reboot();
     });
+}
+/*
+ * Obtener el formulario de login
+ */
+function doLogin(login) {
+    var div = document.createElement("div");
+    var url = "http://www.laneros.com/";
+    var action = $(login).parent().find("form").attr("action");
+
+    $(login).find("a").each(function() {
+        url += $(this).attr("href");
+        $(this).attr("href", url).attr("target", "_blank");
+    });
+    $(login).parent().find("form").attr("action", url + action)
+        .attr("target", "_blank");
+
+    $(div).attr("id", "login").appendTo("#showResponse").html(login);
 }
 /*
  * Funcion de Conversion de MS a d:hh:mm:ss:ms
