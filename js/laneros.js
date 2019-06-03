@@ -8,6 +8,7 @@ objLANeros.TimePopup = 300000;
 objLANeros.ShowNot = "true";
 objLANeros.ShowSubs = "true";
 objLANeros.ShowPopup = "true";
+objLANeros.ShowLinks = "true";
 objLANeros.isRunning = "false";
 /*
  * Variables
@@ -73,12 +74,13 @@ function parseLANeros() {
         var login = $(data).find("td.panelsurround form[action='login.php?do=login']");
 
         if ($(login).size() == 0) {
-             var subscriptions = $(data).find("[id^='thread_gotonew_']");
+             var subscriptions = $(data).find("a[id^='thread_gotonew_']");
 
             counter = getNotifications(data, textStatus, jqXHR);
             counter += parseInt($(subscriptions).size());
 
             getSubscriptions(data, textStatus, jqXHR);
+            showLinks(data, textStatus, jqXHR);
         }
         else {
             doLogin(login);
@@ -94,7 +96,6 @@ function parseLANeros() {
  */
 function getNotifications(data, textStatus, jqXHR) {
     var div = document.createElement("div");
-
     var notifications = $(data).find("#notifications_menu");
     var ShowNot = getLocalValue("ShowNot");
     var counter = 0;
@@ -135,15 +136,15 @@ function getNotifications(data, textStatus, jqXHR) {
                             .attr("href", url).html(title).appendTo(names);
                         $(names).addClass("name").appendTo(div);
 
-                        $(div).appendTo("#notifications");
                         $(unreads).addClass("value unread").html(unread).appendTo(div);
+                        $(div).appendTo("#notifications");
                         $(clear).addClass("both").appendTo("#notifications");
                     }
                 }
             });
         }
         if (ShowSubs == "true") {
-            $("#showResponse .clear").show();
+            $("#showResponse .clear:eq(0)").show();
         }
     }
 
@@ -157,6 +158,7 @@ function getSubscriptions(data, textStatus, jqXHR) {
 
     var subscriptions = $(data).find("a[id^='thread_gotonew_']");
     var ShowSubs = getLocalValue("ShowSubs");
+    var ShowLinks = getLocalValue("ShowLinks");
 
     if (ShowSubs == "true") {
         $(div).attr("id", "subscriptions").appendTo(".subscription");
@@ -177,18 +179,66 @@ function getSubscriptions(data, textStatus, jqXHR) {
 
                 var container = $(this).parent();
                 var url = "http://www.laneros.com/" + $(this).attr("href");
-				var title = $(container).children("a:nth-child(3)").html();
-				if(title==null)
-					title = $(container).children("a:nth-child(2)").html();
+                var title = $(container).find("a:eq(2)").html();
+
+                if(title == null) {
+                    title = $(container).find("a:eq(1)").html();
+                }
 
                 $(a).attr("target", "_blank").attr("title", title)
                     .attr("href", url).html(title).appendTo(names);
                 $(names).addClass("name").appendTo(div);
+
+                $(clear).addClass("both").appendTo("#subscriptions");
                 $(div).appendTo("#subscriptions");
             });
         }
+        if (ShowLinks == "true") {
+            $("#showResponse .clear:eq(1)").show();
+        }
     }
 }
+/*
+ *
+ */
+function showLinks(data, textStatus, jqXHR) {
+    var ShowLinks = getLocalValue("ShowLinks");
+
+    if (ShowLinks == "true") {
+        var div = document.createElement("div");
+        var a = document.createElement("a");
+
+        var clear = $(div).clone().addClass("both");
+
+        var url = "http://www.laneros.com/"
+        var logout = $(data).find("td.vbmenu_control:eq(8)").html();
+
+        $(div).attr("id", "links").appendTo(".link");
+        $(".link h2").html(getMessage("link"));
+
+        $(a).addClass("name").attr("target", "_blank");
+
+        $(a).clone().attr("title", getMessage("cp"))
+            .attr("href", url + "usercp.php").html(getMessage("cp"))
+            .appendTo(div);
+        $(clear).clone().appendTo("#links");
+        $(a).clone().attr("title", getMessage("subscription"))
+            .attr("href", url + "subscription.php").html(getMessage("subscription"))
+            .appendTo(div);
+        $(clear).clone().appendTo("#links");
+        $(a).clone().attr("title", getMessage("mail"))
+            .attr("href", url + "ldc_webmail.php").html(getMessage("mail"))
+            .appendTo(div);
+        $(clear).clone().appendTo("#links");
+
+        $(logout).attr("target", "_blank").attr("title", getMessage("logout"))
+            .attr("href", url + $(logout).attr("href")).html(getMessage("logout"))
+            .appendTo(div);
+    }
+}
+/*
+ * Funcion que ejecuta las actualizaciones en segundo plano
+ */
 function bgFunction() {
     var TimeRev = parseInt(getLocalValue("TimeRev"));
     var TimePopup =  parseInt(getLocalValue("TimePopup"));
@@ -197,15 +247,12 @@ function bgFunction() {
     jqxhr.complete(function() {
         setInterval("parseLANeros()", TimeRev);
 
-        if (getLocalValue("isRunning") == "false") {
-            showNotifications();
-            setInterval("showNotifications()", TimePopup);
-        }
-       else {
+        if (getLocalValue("isRunning") == "true") {
             closeNotification();
-            showNotifications();
-            setInterval("showNotifications()", TimePopup);
         }
+
+        showNotifications();
+        setInterval("showNotifications()", TimePopup);
     });
 }
 /*
@@ -270,6 +317,7 @@ function setOptions() {
     var ShowNot   = getLocalValue("ShowNot");
     var ShowSubs  = getLocalValue("ShowSubs");
     var ShowPopup = getLocalValue("ShowPopup");
+    var ShowLinks = getLocalValue("ShowLinks");
 
     var showTime = getTime(TimeShow);
     var revTime  = getTime(TimeRev);
@@ -298,6 +346,7 @@ function setOptions() {
     $(span).clone().html(" " + getMessage("showNot")).insertAfter("#ShowNot");
     $(span).clone().html(" " + getMessage("showSubs")).insertAfter("#ShowSubs");
     $(span).clone().html(" " + getMessage("showPopup")).insertAfter("#ShowPopup");
+    $(span).clone().html(" " + getMessage("showLinks")).insertAfter("#ShowLinks");
 
     $("#save").val(getMessage("save"));
 
@@ -333,6 +382,10 @@ function setOptions() {
 
     if (ShowPopup == "true") {
         $("#ShowPopup").attr("checked", true);
+    }
+
+    if (ShowLinks == "true") {
+        $("#ShowLinks").attr("checked", true);
     }
 
     $("#save").click(function() {
@@ -372,6 +425,13 @@ function setOptions() {
         }
         else {
             setLocalValue("ShowPopup", false);
+        }
+
+        if ($("#ShowLinks").is(":checked")) {
+            setLocalValue("ShowLinks", true);
+        }
+        else {
+            setLocalValue("ShowLinks", false);
         }
 
         $("#status").html(getMessage("success"));

@@ -1,6 +1,6 @@
 {
     "extName": {
-        "message": "LANeros.com"
+        "message": "LANeros.com (No Oficial)"
     },
     "extDesc": {
         "message": "Sitio web para discutir temas sobre celulares, juegos, tecnología y conocer nuevos amigos."
@@ -17,6 +17,9 @@
     "subscription": {
         "message": "Suscripciones"
     },
+    "link": {
+        "message": "Accesos Directos"
+    },
     "zeroNots": {
         "message": "No hay notificaciones nuevas"
     },
@@ -25,6 +28,15 @@
     },
     "success": {
         "message": "Cambios Realizados"
+    },
+    "cp": {
+        "message": "Panel de Control"
+    },
+    "mail": {
+        "message": "Correo LANeros.com"
+    },
+    "logout": {
+        "message": "Salir"
     },
     "revision": {
         "message": "Intervalo de Revisión"
@@ -58,6 +70,9 @@
     },
     "showPopup": {
         "message": "Mostrar Notificación Popup"
+    },
+    "showLinks": {
+        "message": "Mostrar Vinculos Adicionales"
     },
     "save": {
         "message": "  Guardar  "

@@ -2,6 +2,12 @@
 
 All notable changes to `laneros-browser-extension` will be documented in this file.
 
+## 2.6.5 | 2011-12-03
+
+### Added
+
+- Shortcuts
+
 ## 2.6.1 | 2011-12-02
 
 ### Changed

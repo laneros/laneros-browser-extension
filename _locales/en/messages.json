@@ -1,6 +1,6 @@
 {
     "extName": {
-        "message": "LANeros.com"
+        "message": "LANeros.com (UnOfficial)"
     },
     "extDesc": {
         "message": "Web site to discuss about phones, games, technology and meet new friends."
@@ -17,6 +17,9 @@
     "subscription": {
         "message": "Subscriptions"
     },
+    "link": {
+        "message": "Shortcuts"
+    },
     "zeroNots": {
         "message": "There are no new notifications"
     },
@@ -25,6 +28,15 @@
     },
     "success": {
         "message": "Done"
+    },
+    "cp": {
+        "message": "Control Panel"
+    },
+    "mail": {
+        "message": "LANeros.com E-mail"
+    },
+    "logout": {
+        "message": "Logout"
     },
     "revision": {
         "message": "Review Interval"
@@ -58,6 +70,9 @@
     },
     "showPopup": {
         "message": "Show Pop-up"
+    },
+    "showLinks": {
+        "message": "Show Others Links"
     },
     "save": {
         "message": "  Save  "
