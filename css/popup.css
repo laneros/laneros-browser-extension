@@ -1,0 +1,177 @@
+body {
+    font-family: arial, helvetica, clean, sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 1.231;
+    margin: 0px !important;
+    padding: 0px !important;
+}
+ul {
+    margin: 0px !important;
+    padding: 15px !important;
+}
+#showResponse {
+    padding: 10px;
+    display: block;
+}
+#alerts h3 {
+    text-align: left !important;
+}
+.xenForm {
+    margin: 10px auto;
+    max-width: 800px;
+}
+.errorPanel {
+    margin: 10px 0 20px;
+    color: rgb(180,0,0);
+    background: rgb(255, 235, 235);
+    -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px;
+    border: 1px solid rgb(180,0,0);
+}
+.errorPanel .errors {
+    margin: .75em 2em;
+    display: block;
+    line-height: 1.5;
+}
+.textHeading, .xenForm .sectionHeader {
+    font-weight: bold;
+    color: rgb(20,20,20);
+    padding-bottom: 2px;
+    margin: 10px auto 5px;
+    border-bottom: 1px solid rgb(217, 217, 217);
+}
+.xenForm .ctrlUnit {
+    position: relative;
+    margin: 10px auto;
+    zoom: 1;
+}
+.xenForm .ctrlUnit dt {
+    padding-top: 4px;
+    padding-right: 15px;
+    text-align: right;
+    vertical-align: top;
+    -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box;
+    float: left;
+}
+.xenForm .ctrlUnit dt label {
+    margin-left: 30px;
+}
+.xenForm .ctrlUnit > dd {
+    padding-top: 4px;
+    todo: kill property;
+    float: left;
+    width: 90%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-right: 30px;
+}
+.xenForm .ctrlUnit dd .textCtrl {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    font-size: 13px;
+    font-family: Calibri, 'Trebuchet MS', Verdana, Geneva, Arial, Helvetica, sans-serif;
+    color: #000000;
+    background-color: #ffffff;
+    padding: 3px;
+    margin-bottom: 2px;
+    border-width: 1px;
+    border-style: solid;
+    border-top-color: rgb(192, 192, 192);
+    border-right-color: rgb(233, 233, 233);
+    border-bottom-color: rgb(233, 233, 233);
+    border-left-color: rgb(192, 192, 192);
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -khtml-border-radius: 4px;
+    border-radius: 4px;
+    outline: 0;
+}
+.xenForm .ctrlUnit > dd > ul {
+    margin-top: -4px;
+    margin-left: 0px !important;
+    padding-left: 0px !important;
+}
+.ctrlUnit dd > * > li {
+    margin: 4px 0 8px;
+    padding-left: 1px;
+    list-style: none;
+}
+.xenForm .ctrlUnit.submitUnit dt {
+    height: 19px;
+    display: block;
+}
+.xenForm .ctrlUnit.submitUnit dd {
+    line-height: 31px;
+    padding-top: 0;
+}
+.xenForm fieldset + .ctrlUnit, .xenForm .submitUnit {
+    border-color: rgb(219, 219, 219);
+}
+.button {
+    font-style: normal;
+    font-size: 12px;
+    font-family: Calibri, 'Trebuchet MS', Verdana, Geneva, Arial, Helvetica, sans-serif;
+    color: rgb(1, 1, 1);
+    background: rgb(220,220,235) url('../images/form-button-white-25px.png') repeat-x top;
+    padding: 0px 6px;
+    border: 1px solid rgb(221, 221, 235);
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -khtml-border-radius: 7px;
+    border-radius: 7px;
+    text-align: center;
+    -webkit-box-shadow: 0px 1px 4px 0px rgb(200,200,210);
+    -moz-box-shadow: 0px 1px 4px 0px rgb(200,200,210);
+    -khtml-box-shadow: 0px 1px 4px 0px rgb(200,200,210);
+    box-shadow: 0px 1px 4px 0px rgb(200,200,210);
+    text-shadow: 0 0 0 transparent, 0px -1px 2px white;
+    outline: none;
+    line-height: 23px;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    border-color: rgb(255, 255, 255) rgb(221, 221, 235) rgb(179, 179, 189);
+    height: 23px;
+}
+.button.primary {
+    background: url("../images/form-button-white-25px.png") repeat-x scroll center top rgb(220, 220, 235);
+    border-color: rgb(255, 255, 255) rgb(221, 221, 235) rgb(179, 179, 189);
+    color: #000 !important;
+}
+a.fbLogin {
+    background: #29447e url('../images/connect_sprite.png');
+    background-repeat: no-repeat;
+    cursor: pointer;
+    display: inline-block;
+    padding: 0px 0px 0px 1px;
+    text-decoration: none;
+    outline: none;
+    background-position: left -188px;
+    font-size: 11px;
+    line-height: 14px;
+    margin-bottom: 15px;
+}
+a.fbLogin span {
+    background: #5f78ab url('../images/connect_sprite.png');
+    border-top: solid 1px #879ac0;
+    border-bottom: solid 1px #1a356e;
+    color: white;
+    display: block;
+    font-family: 'lucida grande',tahoma,verdana,arial,sans-serif;
+    font-weight: bold;
+    padding: 2px 4px 3px;
+    margin: 1px 1px 0px 21px;
+    text-shadow: none;
+    white-space: nowrap;
+    overflow: hidden;
+}

@@ -1,16 +1,25 @@
 {
     "name": "__MSG_extName__",
     "description": "__MSG_extDesc__",
-    "version": "2.6.8",
-    "update_url": "http://dl.dropbox.com/u/27487800/LanerosChromeExtension/updates.xml",
-    "permissions": ["http://www.laneros.com/", "notifications"],
-    "background_page": "background.html",
-    "options_page": "options.html",
+    "version": "3.0",
+    "manifest_version": 2,
+    "update_url": "http://chrome.arthvrian.org/laneros/extension.xml",
+    "options_page": "pages/options.html",
     "default_locale": "es",
 
+    "permissions": [
+        "http://www.laneros.com/",
+        "notifications"
+    ],
+
+    "background": {
+        "page": "pages/background.html"
+    },
+
     "browser_action": {
+        "default_title": "__MSG_extName__",
         "default_icon": "images/laneros.png",
-        "popup": "laneros.html"
+        "default_popup": "pages/popup.html"
     },
 
     "icons": {

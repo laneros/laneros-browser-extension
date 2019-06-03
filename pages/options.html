@@ -4,48 +4,44 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta charset="utf-8" />
         <title>LANeros.com Chrome Extension</title>
-        <link rel="stylesheet" type="text/css" href="style.css" />
+        <link rel="stylesheet" type="text/css" href="../css/style.css" />
     </head>
     <body class="optionsBg">
         <div class="header">
-            <div><a href="http://www.laneros.com" title="LANeros.com" target="_blank">
-                    <h1><img src="images/laneros.png" alt="LANeros.com" width="32" height="32" class="logo" />LANeros.com</h1>
+            <div class="logoDiv"><a href="http://www.laneros.com" title="LANeros.com" target="_blank">
+                    <h1><img src="../images/logo.png" alt="LANeros.com" /></h1>
                 </a>
             </div>
         </div>
-        <div class="options info" id="revision"></div>
+        <div class="options info" id="revision">&nbsp;</div>
         <div class="options settings">
             <input type="number" value="0" max="23" min="0" id="hours_rev"><br />
             <input type="number" value="0" max="59" min="0" id="minutes_rev"><br />
             <input type="number" value="0" max="59" min="0" id="seconds_rev"><br />
             <input type="number" value="0" max="999" min="0" id="miliseconds_rev"></div>
-        <div class="options info" id="duration"></div>
+        <div class="options info" id="duration">&nbsp;</div>
         <div class="options settings">
             <input type="number" value="0" max="23" min="0" id="hours_show"><br />
             <input type="number" value="0" max="59" min="0" id="minutes_show"><br />
             <input type="number" value="0" max="59" min="0" id="seconds_show"><br />
             <input type="number" value="0" max="999" min="0" id="miliseconds_show"></div>
-        <div class="options info" id="popup"></div>
+        <div class="options info" id="popup">&nbsp;</div>
         <div class="options settings">
             <input type="number" value="0" max="23" min="0" id="hours_popup"><br />
             <input type="number" value="0" max="59" min="0" id="minutes_popup"><br />
             <input type="number" value="0" max="59" min="0" id="seconds_popup"><br />
             <input type="number" value="0" max="999" min="0" id="miliseconds_popup"></div>
-        <div class="options info" id="others"></div>
-        <div class="options settings"><input type="checkbox" id="ShowNot"></div>
+        <div class="options info" id="others">&nbsp;</div>
+        <div class="options settings"><input type="checkbox" id="ShowInbox"></div>
+        <div class="options settings"><input type="checkbox" id="ShowAlerts"></div>
         <div class="options settings"><input type="checkbox" id="ShowSubs"></div>
         <div class="options settings"><input type="checkbox" id="ShowPopup"></div>
         <div class="options settings"><input type="checkbox" id="ShowLinks"></div>
         <div class="options settings"><input id="save" type="button" value=""></div>
-        <div class="options settings" id="status"></div>
+        <div class="options settings" id="status">&nbsp;</div>
 
-        <script language="javascript" type="text/javascript" src="js/jquery.min.js"></script>
-        <script language="javascript" type="text/javascript" src="js/laneros.js"></script>
-        <script language="javascript" type="text/javascript">
-            /*
-             * Ejecutar al Cargar el Documento
-             */
-            $(document).ready(setOptions);
-        </script>
+        <script type="text/javascript" src="../js/jquery.min.js"></script>
+        <script type="text/javascript" src="../js/global.js"></script>
+        <script type="text/javascript" src="../js/options.js"></script>
     </body>
 </html>

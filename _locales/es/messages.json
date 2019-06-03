@@ -11,8 +11,11 @@
     "error": {
         "message": "Error al obtener los datos de LANeros.com"
     },
-    "notification": {
-        "message": "Notificaciones"
+    "conversation": {
+        "message": "Buzón"
+    },
+    "alert": {
+        "message": "Alertas"
     },
     "subscription": {
         "message": "Suscripciones"
@@ -20,17 +23,23 @@
     "link": {
         "message": "Accesos Directos"
     },
-    "zeroNots": {
-        "message": "No hay notificaciones nuevas"
+    "zeroInbox": {
+        "message": "No hay conversaciones nuevas"
+    },
+    "zeroAlerts": {
+        "message": "No hay alertas nuevas"
     },
     "zeroSubs": {
         "message": "No hay temas suscritos sin leer"
+    },
+    "goTo": {
+        "message": "Ir a LANeros.com"
     },
     "success": {
         "message": "Cambios Realizados"
     },
     "cp": {
-        "message": "Panel de Control"
+        "message": "Mi Cuenta"
     },
     "mail": {
         "message": "Correo LANeros.com"
@@ -62,8 +71,11 @@
     "miliseconds": {
         "message": "Milisegundos"
     },
-    "showNot": {
-        "message": "Mostrar Notificaciones"
+    "showInbox": {
+        "message": "Mostrar Buzón"
+    },
+    "showAlerts": {
+        "message": "Mostrar Alertas"
     },
     "showSubs": {
         "message": "Mostrar Suscripciones"
@@ -76,5 +88,8 @@
     },
     "save": {
         "message": "  Guardar  "
+    },
+    "new": {
+        "message": "Nuevo(s)"
     }
 }

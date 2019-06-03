@@ -2,6 +2,21 @@
 
 All notable changes to `laneros-browser-extension` will be documented in this file.
 
+## 3.0 | 2013-07-12
+
+### Added
+
+- CSS popup
+- Inbox
+- Some shortcuts
+
+### Changed
+
+- Manifest v2
+- Folder organization
+- Split HTML and JS
+- Notifications
+
 ## 2.6.8 | 2012-01-28
 
 ### Changed

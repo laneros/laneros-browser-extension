@@ -11,8 +11,11 @@
     "error": {
         "message": "Failed to get data from LANeros.com"
     },
-    "notification": {
-        "message": "Notifications"
+    "conversation": {
+        "message": "Inbox"
+    },
+    "alert": {
+        "message": "Alerts"
     },
     "subscription": {
         "message": "Subscriptions"
@@ -20,17 +23,23 @@
     "link": {
         "message": "Shortcuts"
     },
-    "zeroNots": {
-        "message": "There are no new notifications"
+    "zeroInbox": {
+        "message": "There are no new messages"
+    },
+    "zeroAlerts": {
+        "message": "There are no new alerts"
     },
     "zeroSubs": {
         "message": "You do not have subscriptions without reading"
+    },
+    "goTo": {
+        "message": "Go to LANeros.com"
     },
     "success": {
         "message": "Done"
     },
     "cp": {
-        "message": "Control Panel"
+        "message": "My Account"
     },
     "mail": {
         "message": "LANeros.com E-mail"
@@ -62,8 +71,11 @@
     "miliseconds": {
         "message": "Miliseconds"
     },
-    "showNot": {
-        "message": "Show Notifications"
+    "showInbox": {
+        "message": "Show Inbox"
+    },
+    "showAlerts": {
+        "message": "Show Alerts"
     },
     "showSubs": {
         "message": "Show Subscriptions"
@@ -76,5 +88,8 @@
     },
     "save": {
         "message": "  Save  "
+    },
+    "new": {
+        "message": "New"
     }
 }

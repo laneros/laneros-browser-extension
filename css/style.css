@@ -3,7 +3,6 @@ body {
     color: #666;
     text-shadow: 1px 1px 0 white;
     font-family: Arial, Helvetica, sans-serif;
-    overflow-x: hidden;
     background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#EEE), to(#DDD));
 }
 h1, h2, h3 {
@@ -37,11 +36,13 @@ h3 {
 img {
     vertical-align: middle;
 }
-
 .header {
     clear: both;
-    padding-left: 15px;
-    padding-right: 15px;
+}
+.logoDiv {
+    min-width: 310px;
+    background: url("../images/header_center.png") repeat-x;
+    padding: 5px;
 }
 .logo {
     border: none;
@@ -57,6 +58,9 @@ img {
 }
 .info {
     color: #2666AF !important;
+}
+.logout {
+    color: #F00;
 }
 .none {
     color: #808080;
@@ -78,6 +82,9 @@ img {
 }
 .both {
     clear: both;
+}
+.half {
+    width: 46%;
 }
 .notifyIcon {
     float: left;
@@ -105,6 +112,7 @@ img {
 }
 #showLoading {
     text-align: center;
+    padding: 15px;
 }
 #status {
     color: #F00;

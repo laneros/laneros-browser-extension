@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta charset="utf-8" />
+        <title>LANeros.com Chrome Extension</title>
+        <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    </head>
+    <body>
+        <div class="notifyIcon">
+            <a href="http://www.laneros.com" title="LANeros.com" target="_blank">
+                <img src="../images/laneros.png" alt="LANeros.com" width="32" height="32">
+            </a>
+        </div>
+        <div id="showLoading" class="hidden">
+            <img src="../images/ajax-loader.gif" alt="" width="32" height="32" />  &nbsp;  &nbsp;
+            <span class="info"></span></div>
+        <div class="notifyData" id="showResponse">
+            <div class="conversations"></div>
+            <div class="clear hidden"></div>
+            <div class="alerts"></div>
+            <div class="clear hidden"></div>
+            <div class="subscriptions"></div>
+        </div>
+
+        <script type="text/javascript" src="../js/jquery.min.js"></script>
+        <script type="text/javascript" src="../js/global.js"></script>
+        <script type="text/javascript" src="../js/popup.js"></script>
+    </body>
+</html>
