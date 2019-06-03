@@ -119,7 +119,6 @@ function getNotifications(data, textStatus, jqXHR) {
 
                 var unreads = $(div).clone();
                 var names = $(div).clone();
-                var clear = $(div).clone();
 
                 var unread = 0;
                 var url = "http://www.laneros.com/" + $(this).attr("href");
@@ -137,8 +136,7 @@ function getNotifications(data, textStatus, jqXHR) {
                         $(names).addClass("name").appendTo(div);
 
                         $(unreads).addClass("value unread").html(unread).appendTo(div);
-                        $(div).appendTo("#notifications");
-                        $(clear).addClass("both").appendTo("#notifications");
+                        $(div).appendTo("#notifications").addClass("both");
                     }
                 }
             });
@@ -174,7 +172,6 @@ function getSubscriptions(data, textStatus, jqXHR) {
                 var div = document.createElement("div");
                 var a = document.createElement("a");
 
-                var clear = $(div).clone();
                 var names = $(div).clone();
 
                 var container = $(this).parent();
@@ -189,7 +186,6 @@ function getSubscriptions(data, textStatus, jqXHR) {
                     .attr("href", url).html(title).appendTo(names);
                 $(names).addClass("name").appendTo(div);
 
-                $(clear).addClass("both").appendTo("#subscriptions");
                 $(div).appendTo("#subscriptions");
             });
         }
@@ -199,7 +195,7 @@ function getSubscriptions(data, textStatus, jqXHR) {
     }
 }
 /*
- *
+ * Mostrar Accesos directos
  */
 function showLinks(data, textStatus, jqXHR) {
     var ShowLinks = getLocalValue("ShowLinks");
@@ -285,7 +281,8 @@ function closeNotification() {
     setLocalValue("isRunning", false);
     notification.cancel();
     notification = null;
-}/*
+}
+/*
  * Reiniciar Intervalos
  */
 function reboot() {

@@ -64,6 +64,7 @@ img {
 .clear {
     border-bottom: 1px solid #666;
     padding-bottom: 5px;
+    clear: both;
 }
 .name {
     float: left;
@@ -84,9 +85,10 @@ img {
 }
 .notifyData {
     float: right;
+    width: 240px;
 }
 .notifyData .subscription {
-    padding-top: 5px;
+    padding-top: 10px;
     padding-bottom: 10px;
 }
 .optionsBg {
