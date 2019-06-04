@@ -2,6 +2,18 @@
 
 All notable changes to `laneros-browser-extension` will be documented in this file.
 
+## 4.0 | 2014-03-09
+
+### Added
+
+- Bootstrap
+- jQuery forms
+
+### Changed
+
+- Updated jQuery
+- Major Design Update
+
 ## 3.3.3 | 2014-03-07
 
 ### Changed

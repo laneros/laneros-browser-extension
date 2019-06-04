@@ -1,47 +1,103 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta charset="utf-8" />
-        <title>LANeros.com Chrome Extension</title>
-        <link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
-    </head>
-    <body class="optionsBg">
-        <div class="header">
-            <div class="logoDiv"><a href="http://www.laneros.com" title="LANeros.com" target="_blank">
-                    <h1><img src="../assets/img/logo.png" alt="LANeros.com" /></h1>
-                </a>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="author" content="Alvaro Arturo Montenegro Silva">
+    <meta name="author" content="arthvrian@yahoo.com">
+    <title data-message="extName" data-target="html"></title>
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap-switch.min.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
+  </head>
+  <body>
+    <header class="col-md-12 col-sm-12">
+      <a href="http://www.laneros.com" target="_blank" data-message="goTo" data-target="title">
+        <img src="../assets/img/logo.png" alt="Laneros" />
+      </a>
+    </header>
+    <main>
+      <section>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-10 col-sm-10">
+              <h1 data-message="labelOptions" data-target="html"></h1>
+              <form class="form-horizontal" role="form" id="FormOptions" name="FormOptions" method="post">
+                <fieldset class="col-md-6 col-sm-6">
+                  <legend data-message="labelOthers" data-target="html"></legend>
+                  <div class="form-group">
+                    <input type="checkbox" id="TxtShowInbox" name="TxtShowInbox" data-message="labelInbox" data-target="data-label-text">
+                  </div>
+                  <div class="form-group">
+                    <input type="checkbox" id="TxtShowAlerts" name="TxtShowAlerts" data-message="labelAlerts" data-target="data-label-text">
+                  </div>
+                  <div class="form-group">
+                    <input type="checkbox" id="TxtShowSubs" name="TxtShowSubs" data-message="labelSubscriptions" data-target="data-label-text">
+                  </div>
+                  <div class="form-group">
+                    <input type="checkbox" id="TxtShowNotification" name="TxtShowNotification" data-message="showNotification" data-target="data-label-text">
+                  </div>
+                  <div class="form-group">
+                    <input type="checkbox" id="TxtShowLinks" name="TxtShowLinks" data-message="showLinks" data-target="data-label-text">
+                  </div>
+                </fieldset>
+                <fieldset class="col-md-6 col-sm-6">
+                  <legend data-message="labelRevision" data-target="html"></legend>
+                  <div class="form-group">
+                    <label for="TxtReviewHours" class="col-sm-3 control-label" data-message="labelHours" data-target="html"></label>
+                    <div class="col-sm-4">
+                      <input type="number" class="form-control" max="23" min="0" maxlength="2" id="TxtReviewHours" name="TxtReviewHours" data-message="labelHours" data-target="placeholder">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="TxtReviewMins" class="col-sm-3 control-label" data-message="labelMinutes" data-target="html"></label>
+                    <div class="col-sm-4">
+                      <input type="number" class="form-control" max="59" min="0" maxlength="2" id="TxtReviewMins" name="TxtReviewMins" data-message="labelMinutes" data-target="placeholder">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="TxtReviewSecs" class="col-sm-3 control-label" data-message="labelSeconds" data-target="html"></label>
+                    <div class="col-sm-4">
+                      <input type="number" class="form-control" max="59" min="0" maxlength="2" id="TxtReviewSecs" name="TxtReviewSecs" data-message="labelSeconds" data-target="placeholder">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="TxtReviewMillisecs" class="col-sm-3 control-label" data-message="labelMilliseconds" data-target="html"></label>
+                    <div class="col-sm-5">
+                      <input type="number" class="form-control" max="999" min="0" maxlength="3" id="TxtReviewMillisecs" name="TxtReviewMillisecs" data-message="labelMilliseconds" data-target="placeholder">
+                    </div>
+                  </div>
+                </fieldset>
+                <div class="col-md-12 col-sm-12">
+                  <hr>
+                  <button type="button" class="btn btn-primary" data-message="buttonSave" data-target="html" name="TxtSave" id="TxtSave"></button>
+                </div>
+              </form>
+              <div class="hide" id="errorContainer">
+                <ul>
+                  <li><label for="TxtReviewHours" class="error label label-important"></label></li>
+                  <li><label for="TxtReviewMins" class="error label label-important"></label></li>
+                  <li><label for="TxtReviewSecs" class="error label label-important"></label></li>
+                  <li><label for="TxtReviewMillisecs" class="error label label-important"></label></li>
+                </ul>
+              </div>
             </div>
+            <div class="col-md-8 col-sm-8 alert alert-success alert-dismissable hide" id="responseContainer">
+              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+              <h4 data-message="labelSaved" data-target="html"></h4>
+              <span data-message="labelSavedText" data-target="html"></span>
+            </div>
+          </div>
         </div>
-        <div class="options info" id="revision">&nbsp;</div>
-        <div class="options settings">
-            <input type="number" value="0" max="23" min="0" id="hours_rev"><br />
-            <input type="number" value="0" max="59" min="0" id="minutes_rev"><br />
-            <input type="number" value="0" max="59" min="0" id="seconds_rev"><br />
-            <input type="number" value="0" max="999" min="0" id="miliseconds_rev"></div>
-        <div class="options info" id="duration">&nbsp;</div>
-        <div class="options settings">
-            <input type="number" value="0" max="23" min="0" id="hours_show"><br />
-            <input type="number" value="0" max="59" min="0" id="minutes_show"><br />
-            <input type="number" value="0" max="59" min="0" id="seconds_show"><br />
-            <input type="number" value="0" max="999" min="0" id="miliseconds_show"></div>
-        <div class="options info" id="popup">&nbsp;</div>
-        <div class="options settings">
-            <input type="number" value="0" max="23" min="0" id="hours_popup"><br />
-            <input type="number" value="0" max="59" min="0" id="minutes_popup"><br />
-            <input type="number" value="0" max="59" min="0" id="seconds_popup"><br />
-            <input type="number" value="0" max="999" min="0" id="miliseconds_popup"></div>
-        <div class="options info" id="others">&nbsp;</div>
-        <div class="options settings"><input type="checkbox" id="ShowInbox"></div>
-        <div class="options settings"><input type="checkbox" id="ShowAlerts"></div>
-        <div class="options settings"><input type="checkbox" id="ShowSubs"></div>
-        <div class="options settings"><input type="checkbox" id="ShowPopup"></div>
-        <div class="options settings"><input type="checkbox" id="ShowLinks"></div>
-        <div class="options settings"><input id="save" type="button" value=""></div>
-        <div class="options settings" id="status">&nbsp;</div>
-
-        <script type="text/javascript" src="../assets/js/jquery.min.js"></script>
-        <script type="text/javascript" src="../assets/js/global.js"></script>
-        <script type="text/javascript" src="../assets/js/options.js"></script>
-    </body>
+      </section>
+    </main>
+    <script type="text/javascript" src="../assets/js/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript" src="../assets/js/jquery.form.js"></script>
+    <script type="text/javascript" src="../assets/js/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../assets/js/bootstrap-switch.min.js"></script>
+    <script type="text/javascript" src="../assets/js/global.js"></script>
+    <script type="text/javascript" src="../assets/js/pages/background.js"></script>
+    <script type="text/javascript" src="../assets/js/pages/options.js"></script>
+  </body>
 </html>

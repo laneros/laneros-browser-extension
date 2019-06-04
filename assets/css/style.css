@@ -1,14 +1,17 @@
+@CHARSET "UTF-8";
 body {
     font-size: 12px;
-    color: #666;
+    color: #4b4b4b;
     text-shadow: 1px 1px 0 white;
     font-family: Arial, Helvetica, sans-serif;
-    background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#EEE), to(#DDD));
+    background-color: #F0F0F0 !important;
     max-height: 600px;
     overflow: hidden;
+    margin: 0px;
+    text-shadow: none;
 }
-h1, h2, h3 {
-    font-family:"Myriad Pro", Arial, Helvetica, sans-serif;
+legend {
+    font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
 }
 a, a:visited, a:hover, a:active {
     color: #2666AF;
@@ -28,102 +31,42 @@ h2 {
     color: #000;
 }
 h3 {
-    font-size: 15px;
+    font-size: 100%;
     font-weight: normal;
-    text-align: center;
-    padding-top: 5px;
     color: #000;
+    margin-bottom: 5px;
 }
-img {
-    vertical-align: middle;
-}
-.header {
-    clear: both;
-}
-.logoDiv {
+header {
     min-width: 310px;
     background-color: #006ca7;
-    padding: 5px;
-}
-.logo {
-    border: none;
-    padding-right: 10px;
-    padding-bottom: 10px;
-    vertical-align: middle;
-}
-.hidden {
-    display: none;
-}
-.error {
-    color: #FF8080;
-}
-.info {
-    color: #2666AF !important;
-}
-.logout {
-    color: #F00;
-}
-.none {
-    color: #808080;
-}
-.clear {
-    border-bottom: 1px solid #666;
-    padding-bottom: 5px;
-    clear: both;
-}
-.name {
-    float: left;
-    padding-bottom: 5px;
-    width: 100%;
-}
-.value {
-    float: right;
-    color: #F00;
-    padding-bottom: 5px;
-}
-.both {
-    clear: both;
-}
-.half {
-    width: 46%;
-}
-.notifyIcon {
-    float: left;
-    margin-left: -5px;
-}
-.notifyData {
-    float: right;
-    width: 240px;
-}
-.notifyData .subscription {
     padding-top: 10px;
-    padding-bottom: 10px;
+    border-bottom: 4px solid #ed874b;
 }
-.optionsBg {
-    background: #DDD !important;
-    margin: 0px;
+header img {
+    padding-bottom: 15px;
 }
-.settings {
-    padding-left: 10px;
+legend {
+    margin-bottom: 10px;
 }
-.options {
-    padding-top: 10px;
-    padding-left: 5px;
-    padding-bottom: 5px;
-    padding-right: 5px;
+hr {
+    border-color: #e5e5e5;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
-.link .name {
-    padding-right: 10px;
+abbr {
+    font-size: 11px;
 }
 #showLoading {
     text-align: center;
-    padding: 15px;
-    padding-top: 20px;
+    padding: 25px;
+    background-color: #F0F0F0;
 }
-#status {
-    color: #F00;
-    font-size: 18px;
+.form-horizontal {
+    padding-top: 15px;
 }
-#notifications {
-    white-space: nowrap;
+.alert {
+    margin-top: 15px;
+}
+.bootstrap-switch {
+    min-width: 350px;
 }

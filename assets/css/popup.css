@@ -1,194 +1,164 @@
-body {
-    font-family: arial, helvetica, clean, sans-serif;
-    font-size: 13px;
-    font-style: normal;
-    font-variant: normal;
-    font-weight: normal;
-    line-height: 1.231;
-    margin: 0px !important;
-    padding: 0px !important;
+section.login {
+    margin: 5px;
 }
-ul {
-    margin: 0px !important;
-    padding-left: 0px !important;
+.callout {
+    margin: 10px 5px;
+    padding: 10px 30px 10px 15px;
+    border-left: 5px solid #eee;
 }
-li {
-    list-style: none;
+.callout h4, .callout p {
+    margin: 0px;
 }
-#showResponse {
+.callout-danger h4 {
+    color: #B94A48;
+}
+.callout-danger {
+    background-color: #fdf7f7;
+    border-color: #d9534f;
+}
+.nav-pills > li > a {
+    border-radius: 0px;
+    font-weight: bold;
+    color: #FFF;
     padding: 10px;
 }
-.result p {
-    margin-bottom: 5px;
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:hover,
+.nav-pills > li.active > a:focus {
+    background-color: #ed874b;
 }
-.result abbr, .result span {
-    float: right;
-    margin-bottom: 5px;
-    font-style: italic;
-    clear: both;
+.nav-pills > li > a:hover {
+    color: #333;
 }
-.result div {
-    clear: both;
+.col-xs-12 {
+    padding-left: 2px;
+    padding-right: 2px;
 }
-.result .DateTime {
+.tab-home,
+.tab-inbox,
+.tab-alerts,
+.tab-subscriptions {
+    padding: 5px;
+    background-color: #F0F0F0 !important;
+}
+.tab-footer {
+    background-color: #4c4c4c;
+    padding: 5px;
+}
+.tab-footer a {
+    color: #FFF !important;
+}
+ul.links {
+    list-style-type: none;
+    padding-left: 10px;
+}
+.user .listItem,
+.discussionListItem {
+    border-bottom: 1px solid #CCC;
+    margin-bottom: 10px;
+}
+.discussionListItem {
+    padding: 10px;
+}
+.user ol.Unread,
+.discussionListItems .unread {
+    background-color: #F7ECB5;
+}
+.user .listItem:last-child,
+.discussionListItem:last-child {
+    border-bottom: none;
+}
+.user .listItemText {
+    margin-left: 57px;
+    margin-bottom: 10px;
+}
+.user .discussionListItem .avatar img {
+    width: 36px;
+    height: 36px;
+}
+.discussionListItem .titleText {
+    padding-left: 45px;
+}
+.discussionListItem .lastPostInfo {
+    font-size: 11px;
+    text-align: right;
     padding-top: 5px;
 }
-.result .dateTime {
-    color: #666;
+.lastPostInfo .dateTime {
+    color: rgb(150,150,150);
 }
-.xenForm {
-    margin: 10px auto;
-    max-width: 800px;
-}
-.errorPanel {
-    margin: 10px 0 20px;
-    color: rgb(180,0,0);
-    background: rgb(255, 235, 235);
-    -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; border-radius: 5px;
-    border: 1px solid rgb(180,0,0);
-}
-.errorPanel .errors {
-    margin: .75em 2em;
+#AccountMenu {
+    width: 100% !important;
     display: block;
-    line-height: 1.5;
-}
-.textHeading, .xenForm .sectionHeader {
-    font-weight: bold;
-    color: rgb(20,20,20);
-    padding-bottom: 2px;
-    margin: 10px auto 5px;
-    border-bottom: 1px solid rgb(217, 217, 217);
-}
-.xenForm .ctrlUnit {
+    overflow: visible;
     position: relative;
-    margin: 10px auto;
-    zoom: 1;
+    border: none;
+    border-radius: 0px;
+    box-shadow: 0px;
 }
-.xenForm .ctrlUnit dt {
-    padding-top: 4px;
-    padding-right: 15px;
-    text-align: right;
-    vertical-align: top;
-    -webkit-box-sizing: border-box; -moz-box-sizing: border-box; -ms-box-sizing: border-box; box-sizing: border-box;
-    float: left;
+#AccountMenu .secondaryContent {
+    border-radius: 0px;
 }
-.xenForm .ctrlUnit dt label {
-    margin-left: 30px;
+#AccountMenu .secondaryContent .blockLinksList {
+    width: 50%;
 }
-.xenForm .ctrlUnit > dd {
-    padding-top: 4px;
-    todo: kill property;
-    float: left;
-    width: 90%;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -ms-box-sizing: border-box;
-    box-sizing: border-box;
-    padding-right: 30px;
+#AccountMenu .menuColumns a, #AccountMenu .menuColumns label {
+    width: auto !important;
 }
-.xenForm .ctrlUnit dd .textCtrl {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -ms-box-sizing: border-box;
-    box-sizing: border-box;
-    width: 100%;
-    font-size: 13px;
-    font-family: Calibri, 'Trebuchet MS', Verdana, Geneva, Arial, Helvetica, sans-serif;
-    color: #000000;
-    background-color: #ffffff;
-    padding: 3px;
-    margin-bottom: 2px;
-    border-width: 1px;
-    border-style: solid;
-    border-top-color: rgb(192, 192, 192);
-    border-right-color: rgb(233, 233, 233);
-    border-bottom-color: rgb(233, 233, 233);
-    border-left-color: rgb(192, 192, 192);
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    -khtml-border-radius: 4px;
-    border-radius: 4px;
-    outline: 0;
+#AccountMenu .menuColumns label {
+    margin: 0px;
+    padding: 0px;
+    padding-left: 10px;
+    font-weight: normal;
 }
-.xenForm .ctrlUnit > dd > ul {
-    margin-top: -4px;
-    margin-left: 0px !important;
-    padding-left: 0px !important;
+.sectionFooter {
+    padding: 5px !important;
 }
-.ctrlUnit dd > * > li {
-    margin: 4px 0 8px;
-    padding-left: 1px;
-    list-style: none;
+#AccountMenu .statusPoster .submitUnit {
+    margin-top: 0px !important;
 }
-.xenForm .ctrlUnit.submitUnit dt {
-    height: 19px;
-    display: block;
+#AccountMenu .statusPoster textarea {
+    width: 100% !important;
+    height: auto !important;
 }
-.xenForm .ctrlUnit.submitUnit dd {
-    line-height: 31px;
-    padding-top: 0;
+#AccountMenu .statusPoster .submitUnit {
+    display: none;
 }
-.xenForm fieldset + .ctrlUnit, .xenForm .submitUnit {
-    border-color: rgb(219, 219, 219);
+.none .callout {
+    margin: 0px;
 }
-.button {
-    font-style: normal;
-    font-size: 12px;
-    font-family: Calibri, 'Trebuchet MS', Verdana, Geneva, Arial, Helvetica, sans-serif;
-    color: rgb(1, 1, 1);
-    background: rgb(220,220,235) url('../img/form-button-white-25px.png') repeat-x top;
-    padding: 0px 6px;
-    border: 1px solid rgb(221, 221, 235);
-    -webkit-border-radius: 7px;
-    -moz-border-radius: 7px;
-    -khtml-border-radius: 7px;
-    border-radius: 7px;
-    text-align: center;
-    -webkit-box-shadow: 0px 1px 4px 0px rgb(200,200,210);
-    -moz-box-shadow: 0px 1px 4px 0px rgb(200,200,210);
-    -khtml-box-shadow: 0px 1px 4px 0px rgb(200,200,210);
-    box-shadow: 0px 1px 4px 0px rgb(200,200,210);
-    text-shadow: 0 0 0 transparent, 0px -1px 2px white;
-    outline: none;
-    line-height: 23px;
-    display: inline-block;
-    cursor: pointer;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -ms-box-sizing: border-box;
-    box-sizing: border-box;
-    border-color: rgb(255, 255, 255) rgb(221, 221, 235) rgb(179, 179, 189);
-    height: 23px;
-}
-.button.primary {
-    background: url("../img/form-button-white-25px.png") repeat-x scroll center top rgb(220, 220, 235);
-    border-color: rgb(255, 255, 255) rgb(221, 221, 235) rgb(179, 179, 189);
-    color: #000 !important;
-}
-a.fbLogin {
-    background: #29447e url('../img/connect_sprite.png');
-    background-repeat: no-repeat;
-    cursor: pointer;
-    display: inline-block;
-    padding: 0px 0px 0px 1px;
-    text-decoration: none;
-    outline: none;
-    background-position: left -188px;
-    font-size: 11px;
-    line-height: 14px;
-    margin-bottom: 15px;
-}
-a.fbLogin span {
-    background: #5f78ab url('../img/connect_sprite.png');
-    border-top: solid 1px #879ac0;
-    border-bottom: solid 1px #1a356e;
-    color: white;
-    display: block;
-    font-family: 'lucida grande',tahoma,verdana,arial,sans-serif;
+h3.title {
     font-weight: bold;
-    padding: 2px 4px 3px;
-    margin: 1px 1px 0px 21px;
-    text-shadow: none;
-    white-space: nowrap;
-    overflow: hidden;
+}
+.secondaryContent a,
+.discussionListItems a,
+.nav-stacked > li > a {
+    color: #176093 !important;
+}
+.tab-inbox a.avatar,
+.tab-alerts a.avatar,
+.tab-subscriptions a.avatar {
+    float: left;
+}
+.nav-stacked > li > a:hover {
+    background-color: #CCC !important;
+    color: #FFF !important;
+}
+.blockLinksList a, .blockLinksList label {
+    color: rgb(92, 92, 92) !important;
+}
+.secondRow .muted a {
+    color: rgb(150,150,150) !important;
+}
+div.muted {
+    font-size: 11px;
+    padding-top: 5px;
+}
+.DateTime {
+    color: #F4804D !important;
+    font-size: 11px;
+}
+.primaryContent {
+    background-color: rgb(236, 236, 236) !important;
+    background-image: none !important;
 }

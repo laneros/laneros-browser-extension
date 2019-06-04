@@ -1,27 +1,81 @@
 {
     "extName": {
-        "message": "Laneros.com (UnOfficial)"
+        "message": "Laneros Chrome Extension"
     },
     "extDesc": {
         "message": "News about technology, internet, games and entertainment. Colombian Community."
     },
-    "loading": {
+    "dataLoading": {
         "message": "Loading Data"
     },
-    "error": {
+    "dataError": {
         "message": "Failed to get data from Laneros.com"
     },
-    "conversation": {
+    "goTo": {
+        "message": "Go to Laneros Homepage"
+    },
+    "goToAccount": {
+        "message": "Go to My Account"
+    },
+    "errorMsg": {
+        "message": "Error"
+    },
+    "notConnected": {
+        "message": "You are not Logged in"
+    },
+    "pageError": {
+        "message": "Laneros may be experiencing a problem"
+    },
+    "loginLegend": {
+        "message": "Sign in or register"
+    },
+    "loginNick": {
+        "message": "Nick or Email address"
+    },
+    "loginLabelAccount": {
+        "message": "Already have an account ?"
+    },
+    "loginNoAccount": {
+        "message": "No, create an account now"
+    },
+    "loginYesAccount": {
+        "message": "Yes"
+    },
+    "loginPassword": {
+        "message": "Password"
+    },
+    "loginStay": {
+        "message": "Stay logged in"
+    },
+    "loginLegendConnect": {
+        "message": "... or connect"
+    },
+    "loginFacebook": {
+        "message": "Sign In with Facebook"
+    },
+    "loginTwitter": {
+        "message": "Sign In with Twitter"
+    },
+    "loginButton": {
+        "message": "Login"
+    },
+    "registerButton": {
+        "message": "Register"
+    },
+    "loginForgot": {
+        "message": "Forgot password ?"
+    },
+    "labelInbox": {
         "message": "Inbox"
     },
-    "alert": {
+    "labelAlerts": {
         "message": "Alerts"
     },
-    "subscription": {
+    "labelSubscriptions": {
         "message": "Subscriptions"
     },
-    "link": {
-        "message": "Shortcuts"
+    "zeroHome": {
+        "message": "There are no links to Show"
     },
     "zeroInbox": {
         "message": "There are no new messages"
@@ -32,61 +86,124 @@
     "zeroSubs": {
         "message": "You do not have subscriptions without reading"
     },
-    "goTo": {
-        "message": "Go to Laneros.com"
+    "showAll": {
+        "message": "Show All ..."
     },
-    "success": {
-        "message": "Done"
+    "startNew": {
+        "message": "Start a New Conversation"
     },
-    "cp": {
-        "message": "My Account"
+    "alertPrefs": {
+        "message": "Alert Preferences"
     },
-    "logout": {
-        "message": "Logout"
+    "showAllWatched": {
+        "message": "Show all watched threads"
     },
-    "revision": {
-        "message": "Review Interval"
+    "labelNew": {
+        "message": "New"
     },
-    "duration": {
-        "message": "Popup Display Time"
+    "labelMessages": {
+        "message": "Messages"
     },
-    "popup": {
-        "message": "Popup Display Interval"
-    },
-    "others": {
-        "message": "Others"
-    },
-    "hours": {
+    "labelHours": {
         "message": "Hours"
     },
-    "minutes": {
+    "labelMinutes": {
         "message": "Minutes"
     },
-    "seconds": {
+    "labelSeconds": {
         "message": "Seconds"
     },
-    "miliseconds": {
-        "message": "Miliseconds"
+    "labelMilliseconds": {
+        "message": "Milliseconds"
     },
-    "showInbox": {
-        "message": "Show Inbox"
+    "labelRevision": {
+        "message": "Review Interval"
     },
-    "showAlerts": {
-        "message": "Show Alerts"
+    "labelOthers": {
+        "message": "Display Sections"
     },
-    "showSubs": {
-        "message": "Show Subscriptions"
-    },
-    "showPopup": {
-        "message": "Show Pop-up"
+    "showNotification": {
+        "message": "Notifications"
     },
     "showLinks": {
-        "message": "Show Others Links"
+        "message": "Others Links"
     },
-    "save": {
-        "message": "  Save  "
+    "buttonSave": {
+        "message": "Save"
     },
-    "new": {
-        "message": "New"
+    "labelOptions": {
+        "message": "Extension Options"
+    },
+    "labelSaved": {
+        "message": "Options Saved !"
+    },
+    "labelSavedText": {
+        "message": "Your options has been saved"
+    },
+    "homePersonal": {
+        "message": "Personal Details"
+    },
+    "homeSignature": {
+        "message": "Signature"
+    },
+    "homeContact": {
+        "message": "Contact Details"
+    },
+    "homePrivacy": {
+        "message": "Privacy"
+    },
+    "homePrefs": {
+        "message": "Preferences"
+    },
+    "homeAlertPrefs": {
+        "message": "Alert Preferences"
+    },
+    "homeAvatar": {
+        "message": "Avatar"
+    },
+    "homeFeed": {
+        "message": "Your News Feed"
+    },
+    "homeInbox": {
+        "message": "Conversations"
+    },
+    "homeLikes": {
+        "message": "Likes You've Received"
+    },
+    "homeContent": {
+        "message": "Your Content"
+    },
+    "homeFollow": {
+        "message": "People You Follow"
+    },
+    "homeIgnore": {
+        "message": "People You Ignore"
+    },
+    "homeExternal": {
+        "message": "External Accounts"
+    },
+    "homeUpgrades": {
+        "message": "Account Upgrades"
+    },
+    "homeNewPost": {
+        "message": "Ignore New Post"
+    },
+    "homeTrading": {
+        "message": "Trading Preferences"
+    },
+    "homeLogout": {
+        "message": "Log Out"
+    },
+    "homeOnline": {
+        "message": "Show Online Status"
+    },
+    "homeUpdate": {
+        "message": "Update your status..."
+    },
+    "homePost": {
+        "message": "Post"
+    },
+    "homeProfile": {
+        "message": "Your Profile Page"
     }
 }

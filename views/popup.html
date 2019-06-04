@@ -1,43 +1,221 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta charset="utf-8" />
-        <title>LANeros.com Chrome Extension</title>
-        <link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
-        <link rel="stylesheet" type="text/css" href="../assets/css/popup.css" />
-    </head>
-    <body>
-        <div class="header">
-            <div class="logoDiv"><a href="http://www.laneros.com" title="LANeros.com" target="_blank">
-                    <h1><img src="../assets/img/logo.png" alt="LANeros.com" /></h1>
-                </a>
-            </div>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="author" content="Alvaro Arturo Montenegro Silva">
+    <meta name="author" content="arthvrian@yahoo.com">
+    <title data-message="extName" data-target="html"></title>
+    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/popup.css" />
+  </head>
+  <body>
+    <header>
+      <a href="http://www.laneros.com" target="_blank" data-message="goTo" data-target="title">
+        <img class="center-block" src="../assets/img/logo.png" alt="Laneros" />
+      </a>
+      <nav class="hide user">
+        <ul class="nav nav-pills">
+          <li class="active col-xs-12">
+            <a href="#home" data-toggle="tab">&nbsp;</a>
+          </li>
+          <li class="hide">
+            <a href="#inbox" data-toggle="tab">
+              <span></span>
+              <span class="label label-danger"></span>
+            </a>
+          </li>
+          <li class="hide">
+            <a href="#alerts" data-toggle="tab">
+              <span></span>
+              <span class="label label-danger"></span></a>
+          </li>
+          <li class="hide">
+            <a href="#subscriptions" data-toggle="tab">
+              <span></span>
+              <span class="label label-danger"></span></a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div id="showLoading">
+        <img src="../assets/img/ajax-loader.gif" alt="" width="32" height="32" />
+        <h3 data-message="dataLoading" data-target="html"></h3>
+      </div>
+      <section class="hide login">
+        <div class="callout callout-danger">
+          <h4 data-message="errorMsg" data-target="html"></h4>
+          <p data-message="notConnected" data-target="html"></p>
         </div>
-        <div id="showLoading">
-            <img src="../assets/img/ajax-loader.gif" alt="" width="32" height="32" />
-            <h3 class="info"></h3>
+        <form action="login/login" method="post" id="pageLogin" name="pageLogin" role="form">
+          <fieldset>
+            <legend data-message="loginLegend" data-target="html"></legend>
+            <div class="form-group">
+              <label for="ctrl_pageLogin_login" data-message="loginNick" data-target="html"></label>
+              <input type="text" class="form-control" name="login" id="ctrl_pageLogin_login" data-message="loginNick" data-target="placeholder" tabindex="1">
+            </div>
+            <label data-message="loginLabelAccount" data-target="html"></label>
+            <div class="form-group">
+              <label class="radio-inline">
+                <input type="radio" name="register" id="ctrl_pageLogin_not_registered" value="1">
+                <span data-message="loginNoAccount" data-target="html"></span>
+              </label>
+              <label class="radio-inline">
+                <input type="radio" name="register" id="ctrl_pageLogin_registered" value="0" checked>
+                <span data-message="loginYesAccount" data-target="html"></span>
+              </label>
+            </div>
+            <div class="form-group password">
+              <label for="ctrl_pageLogin_password" data-message="loginPassword" data-target="html"></label>
+              <input type="password" name="password" class="form-control" id="ctrl_pageLogin_password" data-message="loginPassword" data-target="placeholder" tabindex="2">
+            </div>
+            <label class="checkbox remember">
+              <input type="checkbox" name="remember" id="ctrl_pageLogin_remember" value="1">
+              <span data-message="loginStay" data-target="html"></span>
+            </label>
+          </fieldset>
+          <fieldset>
+            <legend data-message="loginLegendConnect" data-target="html"></legend>
+            <a href="register/facebook?reg=1" class="fbLogin">
+              <span data-message="loginFacebook" data-target="html"></span></a>
+            <a href="register/twitter?reg=1" class="twitterLogin">
+              <span data-message="loginTwitter" data-target="html"></span></a>
+          </fieldset>
+          <div>
+            <hr>
+            <input type="hidden" name="cookie_check" value="1" />
+            <input type="hidden" name="_xfToken" value="" />
+            <input type="hidden" name="redirect" value="/" />
+            <button type="submit" class="btn btn-primary" data-message="loginButton" data-target="html"></button>
+            <a href="lost-password/" class="pull-right" data-message="loginForgot" data-target="html"></a>
+          </div>
+        </form>
+        <div class="hide" id="errorContainer">
+          <ul>
+            <li><label for="login" class="error label label-important"></label></li>
+            <li><label for="password" class="error label label-important"></label></li>
+          </ul>
         </div>
-        <div id="showResponse">
-            <div class="conversations">
-                <h2></h2>
+      </section>
+      <section class="hide user">
+        <div class="tab-content">
+          <div class="tab-pane active" id="home">
+            <div class="Menu JsOnly" id="AccountMenu">
+              <div class="primaryContent menuHeader">
+                <a class="avatar Av1m NoOverlay plainImage" title="View your profile" data-avatarhtml="true">
+                  <span class="img m" style="background-image: url('styles/default/xenforo/avatars/avatar_m.png')"></span></a>
+                <h3><a class="concealed"></a></h3>
+                <div class="muted"></div>
+                <ul class="links">
+                  <li class="fl"><a data-message="homeProfile" data-target="html"></a></li>
+                </ul>
+              </div>
+              <div class="menuColumns secondaryContent">
+                <ul class="col1 blockLinksList">
+                  <li><a href="account/personal-details" data-message="homePersonal" data-target="html"></a></li>
+                  <li><a href="account/signature" data-message="homeSignature" data-target="html"></a></li>
+                  <li><a href="account/contact-details" data-message="homeContact" data-target="html"></a></li>
+                  <li><a href="account/privacy" data-message="homePrivacy" data-target="html"></a></li>
+                  <li><a href="account/preferences" class="OverlayTrigger" data-message="homePrefs" data-target="html"></a></li>
+                  <li><a href="account/alert-preferences" data-message="homeAlertPrefs" data-target="html"></a></li>
+                  <li><a href="account/avatar" class="OverlayTrigger" data-cacheOverlay="true" data-message="homeAvatar" data-target="html"></a></li>
+                  <li><a href="account/external-accounts" data-message="homeExternal" data-target="html"></a></li>
+                  <li><a href="account/security" data-message="loginPassword" data-target="html"></a></li>
+                </ul>
+                <ul class="col2 blockLinksList">
+                  <li><a href="account/news-feed" data-message="homeFeed" data-target="html"></a></li>
+                  <li><a href="conversations/">
+                    <span data-message="homeInbox" data-target="html"></span>
+                    <strong class="itemCount Zero" id="VisitorExtraMenu_ConversationsCounter">
+                      <span class="Total">0</span>
+                    </strong></a></li>
+                  <li><a href="index.php?account/alerts">
+                      <span data-message="labelAlerts" data-target="html"></span>
+                    <strong class="itemCount Zero" id="VisitorExtraMenu_AlertsCounter">
+                        <span class="Total">0</span>
+                    </strong></a></li>
+                  <li><a href="account/likes" data-message="homeLikes" data-target="html"></a></li>
+                  <li><a href="buscar/member?user_id=" data-message="homeContent" data-target="html"></a></li>
+                  <li><a href="account/following" data-message="homeFollow" data-target="html"></a></li>
+                  <li><a href="account/ignored" data-message="homeIgnore" data-target="html"></a></li>
+                  <li><a href="account/upgrades" data-message="homeUpgrades" data-target="html"></a></li>
+                  <li><a href="account/new-post" data-message="homeNewPost" data-target="html"></a></li>
+                  <li><a href="calificaciones/preferences" data-message="homeTrading" data-target="html"></a></li>
+                </ul>
+              </div>
+              <div class="menuColumns secondaryContent">
+                <ul class="col1 blockLinksList">
+                  <li>
+                    <form action="account/toggle-visibility" method="post" class="AutoValidator visibilityForm">
+                      <label><input type="checkbox" name="visible" value="1" class="SubmitOnChange">
+                        <span data-message="homeOnline" data-target="html"></span>
+                        </label>
+                      <input type="hidden" name="_xfToken" value="1,1395534337,3d93cbd40233fc18046d137d4fc11e2bcdc6aa04">
+                    </form>
+                  </li>
+                </ul>
+                <ul class="col2 blockLinksList">
+                  <li><a href="logout/&_xfToken=" class="LogOut" data-message="homeLogout" data-target="html"></a></li>
+                </ul>
+              </div>
+              <form action="miembros/" method="post" class="sectionFooter statusPoster AutoValidator" data-optinout="OptIn">
+                <textarea name="message" class="textCtrl StatusEditor UserTagger Elastic" rows="1" cols="40" data-message="homeUpdate" data-target="placeholder"
+                    style="overflow-y: hidden;" data-statuseditorcounter="#visMenuSEdCount" data-nofocus="true"></textarea>
+                <div class="submitUnit">
+                  <span id="visMenuSEdCount" title="Characters remaining" class="statusEditorCounter">140</span>
+                  <input type="submit" class="button primary MenuCloser">
+                  <input type="hidden" name="_xfToken" value="">
+                  <input type="hidden" name="return" value="1">
+                </div>
+              </form>
             </div>
-            <div class="clear hidden"></div>
-            <div class="alerts">
-                <h2></h2>
+          </div>
+          <div class="tab-pane" id="inbox">
+            <div class="tab-inbox none hide">
+              <div class="callout callout-danger">
+                <p data-message="zeroInbox" data-target="html"></p>
+              </div>
             </div>
-            <div class="clear hidden"></div>
-            <div class="subscriptions">
-                <h2></h2>
+            <div class="tab-inbox"></div>
+            <div class="tab-footer clearfix">
+              <span class="text-left col-xs-6"><a href="conversations/" data-message="showAll" data-target="html"></a></span>
+              <span class="text-right col-xs-6"><a href="conversations/add" data-message="startNew" data-target="html"></a></span>
             </div>
-            <div class="clear hidden"></div>
-            <div class="link">
-                <h2></h2>
+          </div>
+          <div class="tab-pane" id="alerts">
+            <div class="tab-alerts none hide">
+              <div class="callout callout-danger">
+                <p data-message="zeroAlerts" data-target="html"></p>
+              </div>
             </div>
+            <div class="tab-alerts"></div>
+            <div class="tab-footer clearfix">
+              <span class="text-left col-xs-6"><a href="account/alerts" data-message="showAll" data-target="html"></a></span>
+              <span class="text-right col-xs-6"><a href="account/alert-preferences" data-message="alertPrefs" data-target="html"></a></span>
+            </div>
+          </div>
+          <div class="tab-pane" id="subscriptions">
+            <div class="tab-subscriptions none hide">
+              <div class="callout callout-danger">
+                <p data-message="zeroSubs" data-target="html"></p>
+              </div>
+            </div>
+            <div class="tab-subscriptions"></div>
+            <div class="tab-footer">
+              <span class="text-left"><a href="watched/threads/all" data-message="showAllWatched" data-target="html"></a></span>
+            </div>
+          </div>
         </div>
-
-        <script type="text/javascript" src="../assets/js/jquery.min.js"></script>
-        <script type="text/javascript" src="../assets/js/global.js"></script>
-        <script type="text/javascript" src="../assets/js/popup.js"></script>
-    </body>
+      </section>
+    </main>
+    <script type="text/javascript" src="../assets/js/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript" src="../assets/js/jquery.form.js"></script>
+    <script type="text/javascript" src="../assets/js/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../assets/js/global.js"></script>
+    <script type="text/javascript" src="../assets/js/pages/popup.js"></script>
+    <script type="text/javascript" src="../assets/js/pages/background.js"></script>
+  </body>
 </html>

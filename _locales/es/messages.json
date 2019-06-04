@@ -1,30 +1,84 @@
 {
     "extName": {
-        "message": "Laneros.com (No Oficial)"
+        "message": "Extensión Chrome para Laneros"
     },
     "extDesc": {
         "message": "Noticias sobre tecnología, internet, juegos y entretenimiento. Comunidad colombiana."
     },
-    "loading": {
+    "dataLoading": {
         "message": "Cargando Datos"
     },
-    "error": {
+    "dataError": {
         "message": "Error al obtener los datos de LANeros.com"
     },
-    "conversation": {
+    "goTo": {
+        "message": "Ir a la Página Principal de Laneros"
+    },
+    "goToAccount": {
+        "message": "Ir a Mi Cuenta"
+    },
+    "errorMsg": {
+        "message": "Error"
+    },
+    "notConnected": {
+        "message": "No has Iniciado Sesión"
+    },
+    "pageError": {
+        "message": "Laneros puede estar experimentando problemas"
+    },
+    "loginLegend": {
+        "message": "Accede o registrate"
+    },
+    "loginNick": {
+        "message": "Nombre o dirección e-mail"
+    },
+    "loginLabelAccount": {
+        "message": "¿ Ya tienes cuenta ?"
+    },
+    "loginNoAccount": {
+        "message": "No, crear una cuenta ahora"
+    },
+    "loginYesAccount": {
+        "message": "Si"
+    },
+    "loginPassword": {
+        "message": "Contraseña"
+    },
+    "loginStay": {
+        "message": "Permanecer conectado"
+    },
+    "loginLegendConnect": {
+        "message": "... o conectate"
+    },
+    "loginFacebook": {
+        "message": "Acceder con Facebook"
+    },
+    "loginTwitter": {
+        "message": "Acceder con Twitter"
+    },
+    "loginButton": {
+        "message": "Acceder"
+    },
+    "registerButton": {
+        "message": "Regístrate"
+    },
+    "loginForgot": {
+        "message": "¿ Olvidaste la contraseña ?"
+    },
+    "labelInbox": {
         "message": "Buzón"
     },
-    "alert": {
+    "labelAlerts": {
         "message": "Alertas"
     },
-    "subscription": {
+    "labelSubscriptions": {
         "message": "Suscripciones"
     },
-    "link": {
-        "message": "Accesos Directos"
+    "zeroHome": {
+        "message": "No hay Vinculos Adicionales"
     },
     "zeroInbox": {
-        "message": "No hay conversaciones nuevas"
+        "message": "No hay mensajes nuevos"
     },
     "zeroAlerts": {
         "message": "No hay alertas nuevas"
@@ -32,41 +86,41 @@
     "zeroSubs": {
         "message": "No hay temas suscritos sin leer"
     },
-    "goTo": {
-        "message": "Ir a Laneros.com"
+    "showAll": {
+        "message": "Mostrar Todas ..."
     },
-    "success": {
-        "message": "Cambios Realizados"
+    "startNew": {
+        "message": "Iniciar una Nueva Conversación"
     },
-    "cp": {
-        "message": "Mi Cuenta"
+    "alertPrefs": {
+        "message": "Preferencias de Alertas"
     },
-    "logout": {
-        "message": "Salir"
+    "showAllWatched": {
+        "message": "Mostrar todos los temas seguidos"
     },
-    "revision": {
-        "message": "Intervalo de Revisión"
+    "labelNew": {
+        "message": "Nuevo (s)"
     },
-    "duration": {
-        "message": "Duración del Popup"
+    "labelMessages": {
+        "message": "Mensajes"
     },
-    "popup": {
-        "message": "Intervalo de Muestra del Popup"
-    },
-    "others": {
-        "message": "Otros"
-    },
-    "hours": {
+    "labelHours": {
         "message": "Horas"
     },
-    "minutes": {
+    "labelMinutes": {
         "message": "Minutos"
     },
-    "seconds": {
+    "labelSeconds": {
         "message": "Segundos"
     },
-    "miliseconds": {
+    "labelMilliseconds": {
         "message": "Milisegundos"
+    },
+    "labelRevision": {
+        "message": "Intervalo de Revisión"
+    },
+    "labelOthers": {
+        "message": "Secciones"
     },
     "showInbox": {
         "message": "Mostrar Buzón"
@@ -77,16 +131,88 @@
     "showSubs": {
         "message": "Mostrar Suscripciones"
     },
-    "showPopup": {
-        "message": "Mostrar Notificación Popup"
+    "showNotification": {
+        "message": "Notificaciones"
     },
     "showLinks": {
-        "message": "Mostrar Vinculos Adicionales"
+        "message": "Vinculos Adicionales"
     },
-    "save": {
-        "message": "  Guardar  "
+    "buttonSave": {
+        "message": "Guardar"
     },
-    "new": {
-        "message": "Nuevo(s)"
+    "labelOptions": {
+        "message": "Opciones de la Extensión"
+    },
+    "labelSaved": {
+        "message": "Opciones Guardadas !"
+    },
+    "labelSavedText": {
+        "message": "Sus opciones han sido almacenadas"
+    },
+    "homePersonal": {
+        "message": "Detalles Personales"
+    },
+    "homeSignature": {
+        "message": "Firma"
+    },
+    "homeContact": {
+        "message": "Detalles de Contacto"
+    },
+    "homePrivacy": {
+        "message": "Privacidad"
+    },
+    "homePrefs": {
+        "message": "Preferencias"
+    },
+    "homeAlertPrefs": {
+        "message": "Preferencias de alertas"
+    },
+    "homeAvatar": {
+        "message": "Avatar"
+    },
+    "homeFeed": {
+        "message": "Tus Noticias"
+    },
+    "homeInbox": {
+        "message": "Charlas"
+    },
+    "homeLikes": {
+        "message": "'Me Gusta' recibidos"
+    },
+    "homeContent": {
+        "message": "Contenido"
+    },
+    "homeFollow": {
+        "message": "Sigues a ..."
+    },
+    "homeIgnore": {
+        "message": "Gente ignorada"
+    },
+    "homeExternal": {
+        "message": "Cuentas externas"
+    },
+    "homeUpgrades": {
+        "message": "Suscripción de pago"
+    },
+    "homeNewPost": {
+        "message": "Ignorar Foros en Nuevos mensajes"
+    },
+    "homeTrading": {
+        "message": "Preferencias de Negociante"
+    },
+    "homeLogout": {
+        "message": "Salir"
+    },
+    "homeOnline": {
+        "message": "Ver el estado conectado"
+    },
+    "homeUpdate": {
+        "message": "Actualizar estado ..."
+    },
+    "homePost": {
+        "message": "Enviar"
+    },
+    "homeProfile": {
+        "message": "Página de perfil"
     }
 }
