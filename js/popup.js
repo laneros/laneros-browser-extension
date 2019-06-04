@@ -18,7 +18,7 @@ function updateBadge() {
  * Obtener los Datos de Conversaciones, Alertas y Suscripciones
  */
 function parseLANeros() {
-    var jqxhr = $.get(url + "watched/threads", function(data, textStatus, jqXHR) {
+    var jqxhr = $.get(url + "watched/threads/all", function(data, textStatus, jqXHR) {
         var subscriptions = $(data).find(".discussionList .discussionListItems li");
 
         counter = getConversations(data, textStatus, jqXHR);
@@ -66,6 +66,7 @@ function getConversations(data, textStatus, jqXHR) {
 
                 $(div).find("div.listItemText").each(function(index) {
                     if (index < conversations && index < 5) {
+                        var div = document.createElement("div");
                         var p = document.createElement("p");
 
                         $(p).html($(this).find("h3").html());
@@ -77,7 +78,10 @@ function getConversations(data, textStatus, jqXHR) {
                                 .attr("target", "_blank");
                         });
 
-                        $("#conversations").append($(this).html());
+                        $(div).addClass("result both").append($(this).html())
+
+                        $("#conversations").append(div);
+
                     }
                 });
             });
@@ -118,6 +122,7 @@ function getAlerts(data, textStatus, jqXHR) {
 
                 $(div).find("div.listItemText").each(function(index) {
                     if (index < alerts && index < 5) {
+                        var div = document.createElement("div");
                         var p = document.createElement("p");
 
                         $(p).html($(this).find("h3").html());
@@ -128,8 +133,9 @@ function getAlerts(data, textStatus, jqXHR) {
                             $(this).attr("href", url + href)
                                 .attr("target", "_blank");
                         });
+                        $(div).addClass("result both").append($(this).html())
 
-                        $("#alerts").append($(this).html());
+                        $("#alerts").append(div);
                     }
                 });
             });
@@ -164,15 +170,28 @@ function getSubscriptions(data, textStatus, jqXHR) {
             $("#subscriptions").html("");
 
             $(subscriptions).each(function(index) {
+                var div = document.createElement("div");
                 var names = document.createElement("li");
-                var a = document.createElement("a");
+                var br = document.createElement("br");
 
-                var href = $(this).find("h3.title a").attr("href");
-                var title = $(this).find("h3.title a").html();
+                $(this).find("a").each(function() {
+                    var href = $(this).attr("href");
 
-                $(a).attr("target", "_blank").attr("title", title)
-                    .attr("href", url + href).html(title).appendTo(names);
-                $(names).addClass("name both").appendTo(ul);
+                    $(this).attr("href", url + href)
+                        .attr("target", "_blank");
+
+                    if ($(this).attr("title") == "") {
+                        $(this).attr("title", $(this).html());
+                    }
+                });
+
+                $(this).find("h3.title a").appendTo(div);
+                $(br).appendTo(div);
+                $(div).append($(this).find(".lastPostInfo dd").html());
+
+                $(div).addClass("result both").appendTo(names);
+
+                $(names).addClass("name").appendTo(ul);
             });
 
             $(ul).appendTo("#subscriptions");
@@ -229,7 +248,6 @@ function showLinks(data, textStatus, jqXHR) {
  * Obtener el formulario de login
  */
 function doLogin(login) {
-    var div = document.createElement("div");
     var action = $(login).parent().find("form").attr("action");
 
     $(login).find("a").each(function() {
@@ -239,6 +257,5 @@ function doLogin(login) {
     $(login).parent().find("form").attr("action", url + action)
         .attr("target", "_blank");
 
-    $(div).attr("id", "login").html(login);
-    $("#showResponse").html(div);
+    $("#showResponse").html(login);
 }

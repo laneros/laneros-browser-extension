@@ -22,12 +22,13 @@ var url = "http://www.laneros.com/";
 $(document).ready(function() {
     $("#showLoading").ajaxStart(function() {
         $(this).show();
-        $("#showResponse").hide();
+        $("#showResponse").addClass("hidden");
         $(this).find(".info").html(getMessage("loading"));
     })
     .ajaxStop(function() {
         $(this).hide();
-        $("#showResponse").show();
+        $("#showResponse").removeClass("hidden");
+        $("html, body").css("overflow-y", "auto");
     })
     .ajaxError(function() {
         $(this).addClass("error").html(getMessage("error"));

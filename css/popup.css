@@ -10,14 +10,31 @@ body {
 }
 ul {
     margin: 0px !important;
-    padding: 15px !important;
+    padding-left: 0px !important;
+}
+li {
+    list-style: none;
 }
 #showResponse {
     padding: 10px;
-    display: block;
 }
-#alerts h3 {
-    text-align: left !important;
+.result p {
+    margin-bottom: 5px;
+}
+.result abbr, .result span {
+    float: right;
+    margin-bottom: 5px;
+    font-style: italic;
+    clear: both;
+}
+.result div {
+    clear: both;
+}
+.result .DateTime {
+    padding-top: 5px;
+}
+.result .dateTime {
+    color: #666;
 }
 .xenForm {
     margin: 10px auto;

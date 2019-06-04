@@ -4,6 +4,8 @@ body {
     text-shadow: 1px 1px 0 white;
     font-family: Arial, Helvetica, sans-serif;
     background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#EEE), to(#DDD));
+    max-height: 600px;
+    overflow: hidden;
 }
 h1, h2, h3 {
     font-family:"Myriad Pro", Arial, Helvetica, sans-serif;
@@ -73,7 +75,7 @@ img {
 .name {
     float: left;
     padding-bottom: 5px;
-    padding-right: 10px;
+    width: 100%;
 }
 .value {
     float: right;
@@ -110,9 +112,13 @@ img {
     padding-bottom: 5px;
     padding-right: 5px;
 }
+.link .name {
+    padding-right: 10px;
+}
 #showLoading {
     text-align: center;
     padding: 15px;
+    padding-top: 20px;
 }
 #status {
     color: #F00;
