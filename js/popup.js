@@ -65,7 +65,7 @@ function getConversations(data, textStatus, jqXHR) {
                 $(div).html(json.templateHtml);
 
                 $(div).find("div.listItemText").each(function(index) {
-                    if (index < alerts && index < 5) {
+                    if (index < conversations && index < 5) {
                         var p = document.createElement("p");
 
                         $(p).html($(this).find("h3").html());
