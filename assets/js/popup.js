@@ -226,9 +226,6 @@ function showLinks(data, textStatus, jqXHR) {
             .html(getMessage("alert")).appendTo(div);
         $(clear).clone().appendTo("#links");
 
-        $(a).clone().attr("title", getMessage("mail"))
-            .attr("href", "https://www.google.com/a/laneros.com/ServiceLogin?service=mail")
-            .attr("target", "_blank").html(getMessage("mail")).appendTo(div);
         $(logout).attr("target", "_blank").attr("title", getMessage("logout"))
             .attr("href", url + $(logout).attr("href")).html(getMessage("logout")).addClass("logout").appendTo(div);
     }

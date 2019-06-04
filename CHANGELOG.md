@@ -2,6 +2,12 @@
 
 All notable changes to `laneros-browser-extension` will be documented in this file.
 
+## 3.2.1 | 2014-02-18
+
+### Changed
+
+- Remove Laneros email link
+
 ## 3.2 | 2014-02-18
 
 ### Changed
