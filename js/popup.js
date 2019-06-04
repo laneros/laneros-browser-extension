@@ -18,7 +18,7 @@ function updateBadge() {
  * Obtener los Datos de Conversaciones, Alertas y Suscripciones
  */
 function parseLANeros() {
-    var jqxhr = $.get(url + "watched/threads/all", function(data, textStatus, jqXHR) {
+    var jqxhr = $.get(url + "watched/threads", function(data, textStatus, jqXHR) {
         var subscriptions = $(data).find(".discussionList .discussionListItems li");
 
         counter = getConversations(data, textStatus, jqXHR);
