@@ -2,12 +2,13 @@
 
 All notable changes to `laneros-browser-extension` will be documented in this file.
 
-## 3.0.3 | 2013-07-21
+## 3.1 | 2014-02-18
 
 ### Changed
 
-- CSS improvements
-- JS improvements
+- Major Update
+- Update jQuery
+- Improve folder organization
 
 ## 3.0.2 | 2013-07-21
 

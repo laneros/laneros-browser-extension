@@ -74,12 +74,10 @@ function getConversations(data, textStatus, jqXHR) {
                         $(this).find("a").each(function() {
                             var href = $(this).attr("href");
 
-                            $(this).attr("href", url + href)
-                                .attr("target", "_blank");
+                            $(this).attr("href", url + href).attr("target", "_blank");
                         });
 
-                        $(div).addClass("result both").append($(this).html())
-
+                        $(div).addClass("result both").append($(this).html());
                         $("#conversations").append(div);
 
                     }
@@ -115,8 +113,8 @@ function getAlerts(data, textStatus, jqXHR) {
             var token = $(data).find("input[name=_xfToken]:eq(0)").val();
 
             $("#alerts").html("");
-
-            $.get(url + "account/alerts-popup?&_xfRequestUri=/watched/threads&_xfNoRedirect=1&_xfToken="+token+"&_xfResponseType=json", function(json, textStatus, jqXHR) {
+            $.get(url + "account/alerts-popup?&_xfRequestUri=/watched/threads&_xfNoRedirect=1&_xfToken="
+                    + token + "&_xfResponseType=json", function(json, textStatus, jqXHR) {
                 var div = document.createElement("div");
                 $(div).html(json.templateHtml);
 
@@ -130,11 +128,10 @@ function getAlerts(data, textStatus, jqXHR) {
                         $(this).find("a").each(function() {
                             var href = $(this).attr("href");
 
-                            $(this).attr("href", url + href)
-                                .attr("target", "_blank");
+                            $(this).attr("href", url + href).attr("target", "_blank");
                         });
-                        $(div).addClass("result both").append($(this).html())
 
+                        $(div).addClass("result both").append($(this).html());
                         $("#alerts").append(div);
                     }
                 });
@@ -177,8 +174,7 @@ function getSubscriptions(data, textStatus, jqXHR) {
                 $(this).find("a").each(function() {
                     var href = $(this).attr("href");
 
-                    $(this).attr("href", url + href)
-                        .attr("target", "_blank");
+                    $(this).attr("href", url + href).attr("target", "_blank");
 
                     if ($(this).attr("title") == "") {
                         $(this).attr("title", $(this).html());
@@ -190,7 +186,6 @@ function getSubscriptions(data, textStatus, jqXHR) {
                 $(div).append($(this).find(".lastPostInfo dd").html());
 
                 $(div).addClass("result both").appendTo(names);
-
                 $(names).addClass("name").appendTo(ul);
             });
 
@@ -220,28 +215,22 @@ function showLinks(data, textStatus, jqXHR) {
 
         $(a).addClass("name half").attr("target", "_blank");
 
-        $(a).clone().attr("title", getMessage("cp"))
-            .attr("href", url + "account/").html(getMessage("cp"))
+        $(a).clone().attr("title", getMessage("cp")).attr("href", url + "account/").html(getMessage("cp"))
             .appendTo(div);
-        $(a).clone().attr("title", getMessage("subscription"))
-            .attr("href", url + "watched/threads/all").html(getMessage("subscription"))
-            .appendTo(div);
+        $(a).clone().attr("title", getMessage("subscription")).attr("href", url + "watched/threads/all")
+            .html(getMessage("subscription")).appendTo(div);
         $(clear).clone().appendTo("#links");
-        $(a).clone().attr("title", getMessage("conversation"))
-            .attr("href", url + "conversations").html(getMessage("conversation"))
-            .appendTo(div);
-        $(a).clone().attr("title", getMessage("alert"))
-            .attr("href", url + "account/alerts").html(getMessage("alert"))
-            .appendTo(div);
+        $(a).clone().attr("title", getMessage("conversation")).attr("href", url + "conversations")
+            .html(getMessage("conversation")).appendTo(div);
+        $(a).clone().attr("title", getMessage("alert")).attr("href", url + "account/alerts")
+            .html(getMessage("alert")).appendTo(div);
         $(clear).clone().appendTo("#links");
 
         $(a).clone().attr("title", getMessage("mail"))
-            .attr("href", "https://www.google.com/a/laneros.com/ServiceLogin?service=mail&passive=true&rm=false&continue=http%3A%2F%2Fmail.google.com%2Fa%2Flaneros.com%2F&ltmpl=default&ltmplcache=2")
-            .attr("target", "_blank").html(getMessage("mail"))
-            .appendTo(div);
+            .attr("href", "https://www.google.com/a/laneros.com/ServiceLogin?service=mail")
+            .attr("target", "_blank").html(getMessage("mail")).appendTo(div);
         $(logout).attr("target", "_blank").attr("title", getMessage("logout"))
-            .attr("href", url + $(logout).attr("href")).html(getMessage("logout"))
-            .addClass("logout").appendTo(div);
+            .attr("href", url + $(logout).attr("href")).html(getMessage("logout")).addClass("logout").appendTo(div);
     }
 }
 /*
@@ -254,8 +243,7 @@ function doLogin(login) {
         aURL = url + $(this).attr("href");
         $(this).attr("href", aURL).attr("target", "_blank");
     });
-    $(login).parent().find("form").attr("action", url + action)
-        .attr("target", "_blank");
 
+    $(login).parent().find("form").attr("action", url + action).attr("target", "_blank");
     $("#showResponse").html(login);
 }

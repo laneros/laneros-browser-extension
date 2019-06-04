@@ -43,7 +43,7 @@ img {
 }
 .logoDiv {
     min-width: 310px;
-    background: url("../images/header_center.png") repeat-x;
+    background: url("../img/header_center.png") repeat-x;
     padding: 5px;
 }
 .logo {

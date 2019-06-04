@@ -136,7 +136,7 @@ li {
     font-size: 12px;
     font-family: Calibri, 'Trebuchet MS', Verdana, Geneva, Arial, Helvetica, sans-serif;
     color: rgb(1, 1, 1);
-    background: rgb(220,220,235) url('../images/form-button-white-25px.png') repeat-x top;
+    background: rgb(220,220,235) url('../img/form-button-white-25px.png') repeat-x top;
     padding: 0px 6px;
     border: 1px solid rgb(221, 221, 235);
     -webkit-border-radius: 7px;
@@ -161,12 +161,12 @@ li {
     height: 23px;
 }
 .button.primary {
-    background: url("../images/form-button-white-25px.png") repeat-x scroll center top rgb(220, 220, 235);
+    background: url("../img/form-button-white-25px.png") repeat-x scroll center top rgb(220, 220, 235);
     border-color: rgb(255, 255, 255) rgb(221, 221, 235) rgb(179, 179, 189);
     color: #000 !important;
 }
 a.fbLogin {
-    background: #29447e url('../images/connect_sprite.png');
+    background: #29447e url('../img/connect_sprite.png');
     background-repeat: no-repeat;
     cursor: pointer;
     display: inline-block;
@@ -179,7 +179,7 @@ a.fbLogin {
     margin-bottom: 15px;
 }
 a.fbLogin span {
-    background: #5f78ab url('../images/connect_sprite.png');
+    background: #5f78ab url('../img/connect_sprite.png');
     border-top: solid 1px #879ac0;
     border-bottom: solid 1px #1a356e;
     color: white;

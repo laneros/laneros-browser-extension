@@ -172,22 +172,22 @@ function reboot() {
  * Funcion de Conversion de MS a d:hh:mm:ss:ms
  */
 function getTime(ms) {
-    var sec = Math.floor(ms/1000)
-    ms = ms % 1000
+    var sec = Math.floor(ms/1000);
+    ms = ms % 1000;
     t = ms;
 
-    var min = Math.floor(sec/60)
-    sec = sec % 60
-    t = sec + ":" + t
+    var min = Math.floor(sec/60);
+    sec = sec % 60;
+    t = sec + ":" + t;
 
-    var hr = Math.floor(min/60)
-    min = min % 60
-    t = min + ":" + t
+    var hr = Math.floor(min/60);
+    min = min % 60;
+    t = min + ":" + t;
 
-    var day = Math.floor(hr/60)
-    hr = hr % 60
-    t = hr + ":" + t
-    t = day + ":" + t
+    var day = Math.floor(hr/60);
+    hr = hr % 60;
+    t = hr + ":" + t;
+    t = day + ":" + t;
 
     return t;
 }

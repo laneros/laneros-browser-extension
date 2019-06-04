@@ -81,13 +81,13 @@ function parseLANerosText() {
 
         var conversation = {
             title: getMessage("conversation")
-        }
+        };
         var alert = {
             title: getMessage("alert")
-        }
+        };
         var subscription = {
             title: getMessage("subscription")
-        }
+        };
 
         if (conversations == 0) {
             conversation.message = getMessage("zeroInbox");
@@ -117,10 +117,10 @@ function parseLANerosText() {
                 type: "basic",
                 title: getMessage("extName"),
                 message: getMessage("extDesc"),
-                iconUrl: '../images/laneros.png',
+                iconUrl: '../img/laneros.png',
                 items: items,
                 buttons: [
-                    { title: getMessage("goTo"), iconUrl: '../images/laneros.png'}
+                    { title: getMessage("goTo"), iconUrl: '../img/laneros.png'}
                 ]},
                 function(notificationId) {
                     return notificationId;

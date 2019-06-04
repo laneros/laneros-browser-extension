@@ -20,18 +20,16 @@ var url = "http://www.laneros.com/";
  * Ejecutar al Cargar el Documento
  */
 $(document).ready(function() {
-    $("#showLoading").ajaxStart(function() {
-        $(this).show();
-        $("#showResponse").addClass("hidden");
-        $(this).find(".info").html(getMessage("loading"));
-    })
-    .ajaxStop(function() {
-        $(this).hide();
-        $("#showResponse").removeClass("hidden");
+    $(document).ajaxStart(function() {
+        $("#showLoading").show();
+        $("#showResponse").hide();
+        $("#showLoading").find(".info").html(getMessage("loading"));
+    }).ajaxStop(function() {
+        $("#showLoading").hide();
+        $("#showResponse").show();
         $("html, body").css("overflow-y", "auto");
-    })
-    .ajaxError(function() {
-        $(this).addClass("error").html(getMessage("error"));
+    }).ajaxError(function() {
+        $("#showLoading").addClass("error").html(getMessage("error"));
     });
 });
 /*
@@ -41,9 +39,8 @@ function getLocalValue(value) {
     if(localStorage[value] == undefined) {
         return(objLANeros[value]);
     }
-    else {
-        return(localStorage[value]);
-    }
+
+    return(localStorage[value]);
 }
 /*
  * Cambiar un valor Guardado
