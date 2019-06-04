@@ -6,9 +6,10 @@
  * @param theNotificationID
  * @param theOptions
  * @param theListener
+ * @param isNew
  */
-function createNotification(theNotificationID, theOptions, theListener, isClear) {
-    if (isClear) {
+function createNotification(theNotificationID, theOptions, theListener, isNew) {
+    if (isNew) {
         chrome.notifications.clear(theNotificationID, function(wasCleared) {
             return wasCleared;
         });
@@ -30,11 +31,15 @@ function createNotification(theNotificationID, theOptions, theListener, isClear)
  * @param theListener
  */
 function createAlarm(theAlarmID, theOptions, theListener) {
-    chrome.alarms.clear(theAlarmID);
-    chrome.alarms.create(theAlarmID, theOptions);
-    chrome.alarms.onAlarm.addListener(function(theAlarm) {
-        if (theAlarm.name == theAlarmID) {
-            theListener();
+    chrome.alarms.get(theAlarmID, function (theAlarm) {
+        if (typeof theAlarm == "undefined") {
+            console.log(Date.now() + " - Create Alarm ...");
+            chrome.alarms.create(theAlarmID, theOptions);
+            chrome.alarms.onAlarm.addListener(function(theAlarm) {
+                if (theAlarm.name == theAlarmID) {
+                    theListener();
+                }
+            });
         }
     });
 }
@@ -46,7 +51,6 @@ function createAlarm(theAlarmID, theOptions, theListener) {
 function runLANerosBg() {
     console.log(Date.now() + " - Background Started up ...");
     getStorageValue({ TimeRev : theGlobalOptions.TimeRev }, function(theOptions) {
-        console.log(Date.now() + " - Create Alarm ...");
         parseLANeros();
         TimeRev = theOptions.TimeRev / 1000 / 60;
 

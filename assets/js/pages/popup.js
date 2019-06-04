@@ -77,7 +77,11 @@ function getAccount(theAccount, theToken, theResult) {
             $(this).attr("action", theURL + theAction).attr("target", "_blank");
         });
         $("#home").find("a").each(function() {
-            var theNewURL = theURL + $(this).attr("href");
+            var theNewURL = $(this).attr("href");
+
+            if (theNewURL.indexOf("http://") == -1) {
+                theNewURL = theURL + theNewURL;
+            }
 
             if ($(this).attr("href").indexOf("user_id") != -1) {
                 theNewURL += theUserID;
@@ -86,7 +90,7 @@ function getAccount(theAccount, theToken, theResult) {
                 theNewURL += theToken;
             }
 
-            $(this).attr("href", theNewURL).attr("target", "_blank");
+            $(this).attr("target", "_blank").attr("href", theNewURL);
         });
 
         if (theOptions.ShowLinks) {
@@ -120,31 +124,51 @@ function getConversations(numConversations, theToken) {
             $("a[href=#inbox] span:last").html(numConversations).show();
             $("#inbox div.tab-inbox.none").removeClass("hide").hide();
 
-            $("a[href=#inbox]").on("show.bs.tab", function(theEvent) {
+            if (numConversations == 0) {
+                $("#inbox div.tab-inbox.none").show();
+                $("a[href=#inbox] span:last").hide();
+            }
+
+            var runInbox = function() {
                 $.getJSON(theURL + "conversations/popup?&_xfResponseType=json&_xfNoRedirect=1&_xfToken=" + theToken, function(theData, textStatus, jqXHR) {
                     var theConversations = document.createElement("div");
                     $(theConversations).html(theData.templateHtml);
 
                     if($(theConversations).find(".listItemText").size() > 0) {
                         $(theConversations).find("a").each(function() {
-                            var theNewURL = theURL + $(this).attr("href");
-                            $(this).attr("href", theNewURL).attr("target", "_blank");
+                            var theNewURL = $(this).attr("href");
+
+                            if (theNewURL.indexOf("http://") == -1) {
+                                theNewURL = theURL + theNewURL;
+                            }
+
+                            $(this).attr("target", "_blank").attr("href", theNewURL);
                         });
                         $(theConversations).find("img").each(function() {
-                            var theNewURL = theURL + $(this).attr("src");
+                            var theNewURL = $(this).attr("src");
 
-                            if ($(this).attr("src").indexOf("http://") == -1) {
-                                $(this).attr("src", theNewURL);
+                            if (theNewURL.indexOf("http://") == -1) {
+                                theNewURL = theURL + theNewURL;
                             }
+
+                            $(this).attr("src", theNewURL);
                         });
 
                         $("#inbox div.tab-inbox:last").html(theConversations);
                     }
+
+                    if (numConversations == 0) {
+                        $("#inbox div.tab-inbox.none").show();
+                        $("a[href=#inbox] span:last").hide();
+                    }
                 });
+            };
+
+            $("a[href=#inbox]").on("show.bs.tab", function (theEvent) {
+                runInbox();
             });
-            if (numConversations == 0) {
-                $("#inbox div.tab-inbox.none").show();
-                $("a[href=#inbox] span:last").hide();
+            if ($("#inbox").hasClass("active")) {
+                runInbox();
             }
         }
     });
@@ -165,7 +189,12 @@ function getAlerts(numAlerts, theToken) {
             $("a[href=#alerts] span:last").html(numAlerts).show();
             $("#alerts div.tab-alerts.none").removeClass("hide").hide();
 
-            $("a[href=#alerts]").on("show.bs.tab", function(theEvent) {
+            if (numAlerts == 0) {
+                $("#alerts div.tab-alerts.none").show();
+                $("a[href=#alerts] span:last").hide();
+            }
+
+            var runAlerts = function() {
                 $.getJSON(theURL + "account/alerts-popup?&_xfResponseType=json&_xfNoRedirect=1&_xfToken=" + theToken, function(theData, textStatus, jqXHR) {
                     var theAlerts = document.createElement("div");
                     $(theAlerts).html(theData.templateHtml);
@@ -175,24 +204,39 @@ function getAlerts(numAlerts, theToken) {
                     }
                     if($(theAlerts).find(".listItemText").size() > 0) {
                         $(theAlerts).find("a").each(function() {
-                            var theNewURL = theURL + $(this).attr("href");
-                            $(this).attr("href", theNewURL).attr("target", "_blank");
+                            var theNewURL = $(this).attr("href");
+
+                            if (theNewURL.indexOf("http://") == -1) {
+                                theNewURL = theURL + theNewURL;
+                            }
+
+                            $(this).attr("target", "_blank").attr("href", theNewURL);
                         });
                         $(theAlerts).find("img").each(function() {
-                            var theNewURL = theURL + $(this).attr("src");
+                            var theNewURL = $(this).attr("src");
 
-                            if ($(this).attr("src").indexOf("http://") == -1) {
-                                $(this).attr("src", theNewURL);
+                            if (theNewURL.indexOf("http://") == -1) {
+                                theNewURL = theURL + theNewURL;
                             }
+
+                            $(this).attr("src", theNewURL);
                         });
 
                         $("#alerts div.tab-alerts:last").html($(theAlerts).find(".alertsPopup").html());
                     }
+
+                    if (numAlerts == 0) {
+                        $("#alerts div.tab-alerts.none").show();
+                        $("a[href=#alerts] span:last").hide();
+                    }
                 });
+            };
+
+            $("a[href=#alerts]").on("show.bs.tab", function (theEvent) {
+                runAlerts();
             });
-            if (numAlerts == 0) {
-                $("#alerts div.tab-alerts.none").show();
-                $("a[href=#alerts] span:last").hide();
+            if ($("#alerts").hasClass("active")) {
+                runAlerts();
             }
         }
     });
@@ -211,32 +255,51 @@ function getSubscriptions(numSubscriptions, theSubscriptions) {
         if (theOptions.ShowSubs) {
             $("a[href=#subscriptions]").closest("li").removeClass("hide");
             $("a[href=#subscriptions] span:last").html(numSubscriptions).show();
-            $("#div.tab-subscriptions.none").removeClass("hide");
+            $("#subscriptions div.tab-subscriptions.none").removeClass("hide").hide();
 
-            $(theSubscriptions).find("a").each(function() {
-                var theNewURL = theURL + $(this).attr("href");
-                $(this).attr("href", theNewURL).attr("target", "_blank");
-            });
-            $(theSubscriptions).find("img").each(function() {
-                var theNewURL = theURL + $(this).attr("src");
-
-                if ($(this).attr("src").indexOf("http://") == -1) {
-                    $(this).attr("src", theNewURL);
-                }
-            });
-            $(theSubscriptions).find("li").each(function() {
-                $(this).find(".secondRow").clone().insertAfter($(this)
-                    .find(".secondRow")).html($(this).find(".lastPost").html());
-            });
-
-            $(theSubscriptions).find(".itemPageNav, .miniMe, .iconKey, .stats, .lastPost, input").remove();
-
-            $("#subscriptions div.tab-subscriptions.none").hide();
-            $("#subscriptions div.tab-subscriptions:last").html(theSubscriptions);
-
-            if (numSubscriptions == 0) {
+            if (numSubscriptions == 0 || $(theSubscriptions).find("li.unread").size() == 0) {
                 $("#subscriptions div.tab-subscriptions.none").show();
                 $("a[href=#subscriptions] span:last").hide();
+            }
+
+            var runSubscriptions = function() {
+                $(theSubscriptions).find("a").each(function() {
+                    var theNewURL = $(this).attr("href");
+
+                    if (theNewURL.indexOf("http://") == -1) {
+                        theNewURL = theURL + theNewURL;
+                    }
+
+                    $(this).attr("target", "_blank").attr("href", theNewURL);
+                });
+                $(theSubscriptions).find("img").each(function() {
+                    var theNewURL = $(this).attr("src");
+
+                    if (theNewURL.indexOf("http://") == -1) {
+                        theNewURL = theURL + theNewURL;
+                    }
+
+                    $(this).attr("src", theNewURL);
+                });
+                $(theSubscriptions).find("li").each(function() {
+                    $(this).find(".secondRow").insertAfter($(this)
+                        .find(".secondRow")).html($(this).find(".lastPost").html());
+                });
+
+                $(theSubscriptions).find(".itemPageNav, .miniMe, .iconKey, .stats, .lastPost, input").remove();
+                $("#subscriptions div.tab-subscriptions:last").html(theSubscriptions);
+
+                if (numSubscriptions == 0 || $(theSubscriptions).find("li.unread").size() == 0) {
+                    $("#subscriptions div.tab-subscriptions.none").show();
+                    $("a[href=#subscriptions] span:last").hide();
+                }
+            };
+
+            $("a[href=#subscriptions]").on("show.bs.tab", function (theEvent) {
+                runSubscriptions();
+            });
+            if ($("#subscriptions").hasClass("active")) {
+                runSubscriptions();
             }
         }
     });
@@ -266,8 +329,25 @@ function getPopup() {
         getSubscriptions(theResult.numSubscriptions, $(theData).find(".discussionList .discussionListItems"));
 
         $(".tab-footer").find("a").each(function() {
-            var theNewURL = theURL + $(this).attr("href");
-            $(this).attr("href", theNewURL).attr("target", "_blank");
+            var theNewURL = $(this).attr("href");
+
+            if (theNewURL.indexOf("http://") == -1) {
+                theNewURL = theURL + theNewURL;
+            }
+
+            $(this).attr("target", "_blank").attr("href", theNewURL);
+        });
+    }).always(function() {
+        getStorageValue({ ActiveTab : theGlobalOptions.ActiveTab }, function(theOptions) {
+            $(".nav-pills").find("a[href=#" + theOptions.ActiveTab + "]").tab("show");
+
+            $("a[data-toggle=tab]").on("show.bs.tab", function (theEvent) {
+                var activeTab = $(theEvent.target).attr("href");
+                activeTab = activeTab.replace("#", "");
+                var theTabOptions = { ActiveTab: activeTab };
+
+                setStorageValue(theTabOptions, function() {});
+            });
         });
     });
 }

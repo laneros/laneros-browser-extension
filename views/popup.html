@@ -17,7 +17,7 @@
       </a>
       <nav class="hide user">
         <ul class="nav nav-pills">
-          <li class="active col-xs-12">
+          <li class="col-xs-12">
             <a href="#home" data-toggle="tab">&nbsp;</a>
           </li>
           <li class="hide">
@@ -40,10 +40,6 @@
       </nav>
     </header>
     <main>
-      <div id="showLoading">
-        <img src="../assets/img/ajax-loader.gif" alt="" width="32" height="32" />
-        <h3 data-message="dataLoading" data-target="html"></h3>
-      </div>
       <section class="hide login">
         <div class="callout callout-danger">
           <h4 data-message="errorMsg" data-target="html"></h4>
@@ -101,7 +97,7 @@
       </section>
       <section class="hide user">
         <div class="tab-content">
-          <div class="tab-pane active" id="home">
+          <div class="tab-pane" id="home">
             <div class="Menu JsOnly" id="AccountMenu">
               <div class="primaryContent menuHeader">
                 <a class="avatar Av1m NoOverlay plainImage" title="View your profile" data-avatarhtml="true">
@@ -209,6 +205,12 @@
           </div>
         </div>
       </section>
+      <div id="showLoading">
+        <div class="hide">
+          <img src="../assets/img/ajax-loader.gif" alt="" width="32" height="32" />
+          <h3 data-message="dataLoading" data-target="html"></h3>
+        </div>
+      </div>
     </main>
     <script type="text/javascript" src="../assets/js/jquery-2.1.0.min.js"></script>
     <script type="text/javascript" src="../assets/js/jquery.form.js"></script>

@@ -7,7 +7,8 @@ var theGlobalOptions = new Object({
     ShowAlerts: true,
     ShowSubs: true,
     ShowNotification: true,
-    ShowLinks: true
+    ShowLinks: true,
+    ActiveTab: "home"
 });
 /**
  * Vars
@@ -132,14 +133,14 @@ function parseLANeros() {
         var theCounter = numConversations + numAlerts + numSubscriptions;
 
         console.log(Date.now() + " - Finished parser ...");
-        getStorageValue({ ShowNotification : theGlobalOptions.ShowNotification }, function(theOptions) {
-            if (theOptions.ShowNotification) {
-                showNotification(numConversations, numAlerts, numSubscriptions);
-            }
-        });
         getBadge(function(theBadgeCounter) {
             if (theBadgeCounter != theCounter) {
                 setBadge(theCounter);
+            }
+        });
+        getStorageValue({ ShowNotification : theGlobalOptions.ShowNotification }, function(theOptions) {
+            if (theOptions.ShowNotification) {
+                showNotification(numConversations, numAlerts, numSubscriptions);
             }
         });
     }).fail(function(jqXHR, textStatus, errorThrown) {

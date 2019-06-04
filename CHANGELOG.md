@@ -2,6 +2,21 @@
 
 All notable changes to `laneros-browser-extension` will be documented in this file.
 
+## 4.0.3 | 2014-03-16
+
+### Added
+
+- Event Pages
+- Alarms
+- Storage
+- Login
+- Content reload
+
+### Changed
+
+- CSS improvements
+- JS improvements
+
 ## 4.0 | 2014-03-09
 
 ### Added
