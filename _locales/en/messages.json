@@ -1,15 +1,15 @@
 {
     "extName": {
-        "message": "LANeros.com (UnOfficial)"
+        "message": "Laneros.com (UnOfficial)"
     },
     "extDesc": {
-        "message": "Web site to discuss about phones, games, technology and meet new friends."
+        "message": "News about technology, internet, games and entertainment. Colombian Community."
     },
     "loading": {
         "message": "Loading Data"
     },
     "error": {
-        "message": "Failed to get data from LANeros.com"
+        "message": "Failed to get data from Laneros.com"
     },
     "conversation": {
         "message": "Inbox"
@@ -33,16 +33,13 @@
         "message": "You do not have subscriptions without reading"
     },
     "goTo": {
-        "message": "Go to LANeros.com"
+        "message": "Go to Laneros.com"
     },
     "success": {
         "message": "Done"
     },
     "cp": {
         "message": "My Account"
-    },
-    "mail": {
-        "message": "LANeros.com E-mail"
     },
     "logout": {
         "message": "Logout"
