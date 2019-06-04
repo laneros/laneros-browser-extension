@@ -15,7 +15,6 @@ a, a:visited, a:hover, a:active {
     text-decoration: none;
 }
 h1 {
-    border-bottom: 1px dotted #999;
     font-size: 24px;
     text-align: center;
     text-shadow: white 0px 1px 1px;
@@ -43,7 +42,7 @@ img {
 }
 .logoDiv {
     min-width: 310px;
-    background: url("../img/header_center.png") repeat-x;
+    background-color: #006ca7;
     padding: 5px;
 }
 .logo {
@@ -102,6 +101,7 @@ img {
 }
 .optionsBg {
     background: #DDD !important;
+    margin: 0px;
 }
 .settings {
     padding-left: 10px;
