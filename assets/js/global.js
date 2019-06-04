@@ -15,7 +15,7 @@ objLANeros.isRunning = "false";
  * Variables
  */
 var intervalPopup, intervalBG, notification, globalCounter = 0, counter = 0;
-var url = "http://www.laneros.com/";
+var url = "http://foros.laneros.com/";
 /*
  * Ejecutar al Cargar el Documento
  */

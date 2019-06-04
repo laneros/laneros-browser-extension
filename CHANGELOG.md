@@ -2,6 +2,12 @@
 
 All notable changes to `laneros-browser-extension` will be documented in this file.
 
+## 3.2 | 2014-02-18
+
+### Changed
+
+- Forum URL fix
+
 ## 3.1 | 2014-02-18
 
 ### Changed
@@ -9,6 +15,12 @@ All notable changes to `laneros-browser-extension` will be documented in this fi
 - Major Update
 - Update jQuery
 - Improve folder organization
+
+## 3.0.3 | 2013-07-21
+
+### Changed
+
+- Quick URL fix
 
 ## 3.0.2 | 2013-07-21
 
