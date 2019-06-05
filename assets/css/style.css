@@ -78,3 +78,9 @@ h3 {
     left: 50%;
     margin: -125px 0 0 -175px;
 }
+.panel-default>.panel-heading {
+    background-color: rgb(226, 228, 229);
+}
+.panel-footer {
+    background-color: rgb(240, 240, 240);
+}

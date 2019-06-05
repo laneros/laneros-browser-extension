@@ -193,6 +193,8 @@ function do_login() {
     var dtLDate = new Date();
     console.log(dtLDate.toLocaleString() + ' - Show login ...');
 
+    set_badge(0);
+
     $(objLLink).attr('rel', 'stylesheet')
         .attr('href', stRURL + 'css.php?css=facebook,nat_public_css,panel_scroller,twitter&style=2&dir=LTR')
         .appendTo('head');

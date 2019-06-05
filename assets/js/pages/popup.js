@@ -91,9 +91,7 @@ function get_account(objRAccount, stRToken, objRResult) {
                 $.get(stRURL + 'forums/ .visitorPanel', function(objRData) {
                     if (objRData) {
                         var inLMessages = $(objRData).find('.stats dl:first dd').html();
-                        var inLRatingPositive = $(objRData).find('.stats dl:eq(1) dd .dark_postrating_positive').html();
-                        var inLRatingNeutral = $(objRData).find('.stats dl:eq(1) dd .dark_postrating_neutral').html();
-                        var inLRatingNegative = $(objRData).find('.stats dl:eq(1) dd .dark_postrating_negative').html();
+                        var inLRatingPositive = $(objRData).find('.stats dl:eq(1) dd').html();
                         var inLPoints = $(objRData).find('.stats dl:eq(2) dd').html();
                         var inLFeedbackPositive = $(objRData).find('.feedbackStats dd .Positive').html();
                         var inLFeedbackNeutral = $(objRData).find('.feedbackStats dd .Neutral').html();
@@ -103,9 +101,7 @@ function get_account(objRAccount, stRToken, objRResult) {
                         $('.loading-overlay').addClass('hide');
                         $('.user-info').removeClass('hide');
                         $('.user-info .user-messages').html(inLMessages);
-                        $('.user-info .user-ratings .dark_postrating_positive').html(inLRatingPositive);
-                        $('.user-info .user-ratings .dark_postrating_neutral').html(inLRatingNeutral);
-                        $('.user-info .user-ratings .dark_postrating_negative').html(inLRatingNegative);
+                        $('.user-info .user-ratings').html(inLRatingPositive);
                         $('.user-info .user-points').html(inLPoints)
                         $('.user-info .feedbackStats .Positive').html(inLFeedbackPositive);
                         $('.user-info .feedbackStats .Neutral').html(inLFeedbackNeutral);

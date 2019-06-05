@@ -1,5 +1,6 @@
 body {
     margin-top: 25px;
+    background-color: rgb(187, 187, 187) !important;
 }
 .active {
     background-color: #337ab7 !important;

@@ -2,7 +2,7 @@
     "name": "__MSG_extName__",
     "short_name": "Laneros",
     "description": "__MSG_extDesc__",
-    "version": "5.0.2",
+    "version": "5.0.3",
     "manifest_version": 2,
     "options_page": "views/options.html",
     "default_locale": "es",
