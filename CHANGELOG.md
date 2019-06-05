@@ -2,6 +2,12 @@
 
 All notable changes to `laneros-browser-extension` will be documented in this file.
 
+## 5.0.2 | 2016-03-20
+
+### Changed
+
+- Minor javascript adjustments
+
 ## 5.0.1 | 2016-02-16
 
 ### Added

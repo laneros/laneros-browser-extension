@@ -89,8 +89,8 @@ function set_parser() {
     var objLjqXHR = $.get(stRURL + 'watched/threads/all', function(objRData) {
         var inLConversations = 0, inLAlerts = 0, inLSubscriptions = 0, inLCounter = 0;
 
-        inLConversations = parseInt($(objRData).find('#VisitorExtraMenu_ConversationsCounter .Total').text());
-        inLAlerts = parseInt($(objRData).find('#VisitorExtraMenu_AlertsCounter .Total').text());
+        inLConversations = parseInt($(objRData).find('#VisitorExtraMenu_ConversationsCounter:first .Total').text());
+        inLAlerts = parseInt($(objRData).find('#VisitorExtraMenu_AlertsCounter:first .Total').text());
         inLSubscriptions = parseInt($(objRData).find('.discussionList .discussionListItems li.unread').size());
         inLCounter = inLConversations + inLAlerts + inLSubscriptions;
 
