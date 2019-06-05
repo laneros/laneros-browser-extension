@@ -1,133 +1,130 @@
 /**
- * function createNotification
+ * function set_create_notification
  *
  * Create a Chrome Notification
  *
- * @param theNotificationID
- * @param theOptions
- * @param theListener
- * @param isNew
+ * @param objRNotificationID
+ * @param objROptions
+ * @param objRListener
+ * @param bolRIsNew
  */
-function createNotification(theNotificationID, theOptions, theListener, isNew) {
-    if (isNew) {
-        chrome.notifications.clear(theNotificationID, function(wasCleared) {
-            return wasCleared;
+function set_create_notification(objRNotificationID, objROptions, objRListener, bolRIsNew) {
+    if (bolRIsNew) {
+        chrome.notifications.clear(objRNotificationID, function(bolRWasCleared) {
+            return bolRWasCleared;
         });
     }
 
-    chrome.notifications.create(theNotificationID, theOptions,
-        function(notificationID) {
-            return notificationID;
+    chrome.notifications.create(objRNotificationID, objROptions,
+        function(objRNotificationID) {
+            return objRNotificationID;
     });
-    chrome.notifications.onButtonClicked.addListener(theListener);
+    chrome.notifications.onButtonClicked.addListener(objRListener);
 }
 /**
- * function createAlarm
+ * function set_create_alarm
  *
  * Create a Chrome Alarm
  *
- * @param theAlarmID
- * @param theOptions
- * @param theListener
+ * @param objRAlarmID
+ * @param objROptions
+ * @param objRListener
  */
-function createAlarm(theAlarmID, theOptions, theListener) {
-    chrome.alarms.get(theAlarmID, function (theAlarm) {
-        if (typeof theAlarm == "undefined") {
-            console.log(Date.now() + " - Create Alarm ...");
-            chrome.alarms.create(theAlarmID, theOptions);
+function set_create_alarm(objRAlarmID, objROptions, objRListener) {
+    chrome.alarms.get(objRAlarmID, function (objRAlarm) {
+        if (typeof objRAlarm == 'undefined') {
+            console.log(Date.now() + ' - Create Alarm ...');
+
+            chrome.alarms.create(objRAlarmID, objROptions);
             chrome.alarms.onAlarm.addListener(function(theAlarm) {
-                if (theAlarm.name == theAlarmID) {
-                    theListener();
+                if (theAlarm.name == objRAlarmID) {
+                    objRListener();
                 }
             });
         }
     });
 }
 /**
- * function runLANerosBg
+ * function set_background
  *
  * Create Alarm to fire Base Function
  */
-function runLANerosBg() {
-    console.log(Date.now() + " - Background Started up ...");
-    getStorageValue({ TimeRev : theGlobalOptions.TimeRev }, function(theOptions) {
-        parseLANeros();
-        TimeRev = theOptions.TimeRev / 1000 / 60;
+function set_background() {
+    console.log(Date.now() + ' - Background Started up ...');
 
-        createAlarm("LanerosAlarm", {
+    get_storage({ dtRTimeRev : objRGlobalOptions.dtRTimeRev }, function(objROptions) {
+        set_parser();
+        var dtLTimeRev = objROptions.dtRTimeRev / 1000 / 60;
+
+        set_create_alarm('LanerosAlarm', {
             when : Date.now() + 1,
-            periodInMinutes : TimeRev
-        }, parseLANeros);
+            periodInMinutes : dtLTimeRev
+        }, set_parser);
     });
 }
 /**
- * function showNotification
+ * function set_create_notification
  *
  * Show Notification Popup
  *
- * @param numConversations
- * @param numAlerts
- * @param numSubscriptions
+ * @param inRConversations
+ * @param inRAlerts
+ * @param inRSubscriptions
  */
-function showNotification(numConversations, numAlerts, numSubscriptions) {
-    var theCounter = numConversations + numAlerts + numSubscriptions;
+function set_notification(inRConversations, inRAlerts, inRSubscriptions) {
+    var objLItems = new Array();
+    var objLConversation = {
+        title: get_message('labelMessages'),
+        message: get_message('zeroInbox')
+    };
+    var objLAlert = {
+        title: get_message('labelAlerts'),
+        message: get_message('zeroAlerts')
+    };
+    var objLSubscription = {
+        title: get_message('labelSubscriptions'),
+        message: get_message('zeroSubs')
+    };
 
-    console.log(Date.now() + " - Show Notification ...");
-    getBadge(function(theBadgeCounter) {
-        if (theCounter > theBadgeCounter) {
-            var theItems = new Array();
-            var conversationItem = {
-                title: getMessage("labelMessages"),
-                message: getMessage("zeroInbox")
-            };
-            var alertItem = {
-                title: getMessage("labelAlerts"),
-                message: getMessage("zeroAlerts")
-            };
-            var subscriptionItem = {
-                title: getMessage("labelSubscriptions"),
-                message: getMessage("zeroSubs")
-            };
+    console.log(Date.now() + ' - Show Notification ...');
 
-            if (numConversations > 0) {
-                conversationItem.message = numConversations + " " + getMessage("labelNew");
-            }
-            if (numAlerts > 0) {
-                alertItem.message = numAlerts + " " + getMessage("labelNew");
-            }
-            if (numSubscriptions > 0) {
-                subscriptionItem.message = numSubscriptions + " " + getMessage("labelNew");
-            }
+    if (inRConversations > 0) {
+        objLConversation.message = inRConversations + ' ' + get_message('labelNew');
+    }
+    if (inRAlerts > 0) {
+        objLAlert.message = inRAlerts + ' ' + get_message('labelNew');
+    }
+    if (inRSubscriptions > 0) {
+        objLSubscription.message = inRSubscriptions + ' ' + get_message('labelNew');
+    }
 
-            theItems.push(conversationItem);
-            theItems.push(alertItem);
-            theItems.push(subscriptionItem);
+    objLItems.push(objLConversation);
+    objLItems.push(objLAlert);
+    objLItems.push(objLSubscription);
 
-            createNotification("LanerosNotification", {
-                type: "list",
-                title: getMessage("extName"),
-                message: getMessage("extDesc"),
-                iconUrl: "../assets/img/laneros.png",
-                items: theItems,
-                buttons: [{
-                        title: getMessage("goTo")
-                    }, {
-                        title: getMessage("goToAccount"),
-                }]
-            }, function(notificationId, buttonIndex) {
-                switch (buttonIndex) {
-                    case 0:
-                        chrome.tabs.create({url: "http://www.laneros.com"}, function(theTab) {});
-                        break;
-                    default:
-                        chrome.tabs.create({url: theURL + "account"}, function(theTab) {});
-                        break;
-                }
-            }, true);
+    set_create_notification('LanerosNotification', {
+        type: 'list',
+        title: get_message('extName'),
+        message: get_message('extDesc'),
+        iconUrl: '../assets/img/icon.png',
+        items: objLItems,
+        buttons: [{
+                title: get_message('goTo')
+            }, {
+                title: get_message('goToAccount'),
+        }]
+    }, function(objRNotificationId, inRButtonIndex) {
+        switch (inRButtonIndex) {
+            case 0:
+                chrome.tabs.create({url: stRURL}, function(objRTab) {});
+                break;
+            default:
+                chrome.tabs.create({url: stRURL + 'account'}, function(objRTab) {});
+                break;
         }
-    });
+    }, true);
 }
 /**
  * Run on Startup
  */
-getStorageValue({ isRunning : false }, runLANerosBg);
+get_storage({ isRunning : false }, set_background);

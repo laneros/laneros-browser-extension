@@ -1,352 +1,427 @@
 /**
- * function showRequest
+ * function set_response
  *
- * Run process before form send
+ * Set Ajax Response
  *
- * @param formData
- * @param jqForm
- * @param options
+ * @param objRResponse
  */
-function showRequest(formData, jqForm, options) {
-    $("#responseContainer").hide();
-    $("section.login").hide();
-    $("#showLoading").find("h3").html(getMessage("dataLoading"));
+function set_response(objRResponse) {
+    var inLCounter = parseInt(objRResponse._visitor_conversationsUnread) + parseInt(objRResponse._visitor_alertsUnread);
+
+    if (objRResponse._visitor_conversationsUnread > 0) {
+        $('.external-inbox').html(objRResponse._visitor_conversationsUnread);
+    }
+    if (objRResponse._visitor_alertsUnread > 0) {
+        $('.external-alerts').html(objRResponse._visitor_alertsUnread);
+    }
+
+    get_badge(function(inRBadgeCounter) {
+        set_badge(inLCounter);
+
+        if (inRBadgeCounter < inLCounter) {
+            get_storage({ bolRShowNotification : objRGlobalOptions.bolRShowNotification }, function(objROptions) {
+                if (objROptions.bolRShowNotification) {
+                    set_notification(objRResponse._visitor_conversationsUnread, objRResponse._visitor_alertsUnread, 0);
+                }
+            });
+        }
+    });
 }
 /**
- * function showResponse
- *
- * Run process after form send
- *
- * @param responseText
- * @param statusText
- * @param xhr
- * @param $form
- */
-function showResponse(responseText, statusText, xhr, $form) {
-    window.location.reload();
-}
-/**
- * function getAccount
+ * function get_account
  *
  * Get Account Data
  *
- * @param theAccount
- * @param theToken
- * @param theResult
+ * @param objRAccount
+ * @param stRToken
+ * @param objRResult
  */
-function getAccount(theAccount, theToken, theResult) {
-    console.log(Date.now() + " - Get Account ...");
-    getStorageValue({ ShowLinks : theGlobalOptions.ShowLinks }, function(theOptions) {
-        var theLink = document.createElement("link");
-        var theAvatar = $(theAccount).find(".avatar span.s").attr("style");
-        var theUserID = theToken.split(",").shift();
-        var theMember = $(theAccount).find(".avatar").attr("href");
+function get_account(objRAccount, stRToken, objRResult) {
+    console.log(Date.now() + ' - Get Account ...');
 
-        $(theLink).attr("rel", "stylesheet")
-            .attr("href", theURL + "css.php?css=xenforo,form,public&style=4&dir=LTR")
-            .appendTo("head");
-        theAvatar = theAvatar.replace("url('", "url('" + theURL);
-        theAvatar = theAvatar.replace("avatars/s", "avatars/m");
+    get_storage({ bolRShowLinks : objRGlobalOptions.bolRShowLinks }, function(objROptions) {
+        var stLUserID = $(objRAccount).find('.primaryContent a.avatar').attr('href');
+        var stLAvatar = $(objRAccount).find('.primaryContent a.avatar span.img').attr('style');
+        var stLUsername = $(objRAccount).find('.primaryContent h3 a').html();
+        var stLUserTitle = $(objRAccount).find('.primaryContent .muted').html();
+        var bolLStatus = $(objRAccount).find('input[name=visible]').is(':checked');
+        var arrLAvatar = stLAvatar.split('\'');
+        var inLUserID = stRToken.split(',').shift();
 
-        $("input[name=_xfToken]").val(theToken);
-        $("form.statusPoster").attr("action", theMember + "/post");
-        $(".primaryContent a").attr("href", theMember);
-        $("a.avatar span.m").attr("style", theAvatar);
-        $(".MenuCloser").val(getMessage("homePost"));
-        $(".StatusEditor").on("focus", function() {
-            $(".submitUnit").show();
-        }).on("focusout", function() {
-            $(".submitUnit").hide();
+        stLUserID = stLUserID.replace('miembros', '');
+
+        if (objRResult.inRConversations > 0) {
+            $('.external-inbox').html(objRResult.inRConversations);
+        }
+        if (objRResult.inRAlerts > 0) {
+            $('.external-alerts').html(objRResult.inRAlerts);
+        }
+        if (objRResult.inRSubscriptions > 0) {
+            $('.external-subscriptions').html(objRResult.inRSubscriptions);
+        }
+
+        $('input[name=_xfToken]').val(stRToken);
+        $('#statusPoster').attr('action', stRURL + 'members' + stLUserID + 'post');
+
+        $('.user-avatar, .user-name a').attr('href', stRURL + 'members' + stLUserID);
+        $('.user-avatar img').attr('src', stRURL + arrLAvatar[1]);
+        $('.user-name a').html(stLUsername);
+        $('.user-name small').html(stLUserTitle);
+
+        $('.loading-overlay').removeClass('hide');
+
+        $('#visibilityForm, #statusPoster').validate({
+            submitHandler: function(form) {
+                $(form).ajaxSubmit({
+                    success: function(objRResponse, stRStatus) {
+                        if (stRStatus == 'success') {
+                            set_response(objRResponse);
+                        }
+                    }
+                });
+
+                return false;
+            }
         });
 
-        $.get(theURL + "account/privacy", function(theData, textStatus, jqXHR) {
-            var isVisible = $(theData).find("label[for=ctrl_visible] input").is(":checked");
-            $("input[name=visible]").attr("checked", isVisible).change(function() {
-                $(this).closest("form").submit();
-            });
+        get_storage({ bolRShowInfo : objRGlobalOptions.bolRShowInfo }, function(objROptions) {
+            if (objROptions.bolRShowInfo) {
+                $.get(stRURL + 'forums/ .visitorPanel', function(objRData) {
+                    if (objRData) {
+                        var inLMessages = $(objRData).find('.stats dl:first dd').html();
+                        var inLRatingPositive = $(objRData).find('.stats dl:eq(1) dd .dark_postrating_positive').html();
+                        var inLRatingNeutral = $(objRData).find('.stats dl:eq(1) dd .dark_postrating_neutral').html();
+                        var inLRatingNegative = $(objRData).find('.stats dl:eq(1) dd .dark_postrating_negative').html();
+                        var inLPoints = $(objRData).find('.stats dl:eq(2) dd').html();
+                        var inLFeedbackPositive = $(objRData).find('.feedbackStats dd .Positive').html();
+                        var inLFeedbackNeutral = $(objRData).find('.feedbackStats dd .Neutral').html();
+                        var inLFeedbackNegative = $(objRData).find('.feedbackStats dd .Negative').html();
+                        var stLTurkoins = $(objRData).find('.visitorText dl:last dd a').html();
+
+                        $('.loading-overlay').addClass('hide');
+                        $('.user-info').removeClass('hide');
+                        $('.user-info .user-messages').html(inLMessages);
+                        $('.user-info .user-ratings .dark_postrating_positive').html(inLRatingPositive);
+                        $('.user-info .user-ratings .dark_postrating_neutral').html(inLRatingNeutral);
+                        $('.user-info .user-ratings .dark_postrating_negative').html(inLRatingNegative);
+                        $('.user-info .user-points').html(inLPoints)
+                        $('.user-info .feedbackStats .Positive').html(inLFeedbackPositive);
+                        $('.user-info .feedbackStats .Neutral').html(inLFeedbackNeutral);
+                        $('.user-info .feedbackStats .Negative').html(inLFeedbackNegative);
+                        $('.user-info .user-turkoins').html(stLTurkoins)
+                    }
+                });
+            }
+            else {
+                $('.loading-overlay').addClass('hide');
+            }
         });
-        $.get(theURL + theMember, function(theData, textStatus, jqXHR) {
-            var theUsername = $(theData).find("h1.username").html();
-            var userTitle = $(theData).find("span.userTitle").html();
 
-            $("a.concealed, a[href=#home]").html(theUsername);
-            $(".primaryContent .muted").html(userTitle);
-        });
-        $("#home").find("form").each(function() {
-            var theAction = $(this).attr("action");
-            $(this).attr("action", theURL + theAction).attr("target", "_blank");
-        });
-        $("#home").find("a").each(function() {
-            var theNewURL = $(this).attr("href");
-
-            if (theNewURL.indexOf("http://") == -1) {
-                theNewURL = theURL + theNewURL;
-            }
-
-            if ($(this).attr("href").indexOf("user_id") != -1) {
-                theNewURL += theUserID;
-            }
-            if ($(this).attr("href").indexOf("_xfToken") != -1) {
-                theNewURL += theToken;
-            }
-
-            $(this).attr("target", "_blank").attr("href", theNewURL);
+        $('input[name=visible]').attr('checked', bolLStatus).change(function() {
+            $('#visibilityForm').submit();
         });
 
-        if (theOptions.ShowLinks) {
-            if (theResult.numConversations > 0) {
-                $("#VisitorExtraMenu_ConversationsCounter").removeClass("Zero")
-                    .find(".Total").html(theResult.numConversations);
-            }
-            if (theResult.numAlerts > 0) {
-                $("#VisitorExtraMenu_AlertsCounter").removeClass("Zero")
-                    .find(".Total").html(theResult.numAlerts);
-            }
+        $('a.external-id').each(function() {
+            var stLHref = $(this).attr('href');
+
+            $(this).attr('href', stLHref + inLUserID);
+        });
+
+        $('a.external-token').each(function() {
+            var stLHref = $(this).attr('href');
+
+            $(this).attr('href', stLHref + stRToken);
+        });
+
+        if (!objROptions.bolRShowLinks) {
+            $('#home').find('.clearfix:first').hide();
         }
         else {
-            $("#home").find(".secondaryContent").remove();
+            $('.section-user').removeClass('hide').hide().fadeIn('fast');
         }
     });
 }
 /**
- * function getConversations
+ * function get_conversations
  *
  * Get Conversations
  *
- * @param numConversations
- * @param theToken
+ * @param stRToken
  */
-function getConversations(numConversations, theToken) {
-    console.log(Date.now() + " - Get Conversations ...");
-    getStorageValue({ ShowInbox : theGlobalOptions.ShowInbox }, function(theOptions) {
-        if (theOptions.ShowInbox) {
-            $("a[href=#inbox]").closest("li").removeClass("hide");
-            $("a[href=#inbox] span:last").html(numConversations).show();
-            $("#inbox div.tab-inbox.none").removeClass("hide").hide();
+function get_conversations(stRToken) {
+    console.log(Date.now() + ' - Get Conversations ...');
 
-            if (numConversations == 0) {
-                $("#inbox div.tab-inbox.none").show();
-                $("a[href=#inbox] span:last").hide();
-            }
+    $('#inbox .list-group-inbox').html('');
+    $('#inbox .list-group-item-danger').addClass('hide');
+    $('#inbox .list-group-item-info').removeClass('hide').show();
 
-            var runInbox = function() {
-                $.getJSON(theURL + "conversations/popup?&_xfResponseType=json&_xfNoRedirect=1&_xfToken=" + theToken, function(theData, textStatus, jqXHR) {
-                    var theConversations = document.createElement("div");
-                    $(theConversations).html(theData.templateHtml);
+    $.getJSON(stRURL + 'conversations/popup?_xfResponseType=json&_xfNoRedirect=1&_xfToken=' + stRToken, function(objRResponse) {
+        var objLConversations = document.createElement('div');
 
-                    if($(theConversations).find(".listItemText").size() > 0) {
-                        $(theConversations).find("a").each(function() {
-                            var theNewURL = $(this).attr("href");
+        set_response(objRResponse);
 
-                            if (theNewURL.indexOf("http://") == -1) {
-                                theNewURL = theURL + theNewURL;
-                            }
+        $('#inbox .list-group-item-info').slideUp(function() {
+            $(objLConversations).html(objRResponse.templateHtml);
 
-                            $(this).attr("target", "_blank").attr("href", theNewURL);
-                        });
-                        $(theConversations).find("img").each(function() {
-                            var theNewURL = $(this).attr("src");
+            if ($(objLConversations).find('.noItems').size() == 0) {
+                $(objLConversations).find('.listItem').each(function () {
+                    var objLConversation = $('.list-group-inbox-sample').clone();
 
-                            if (theNewURL.indexOf("http://") == -1) {
-                                theNewURL = theURL + theNewURL;
-                            }
+                    $(this).find('a').each(function () {
+                        $(this).attr('target', '_blank').attr('href', stRURL + $(this).attr('href'));
+                    });
+                    $(this).find('img').each(function () {
+                        if ($(this).attr('src').indexOf('data/avatars') !== -1) {
+                            $(this).attr('src', stRURL + $(this).attr('src'));
+                        }
+                    });
 
-                            $(this).attr("src", theNewURL);
-                        });
-
-                        $("#inbox div.tab-inbox:last").html(theConversations);
+                    if ($(this).hasClass('unread')) {
+                        $(objLConversation).addClass('list-group-item-warning');
                     }
 
-                    if (numConversations == 0) {
-                        $("#inbox div.tab-inbox.none").show();
-                        $("a[href=#inbox] span:last").hide();
-                    }
+                    $(objLConversation).find('.col-xs-2 a').attr('href', $(this).find('a.avatar').attr('href'));
+                    $(objLConversation).find('.col-xs-2 img').attr('src', $(this).find('a.avatar img').attr('src'))
+                        .attr('alt', $(this).find('a.avatar img').attr('alt'));
+
+                    $(objLConversation).find('.col-xs-10 .list-group-item-heading a')
+                        .attr('href', $(this).find('h3.title a').attr('href'))
+                        .html($(this).find('h3.title a').html());
+                    $(objLConversation).find('.col-xs-10 .conversation-participants')
+                        .html($(this).find('.posterDate').html());
+                    $(objLConversation).find('.col-xs-10 .conversation-last-reply')
+                        .html($(this).find('abbr').closest('.muted').html());
+
+                    $(objLConversation).removeClass('list-group-inbox-sample hide').appendTo('#inbox .list-group-inbox');
                 });
-            };
-
-            $("a[href=#inbox]").on("show.bs.tab", function (theEvent) {
-                runInbox();
-            });
-            if ($("#inbox").hasClass("active")) {
-                runInbox();
             }
-        }
+            else {
+                $('#inbox .list-group-item-danger').removeClass('hide').hide().slideDown();
+            }
+        });
     });
 }
 /**
- * function getAlerts
+ * function get_alerts
  *
  * Get Alerts
  *
- * @param numAlerts
  * @param theToken
  */
-function getAlerts(numAlerts, theToken) {
-    console.log(Date.now() + " - Get Alerts ...");
-    getStorageValue({ ShowAlerts : theGlobalOptions.ShowAlerts }, function(theOptions) {
-        if (theOptions.ShowAlerts) {
-            $("a[href=#alerts]").closest("li").removeClass("hide");
-            $("a[href=#alerts] span:last").html(numAlerts).show();
-            $("#alerts div.tab-alerts.none").removeClass("hide").hide();
+function get_alerts(stRToken) {
+    console.log(Date.now() + ' - Get Alerts ...');
 
-            if (numAlerts == 0) {
-                $("#alerts div.tab-alerts.none").show();
-                $("a[href=#alerts] span:last").hide();
-            }
+    $('#alerts .list-group-alerts').html('');
+    $('#alerts .list-group-item-danger').addClass('hide');
+    $('#alerts .list-group-item-info').removeClass('hide').show();
 
-            var runAlerts = function() {
-                $.getJSON(theURL + "account/alerts-popup?&_xfResponseType=json&_xfNoRedirect=1&_xfToken=" + theToken, function(theData, textStatus, jqXHR) {
-                    var theAlerts = document.createElement("div");
-                    $(theAlerts).html(theData.templateHtml);
+    $.getJSON(stRURL + 'account/alerts-popup?_xfResponseType=json&_xfNoRedirect=1&_xfToken=' + stRToken, function(objRResponse) {
+        var objLAlerts = document.createElement('div');
 
-                    if($(theAlerts).find("ol.Unread").size() == 0) {
-                        $("#alerts div.tab-alerts.none").show();
-                    }
-                    if($(theAlerts).find(".listItemText").size() > 0) {
-                        $(theAlerts).find("a").each(function() {
-                            var theNewURL = $(this).attr("href");
+        set_response(objRResponse);
 
-                            if (theNewURL.indexOf("http://") == -1) {
-                                theNewURL = theURL + theNewURL;
-                            }
+        $('#alerts .list-group-item-info').slideUp(function() {
+            $(objLAlerts).html(objRResponse.templateHtml);
 
-                            $(this).attr("target", "_blank").attr("href", theNewURL);
-                        });
-                        $(theAlerts).find("img").each(function() {
-                            var theNewURL = $(this).attr("src");
+            if ($(objLAlerts).find('.noItems').size() == 0) {
+                $(objLAlerts).find('.listItem').each(function () {
+                    var objLAlert = $('.list-group-alert-sample').clone();
+                    var objLDate = $(this).find('abbr');
 
-                            if (theNewURL.indexOf("http://") == -1) {
-                                theNewURL = theURL + theNewURL;
-                            }
+                    $(this).find('a').each(function () {
+                        $(this).attr('target', '_blank').attr('href', stRURL + $(this).attr('href'));
+                    });
+                    $(this).find('img').each(function () {
+                        if ($(this).attr('src').indexOf('data/avatars') !== -1) {
+                            $(this).attr('src', stRURL + $(this).attr('src'));
+                        }
+                    });
 
-                            $(this).attr("src", theNewURL);
-                        });
-
-                        $("#alerts div.tab-alerts:last").html($(theAlerts).find(".alertsPopup").html());
+                    if ($(this).hasClass('new')) {
+                        $(objLAlert).addClass('list-group-item-warning');
                     }
 
-                    if (numAlerts == 0) {
-                        $("#alerts div.tab-alerts.none").show();
-                        $("a[href=#alerts] span:last").hide();
-                    }
+                    $(this).find('.listItemText abbr, .listItemText .newIcon').remove();
+                    $(this).find('h3:first').addClass('list-group-item-heading');
+
+                    $(objLAlert).find('.col-xs-2 a').attr('href', $(this).find('a.avatar').attr('href'));
+                    $(objLAlert).find('.col-xs-2 img').attr('src', $(this).find('a.avatar img').attr('src'))
+                        .attr('alt', $(this).find('a.avatar img').attr('alt'));
+
+                    $(objLAlert).find('.col-xs-10 .alert-data').html($(this).find('.listItemText h3').html());
+                    $(objLAlert).find('.col-xs-10 .alert-date').html(objLDate);
+
+                    $(objLAlert).removeClass('list-group-alert-sample hide').appendTo('#alerts .list-group-alerts');
                 });
-            };
-
-            $("a[href=#alerts]").on("show.bs.tab", function (theEvent) {
-                runAlerts();
-            });
-            if ($("#alerts").hasClass("active")) {
-                runAlerts();
             }
-        }
+            else {
+                $('#alerts .list-group-item-danger').removeClass('hide').hide().slideDown();
+            }
+        });
     });
 }
 /**
- * function getSubscriptions
+ * function get_subscriptions
  *
  * Get Subscriptions
  *
  * @param numSubscriptions
  * @param theSubscriptions
  */
-function getSubscriptions(numSubscriptions, theSubscriptions) {
-    console.log(Date.now() + " - Get Subscriptions ...");
-    getStorageValue({ ShowSubs : theGlobalOptions.ShowSubs }, function(theOptions) {
-        if (theOptions.ShowSubs) {
-            $("a[href=#subscriptions]").closest("li").removeClass("hide");
-            $("a[href=#subscriptions] span:last").html(numSubscriptions).show();
-            $("#subscriptions div.tab-subscriptions.none").removeClass("hide").hide();
+function get_subscriptions(objRWatchedThreads) {
+    console.log(Date.now() + ' - Get Subscriptions ...');
 
-            if (numSubscriptions == 0 || $(theSubscriptions).find("li.unread").size() == 0) {
-                $("#subscriptions div.tab-subscriptions.none").show();
-                $("a[href=#subscriptions] span:last").hide();
-            }
+    var bolLNew = false;
 
-            var runSubscriptions = function() {
-                $(theSubscriptions).find("a").each(function() {
-                    var theNewURL = $(this).attr("href");
+    $('#subscriptions .list-group-subscriptions').html('');
+    $('#subscriptions .list-group-item-danger').addClass('hide');
+    $('#subscriptions .list-group-item-info').removeClass('hide').show();
 
-                    if (theNewURL.indexOf("http://") == -1) {
-                        theNewURL = theURL + theNewURL;
-                    }
+    $('#subscriptions .list-group-item-info').slideUp(function() {
+        $(objRWatchedThreads).find('.discussionListItem').each(function () {
+            var objLThread = $('.list-group-subscription-sample').clone();
 
-                    $(this).attr("target", "_blank").attr("href", theNewURL);
-                });
-                $(theSubscriptions).find("img").each(function() {
-                    var theNewURL = $(this).attr("src");
-
-                    if (theNewURL.indexOf("http://") == -1) {
-                        theNewURL = theURL + theNewURL;
-                    }
-
-                    $(this).attr("src", theNewURL);
-                });
-                $(theSubscriptions).find("li").each(function() {
-                    $(this).find(".secondRow").insertAfter($(this)
-                        .find(".secondRow")).html($(this).find(".lastPost").html());
-                });
-
-                $(theSubscriptions).find(".itemPageNav, .miniMe, .iconKey, .stats, .lastPost, input").remove();
-                $("#subscriptions div.tab-subscriptions:last").html(theSubscriptions);
-
-                if (numSubscriptions == 0 || $(theSubscriptions).find("li.unread").size() == 0) {
-                    $("#subscriptions div.tab-subscriptions.none").show();
-                    $("a[href=#subscriptions] span:last").hide();
-                }
-            };
-
-            $("a[href=#subscriptions]").on("show.bs.tab", function (theEvent) {
-                runSubscriptions();
+            $(this).find('input, .itemPageNav, .controls, .stats, .iconKey').remove();
+            $(this).find('a').each(function () {
+                $(this).attr('target', '_blank').attr('href', stRURL + $(this).attr('href'));
             });
-            if ($("#subscriptions").hasClass("active")) {
-                runSubscriptions();
+            $(this).find('img').each(function () {
+                if ($(this).attr('src').indexOf('data/avatars') !== -1) {
+                    $(this).attr('src', stRURL + $(this).attr('src'));
+                }
+            });
+
+            if ($(this).hasClass('unread')) {
+                $(objLThread).addClass('list-group-item-warning');
+                bolLNew = true;
             }
+
+            $(objLThread).find('.col-xs-2 a:first').attr('href', $(this).find('a.avatar:first').attr('href'));
+            $(objLThread).find('.col-xs-2 a:first img').attr('src', $(this).find('a.avatar:first img').attr('src'))
+                .attr('alt', $(this).find('a.avatar:first img').attr('alt'));
+
+            $(objLThread).find('.col-xs-2 a.miniMe').attr('href', $(this).find('a.miniMe').attr('href'));
+
+            if ($(this).find('a.miniMe').size() > 0) {
+                $(objLThread).find('.col-xs-2 a.miniMe img').attr('src', $(this).find('a.miniMe img').attr('src'))
+                    .attr('alt', $(this).find('a.miniMe img').attr('alt'));
+                (objLThread).find('.col-xs-2 a.miniMe').removeClass('hide');
+            }
+
+            $(objLThread).find('.col-xs-10 .list-group-item-heading')
+                .html($(this).find('h3').html());
+            $(objLThread).find('.col-xs-10 .prefixOrange').removeClass('prefixOrange')
+                .addClass('label label-orange');
+            $(objLThread).find('.col-xs-10 .prefixAzul').removeClass('prefixAzul')
+                .addClass('label label-blue');
+
+            $(objLThread).find('.col-xs-10 .subscription-data')
+                .html($(this).find('.secondRow .posterDate').html());
+            $(objLThread).find('.col-xs-10 .subscription-last-reply .subscription-who span:last')
+                .html($(this).find('.lastPost dt').html());
+            $(objLThread).find('.col-xs-10 .subscription-last-reply .subscription-when')
+                .html($(this).find('.lastPost dd').html());
+
+            $(objLThread).removeClass('list-group-subscription-sample hide')
+                .appendTo('#subscriptions .list-group-subscriptions');
+        });
+
+        if (!bolLNew) {
+            $('#subscriptions .list-group-item-danger').removeClass('hide').show();
         }
     });
 }
 /**
- * function getPopup
+ * function get_popup
  *
  * Get Popup Data
  */
-function getPopup() {
-    theResult = parseLANeros();
-    console.log(Date.now() + " - Get Popup ...");
+function get_popup() {
+    var objLResult = set_parser();
+    console.log(Date.now() + ' - Get Popup ...');
 
-    $("a[href=#inbox] span:first").html(getMessage("labelInbox"));
-    $("a[href=#alerts] span:first").html(getMessage("labelAlerts"));
-    $("a[href=#subscriptions] span:first").html(getMessage("labelSubscriptions"));
+    objLResult.jqXHR.done(function(objRData, stRStatus, jqXHR) {
+        var objLAccount = $(objRData).find('#AccountMenu');
+        var stLToken = $(objRData).find('input[name=_xfToken]:first').val();
 
-    theResult.jqXHR.done(function(theData, textStatus, jqXHR) {
-        var theAccount = $(theData).find("li.menuUsuario");
-        var theToken = $(theData).find("input[name=_xfToken]:first").val();
+        $('.section-loading').fadeOut(function() {
+            get_account(objLAccount, stLToken, objLResult);
 
-        $("section.user, nav.user").removeClass("hide");
+            $('.section-user').removeClass('hide').hide().fadeIn('fast');
+            $('.external-options').click(function () {
+                chrome.tabs.create({'url': "views/options.html" } )
 
-        getAccount(theAccount, theToken, theResult);
-        getConversations(theResult.numConversations, theToken);
-        getAlerts(theResult.numAlerts, theToken);
-        getSubscriptions(theResult.numSubscriptions, $(theData).find(".discussionList .discussionListItems"));
+                return false;
+            });
+        });
 
-        $(".tab-footer").find("a").each(function() {
-            var theNewURL = $(this).attr("href");
+        get_storage({ stRActiveTab : objRGlobalOptions.stRActiveTab }, function(objROptions) {
+            var stLActiveTab = objROptions.stRActiveTab;
 
-            if (theNewURL.indexOf("http://") == -1) {
-                theNewURL = theURL + theNewURL;
+            stLActiveTab = stLActiveTab.replace(stRURL, '');
+
+            if (!$('.nav-pills').find('a[href=#' + stLActiveTab + ']').hasClass('hidden')) {
+                $('.nav-pills').find('a[href=#' + stLActiveTab + ']').tab('show');
+            }
+            else {
+                $('.nav-pills').find('a[href=#home]').tab('show');
             }
 
-            $(this).attr("target", "_blank").attr("href", theNewURL);
-        });
-    }).always(function() {
-        getStorageValue({ ActiveTab : theGlobalOptions.ActiveTab }, function(theOptions) {
-            $(".nav-pills").find("a[href=#" + theOptions.ActiveTab + "]").tab("show");
+            switch (stLActiveTab) {
+                case 'home':
+                    $('#statusPoster').find('.label').removeClass('label-warning label-danger').addClass('label-success').html(140);
 
-            $("a[data-toggle=tab]").on("show.bs.tab", function (theEvent) {
-                var activeTab = $(theEvent.target).attr("href");
-                activeTab = activeTab.replace("#", "");
-                var theTabOptions = { ActiveTab: activeTab };
+                    $('#message').focus(function() {
+                        $('#statusPoster').find('.col-xs-12').removeClass('hide');
+                    }).on('keyup', function() {
+                        var inLTextChars = $(this).val().length;
 
-                setStorageValue(theTabOptions, function() {});
+                        if (inLTextChars <= 140) {
+                            $('#statusPoster').find('.label').html(140 - inLTextChars);
+                        }
+                        else {
+                            $(this).val($(this).val().substr(0, 140));
+                            $('#statusPoster').find('.label').html(0);
+                        }
+
+                        if (inLTextChars > 100) {
+                            $('#statusPoster').find('.label').removeClass('label-success').addClass('label-warning');
+                        }
+                        if (inLTextChars > 120) {
+                            $('#statusPoster').find('.label').removeClass('label-success label-warning').addClass('label-danger');
+                        }
+                    });
+                    break;
+                case 'inbox':
+                    get_conversations(stLToken);
+                    break;
+                case 'alerts':
+                    get_alerts(stLToken);
+                    break;
+                case 'subscriptions':
+                    get_subscriptions($(objRData).find('.discussionList .discussionListItems'));
+                    break;
+            }
+
+            $('a[data-toggle=tab]').on('show.bs.tab', function (objREvent) {
+                var stLNewActiveTab = $(objREvent.target).attr('href');
+                stLNewActiveTab = stLNewActiveTab.replace('#', '');
+
+                var objLTabOptions = { stRActiveTab: stLNewActiveTab };
+
+                switch (stLNewActiveTab) {
+                    case 'inbox':
+                        get_conversations(stLToken);
+                        break;
+                    case 'alerts':
+                        get_alerts(stLToken);
+                        break;
+                    case 'subscriptions':
+                        get_subscriptions($(objRData).find('.discussionList .discussionListItems'));
+                        break;
+                }
+
+                set_storage(objLTabOptions, function() {});
             });
         });
     });
@@ -354,33 +429,8 @@ function getPopup() {
 /**
  * Run on Document Load
  */
-getStorageValue({ isRunning : false }, function(theOptions) {
-    console.log(Date.now() + " - Popup Started up ...");
-    $(document).ready(function() {
-        $("#pageLogin").validate({
-            rules: {
-                login: {
-                    required: true
-                },
-                password: {
-                    required: true
-                }
-            },
-            submitHandler: function(form) {
-                $(form).ajaxSubmit({
-                    beforeSubmit: showRequest,
-                    success: showResponse
-                });
-                return false;
-            }
-        });
-        $(".visibilityForm, .statusPoster").validate({
-            submitHandler: function(form) {
-                $(form).ajaxSubmit();
-                return false;
-            }
-        });
+get_storage({ bolRIsRunning : false }, function(objROptions) {
+    console.log(Date.now() + ' - Popup Started up ...');
 
-        getPopup();
-    });
+    get_popup();
 });

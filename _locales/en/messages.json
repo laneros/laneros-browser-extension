@@ -39,7 +39,7 @@
         "message": "No, create an account now"
     },
     "loginYesAccount": {
-        "message": "Yes"
+        "message": "Yes, my password is:"
     },
     "loginPassword": {
         "message": "Password"
@@ -64,6 +64,12 @@
     },
     "loginForgot": {
         "message": "Forgot password ?"
+    },
+    "loginError": {
+        "message": "Invalid Username or Password, try again"
+    },
+    "labelHome": {
+        "message": "Home"
     },
     "labelInbox": {
         "message": "Inbox"
@@ -116,6 +122,12 @@
     "labelMilliseconds": {
         "message": "Milliseconds"
     },
+    "labelShow": {
+        "message": "Show"
+    },
+    "labelHide": {
+        "message": "Hide"
+    },
     "labelRevision": {
         "message": "Review Interval"
     },
@@ -128,6 +140,9 @@
     "showLinks": {
         "message": "Others Links"
     },
+    "showInfo": {
+        "message": "User Info"
+    },
     "buttonSave": {
         "message": "Save"
     },
@@ -139,6 +154,9 @@
     },
     "labelSavedText": {
         "message": "Your options has been saved"
+    },
+    "labelLastMessage": {
+        "message": "Last message by: "
     },
     "homePersonal": {
         "message": "Personal Details"
@@ -205,5 +223,32 @@
     },
     "homeProfile": {
         "message": "Your Profile Page"
+    },
+    "homePreferences": {
+        "message": "Trading Preferences"
+    },
+    "homeDelete": {
+        "message": "Delete Your Account"
+    },
+    "homeAds": {
+        "message": "My Ads"
+    },
+    "homeWallet": {
+        "message": "Wallet"
+    },
+    "userMessages": {
+        "message": "Messages"
+    },
+    "userRatings": {
+        "message": "Ratings"
+    },
+    "userPoints": {
+        "message": "Points"
+    },
+    "userFeedback": {
+        "message": "Feedback"
+    },
+    "userTurkoins": {
+        "message": "Turkoins"
     }
 }

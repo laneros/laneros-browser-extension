@@ -1,87 +1,89 @@
 /**
- * function getOptions
+ * function get_options
  *
  * Get Extension Options
  *
- * @param theOptions
+ * @param objROptions
  */
-function getOptions(theOptions) {
-    var theReviewTime  = getTime(theOptions.TimeRev);
+function get_options(objROptions) {
+    var objLReviewTime  = get_time(objROptions.dtRTimeRev);
 
-    $("#FormOptions").validate();
-    $("#TxtShowInbox").val(theOptions.ShowInbox);
-    $("#TxtShowAlerts").val(theOptions.ShowAlerts);
-    $("#TxtShowSubs").val(theOptions.ShowSubs);
-    $("#TxtShowNotification").val(theOptions.ShowNotification);
-    $("#TxtShowLinks").val(theOptions.ShowLinks);
-
-    $("input[type=checkbox]").each(function() {
-        if ($(this).val() == "true") {
-            $(this).attr("checked", true);
+    $('#form_options').validate({
+        errorLabelContainer: $('.panel-footer .form-validation'),
+        submitHandler: function() {
+            set_options();
+            return false;
         }
-    }).on("switchChange", function() {
-        var theValue = $(this).val() == "true";
+    });
 
-        $(this).val(!theValue);
-    }).bootstrapSwitch({"onColor" : "success", "offColor" : "danger"});
+    $('input[name=extension_checkbox_inbox][value=' + objROptions.bolRShowInbox + ']').attr('checked', true)
+        .closest('label').button('toggle');
+    $('input[name=extension_checkbox_alerts][value=' + objROptions.bolRShowAlerts + ']').attr('checked', true)
+        .closest('label').button('toggle');
+    $('input[name=extension_checkbox_subscriptions][value=' + objROptions.bolRShowSubs + ']').attr('checked', true)
+        .closest('label').button('toggle');
+    $('input[name=extension_checkbox_notifications][value=' + objROptions.bolRShowNotification + ']').attr('checked', true)
+        .closest('label').button('toggle');
+    $('input[name=extension_checkbox_links][value=' + objROptions.bolRShowLinks + ']').attr('checked', true)
+        .closest('label').button('toggle');
+    $('input[name=extension_checkbox_info][value=' + objROptions.bolRShowInfo + ']').attr('checked', true)
+        .closest('label').button('toggle');
 
-    $("#TxtReviewHours").val(theReviewTime.theHours);
-    $("#TxtReviewMins").val(theReviewTime.theMinutes);
-    $("#TxtReviewSecs").val(theReviewTime.theSeconds);
-    $("#TxtReviewMillisecs").val(theReviewTime.theMilliseconds);
-
-    $("#TxtSave").click(setOptions);
+    $('#extension_number_hours').val(objLReviewTime.inRHours);
+    $('#extension_number_minutes').val(objLReviewTime.inRMinutes);
+    $('#extension_number_seconds').val(objLReviewTime.inRSeconds);
+    $('#extension_number_milliseconds').val(objLReviewTime.inRMilliseconds);
 }
 /**
- * function setOptions
+ * function set_options
  *
  * Set Extension Options
  */
-function setOptions() {
-    var TimeRev = parseInt($("#TxtReviewMillisecs").val())
-        + (parseInt($("#TxtReviewSecs").val()) * 1000)
-        + (parseInt($("#TxtReviewMins").val()) * 60 * 1000)
-        + (parseInt($("#TxtReviewHours").val()) * 60 * 60 * 1000);
-    var theOptions = {};
+function set_options() {
+    var dtLTimeRev = parseInt($('#extension_number_milliseconds').val())
+        + (parseInt($('#extension_number_seconds').val()) * 1000)
+        + (parseInt($('#extension_number_minutes').val()) * 60 * 1000)
+        + (parseInt($('#extension_number_hours').val()) * 60 * 60 * 1000);
+    var objLOptions = {};
 
-    if (TimeRev > 0) {
-        theOptions.TimeRev = TimeRev;
+    if (dtLTimeRev > 0) {
+        objLOptions.dtRTimeRev = dtLTimeRev;
     }
 
-    theOptions.ShowInbox  = ($("#TxtShowInbox").val() == "true");
-    theOptions.ShowAlerts = ($("#TxtShowAlerts").val() == "true");
-    theOptions.ShowSubs = ($("#TxtShowSubs").val() == "true");
-    theOptions.ShowNotification = ($("#TxtShowNotification").val() == "true");
-    theOptions.ShowLinks = ($("#TxtShowLinks").val() == "true");
+    objLOptions.bolRShowInbox  = ($('input[name=extension_checkbox_inbox]:checked').val() === 'true');
+    objLOptions.bolRShowAlerts = ($('input[name=extension_checkbox_alerts]:checked').val() === 'true');
+    objLOptions.bolRShowSubs = ($('input[name=extension_checkbox_subscriptions]:checked').val() === 'true');
+    objLOptions.bolRShowNotification = ($('input[name=extension_checkbox_notifications]:checked').val() === 'true');
+    objLOptions.bolRShowLinks = ($('input[name=extension_checkbox_links]:checked').val() === 'true');
+    objLOptions.bolRShowInfo = ($('input[name=extension_checkbox_info]:checked').val() === 'true');
 
-    setStorageValue(theOptions, function() {
-        $("#responseContainer").removeClass("hide");
-        runLANerosBg();
+    set_storage(objLOptions, function() {
+        $('#responseContainer').removeClass('hide');
+        set_background();
     });
 }
 /**
- * function getTime
+ * function get_time
  *
  * Convert Milliseconds to Object
  *
- * @param theMilliseconds
+ * @param inRMilliseconds
  */
-function getTime(theMilliseconds) {
-    var theTime = new Object();
+function get_time(inRMilliseconds) {
+    var objLTime = new Object();
 
-    var theSeconds = Math.floor(theMilliseconds / 1000);
-    var theMinutes = Math.floor(theSeconds / 60);
-    var theHours = Math.floor(theMinutes / 60);
-    var theDays = Math.floor(theHours / 60);
+    var inLSeconds = Math.floor(inRMilliseconds / 1000);
+    var inLMinutes = Math.floor(inLSeconds / 60);
+    var inLHours = Math.floor(inLMinutes / 60);
 
-    theTime.theMilliseconds = parseInt(theMilliseconds % 1000);
-    theTime.theSeconds = parseInt(theSeconds % 60);
-    theTime.theMinutes = parseInt(theMinutes % 60);
-    theTime.theHours = parseInt(theHours % 60);
+    objLTime.inRMilliseconds = parseInt(inRMilliseconds % 1000);
+    objLTime.inRSeconds = parseInt(inLSeconds % 60);
+    objLTime.inRMinutes = parseInt(inLMinutes % 60);
+    objLTime.inRHours = parseInt(inLHours % 60);
 
-    return theTime;
+    return objLTime;
 }
 /**
  * Run on Document Load
  */
-getStorageValue(theGlobalOptions, getOptions);
+get_storage(objRGlobalOptions, get_options);

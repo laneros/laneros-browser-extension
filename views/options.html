@@ -7,97 +7,213 @@
     <meta name="author" content="arthvrian@yahoo.com">
     <title data-message="extName" data-target="html"></title>
     <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap-switch.min.css" />
     <link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/options.css" />
   </head>
   <body>
-    <header class="col-md-12 col-sm-12">
-      <a href="http://www.laneros.com" target="_blank" data-message="goTo" data-target="title">
-        <img src="../assets/img/logo.png" alt="Laneros" />
-      </a>
-    </header>
-    <main>
-      <section>
-        <div class="container">
-          <div class="row">
-            <div class="col-md-10 col-sm-10">
-              <h1 data-message="labelOptions" data-target="html"></h1>
-              <form class="form-horizontal" role="form" id="FormOptions" name="FormOptions" method="post">
-                <fieldset class="col-md-6 col-sm-6">
-                  <legend data-message="labelOthers" data-target="html"></legend>
-                  <div class="form-group">
-                    <input type="checkbox" id="TxtShowInbox" name="TxtShowInbox" data-message="labelInbox" data-target="data-label-text">
-                  </div>
-                  <div class="form-group">
-                    <input type="checkbox" id="TxtShowAlerts" name="TxtShowAlerts" data-message="labelAlerts" data-target="data-label-text">
-                  </div>
-                  <div class="form-group">
-                    <input type="checkbox" id="TxtShowSubs" name="TxtShowSubs" data-message="labelSubscriptions" data-target="data-label-text">
-                  </div>
-                  <div class="form-group">
-                    <input type="checkbox" id="TxtShowNotification" name="TxtShowNotification" data-message="showNotification" data-target="data-label-text">
-                  </div>
-                  <div class="form-group">
-                    <input type="checkbox" id="TxtShowLinks" name="TxtShowLinks" data-message="showLinks" data-target="data-label-text">
-                  </div>
-                </fieldset>
-                <fieldset class="col-md-6 col-sm-6">
-                  <legend data-message="labelRevision" data-target="html"></legend>
-                  <div class="form-group">
-                    <label for="TxtReviewHours" class="col-sm-3 control-label" data-message="labelHours" data-target="html"></label>
-                    <div class="col-sm-4">
-                      <input type="number" class="form-control" max="23" min="0" maxlength="2" id="TxtReviewHours" name="TxtReviewHours" data-message="labelHours" data-target="placeholder">
+    <div class="loading-overlay hide">
+      <div class="loading-box">
+        <img src="../assets/img/ajax-loader.gif" alt="Icon" class="center-block" width="200" />
+        <h3 data-message="dataLoading" data-target="html" class="text-center text-info"></h3>
+      </div>
+    </div>
+    <div class="col-xs-offset-3 col-xs-6">
+      <section class="panel panel-default">
+        <header class="panel-heading">
+          <h3 class="panel-title">
+            <a class="external-link" target="_blank" data-message="goTo" data-target="title" href="">
+              <img class="center-block" src="../assets/img/logo.png" alt="Laneros.com" width="240" />
+            </a>
+          </h3>
+        </header>
+        <div class="list-group">
+          <form class="form-horizontal" role="form" id="form_options" name="form_options" method="post">
+            <div class="list-group-item clearfix">
+              <fieldset class="col-xs-6">
+                <legend data-message="labelOthers" data-target="html"></legend>
+                <div class="form-group has-feedback">
+                  <label for="extension_checkbox_inbox" class="col-xs-4 control-label">
+                    <span data-message="labelInbox" data-target="html"></span>
+                    <span class="text-danger">*</span>
+                  </label>
+                  <div class="col-xs-8">
+                    <div class="btn-group" data-toggle="buttons">
+                      <label class="btn btn-default">
+                        <input type="radio" name="extension_checkbox_inbox" id="extension_checkbox_inbox1"
+                               autocomplete="off" value="true" required>
+                        <span data-message="labelShow" data-target="html"></span>
+                      </label>
+                      <label class="btn btn-default">
+                        <input type="radio" name="extension_checkbox_inbox" id="extension_checkbox_inbox2"
+                               autocomplete="off" value="false">
+                        <span data-message="labelHide" data-target="html"></span>
+                      </label>
                     </div>
                   </div>
-                  <div class="form-group">
-                    <label for="TxtReviewMins" class="col-sm-3 control-label" data-message="labelMinutes" data-target="html"></label>
-                    <div class="col-sm-4">
-                      <input type="number" class="form-control" max="59" min="0" maxlength="2" id="TxtReviewMins" name="TxtReviewMins" data-message="labelMinutes" data-target="placeholder">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="TxtReviewSecs" class="col-sm-3 control-label" data-message="labelSeconds" data-target="html"></label>
-                    <div class="col-sm-4">
-                      <input type="number" class="form-control" max="59" min="0" maxlength="2" id="TxtReviewSecs" name="TxtReviewSecs" data-message="labelSeconds" data-target="placeholder">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="TxtReviewMillisecs" class="col-sm-3 control-label" data-message="labelMilliseconds" data-target="html"></label>
-                    <div class="col-sm-5">
-                      <input type="number" class="form-control" max="999" min="0" maxlength="3" id="TxtReviewMillisecs" name="TxtReviewMillisecs" data-message="labelMilliseconds" data-target="placeholder">
-                    </div>
-                  </div>
-                </fieldset>
-                <div class="col-md-12 col-sm-12">
-                  <hr>
-                  <button type="button" class="btn btn-primary" data-message="buttonSave" data-target="html" name="TxtSave" id="TxtSave"></button>
                 </div>
-              </form>
-              <div class="hide" id="errorContainer">
-                <ul>
-                  <li><label for="TxtReviewHours" class="error label label-important"></label></li>
-                  <li><label for="TxtReviewMins" class="error label label-important"></label></li>
-                  <li><label for="TxtReviewSecs" class="error label label-important"></label></li>
-                  <li><label for="TxtReviewMillisecs" class="error label label-important"></label></li>
-                </ul>
+                <div class="form-group has-feedback">
+                  <label for="extension_checkbox_alerts" class="col-xs-4 control-label">
+                    <span data-message="labelAlerts" data-target="html"></span>
+                    <span class="text-danger">*</span>
+                  </label>
+                  <div class="col-xs-8">
+                    <div class="btn-group" data-toggle="buttons">
+                      <label class="btn btn-default">
+                        <input type="radio" name="extension_checkbox_alerts" id="extension_checkbox_alerts1"
+                               autocomplete="off" value="true" required>
+                        <span data-message="labelShow" data-target="html"></span>
+                      </label>
+                      <label class="btn btn-default">
+                        <input type="radio" name="extension_checkbox_alerts" id="extension_checkbox_alerts2"
+                               autocomplete="off" value="false">
+                        <span data-message="labelHide" data-target="html"></span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group has-feedback">
+                  <label for="extension_checkbox_subscriptions" class="col-xs-4 control-label">
+                    <span data-message="labelSubscriptions" data-target="html"></span>
+                    <span class="text-danger">*</span>
+                  </label>
+                  <div class="col-xs-8">
+                    <div class="btn-group" data-toggle="buttons">
+                      <label class="btn btn-default">
+                        <input type="radio" name="extension_checkbox_subscriptions" id="extension_checkbox_subscriptions1"
+                               autocomplete="off" value="true" required>
+                        <span data-message="labelShow" data-target="html"></span>
+                      </label>
+                      <label class="btn btn-default">
+                        <input type="radio" name="extension_checkbox_subscriptions" id="extension_checkbox_subscriptions2"
+                               autocomplete="off" value="false">
+                        <span data-message="labelHide" data-target="html"></span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group has-feedback">
+                  <label for="extension_checkbox_notifications" class="col-xs-4 control-label">
+                    <span data-message="showNotification" data-target="html"></span>
+                    <span class="text-danger">*</span>
+                  </label>
+                  <div class="col-xs-8">
+                    <div class="btn-group" data-toggle="buttons">
+                      <label class="btn btn-default">
+                        <input type="radio" name="extension_checkbox_notifications" id="extension_checkbox_notifications1"
+                               autocomplete="off" value="true" required>
+                        <span data-message="labelShow" data-target="html"></span>
+                      </label>
+                      <label class="btn btn-default">
+                        <input type="radio" name="extension_checkbox_notifications" id="extension_checkbox_notifications2"
+                               autocomplete="off" value="false">
+                        <span data-message="labelHide" data-target="html"></span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group has-feedback">
+                  <label for="extension_checkbox_links" class="col-xs-4 control-label">
+                    <span data-message="showLinks" data-target="html"></span>
+                    <span class="text-danger">*</span>
+                  </label>
+                  <div class="col-xs-8">
+                    <div class="btn-group" data-toggle="buttons">
+                      <label class="btn btn-default">
+                        <input type="radio" name="extension_checkbox_links" id="extension_checkbox_links1"
+                               autocomplete="off" value="true" required>
+                        <span data-message="labelShow" data-target="html"></span>
+                      </label>
+                      <label class="btn btn-default">
+                        <input type="radio" name="extension_checkbox_links" id="extension_checkbox_links2"
+                               autocomplete="off" value="false">
+                        <span data-message="labelHide" data-target="html"></span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group has-feedback">
+                  <label for="extension_checkbox_info" class="col-xs-4 control-label">
+                    <span data-message="showInfo" data-target="html"></span>
+                    <span class="text-danger">*</span>
+                  </label>
+                  <div class="col-xs-8">
+                    <div class="btn-group" data-toggle="buttons">
+                      <label class="btn btn-default">
+                        <input type="radio" name="extension_checkbox_info" id="extension_checkbox_info1"
+                               autocomplete="off" value="true" required>
+                        <span data-message="labelShow" data-target="html"></span>
+                      </label>
+                      <label class="btn btn-default">
+                        <input type="radio" name="extension_checkbox_info" id="extension_checkbox_info2"
+                               autocomplete="off" value="false">
+                        <span data-message="labelHide" data-target="html"></span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+              <fieldset class="col-xs-6">
+                <legend data-message="labelRevision" data-target="html"></legend>
+                <div class="form-group">
+                  <label for="extension_number_hours" class="col-xs-4 control-label">
+                    <span data-message="labelHours" data-target="html"></span>
+                    <span class="text-danger">*</span>
+                  </label>
+                  <div class="col-xs-3">
+                    <input type="number" class="form-control" max="23" min="0" maxlength="2" id="extension_number_hours"
+                           name="extension_number_hours" data-message="labelHours" data-target="placeholder">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="extension_number_minutes" class="col-xs-4 control-label">
+                    <span data-message="labelMinutes" data-target="html"></span>
+                    <span class="text-danger">*</span>
+                  </label>
+                  <div class="col-xs-3">
+                    <input type="number" class="form-control" max="59" min="0" maxlength="2" id="extension_number_minutes"
+                           name="extension_number_minutes" data-message="labelMinutes" data-target="placeholder">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="extension_number_seconds" class="col-xs-4 control-label">
+                    <span data-message="labelSeconds" data-target="html"></span>
+                    <span class="text-danger">*</span>
+                  </label>
+                  <div class="col-xs-3">
+                    <input type="number" class="form-control" max="59" min="0" maxlength="2" id="extension_number_seconds"
+                           name="extension_number_seconds" data-message="labelSeconds" data-target="placeholder">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="extension_number_milliseconds" class="col-xs-4 control-label">
+                    <span data-message="labelMilliseconds" data-target="html"></span>
+                    <span class="text-danger">*</span>
+                  </label>
+                  <div class="col-xs-4">
+                    <input type="number" class="form-control" max="999" min="0" maxlength="3" id="extension_number_milliseconds"
+                           name="extension_number_milliseconds" data-message="labelMilliseconds" data-target="placeholder">
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+            <div class="panel-footer">
+              <button type="submit" class="btn btn-primary" data-message="buttonSave" data-target="html"></button>
+              <ul class="form-validation alert alert-danger alert-form hide"></ul>
+              <div class="alert alert-success hide" id="responseContainer">
+                <h4 data-message="labelSaved" data-target="html"></h4>
+                <span data-message="labelSavedText" data-target="html"></span>
               </div>
             </div>
-            <div class="col-md-8 col-sm-8 alert alert-success alert-dismissable hide" id="responseContainer">
-              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-              <h4 data-message="labelSaved" data-target="html"></h4>
-              <span data-message="labelSavedText" data-target="html"></span>
-            </div>
-          </div>
+          </form>
         </div>
       </section>
-    </main>
-    <script type="text/javascript" src="../assets/js/jquery-2.1.0.min.js"></script>
-    <script type="text/javascript" src="../assets/js/jquery.form.js"></script>
+    </div>
+    <script type="text/javascript" src="../assets/js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="../assets/js/jquery.form.min.js"></script>
     <script type="text/javascript" src="../assets/js/jquery.validate.min.js"></script>
     <script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../assets/js/bootstrap-switch.min.js"></script>
     <script type="text/javascript" src="../assets/js/global.js"></script>
-    <script type="text/javascript" src="../assets/js/pages/background.js"></script>
     <script type="text/javascript" src="../assets/js/pages/options.js"></script>
+    <script type="text/javascript" src="../assets/js/pages/background.js"></script>
   </body>
 </html>

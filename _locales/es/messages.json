@@ -39,7 +39,7 @@
         "message": "No, crear una cuenta ahora"
     },
     "loginYesAccount": {
-        "message": "Si"
+        "message": "Si, mi contraseña es:"
     },
     "loginPassword": {
         "message": "Contraseña"
@@ -64,6 +64,12 @@
     },
     "loginForgot": {
         "message": "¿ Olvidaste la contraseña ?"
+    },
+    "loginError": {
+        "message": "Usuario y/o Contraseña incorrecta, intenta de nuevo"
+    },
+    "labelHome": {
+        "message": "Inicio"
     },
     "labelInbox": {
         "message": "Buzón"
@@ -90,7 +96,7 @@
         "message": "Mostrar Todas ..."
     },
     "startNew": {
-        "message": "Iniciar una Nueva Conversación"
+        "message": "Iniciar una Nueva Charla"
     },
     "alertPrefs": {
         "message": "Preferencias de Alertas"
@@ -116,26 +122,26 @@
     "labelMilliseconds": {
         "message": "Milisegundos"
     },
+    "labelShow": {
+        "message": "Mostrar"
+    },
+    "labelHide": {
+        "message": "Ocultar"
+    },
     "labelRevision": {
         "message": "Intervalo de Revisión"
     },
     "labelOthers": {
         "message": "Secciones"
     },
-    "showInbox": {
-        "message": "Mostrar Buzón"
-    },
-    "showAlerts": {
-        "message": "Mostrar Alertas"
-    },
-    "showSubs": {
-        "message": "Mostrar Suscripciones"
-    },
     "showNotification": {
         "message": "Notificaciones"
     },
     "showLinks": {
         "message": "Vinculos Adicionales"
+    },
+    "showInfo": {
+        "message": "Información de Usuario"
     },
     "buttonSave": {
         "message": "Guardar"
@@ -148,6 +154,9 @@
     },
     "labelSavedText": {
         "message": "Sus opciones han sido almacenadas"
+    },
+    "labelLastMessage": {
+        "message": "Último mensaje por: "
     },
     "homePersonal": {
         "message": "Detalles Personales"
@@ -214,5 +223,32 @@
     },
     "homeProfile": {
         "message": "Página de perfil"
+    },
+    "homePreferences": {
+        "message": "Preferencias de Negociante"
+    },
+    "homeDelete": {
+        "message": "Cancela tu cuenta"
+    },
+    "homeAds": {
+        "message": "Mis Anuncios"
+    },
+    "homeWallet": {
+        "message": "Turkoins"
+    },
+    "userMessages": {
+        "message": "Mensajes"
+    },
+    "userRatings": {
+        "message": "Votaciones"
+    },
+    "userPoints": {
+        "message": "Puntos"
+    },
+    "userFeedback": {
+        "message": "Compra/Venta"
+    },
+    "userTurkoins": {
+        "message": "Turkoins"
     }
 }

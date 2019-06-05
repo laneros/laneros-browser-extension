@@ -1,0 +1,16 @@
+body {
+    margin-top: 25px;
+}
+.active {
+    background-color: #337ab7 !important;
+    text-shadow: none;
+}
+.active span {
+    color: #fff !important;
+}
+.alert-success {
+    margin-top: 10px;
+}
+input[type=number] {
+    text-align: right;
+}

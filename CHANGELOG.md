@@ -2,6 +2,24 @@
 
 All notable changes to `laneros-browser-extension` will be documented in this file.
 
+## 5.0 | 2014-03-23
+
+### Added
+
+- Published on chrome web store
+
+### Changed
+
+- CSS improvements
+- JS improvements
+- Boostrap update to latest version
+- jQuery update to latest version
+
+### Removed
+
+- Bootstrap Switch
+- Background HTML page
+
 ## 4.0.3 | 2014-03-16
 
 ### Added
