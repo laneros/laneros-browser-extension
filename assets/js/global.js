@@ -55,7 +55,8 @@ function get_message(stRString) {
  * @param inRCounter
  */
 function set_badge(inRCounter) {
-    console.log(Date.now() + ' - Setting Badge ...');
+    var dtLDate = new Date();
+    console.log(dtLDate.toLocaleString() + ' - Setting badge ...');
     chrome.browserAction.setBadgeText({ text: ''});
 
     if (inRCounter > 0) {
@@ -82,8 +83,9 @@ function get_badge(stRCallBack) {
  */
 function set_parser() {
     var objLResult = {};
+    var dtLDate = new Date();
+    console.log(dtLDate.toLocaleString() + ' - Started parser ...');
 
-    console.log(Date.now() + ' - Started parser ...');
     var objLjqXHR = $.get(stRURL + 'watched/threads/all', function(objRData) {
         var inLConversations = 0, inLAlerts = 0, inLSubscriptions = 0, inLCounter = 0;
 
@@ -132,9 +134,11 @@ function set_parser() {
             }
         });
     }).always(function() {
-        console.log(Date.now() + ' - Finished parser ...');
+        var dtLDate = new Date();
+        console.log(dtLDate.toLocaleString() + ' - Finished parser ...');
     }).fail(function(jqXHR) {
-        console.log(Date.now() + ' - Parser Fail ...');
+        var dtLDate = new Date();
+        console.log(dtLDate.toLocaleString() + ' - parser fail ...');
 
         if (jqXHR.status == 403) {
             do_login();
@@ -186,7 +190,8 @@ function set_parser() {
  */
 function do_login() {
     var objLLink = document.createElement('link');
-    console.log(Date.now() + ' - Show Login ...');
+    var dtLDate = new Date();
+    console.log(dtLDate.toLocaleString() + ' - Show login ...');
 
     $(objLLink).attr('rel', 'stylesheet')
         .attr('href', stRURL + 'css.php?css=facebook,nat_public_css,panel_scroller,twitter&style=2&dir=LTR')
@@ -241,7 +246,8 @@ function do_login() {
  * Run on Startup
  */
 get_storage({ bolRIsRunning : false }, function(objROptions) {
-    console.log(Date.now() + ' - Global Started up ...');
+    var dtLDate = new Date();
+    console.log(dtLDate.toLocaleString() + ' - Global started up ...');
 
     if (jQuery.validator) {
         jQuery.validator.setDefaults({

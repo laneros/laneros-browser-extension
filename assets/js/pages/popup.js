@@ -37,7 +37,9 @@ function set_response(objRResponse) {
  * @param objRResult
  */
 function get_account(objRAccount, stRToken, objRResult) {
-    console.log(Date.now() + ' - Get Account ...');
+    var dtLDate = new Date();
+
+    console.log(dtLDate.toLocaleString() + ' - Getting account ...');
 
     get_storage({ bolRShowLinks : objRGlobalOptions.bolRShowLinks }, function(objROptions) {
         var stLUserID = $(objRAccount).find('.primaryContent a.avatar').attr('href');
@@ -149,7 +151,9 @@ function get_account(objRAccount, stRToken, objRResult) {
  * @param stRToken
  */
 function get_conversations(stRToken) {
-    console.log(Date.now() + ' - Get Conversations ...');
+    var dtLDate = new Date();
+
+    console.log(dtLDate.toLocaleString() + ' - Getting conversations ...');
 
     $('#inbox .list-group-inbox').html('');
     $('#inbox .list-group-item-danger').addClass('hide');
@@ -209,7 +213,9 @@ function get_conversations(stRToken) {
  * @param theToken
  */
 function get_alerts(stRToken) {
-    console.log(Date.now() + ' - Get Alerts ...');
+    var dtLDate = new Date();
+
+    console.log(dtLDate.toLocaleString() + ' - Getting alerts ...');
 
     $('#alerts .list-group-alerts').html('');
     $('#alerts .list-group-item-danger').addClass('hide');
@@ -269,9 +275,10 @@ function get_alerts(stRToken) {
  * @param theSubscriptions
  */
 function get_subscriptions(objRWatchedThreads) {
-    console.log(Date.now() + ' - Get Subscriptions ...');
-
     var bolLNew = false;
+    var dtLDate = new Date();
+
+    console.log(dtLDate.toLocaleString() + ' - Getting subscriptions ...');
 
     $('#subscriptions .list-group-subscriptions').html('');
     $('#subscriptions .list-group-item-danger').addClass('hide');
@@ -338,7 +345,9 @@ function get_subscriptions(objRWatchedThreads) {
  */
 function get_popup() {
     var objLResult = set_parser();
-    console.log(Date.now() + ' - Get Popup ...');
+    var dtLDate = new Date();
+
+    console.log(dtLDate.toLocaleString() + ' - Popup started up ...');
 
     objLResult.jqXHR.done(function(objRData, stRStatus, jqXHR) {
         var objLAccount = $(objRData).find('#AccountMenu');
@@ -429,8 +438,4 @@ function get_popup() {
 /**
  * Run on Document Load
  */
-get_storage({ bolRIsRunning : false }, function(objROptions) {
-    console.log(Date.now() + ' - Popup Started up ...');
-
-    get_popup();
-});
+get_storage({ bolRIsRunning : false }, get_popup);

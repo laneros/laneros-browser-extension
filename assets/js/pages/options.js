@@ -7,6 +7,9 @@
  */
 function get_options(objROptions) {
     var objLReviewTime  = get_time(objROptions.dtRTimeRev);
+    var dtLDate = new Date();
+
+    console.log(dtLDate.toLocaleString() + ' - Getting options ...');
 
     $('#form_options').validate({
         errorLabelContainer: $('.panel-footer .form-validation'),
@@ -45,6 +48,9 @@ function set_options() {
         + (parseInt($('#extension_number_minutes').val()) * 60 * 1000)
         + (parseInt($('#extension_number_hours').val()) * 60 * 60 * 1000);
     var objLOptions = {};
+    var dtLDate = new Date();
+
+    console.log(dtLDate.toLocaleString() + ' - Setting options ...');
 
     if (dtLTimeRev > 0) {
         objLOptions.dtRTimeRev = dtLTimeRev;

@@ -2,6 +2,16 @@
 
 All notable changes to `laneros-browser-extension` will be documented in this file.
 
+## 5.0.1 | 2016-02-16
+
+### Added
+
+- Logging
+
+### Changed
+
+- Javascript improvements
+
 ## 5.0 | 2014-03-23
 
 ### Added
@@ -11,7 +21,7 @@ All notable changes to `laneros-browser-extension` will be documented in this fi
 ### Changed
 
 - CSS improvements
-- JS improvements
+- Javascript improvements
 - Boostrap update to latest version
 - jQuery update to latest version
 
