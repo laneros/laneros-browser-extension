@@ -1,148 +1,155 @@
 /**
- * function set_create_notification
- *
- * Create a Chrome Notification
- *
- * @param stRNotificationID
- * @param objROptions
- * @param objRListener
- * @param bolRIsNew
+ * Self-Executing Anonymous Function
  */
-function set_create_notification(stRNotificationID, objROptions, objRListener, bolRIsNew) {
-    if (bolRIsNew) {
-        var dtLDate = new Date();
+(function(laneros_extension) {
+    /**
+     * function set_background
+     *
+     * Create Alarm to fire Base Function
+     */
+    laneros_extension.set_background = function() {
+        laneros_extension.get_storage({dtRTimeRev: laneros_extension.objRGlobalOptions.dtRTimeRev}, function (objROptions) {
+            try {
+                var dtLTimeRev = objROptions.dtRTimeRev / 1000 / 60;
 
-        console.log(dtLDate.toLocaleString() + ' - Clear notification ...');
+                laneros_extension.set_parser();
+                laneros_extension.set_create_alarm('laneros_alarm', {
+                    delayInMinutes: 1,
+                    periodInMinutes: dtLTimeRev
+                }, laneros_extension.set_parser);
+            }
+            catch(objRException) {
+                var dtLDate = new Date();
 
-        chrome.notifications.clear(stRNotificationID, function(bolRWasCleared) {
-            return bolRWasCleared;
+                console.log(dtLDate.toLocaleString() + ' - ' + laneros_extension.get_message('extension_short_name') + ': ' +  objRException.message);
+            }
         });
-    }
-
-    chrome.notifications.create(stRNotificationID, objROptions,
-        function(objRNotificationID) {
+    };
+    /**
+     * function set_create_alarm
+     *
+     * Create a Chrome Alarm
+     *
+     * @param stRAlarmID
+     * @param objROptions
+     * @param stRListener
+     */
+    laneros_extension.set_create_alarm = function(stRAlarmID, objROptions, stRListener) {
+        try {
+            chrome.alarms.clear(stRAlarmID);
+            chrome.alarms.onAlarm.addListener(function(objRAlarm) {
+                if (objRAlarm.name == stRAlarmID) {
+                    stRListener();
+                }
+            });
+            chrome.alarms.get(stRAlarmID, function(objRAlarm) {
+                if (typeof objRAlarm == 'undefined') {
+                    chrome.alarms.create(stRAlarmID, objROptions);
+                }
+            });
+        }
+        catch(objRException) {
             var dtLDate = new Date();
 
-            console.log(dtLDate.toLocaleString() + ' - Create notification ...');
-
-            return objRNotificationID;
-    });
-
-    chrome.notifications.onButtonClicked.addListener(objRListener);
-}
-/**
- * function set_create_alarm
- *
- * Create a Chrome Alarm
- *
- * @param stRAlarmID
- * @param objROptions
- * @param stRListener
- */
-function set_create_alarm(stRAlarmID, objROptions, stRListener) {
-    chrome.alarms.clear(stRAlarmID);
-    chrome.alarms.onAlarm.addListener(function(objRAlarm) {
-        if (objRAlarm.name == stRAlarmID) {
-            stRListener();
+            console.log(dtLDate.toLocaleString() + ' - ' + laneros_extension.get_message('extension_short_name') + ': ' +  objRException.message);
         }
-    });
-    chrome.alarms.get(stRAlarmID, function(objRAlarm) {
-        if (typeof objRAlarm == 'undefined') {
-            var dtLDate = new Date();
-
-            console.log(dtLDate.toLocaleString() + ' - Create alarm ...');
-
-            chrome.alarms.create(stRAlarmID, objROptions);
+    };
+    /**
+     * function set_create_notification
+     *
+     * Create a Chrome Notification
+     *
+     * @param stRNotificationID
+     * @param objROptions
+     * @param objRListener
+     * @param bolRIsNew
+     */
+    laneros_extension.set_create_notification = function(stRNotificationID, objROptions, objRListener, bolRIsNew) {
+        if (bolRIsNew) {
+            chrome.notifications.clear(stRNotificationID, function(bolRWasCleared) {
+                return bolRWasCleared;
+            });
         }
-    });
-}
-/**
- * function set_create_notification
- *
- * Show Notification Popup
- *
- * @param inRConversations
- * @param inRAlerts
- * @param inRSubscriptions
- */
-function set_notification(inRConversations, inRAlerts, inRSubscriptions) {
-    var dtLDate = new Date();
-    var objLItems = new Array();
-    var objLConversation = {
-        title: get_message('labelMessages'),
-        message: get_message('zeroInbox')
+
+        chrome.notifications.create(stRNotificationID, objROptions,
+            function(objRNotificationID) {
+                return objRNotificationID;
+            });
+
+        chrome.notifications.onButtonClicked.addListener(objRListener);
     };
-    var objLAlert = {
-        title: get_message('labelAlerts'),
-        message: get_message('zeroAlerts')
-    };
-    var objLSubscription = {
-        title: get_message('labelSubscriptions'),
-        message: get_message('zeroSubs')
-    };
+    /**
+     * function set_create_notification
+     *
+     * Show Notification Popup
+     *
+     * @param inRConversations
+     * @param inRAlerts
+     * @param inRSubscriptions
+     */
+    laneros_extension.set_notification = function(inRConversations, inRAlerts, inRSubscriptions) {
+        var objLItems = [];
+        var objLConversation = {
+            title: laneros_extension.get_message('text_messages'),
+            message: laneros_extension.get_message('text_zero_inbox')
+        };
+        var objLAlert = {
+            title: laneros_extension.get_message('text_label_alerts'),
+            message: laneros_extension.get_message('text_zero_alerts')
+        };
+        var objLSubscription = {
+            title: laneros_extension.get_message('text_label_subscriptions'),
+            message: laneros_extension.get_message('text_zero_subscriptions')
+        };
 
-    if (inRConversations > 0) {
-        objLConversation.message = inRConversations + ' ' + get_message('labelNew');
-    }
-    if (inRAlerts > 0) {
-        objLAlert.message = inRAlerts + ' ' + get_message('labelNew');
-    }
-    if (inRSubscriptions > 0) {
-        objLSubscription.message = inRSubscriptions + ' ' + get_message('labelNew');
-    }
+        if (inRConversations > 0) {
+            objLConversation.message = inRConversations + ' ' + laneros_extension.get_message('text_new');
+        }
+        if (inRAlerts > 0) {
+            objLAlert.message = inRAlerts + ' ' + laneros_extension.get_message('text_new');
+        }
+        if (inRSubscriptions > 0) {
+            objLSubscription.message = inRSubscriptions + ' ' + laneros_extension.get_message('text_new');
+        }
 
-    objLItems.push(objLConversation);
-    objLItems.push(objLAlert);
-    objLItems.push(objLSubscription);
+        objLItems.push(objLConversation);
+        objLItems.push(objLAlert);
+        objLItems.push(objLSubscription);
 
-    console.log(dtLDate.toLocaleString() + ' - Show notification ...');
-
-    set_create_notification('LanerosNotification', {
-        type: 'list',
-        title: get_message('extName'),
-        message: get_message('extDesc'),
-        iconUrl: '../assets/img/icon.png',
-        items: objLItems,
-        buttons: [{
-                title: get_message('goTo')
+        laneros_extension.set_create_notification('laneros_notification', {
+            type: 'list',
+            title: laneros_extension.get_message('extension_name'),
+            message: laneros_extension.get_message('extension_description'),
+            iconUrl: '../assets/img/icon.png',
+            items: objLItems,
+            buttons: [{
+                title: laneros_extension.get_message('text_go_to')
             }, {
-                title: get_message('goToAccount'),
-        }]
-    }, function(stRNotificationID, inRButtonIndex) {
-        switch (inRButtonIndex) {
-            case 0:
-                chrome.tabs.create({url: stRURL}, function(objRTab) {});
-                break;
-            default:
-                chrome.tabs.create({url: stRURL + 'account'}, function(objRTab) {});
-                break;
-        }
-    }, true);
-}
-/**
- * function set_background
- *
- * Create Alarm to fire Base Function
- */
-function set_background() {
-    var dtLDate = new Date();
-
-    console.log(dtLDate.toLocaleString() + ' - Background started up ...');
-
-    get_storage({ dtRTimeRev : objRGlobalOptions.dtRTimeRev }, function(objROptions) {
-        var dtLTimeRev = objROptions.dtRTimeRev / 1000 / 60;
-
-        set_parser();
-        set_create_alarm('LanerosAlarm', {
-            delayInMinutes: 1,
-            periodInMinutes: dtLTimeRev
-        }, set_parser);
-    });
-}
+                title: laneros_extension.get_message('text_go_account'),
+            }]
+        }, function(stRNotificationID, inRButtonIndex) {
+            switch (inRButtonIndex) {
+                case 0:
+                    chrome.tabs.create({url: laneros_extension.stRURL}, function(objRTab) {});
+                    break;
+                default:
+                    chrome.tabs.create({url: laneros_extension.stRURL + 'account'}, function(objRTab) {});
+                    break;
+            }
+        }, true);
+    }
+}( window.laneros_extension = window.laneros_extension || {} ));
 /**
  * Run on Startup
  */
-get_storage({ isRunning : false }, function() {
-    chrome.runtime.onInstalled.addListener(set_background);
-    set_background();
-});
+try {
+    laneros_extension.get_storage({ isRunning : false }, function() {
+        chrome.runtime.onInstalled.addListener(laneros_extension.set_background);
+        laneros_extension.set_background();
+    });
+}
+catch(objRException) {
+    var dtLDate = new Date();
+
+    console.log(dtLDate.toLocaleString() + ' - ' + laneros_extension.get_message('extension_short_name') + ': ' +  objRException.message);
+}

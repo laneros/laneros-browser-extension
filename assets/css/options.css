@@ -9,8 +9,10 @@ body {
 .active span {
     color: #fff !important;
 }
-.alert-success {
+div.alert-success,
+div.alert-danger {
     margin-top: 10px;
+    margin-bottom: 0;
 }
 input[type=number] {
     text-align: right;

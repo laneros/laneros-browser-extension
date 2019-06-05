@@ -1,254 +1,251 @@
 {
-    "extName": {
-        "message": "Laneros Chrome Extension"
-    },
-    "extDesc": {
-        "message": "News about technology, internet, games and entertainment. Colombian Community."
-    },
-    "dataLoading": {
-        "message": "Loading Data"
-    },
-    "dataError": {
-        "message": "Failed to get data from Laneros.com"
-    },
-    "goTo": {
-        "message": "Go to Laneros Homepage"
-    },
-    "goToAccount": {
-        "message": "Go to My Account"
-    },
-    "errorMsg": {
-        "message": "Error"
-    },
-    "notConnected": {
-        "message": "You are not Logged in"
-    },
-    "pageError": {
-        "message": "Laneros may be experiencing a problem"
-    },
-    "loginLegend": {
-        "message": "Sign in or register"
-    },
-    "loginNick": {
-        "message": "Nick or Email address"
-    },
-    "loginLabelAccount": {
-        "message": "Already have an account ?"
-    },
-    "loginNoAccount": {
-        "message": "No, create an account now"
-    },
-    "loginYesAccount": {
-        "message": "Yes, my password is:"
-    },
-    "loginPassword": {
-        "message": "Password"
-    },
-    "loginStay": {
-        "message": "Stay logged in"
-    },
-    "loginLegendConnect": {
-        "message": "... or connect"
-    },
-    "loginFacebook": {
-        "message": "Sign In with Facebook"
-    },
-    "loginTwitter": {
-        "message": "Sign In with Twitter"
-    },
-    "loginButton": {
-        "message": "Login"
-    },
-    "registerButton": {
-        "message": "Register"
-    },
-    "loginForgot": {
-        "message": "Forgot password ?"
-    },
-    "loginError": {
-        "message": "Invalid Username or Password, try again"
-    },
-    "labelHome": {
-        "message": "Home"
-    },
-    "labelInbox": {
-        "message": "Inbox"
-    },
-    "labelAlerts": {
-        "message": "Alerts"
-    },
-    "labelSubscriptions": {
-        "message": "Subscriptions"
-    },
-    "zeroHome": {
-        "message": "There are no links to Show"
-    },
-    "zeroInbox": {
-        "message": "There are no new messages"
-    },
-    "zeroAlerts": {
-        "message": "There are no new alerts"
-    },
-    "zeroSubs": {
-        "message": "You do not have subscriptions without reading"
-    },
-    "showAll": {
-        "message": "Show All ..."
-    },
-    "startNew": {
-        "message": "Start a New Conversation"
-    },
-    "alertPrefs": {
-        "message": "Alert Preferences"
-    },
-    "showAllWatched": {
-        "message": "Show all watched threads"
-    },
-    "labelNew": {
-        "message": "New"
-    },
-    "labelMessages": {
-        "message": "Messages"
-    },
-    "labelHours": {
-        "message": "Hours"
-    },
-    "labelMinutes": {
-        "message": "Minutes"
-    },
-    "labelSeconds": {
-        "message": "Seconds"
-    },
-    "labelMilliseconds": {
-        "message": "Milliseconds"
-    },
-    "labelShow": {
-        "message": "Show"
-    },
-    "labelHide": {
-        "message": "Hide"
-    },
-    "labelRevision": {
-        "message": "Review Interval"
-    },
-    "labelOthers": {
-        "message": "Display Sections"
-    },
-    "showNotification": {
-        "message": "Notifications"
-    },
-    "showLinks": {
-        "message": "Others Links"
-    },
-    "showInfo": {
-        "message": "User Info"
-    },
-    "buttonSave": {
-        "message": "Save"
-    },
-    "labelOptions": {
-        "message": "Extension Options"
-    },
-    "labelSaved": {
-        "message": "Options Saved !"
-    },
-    "labelSavedText": {
-        "message": "Your options has been saved"
-    },
-    "labelLastMessage": {
-        "message": "Last message by: "
-    },
-    "homePersonal": {
-        "message": "Personal Details"
-    },
-    "homeSignature": {
-        "message": "Signature"
-    },
-    "homeContact": {
-        "message": "Contact Details"
-    },
-    "homePrivacy": {
-        "message": "Privacy"
-    },
-    "homePrefs": {
-        "message": "Preferences"
-    },
-    "homeAlertPrefs": {
-        "message": "Alert Preferences"
-    },
-    "homeAvatar": {
-        "message": "Avatar"
-    },
-    "homeFeed": {
-        "message": "Your News Feed"
-    },
-    "homeInbox": {
-        "message": "Conversations"
-    },
-    "homeLikes": {
-        "message": "Likes You've Received"
-    },
-    "homeContent": {
-        "message": "Your Content"
-    },
-    "homeFollow": {
-        "message": "People You Follow"
-    },
-    "homeIgnore": {
-        "message": "People You Ignore"
-    },
-    "homeExternal": {
-        "message": "External Accounts"
-    },
-    "homeUpgrades": {
-        "message": "Account Upgrades"
-    },
-    "homeNewPost": {
-        "message": "Ignore New Post"
-    },
-    "homeTrading": {
-        "message": "Trading Preferences"
-    },
-    "homeLogout": {
-        "message": "Log Out"
-    },
-    "homeOnline": {
-        "message": "Show Online Status"
-    },
-    "homeUpdate": {
-        "message": "Update your status..."
-    },
-    "homePost": {
-        "message": "Post"
-    },
-    "homeProfile": {
-        "message": "Your Profile Page"
-    },
-    "homePreferences": {
-        "message": "Trading Preferences"
-    },
-    "homeDelete": {
-        "message": "Delete Your Account"
-    },
-    "homeAds": {
-        "message": "My Ads"
-    },
-    "homeWallet": {
-        "message": "Wallet"
-    },
-    "userMessages": {
-        "message": "Messages"
-    },
-    "userRatings": {
-        "message": "Ratings"
-    },
-    "userPoints": {
-        "message": "Points"
-    },
-    "userFeedback": {
-        "message": "Feedback"
-    },
-    "userTurkoins": {
-        "message": "Turkoins"
-    }
+  "extension_name": {
+    "message": "Laneros Chrome Extension"
+  },
+  "extension_short_name": {
+    "message": "Laneros"
+  },
+  "extension_description": {
+    "message": "News about technology, internet, games and entertainment. Colombian Community."
+  },
+  "text_label_options": {
+    "message": "Extension options"
+  },
+  "text_data_loading": {
+    "message": "Loading data"
+  },
+  "text_go_to": {
+    "message": "Go to Laneros Homepage"
+  },
+  "text_button_show": {
+    "message": "Show"
+  },
+  "text_button_hide": {
+    "message": "Hide"
+  },
+  "text_label_sections": {
+    "message": "Display sections"
+  },
+  "text_label_review": {
+    "message": "Review interval"
+  },
+  "text_label_inbox": {
+    "message": "Inbox"
+  },
+  "text_label_alerts": {
+    "message": "Alerts"
+  },
+  "text_label_subscriptions": {
+    "message": "Subscriptions"
+  },
+  "text_label_notifications": {
+    "message": "Notifications"
+  },
+  "text_label_links": {
+    "message": "Others links"
+  },
+  "text_label_user_info": {
+    "message": "User info"
+  },
+  "text_label_hours": {
+    "message": "Hours"
+  },
+  "text_label_minutes": {
+    "message": "Minutes"
+  },
+  "text_label_seconds": {
+    "message": "Seconds"
+  },
+  "text_label_milliseconds": {
+    "message": "Milliseconds"
+  },
+  "text_button_save": {
+    "message": "Save"
+  },
+  "text_label_saved_header": {
+    "message": "Options saved !"
+  },
+  "text_label_saved_text": {
+    "message": "Your options has been saved"
+  },
+  "text_error_saved_header": {
+    "message": "Options NOT saved !"
+  },
+  "text_error_saved_text": {
+    "message": "Your options not saved, try again"
+  },
+  "text_error_not_connected": {
+    "message": "You are not Logged in"
+  },
+  "text_messages": {
+    "message": "Messages"
+  },
+  "text_zero_inbox": {
+    "message": "There are no new messages"
+  },
+  "text_zero_alerts": {
+    "message": "There are no new alerts"
+  },
+  "text_zero_subscriptions": {
+    "message": "You do not have subscriptions without reading"
+  },
+  "text_new": {
+    "message": "New"
+  },
+  "text_go_account": {
+    "message": "Go to My account"
+  },
+  "text_error_page": {
+    "message": "Laneros may be experiencing a problem"
+  },
+  "text_button_register": {
+    "message": "Register"
+  },
+  "text_button_login": {
+    "message": "Login"
+  },
+  "text_error_login": {
+    "message": "Invalid Username or Password, try again"
+  },
+  "text_error_message": {
+    "message": "Error"
+  },
+  "text_label_login": {
+    "message": "Sign in or register"
+  },
+  "text_label_nick": {
+    "message": "Nick or Email address"
+  },
+  "text_label_account": {
+    "message": "Already have an account ?"
+  },
+  "text_label_no_account": {
+    "message": "No, create an account now"
+  },
+  "text_label_yes_account": {
+    "message": "Yes, my password is:"
+  },
+  "text_label_password": {
+    "message": "Password"
+  },
+  "text_label_stay": {
+    "message": "Stay logged in"
+  },
+  "text_label_connect": {
+    "message": "... or connect"
+  },
+  "text_label_facebook": {
+    "message": "Sign In with Facebook"
+  },
+  "text_label_twitter": {
+    "message": "Sign In with Twitter"
+  },
+  "text_label_forgot": {
+    "message": "Forgot password ?"
+  },
+  "text_label_ratings": {
+    "message": "Likes"
+  },
+  "text_label_points": {
+    "message": "Points"
+  },
+  "text_label_trader_rating": {
+    "message": "Trader rating"
+  },
+  "text_label_turkoins": {
+    "message": "Turkoins"
+  },
+  "text_label_home": {
+    "message": "Home"
+  },
+  "text_zero_links": {
+    "message": "There are no links to show"
+  },
+  "text_label_personal_details": {
+    "message": "Personal details"
+  },
+  "text_label_signature": {
+    "message": "Signature"
+  },
+  "text_label_contact_details": {
+    "message": "Contact details"
+  },
+  "text_label_privacy": {
+    "message": "Privacy"
+  },
+  "text_label_preferences": {
+    "message": "Preferences"
+  },
+  "text_label_alert_preferences": {
+    "message": "Alert preferences"
+  },
+  "text_label_avatar": {
+    "message": "Avatar"
+  },
+  "text_label_news_feed": {
+    "message": "Your news feed"
+  },
+  "text_label_conversations": {
+    "message": "Conversations"
+  },
+  "text_label_likes_received": {
+    "message": "Likes you've received"
+  },
+  "text_label_your_content": {
+    "message": "Your content"
+  },
+  "text_label_follow": {
+    "message": "People you follow"
+  },
+  "text_label_ignore": {
+    "message": "People you ignore"
+  },
+  "text_label_external_account": {
+    "message": "External accounts"
+  },
+  "text_label_upgrades": {
+    "message": "Account upgrades"
+  },
+  "text_label_new_post": {
+    "message": "Ignore new post"
+  },
+  "text_label_logout": {
+    "message": "Log out"
+  },
+  "text_label_online_status": {
+    "message": "Show online status"
+  },
+  "text_label_update_status": {
+    "message": "Update your status..."
+  },
+  "text_button_post": {
+    "message": "Post"
+  },
+  "text_label_profile": {
+    "message": "Your profile page"
+  },
+  "text_label_delete": {
+    "message": "Delete your account"
+  },
+  "text_label_wallet": {
+    "message": "Wallet"
+  },
+  "text_label_classifieds": {
+    "message": "Your classifieds"
+  },
+  "text_label_two_steps": {
+    "message": "Two-step verification"
+  },
+  "text_label_show_all": {
+    "message": "Show All ..."
+  },
+  "text_label_new_conversation": {
+    "message": "Start a new conversation"
+  },
+  "text_label_all_watched": {
+    "message": "Show all watched threads"
+  },
+  "text_last_message": {
+    "message": "Last message by: "
+  }
 }

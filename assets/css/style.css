@@ -13,52 +13,6 @@ legend {
     font-family: "Myriad Pro", Arial, Helvetica, sans-serif;
     margin-bottom: 10px;
 }
-a, a:visited, a:hover, a:active {
-    color: #2666AF;
-    text-decoration: none;
-}
-h1 {
-    font-size: 24px;
-    text-align: center;
-    text-shadow: white 0 1px 1px;
-    font-weight: normal;
-    white-space: nowrap;
-}
-h2 {
-    font-size: 18px;
-    font-weight: normal;
-    text-align: center;
-    color: #000;
-}
-h3 {
-    font-size: 16px;
-    font-weight: normal;
-    color: #000;
-    margin-bottom: 5px;
-}
-.section-loading {
-    padding: 15px;
-}
-.panel {
-    margin-bottom: 0;
-}
-.panel-heading {
-    padding-top: 10px;
-}
-.alert-form {
-    margin-top: 10px;
-    margin-bottom: 0px;
-}
-.form-validation {
-    display: none;
-}
-.form-validation li {
-    color: #a94442;
-    margin-left: 15px;
-}
-.form-validation li label {
-    font-weight: normal;
-}
 .loading-overlay {
     position: absolute;
     left: 0;
@@ -78,9 +32,57 @@ h3 {
     left: 50%;
     margin: -125px 0 0 -175px;
 }
+.panel {
+    margin-bottom: 0;
+}
+.panel-heading {
+    padding-top: 10px;
+}
 .panel-default>.panel-heading {
     background-color: rgb(226, 228, 229);
 }
 .panel-footer {
     background-color: rgb(240, 240, 240);
+}
+.list-group {
+    margin-bottom: 0;
+}
+.form-validation {
+    display: none;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+.form-validation li {
+    color: #a94442;
+    margin-left: 15px;
+}
+.form-validation li label {
+    font-weight: normal;
+}
+
+a, a:visited, a:hover, a:active {
+    color: #2666AF;
+    text-decoration: none;
+}
+h1 {
+    font-size: 22px;
+    text-align: center;
+    text-shadow: white 0 1px 1px;
+    font-weight: normal;
+    white-space: nowrap;
+}
+h2 {
+    font-size: 17px;
+    font-weight: normal;
+    text-align: center;
+    color: #000;
+}
+h3 {
+    font-size: 15px;
+    font-weight: normal;
+    color: #000;
+    margin-bottom: 5px;
+}
+.section-loading {
+    padding: 15px;
 }

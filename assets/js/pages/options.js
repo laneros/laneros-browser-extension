@@ -1,95 +1,136 @@
 /**
- * function get_options
- *
- * Get Extension Options
- *
- * @param objROptions
+ * Self-Executing Anonymous Function
  */
-function get_options(objROptions) {
-    var objLReviewTime  = get_time(objROptions.dtRTimeRev);
-    var dtLDate = new Date();
+(function(laneros_extension) {
+    /**
+     * function get_time
+     *
+     * Convert Milliseconds to Object
+     *
+     * @param inRMilliseconds
+     * @returns {{inRMilliseconds: Number, inRSeconds: Number, inRMinutes: Number, inRHours: Number}}
+     */
+    function get_time(inRMilliseconds) {
+        try {
+            var inLSeconds = Math.floor(inRMilliseconds / 1000);
+            var inLMinutes = Math.floor(inLSeconds / 60);
+            var inLHours = Math.floor(inLMinutes / 60);
 
-    console.log(dtLDate.toLocaleString() + ' - Getting options ...');
-
-    $('#form_options').validate({
-        errorLabelContainer: $('.panel-footer .form-validation'),
-        submitHandler: function() {
-            set_options();
-            return false;
+            return {
+                inRMilliseconds : parseInt(inRMilliseconds % 1000),
+                inRSeconds : parseInt(inLSeconds % 60),
+                inRMinutes : parseInt(inLMinutes % 60),
+                inRHours : parseInt(inLHours % 60)
+            };
         }
-    });
+        catch(objRException) {
+            var dtLDate = new Date();
 
-    $('input[name=extension_checkbox_inbox][value=' + objROptions.bolRShowInbox + ']').attr('checked', true)
-        .closest('label').button('toggle');
-    $('input[name=extension_checkbox_alerts][value=' + objROptions.bolRShowAlerts + ']').attr('checked', true)
-        .closest('label').button('toggle');
-    $('input[name=extension_checkbox_subscriptions][value=' + objROptions.bolRShowSubs + ']').attr('checked', true)
-        .closest('label').button('toggle');
-    $('input[name=extension_checkbox_notifications][value=' + objROptions.bolRShowNotification + ']').attr('checked', true)
-        .closest('label').button('toggle');
-    $('input[name=extension_checkbox_links][value=' + objROptions.bolRShowLinks + ']').attr('checked', true)
-        .closest('label').button('toggle');
-    $('input[name=extension_checkbox_info][value=' + objROptions.bolRShowInfo + ']').attr('checked', true)
-        .closest('label').button('toggle');
+            console.log(dtLDate.toLocaleString() + ' - ' + laneros_extension.get_message('extension_short_name') + ': ' +  objRException.message);
+        }
+    };
+    /**
+     * function set_options
+     *
+     * Set Extension Options
+     */
+    function set_options() {
+        try {
+            var dtLTimeRev = parseInt($('#extension_number_milliseconds').val())
+                + (parseInt($('#extension_number_seconds').val()) * 1000)
+                + (parseInt($('#extension_number_minutes').val()) * 60 * 1000)
+                + (parseInt($('#extension_number_hours').val()) * 60 * 60 * 1000);
 
-    $('#extension_number_hours').val(objLReviewTime.inRHours);
-    $('#extension_number_minutes').val(objLReviewTime.inRMinutes);
-    $('#extension_number_seconds').val(objLReviewTime.inRSeconds);
-    $('#extension_number_milliseconds').val(objLReviewTime.inRMilliseconds);
-}
-/**
- * function set_options
- *
- * Set Extension Options
- */
-function set_options() {
-    var dtLTimeRev = parseInt($('#extension_number_milliseconds').val())
-        + (parseInt($('#extension_number_seconds').val()) * 1000)
-        + (parseInt($('#extension_number_minutes').val()) * 60 * 1000)
-        + (parseInt($('#extension_number_hours').val()) * 60 * 60 * 1000);
-    var objLOptions = {};
-    var dtLDate = new Date();
+            var objLOptions = {
+                bolRShowInbox : ($('input[name=extension_radio_inbox]:checked').val() === 'true'),
+                bolRShowAlerts : ($('input[name=extension_radio_alerts]:checked').val() === 'true'),
+                bolRShowSubs :  ($('input[name=extension_radio_subscriptions]:checked').val() === 'true'),
+                bolRShowNotification : ($('input[name=extension_radio_notifications]:checked').val() === 'true'),
+                bolRShowLinks : ($('input[name=extension_radio_links]:checked').val() === 'true'),
+                bolRShowInfo : ($('input[name=extension_radio_info]:checked').val() === 'true')
+            };
 
-    console.log(dtLDate.toLocaleString() + ' - Setting options ...');
+            if (dtLTimeRev > 0) {
+                objLOptions.dtRTimeRev = dtLTimeRev;
+            }
 
-    if (dtLTimeRev > 0) {
-        objLOptions.dtRTimeRev = dtLTimeRev;
+            laneros_extension.set_storage(objLOptions, function() {
+                try {
+                    laneros_extension.set_background();
+
+                    $('.panel-footer div.alert').addClass('alert-success').removeClass('hide').hide().slideDown();
+                    $('.panel-footer div.alert h4').html(laneros_extension.get_message('text_label_saved_header'));
+                    $('.panel-footer div.alert span').html(laneros_extension.get_message('text_label_saved_text'));
+                }
+                catch(objRException) {
+                    var dtLDate = new Date();
+
+                    console.log(dtLDate.toLocaleString() + ' - ' + laneros_extension.get_message('extension_short_name') + ': ' +  objRException.message);
+
+                    $('.panel-footer div.alert').addClass('alert-danger').removeClass('hide').hide().slideDown();
+                    $('.panel-footer div.alert h4').html(laneros_extension.get_message('text_error_saved_header'));
+                    $('.panel-footer div.alert span').html(laneros_extension.get_message('text_error_saved_text'));
+                }
+            });
+        }
+        catch(objRException) {
+            var dtLDate = new Date();
+
+            console.log(dtLDate.toLocaleString() + ' - ' + laneros_extension.get_message('extension_short_name') + ': ' +  objRException.message);
+        }
+
+        return false;
     }
 
-    objLOptions.bolRShowInbox  = ($('input[name=extension_checkbox_inbox]:checked').val() === 'true');
-    objLOptions.bolRShowAlerts = ($('input[name=extension_checkbox_alerts]:checked').val() === 'true');
-    objLOptions.bolRShowSubs = ($('input[name=extension_checkbox_subscriptions]:checked').val() === 'true');
-    objLOptions.bolRShowNotification = ($('input[name=extension_checkbox_notifications]:checked').val() === 'true');
-    objLOptions.bolRShowLinks = ($('input[name=extension_checkbox_links]:checked').val() === 'true');
-    objLOptions.bolRShowInfo = ($('input[name=extension_checkbox_info]:checked').val() === 'true');
+    /**
+     * function get_options
+     *
+     * Get Extension Options
+     *
+     * @param objROptions
+     */
+    laneros_extension.get_options = function (objROptions) {
+        try {
+            var objLReviewTime  = get_time(objROptions.dtRTimeRev);
 
-    set_storage(objLOptions, function() {
-        $('#responseContainer').removeClass('hide');
-        set_background();
-    });
-}
-/**
- * function get_time
- *
- * Convert Milliseconds to Object
- *
- * @param inRMilliseconds
- */
-function get_time(inRMilliseconds) {
-    var objLTime = new Object();
+            $('#form_options').validate({
+                errorLabelContainer: $('.panel-footer .form-validation'),
+                submitHandler: set_options
+            });
 
-    var inLSeconds = Math.floor(inRMilliseconds / 1000);
-    var inLMinutes = Math.floor(inLSeconds / 60);
-    var inLHours = Math.floor(inLMinutes / 60);
+            $('input[name=extension_radio_inbox][value=' + objROptions.bolRShowInbox + ']').attr('checked', true)
+                .closest('label').button('toggle');
+            $('input[name=extension_radio_alerts][value=' + objROptions.bolRShowAlerts + ']').attr('checked', true)
+                .closest('label').button('toggle');
+            $('input[name=extension_radio_subscriptions][value=' + objROptions.bolRShowSubs + ']').attr('checked', true)
+                .closest('label').button('toggle');
+            $('input[name=extension_radio_notifications][value=' + objROptions.bolRShowNotification + ']').attr('checked', true)
+                .closest('label').button('toggle');
+            $('input[name=extension_radio_links][value=' + objROptions.bolRShowLinks + ']').attr('checked', true)
+                .closest('label').button('toggle');
+            $('input[name=extension_radio_info][value=' + objROptions.bolRShowInfo + ']').attr('checked', true)
+                .closest('label').button('toggle');
 
-    objLTime.inRMilliseconds = parseInt(inRMilliseconds % 1000);
-    objLTime.inRSeconds = parseInt(inLSeconds % 60);
-    objLTime.inRMinutes = parseInt(inLMinutes % 60);
-    objLTime.inRHours = parseInt(inLHours % 60);
+            $('#extension_number_hours').val(objLReviewTime.inRHours);
+            $('#extension_number_minutes').val(objLReviewTime.inRMinutes);
+            $('#extension_number_seconds').val(objLReviewTime.inRSeconds);
+            $('#extension_number_milliseconds').val(objLReviewTime.inRMilliseconds);
+        }
+        catch(objRException) {
+            var dtLDate = new Date();
 
-    return objLTime;
-}
+            console.log(dtLDate.toLocaleString() + ' - ' + laneros_extension.get_message('extension_short_name') + ': ' +  objRException.message);
+        }
+    }
+}( window.laneros_extension = window.laneros_extension || {}, jQuery ));
 /**
  * Run on Document Load
  */
-get_storage(objRGlobalOptions, get_options);
+try {
+    laneros_extension.get_storage(laneros_extension.objRGlobalOptions, laneros_extension.get_options);
+}
+catch(objRException) {
+    var dtLDate = new Date();
+
+    console.log(dtLDate.toLocaleString() + ' - ' + laneros_extension.get_message('extension_short_name') + ': ' +  objRException.message);
+}

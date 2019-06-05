@@ -1,8 +1,8 @@
 {
-    "name": "__MSG_extName__",
-    "short_name": "Laneros",
-    "description": "__MSG_extDesc__",
-    "version": "5.0.3",
+    "name": "__MSG_extension_name__",
+    "short_name": "__MSG_extension_short_name__",
+    "description": "__MSG_extension_description__",
+    "version": "5.5",
     "manifest_version": 2,
     "options_page": "views/options.html",
     "default_locale": "es",
@@ -17,7 +17,7 @@
         "scripts": ["assets/js/jquery-2.1.4.min.js", "assets/js/global.js", "assets/js/pages/background.js"]
     },
     "browser_action": {
-        "default_title": "__MSG_extName__",
+        "default_title": "__MSG_extension_name__",
         "default_icon": "assets/img/icon.png",
         "default_popup": "views/popup.html"
     },

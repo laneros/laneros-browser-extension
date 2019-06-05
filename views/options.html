@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="author" content="Alvaro Arturo Montenegro Silva">
     <meta name="author" content="arthvrian@yahoo.com">
-    <title data-message="extName" data-target="html"></title>
+    <title data-message="text_label_options" data-target="html"></title>
     <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
     <link rel="stylesheet" type="text/css" href="../assets/css/options.css" />
@@ -14,198 +14,199 @@
     <div class="loading-overlay hide">
       <div class="loading-box">
         <img src="../assets/img/ajax-loader.gif" alt="Icon" class="center-block" width="200" />
-        <h3 data-message="dataLoading" data-target="html" class="text-center text-info"></h3>
+        <h3 data-message="text_data_loading" data-target="html" class="text-center text-info"></h3>
       </div>
     </div>
     <div class="col-xs-offset-3 col-xs-6">
       <section class="panel panel-default">
         <header class="panel-heading">
           <h3 class="panel-title">
-            <a class="external-link" target="_blank" data-message="goTo" data-target="title" href="">
+            <a class="external-link" target="_blank" data-message="text_go_to" data-target="title" href="">
               <img class="center-block" src="../assets/img/logo.png" alt="Laneros.com" width="240" />
             </a>
           </h3>
         </header>
-        <div class="list-group">
-          <form class="form-horizontal" role="form" id="form_options" name="form_options" method="post">
+        <form class="form-horizontal" role="form" id="form_options" name="form_options" method="post">
+          <div class="list-group">
             <div class="list-group-item clearfix">
               <fieldset class="col-xs-6">
-                <legend data-message="labelOthers" data-target="html"></legend>
+                <legend data-message="text_label_sections" data-target="html"></legend>
                 <div class="form-group has-feedback">
-                  <label for="extension_checkbox_inbox" class="col-xs-4 control-label">
-                    <span data-message="labelInbox" data-target="html"></span>
+                  <label for="extension_radio_inbox" class="col-xs-4 control-label">
+                    <span data-message="text_label_inbox" data-target="html"></span>
                     <span class="text-danger">*</span>
                   </label>
                   <div class="col-xs-8">
                     <div class="btn-group" data-toggle="buttons">
                       <label class="btn btn-default">
-                        <input type="radio" name="extension_checkbox_inbox" id="extension_checkbox_inbox1"
-                               autocomplete="off" value="true" required>
-                        <span data-message="labelShow" data-target="html"></span>
+                        <input type="radio" name="extension_radio_inbox" id="extension_radio_inbox_1"
+                               autocomplete="off" value="true" required
+                               data-message="text_label_inbox" data-target="title">
+                        <span data-message="text_button_show" data-target="html"></span>
                       </label>
                       <label class="btn btn-default">
-                        <input type="radio" name="extension_checkbox_inbox" id="extension_checkbox_inbox2"
+                        <input type="radio" name="extension_radio_inbox" id="extension_radio_inbox_2"
                                autocomplete="off" value="false">
-                        <span data-message="labelHide" data-target="html"></span>
+                        <span data-message="text_button_hide" data-target="html"></span>
                       </label>
                     </div>
                   </div>
                 </div>
                 <div class="form-group has-feedback">
-                  <label for="extension_checkbox_alerts" class="col-xs-4 control-label">
-                    <span data-message="labelAlerts" data-target="html"></span>
+                  <label for="extension_radio_alerts" class="col-xs-4 control-label">
+                    <span data-message="text_label_alerts" data-target="html"></span>
                     <span class="text-danger">*</span>
                   </label>
                   <div class="col-xs-8">
                     <div class="btn-group" data-toggle="buttons">
                       <label class="btn btn-default">
-                        <input type="radio" name="extension_checkbox_alerts" id="extension_checkbox_alerts1"
+                        <input type="radio" name="extension_radio_alerts" id="extension_radio_alerts_1"
                                autocomplete="off" value="true" required>
-                        <span data-message="labelShow" data-target="html"></span>
+                        <span data-message="text_button_show" data-target="html"></span>
                       </label>
                       <label class="btn btn-default">
-                        <input type="radio" name="extension_checkbox_alerts" id="extension_checkbox_alerts2"
+                        <input type="radio" name="extension_radio_alerts" id="extension_radio_alerts_2"
                                autocomplete="off" value="false">
-                        <span data-message="labelHide" data-target="html"></span>
+                        <span data-message="text_button_hide" data-target="html"></span>
                       </label>
                     </div>
                   </div>
                 </div>
                 <div class="form-group has-feedback">
-                  <label for="extension_checkbox_subscriptions" class="col-xs-4 control-label">
-                    <span data-message="labelSubscriptions" data-target="html"></span>
+                  <label for="extension_radio_subscriptions" class="col-xs-4 control-label">
+                    <span data-message="text_label_subscriptions" data-target="html"></span>
                     <span class="text-danger">*</span>
                   </label>
                   <div class="col-xs-8">
                     <div class="btn-group" data-toggle="buttons">
                       <label class="btn btn-default">
-                        <input type="radio" name="extension_checkbox_subscriptions" id="extension_checkbox_subscriptions1"
+                        <input type="radio" name="extension_radio_subscriptions" id="extension_radio_subscriptions_1"
                                autocomplete="off" value="true" required>
-                        <span data-message="labelShow" data-target="html"></span>
+                        <span data-message="text_button_show" data-target="html"></span>
                       </label>
                       <label class="btn btn-default">
-                        <input type="radio" name="extension_checkbox_subscriptions" id="extension_checkbox_subscriptions2"
+                        <input type="radio" name="extension_radio_subscriptions" id="extension_radio_subscriptions_2"
                                autocomplete="off" value="false">
-                        <span data-message="labelHide" data-target="html"></span>
+                        <span data-message="text_button_hide" data-target="html"></span>
                       </label>
                     </div>
                   </div>
                 </div>
                 <div class="form-group has-feedback">
-                  <label for="extension_checkbox_notifications" class="col-xs-4 control-label">
-                    <span data-message="showNotification" data-target="html"></span>
+                  <label for="extension_radio_notifications" class="col-xs-4 control-label">
+                    <span data-message="text_label_notifications" data-target="html"></span>
                     <span class="text-danger">*</span>
                   </label>
                   <div class="col-xs-8">
                     <div class="btn-group" data-toggle="buttons">
                       <label class="btn btn-default">
-                        <input type="radio" name="extension_checkbox_notifications" id="extension_checkbox_notifications1"
+                        <input type="radio" name="extension_radio_notifications" id="extension_radio_notifications_1"
                                autocomplete="off" value="true" required>
-                        <span data-message="labelShow" data-target="html"></span>
+                        <span data-message="text_button_show" data-target="html"></span>
                       </label>
                       <label class="btn btn-default">
-                        <input type="radio" name="extension_checkbox_notifications" id="extension_checkbox_notifications2"
+                        <input type="radio" name="extension_radio_notifications" id="extension_radio_notifications_2"
                                autocomplete="off" value="false">
-                        <span data-message="labelHide" data-target="html"></span>
+                        <span data-message="text_button_hide" data-target="html"></span>
                       </label>
                     </div>
                   </div>
                 </div>
                 <div class="form-group has-feedback">
-                  <label for="extension_checkbox_links" class="col-xs-4 control-label">
-                    <span data-message="showLinks" data-target="html"></span>
+                  <label for="extension_radio_links" class="col-xs-4 control-label">
+                    <span data-message="text_label_links" data-target="html"></span>
                     <span class="text-danger">*</span>
                   </label>
                   <div class="col-xs-8">
                     <div class="btn-group" data-toggle="buttons">
                       <label class="btn btn-default">
-                        <input type="radio" name="extension_checkbox_links" id="extension_checkbox_links1"
+                        <input type="radio" name="extension_radio_links" id="extension_radio_links_1"
                                autocomplete="off" value="true" required>
-                        <span data-message="labelShow" data-target="html"></span>
+                        <span data-message="text_button_show" data-target="html"></span>
                       </label>
                       <label class="btn btn-default">
-                        <input type="radio" name="extension_checkbox_links" id="extension_checkbox_links2"
+                        <input type="radio" name="extension_radio_links" id="extension_radio_links_2"
                                autocomplete="off" value="false">
-                        <span data-message="labelHide" data-target="html"></span>
+                        <span data-message="text_button_hide" data-target="html"></span>
                       </label>
                     </div>
                   </div>
                 </div>
                 <div class="form-group has-feedback">
-                  <label for="extension_checkbox_info" class="col-xs-4 control-label">
-                    <span data-message="showInfo" data-target="html"></span>
+                  <label for="extension_radio_info" class="col-xs-4 control-label">
+                    <span data-message="text_label_user_info" data-target="html"></span>
                     <span class="text-danger">*</span>
                   </label>
                   <div class="col-xs-8">
                     <div class="btn-group" data-toggle="buttons">
                       <label class="btn btn-default">
-                        <input type="radio" name="extension_checkbox_info" id="extension_checkbox_info1"
+                        <input type="radio" name="extension_radio_info" id="extension_radio_info_1"
                                autocomplete="off" value="true" required>
-                        <span data-message="labelShow" data-target="html"></span>
+                        <span data-message="text_button_show" data-target="html"></span>
                       </label>
                       <label class="btn btn-default">
-                        <input type="radio" name="extension_checkbox_info" id="extension_checkbox_info2"
+                        <input type="radio" name="extension_radio_info" id="extension_radio_info_2"
                                autocomplete="off" value="false">
-                        <span data-message="labelHide" data-target="html"></span>
+                        <span data-message="text_button_hide" data-target="html"></span>
                       </label>
                     </div>
                   </div>
                 </div>
               </fieldset>
               <fieldset class="col-xs-6">
-                <legend data-message="labelRevision" data-target="html"></legend>
+                <legend data-message="text_label_review" data-target="html"></legend>
                 <div class="form-group">
                   <label for="extension_number_hours" class="col-xs-4 control-label">
-                    <span data-message="labelHours" data-target="html"></span>
+                    <span data-message="text_label_hours" data-target="html"></span>
                     <span class="text-danger">*</span>
                   </label>
                   <div class="col-xs-3">
                     <input type="number" class="form-control" max="23" min="0" maxlength="2" id="extension_number_hours"
-                           name="extension_number_hours" data-message="labelHours" data-target="placeholder">
+                           name="extension_number_hours" data-message="text_label_hours" data-target="placeholder">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="extension_number_minutes" class="col-xs-4 control-label">
-                    <span data-message="labelMinutes" data-target="html"></span>
+                    <span data-message="text_label_minutes" data-target="html"></span>
                     <span class="text-danger">*</span>
                   </label>
                   <div class="col-xs-3">
                     <input type="number" class="form-control" max="59" min="0" maxlength="2" id="extension_number_minutes"
-                           name="extension_number_minutes" data-message="labelMinutes" data-target="placeholder">
+                           name="extension_number_minutes" data-message="text_label_minutes" data-target="placeholder">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="extension_number_seconds" class="col-xs-4 control-label">
-                    <span data-message="labelSeconds" data-target="html"></span>
+                    <span data-message="text_label_seconds" data-target="html"></span>
                     <span class="text-danger">*</span>
                   </label>
                   <div class="col-xs-3">
                     <input type="number" class="form-control" max="59" min="0" maxlength="2" id="extension_number_seconds"
-                           name="extension_number_seconds" data-message="labelSeconds" data-target="placeholder">
+                           name="extension_number_seconds" data-message="text_label_seconds" data-target="placeholder">
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="extension_number_milliseconds" class="col-xs-4 control-label">
-                    <span data-message="labelMilliseconds" data-target="html"></span>
+                    <span data-message="text_label_milliseconds" data-target="html"></span>
                     <span class="text-danger">*</span>
                   </label>
                   <div class="col-xs-4">
                     <input type="number" class="form-control" max="999" min="0" maxlength="3" id="extension_number_milliseconds"
-                           name="extension_number_milliseconds" data-message="labelMilliseconds" data-target="placeholder">
+                           name="extension_number_milliseconds" data-message="text_label_milliseconds" data-target="placeholder">
                   </div>
                 </div>
               </fieldset>
             </div>
             <div class="panel-footer">
-              <button type="submit" class="btn btn-primary" data-message="buttonSave" data-target="html"></button>
-              <ul class="form-validation alert alert-danger alert-form hide"></ul>
-              <div class="alert alert-success hide" id="responseContainer">
-                <h4 data-message="labelSaved" data-target="html"></h4>
-                <span data-message="labelSavedText" data-target="html"></span>
+              <button type="submit" class="btn btn-primary" data-message="text_button_save" data-target="html"></button>
+              <ul class="form-validation alert alert-danger"></ul>
+              <div class="alert hide">
+                <h4></h4>
+                <span></span>
               </div>
             </div>
-          </form>
-        </div>
+          </div>
+        </form>
       </section>
     </div>
     <script type="text/javascript" src="../assets/js/jquery-2.1.4.min.js"></script>

@@ -59,14 +59,34 @@ label span {
 .dark_postrating_negative {
     color: #D90B00;
 }
-.feedbackStats .Positive {
-    color: #6FB758;
+.traderRatingChart {
+    height: 16px;
+    width: 100%;
+    display: block;
+    padding: 2px;
+    clear: both;
 }
-.feedbackStats .Negative {
-    color: #E6574B;
+.traderRatingChart > .inner {
+    display: block;
+    height: 12px;
+    background: rgb(187, 187, 187);
 }
-.feedbackStats .Neutral {
-    color: #A0A0A0;
+.traderRatingChart > .inner > div {
+    display: inline-block;
+    float: left;
+    height: 12px;
+    width: 0;
+    opacity: .6;
+    transition: opacity .2s linear 0s;
+}
+.traderRatingChart > .inner .positive {
+    background: #83bf17;
+}
+.traderRatingChart > .inner .negative {
+    background: #7f7f7f;
+}
+.traderRatingChart > .inner .neutral {
+    background: #d14d28;
 }
 small {
     font-size: 80% !important;
@@ -94,12 +114,15 @@ dl {
 }
 .nav-pills > li.active > a,
 .nav-pills > li.active > a:hover,
-.nav-pills > li.active > a:focus,
-.nav-pills > li > a:hover,
-.nav-pills > li > a:focus {
+.nav-pills > li.active > a:focus {
     background-color: #00A0DB; /* v5.0.1 */
     background-color: rgb(8, 111, 183);
     color: rgb(255, 255, 255);
+}
+.nav-pills > li > a:hover,
+.nav-pills > li > a:focus {
+    background-color: rgba(0, 0, 0, .2);
+    color: #FFF;
 }
 .nav-pills > li + li {
     margin-left: 0;

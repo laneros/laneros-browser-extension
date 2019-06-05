@@ -1,254 +1,251 @@
 {
-    "extName": {
-        "message": "Extensión Chrome para Laneros"
-    },
-    "extDesc": {
-        "message": "Noticias sobre tecnología, internet, juegos y entretenimiento. Comunidad colombiana."
-    },
-    "dataLoading": {
-        "message": "Cargando Datos"
-    },
-    "dataError": {
-        "message": "Error al obtener los datos de LANeros.com"
-    },
-    "goTo": {
-        "message": "Ir a la Página Principal de Laneros"
-    },
-    "goToAccount": {
-        "message": "Ir a Mi Cuenta"
-    },
-    "errorMsg": {
-        "message": "Error"
-    },
-    "notConnected": {
-        "message": "No has Iniciado Sesión"
-    },
-    "pageError": {
-        "message": "Laneros puede estar experimentando problemas"
-    },
-    "loginLegend": {
-        "message": "Accede o registrate"
-    },
-    "loginNick": {
-        "message": "Nombre o dirección e-mail"
-    },
-    "loginLabelAccount": {
-        "message": "¿ Ya tienes cuenta ?"
-    },
-    "loginNoAccount": {
-        "message": "No, crear una cuenta ahora"
-    },
-    "loginYesAccount": {
-        "message": "Si, mi contraseña es:"
-    },
-    "loginPassword": {
-        "message": "Contraseña"
-    },
-    "loginStay": {
-        "message": "Permanecer conectado"
-    },
-    "loginLegendConnect": {
-        "message": "... o conectate"
-    },
-    "loginFacebook": {
-        "message": "Acceder con Facebook"
-    },
-    "loginTwitter": {
-        "message": "Acceder con Twitter"
-    },
-    "loginButton": {
-        "message": "Acceder"
-    },
-    "registerButton": {
-        "message": "Regístrate"
-    },
-    "loginForgot": {
-        "message": "¿ Olvidaste la contraseña ?"
-    },
-    "loginError": {
-        "message": "Usuario y/o Contraseña incorrecta, intenta de nuevo"
-    },
-    "labelHome": {
-        "message": "Inicio"
-    },
-    "labelInbox": {
-        "message": "Buzón"
-    },
-    "labelAlerts": {
-        "message": "Alertas"
-    },
-    "labelSubscriptions": {
-        "message": "Suscripciones"
-    },
-    "zeroHome": {
-        "message": "No hay Vinculos Adicionales"
-    },
-    "zeroInbox": {
-        "message": "No hay mensajes nuevos"
-    },
-    "zeroAlerts": {
-        "message": "No hay alertas nuevas"
-    },
-    "zeroSubs": {
-        "message": "No hay temas suscritos sin leer"
-    },
-    "showAll": {
-        "message": "Mostrar Todas ..."
-    },
-    "startNew": {
-        "message": "Iniciar una Nueva Charla"
-    },
-    "alertPrefs": {
-        "message": "Preferencias de Alertas"
-    },
-    "showAllWatched": {
-        "message": "Mostrar todos los temas seguidos"
-    },
-    "labelNew": {
-        "message": "Nuevo (s)"
-    },
-    "labelMessages": {
-        "message": "Mensajes"
-    },
-    "labelHours": {
-        "message": "Horas"
-    },
-    "labelMinutes": {
-        "message": "Minutos"
-    },
-    "labelSeconds": {
-        "message": "Segundos"
-    },
-    "labelMilliseconds": {
-        "message": "Milisegundos"
-    },
-    "labelShow": {
-        "message": "Mostrar"
-    },
-    "labelHide": {
-        "message": "Ocultar"
-    },
-    "labelRevision": {
-        "message": "Intervalo de Revisión"
-    },
-    "labelOthers": {
-        "message": "Secciones"
-    },
-    "showNotification": {
-        "message": "Notificaciones"
-    },
-    "showLinks": {
-        "message": "Vinculos Adicionales"
-    },
-    "showInfo": {
-        "message": "Información de Usuario"
-    },
-    "buttonSave": {
-        "message": "Guardar"
-    },
-    "labelOptions": {
-        "message": "Opciones de la Extensión"
-    },
-    "labelSaved": {
-        "message": "Opciones Guardadas !"
-    },
-    "labelSavedText": {
-        "message": "Sus opciones han sido almacenadas"
-    },
-    "labelLastMessage": {
-        "message": "Último mensaje por: "
-    },
-    "homePersonal": {
-        "message": "Detalles Personales"
-    },
-    "homeSignature": {
-        "message": "Firma"
-    },
-    "homeContact": {
-        "message": "Detalles de Contacto"
-    },
-    "homePrivacy": {
-        "message": "Privacidad"
-    },
-    "homePrefs": {
-        "message": "Preferencias"
-    },
-    "homeAlertPrefs": {
-        "message": "Preferencias de alertas"
-    },
-    "homeAvatar": {
-        "message": "Avatar"
-    },
-    "homeFeed": {
-        "message": "Tus Noticias"
-    },
-    "homeInbox": {
-        "message": "Charlas"
-    },
-    "homeLikes": {
-        "message": "'Me Gusta' recibidos"
-    },
-    "homeContent": {
-        "message": "Contenido"
-    },
-    "homeFollow": {
-        "message": "Sigues a ..."
-    },
-    "homeIgnore": {
-        "message": "Gente ignorada"
-    },
-    "homeExternal": {
-        "message": "Cuentas externas"
-    },
-    "homeUpgrades": {
-        "message": "Suscripción de pago"
-    },
-    "homeNewPost": {
-        "message": "Ignorar Foros en Nuevos mensajes"
-    },
-    "homeTrading": {
-        "message": "Preferencias de Negociante"
-    },
-    "homeLogout": {
-        "message": "Salir"
-    },
-    "homeOnline": {
-        "message": "Ver el estado conectado"
-    },
-    "homeUpdate": {
-        "message": "Actualizar estado ..."
-    },
-    "homePost": {
-        "message": "Enviar"
-    },
-    "homeProfile": {
-        "message": "Página de perfil"
-    },
-    "homePreferences": {
-        "message": "Preferencias de Negociante"
-    },
-    "homeDelete": {
-        "message": "Cancela tu cuenta"
-    },
-    "homeAds": {
-        "message": "Mis Anuncios"
-    },
-    "homeWallet": {
-        "message": "Turkoins"
-    },
-    "userMessages": {
-        "message": "Mensajes"
-    },
-    "userRatings": {
-        "message": "Votaciones"
-    },
-    "userPoints": {
-        "message": "Puntos"
-    },
-    "userFeedback": {
-        "message": "Compra/Venta"
-    },
-    "userTurkoins": {
-        "message": "Turkoins"
-    }
+  "extension_name": {
+    "message": "Extensión Chrome para Laneros"
+  },
+  "extension_short_name": {
+    "message": "Laneros"
+  },
+  "extension_description": {
+    "message": "Noticias sobre tecnología, internet, juegos y entretenimiento. Comunidad colombiana."
+  },
+  "text_label_options": {
+    "message": "Opciones de la extensión"
+  },
+  "text_data_loading": {
+    "message": "Cargando datos"
+  },
+  "text_go_to": {
+    "message": "Ir a la página principal de Laneros"
+  },
+  "text_button_show": {
+    "message": "Mostrar"
+  },
+  "text_button_hide": {
+    "message": "Ocultar"
+  },
+  "text_label_sections": {
+    "message": "Mostrar secciones"
+  },
+  "text_label_review": {
+    "message": "Intervalo de revisión"
+  },
+  "text_label_inbox": {
+    "message": "Buzón"
+  },
+  "text_label_alerts": {
+    "message": "Alertas"
+  },
+  "text_label_subscriptions": {
+    "message": "Suscripciones"
+  },
+  "text_label_notifications": {
+    "message": "Notificaciones"
+  },
+  "text_label_links": {
+    "message": "Vinculos adicionales"
+  },
+  "text_label_user_info": {
+    "message": "Información de usuario"
+  },
+  "text_label_hours": {
+    "message": "Horas"
+  },
+  "text_label_minutes": {
+    "message": "Minutos"
+  },
+  "text_label_seconds": {
+    "message": "Segundos"
+  },
+  "text_label_milliseconds": {
+    "message": "Milisegundos"
+  },
+  "text_button_save": {
+    "message": "Guardar"
+  },
+  "text_label_saved_header": {
+    "message": "! Opciones guardadas !"
+  },
+  "text_label_saved_text": {
+    "message": "Sus opciones han sido almacenadas"
+  },
+  "text_error_saved_header": {
+    "message": "! Opciones NO guardadas !"
+  },
+  "text_error_saved_text": {
+    "message": "Sus opciones no han sido almacenadas, intente nuevamente"
+  },
+  "text_error_not_connected": {
+    "message": "No has iiciado sesión"
+  },
+  "text_messages": {
+    "message": "Mensajes"
+  },
+  "text_zero_inbox": {
+    "message": "No hay nuevos mensajes"
+  },
+  "text_zero_alerts": {
+    "message": "No hay nuevas alertas"
+  },
+  "text_zero_subscriptions": {
+    "message": "No hay temas suscritos sin leer"
+  },
+  "text_new": {
+    "message": "Nuevo"
+  },
+  "text_go_account": {
+    "message": "Ir a Mi cuenta"
+  },
+  "text_error_page": {
+    "message": "Laneros puede estar experimentando problema"
+  },
+  "text_button_register": {
+    "message": "Regístrate"
+  },
+  "text_button_login": {
+    "message": "Acceder"
+  },
+  "text_error_login": {
+    "message": "Usuario y/o Contraseña incorrecta, intenta de nuevo"
+  },
+  "text_error_message": {
+    "message": "Error"
+  },
+  "text_label_login": {
+    "message": "Accede o registrate"
+  },
+  "text_label_nick": {
+    "message": "Nombre o dirección e-mail"
+  },
+  "text_label_account": {
+    "message": "¿ Ya tienes cuenta ?"
+  },
+  "text_label_no_account": {
+    "message": "No, crear una cuenta ahora"
+  },
+  "text_label_yes_account": {
+    "message": "Si, mi contraseña es:"
+  },
+  "text_label_password": {
+    "message": "Contraseña"
+  },
+  "text_label_stay": {
+    "message": "Permanecer conectado"
+  },
+  "text_label_connect": {
+    "message": "... o conectate"
+  },
+  "text_label_facebook": {
+    "message": "Acceder con Facebook"
+  },
+  "text_label_twitter": {
+    "message": "Acceder con Twitter"
+  },
+  "text_label_forgot": {
+    "message": "¿ Olvidaste la contraseña ?"
+  },
+  "text_label_ratings": {
+    "message": "Likes"
+  },
+  "text_label_points": {
+    "message": "Puntos"
+  },
+  "text_label_trader_rating": {
+    "message": "Puntuación de comerciante"
+  },
+  "text_label_turkoins": {
+    "message": "Turkoins"
+  },
+  "text_label_home": {
+    "message": "Inicio"
+  },
+  "text_zero_links": {
+    "message": "No hay links para mostrar"
+  },
+  "text_label_personal_details": {
+    "message": "Detalles personales"
+  },
+  "text_label_signature": {
+    "message": "Firma"
+  },
+  "text_label_contact_details": {
+    "message": "Detalles de contacto"
+  },
+  "text_label_privacy": {
+    "message": "Privacidad"
+  },
+  "text_label_preferences": {
+    "message": "Preferencias"
+  },
+  "text_label_alert_preferences": {
+    "message": "Preferencias de alertas"
+  },
+  "text_label_avatar": {
+    "message": "Avatar"
+  },
+  "text_label_news_feed": {
+    "message": "Tus Noticias"
+  },
+  "text_label_conversations": {
+    "message": "Charlas"
+  },
+  "text_label_likes_received": {
+    "message": "'Me Gusta' recibidos"
+  },
+  "text_label_your_content": {
+    "message": "Contenido"
+  },
+  "text_label_follow": {
+    "message": "Sigues a ..."
+  },
+  "text_label_ignore": {
+    "message": "Gente ignorada"
+  },
+  "text_label_external_account": {
+    "message": "Cuentas externas"
+  },
+  "text_label_upgrades": {
+    "message": "Suscripción de pago"
+  },
+  "text_label_new_post": {
+    "message": "Ignorar Foros en Nuevos mensajes"
+  },
+  "text_label_logout": {
+    "message": "Salir"
+  },
+  "text_label_online_status": {
+    "message": "Ver el estado conectado"
+  },
+  "text_label_update_status": {
+    "message": "Actualizar estado ..."
+  },
+  "text_button_post": {
+    "message": "Enviar"
+  },
+  "text_label_profile": {
+    "message": "Página de perfil"
+  },
+  "text_label_delete": {
+    "message": "Cancela tu cuenta"
+  },
+  "text_label_wallet": {
+    "message": "Turkoins"
+  },
+  "text_label_classifieds": {
+    "message": "Your clasificados"
+  },
+  "text_label_two_steps": {
+    "message": "Verificación de dos pasos"
+  },
+  "text_label_show_all": {
+    "message": "Mostrar todos ..."
+  },
+  "text_label_new_conversation": {
+    "message": "Iniciar una Nueva Charla"
+  },
+  "text_label_all_watched": {
+    "message": "Mostrar todos los temas seguidos"
+  },
+  "text_last_message": {
+    "message": "Último mensaje por: "
+  }
 }

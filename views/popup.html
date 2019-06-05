@@ -5,22 +5,16 @@
     <meta charset="utf-8" />
     <meta name="author" content="Alvaro Arturo Montenegro Silva">
     <meta name="author" content="arthvrian@yahoo.com">
-    <title data-message="extName" data-target="html"></title>
+    <title data-message="extension_name" data-target="html"></title>
     <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
     <link rel="stylesheet" type="text/css" href="../assets/css/popup.css" />
   </head>
   <body>
-    <div class="loading-overlay hide">
-      <div class="loading-box">
-        <img src="../assets/img/ajax-loader.gif" alt="Icon" class="center-block" width="200" />
-        <h3 data-message="dataLoading" data-target="html" class="text-center text-info"></h3>
-      </div>
-    </div>
     <section class="panel panel-default">
       <header class="panel-heading">
         <h3 class="panel-title">
-          <a class="external-link" target="_blank" data-message="goTo" data-target="title" href="">
+          <a class="external-link" target="_blank" data-message="text_go_to" data-target="title" href="">
             <img class="center-block" src="../assets/img/logo.png" alt="Laneros.com" width="240" />
           </a>
         </h3>
@@ -28,55 +22,55 @@
       <article class="list-group">
         <div class="section-loading">
           <img src="../assets/img/ajax-loader.gif" alt="Icon" class="center-block" />
-          <h3 data-message="dataLoading" data-target="html" class="text-center text-info"></h3>
+          <h3 data-message="text_data_loading" data-target="html" class="text-center text-info"></h3>
         </div>
         <div class="section-login hide">
           <form action="login/login" method="post" id="pageLogin" name="pageLogin" role="form" class="external-link">
             <div class="list-group-item list-group-item-danger">
-              <h4 data-message="errorMsg" data-target="html"></h4>
-              <p data-message="notConnected" data-target="html"></p>
+              <h4 data-message="text_error_message" data-target="html"></h4>
+              <p data-message="text_error_not_connected" data-target="html"></p>
             </div>
             <div class="list-group-item">
               <fieldset>
-                <legend data-message="loginLegend" data-target="html"></legend>
+                <legend data-message="text_label_login" data-target="html"></legend>
                 <div class="form-group">
-                  <label for="ctrl_pageLogin_login" data-message="loginNick" data-target="html" class="control-label"></label>
-                  <input type="text" class="form-control" name="login" id="ctrl_pageLogin_login" data-message="loginNick"
+                  <label for="ctrl_pageLogin_login" data-message="text_label_nick" data-target="html" class="control-label"></label>
+                  <input type="text" class="form-control" name="login" id="ctrl_pageLogin_login" data-message="text_label_nick"
                     data-target="placeholder" tabindex="1" required>
                 </div>
                 <div class="form-group">
-                  <label data-message="loginLabelAccount" data-target="html"></label>
+                  <label data-message="text_label_account" data-target="html"></label>
                   <div class="radio">
                     <label for="ctrl_pageLogin_not_registered" class="control-label">
                       <input type="radio" name="register" id="ctrl_pageLogin_not_registered" value="1">
-                      <span data-message="loginNoAccount" data-target="html"></span>
+                      <span data-message="text_label_no_account" data-target="html"></span>
                     </label>
                     <br>
                     <label for="ctrl_pageLogin_registered" class="control-label">
                       <input type="radio" name="register" id="ctrl_pageLogin_registered" value="0" checked>
-                      <span data-message="loginYesAccount" data-target="html"></span>
+                      <span data-message="text_label_yes_account" data-target="html"></span>
                     </label>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="ctrl_pageLogin_password" data-message="loginPassword" data-target="html" class="control-label"></label>
+                  <label for="ctrl_pageLogin_password" data-message="text_label_password" data-target="html" class="control-label"></label>
                   <input type="password" name="password" class="form-control" id="ctrl_pageLogin_password"
-                         data-message="loginPassword" data-target="placeholder" tabindex="2" required>
+                         data-message="text_label_password" data-target="placeholder" tabindex="2" required>
                 </div>
                 <div class="form-group">
                   <label for="ctrl_pageLogin_remember" class="control-label">
                     <input type="checkbox" name="remember" id="ctrl_pageLogin_remember" value="1">
-                    <span data-message="loginStay" data-target="html"></span>
+                    <span data-message="text_label_stay" data-target="html"></span>
                   </label>
                 </div>
               </fieldset>
               <fieldset>
-                <legend data-message="loginLegendConnect" data-target="html"></legend>
+                <legend data-message="text_label_connect" data-target="html"></legend>
                 <div class="text-center">
                   <a href="register/facebook?reg=1" class="fbLogin external-link">
-                    <span data-message="loginFacebook" data-target="html"></span></a>
+                    <span data-message="text_label_facebook" data-target="html"></span></a>
                   <a href="register/twitter?reg=1" class="twitterLogin external-link">
-                    <span data-message="loginTwitter" data-target="html"></span></a>
+                    <span data-message="text_label_twitter" data-target="html"></span></a>
                 </div>
               </fieldset>
             </div>
@@ -85,9 +79,9 @@
               <input type="hidden" name="_xfToken" value="">
               <input type="hidden" name="redirect" value="/">
               <input type="hidden" name="_xfResponseType" value="json">
-              <button type="submit" class="btn btn-primary" data-message="loginButton" data-target="html"></button>
-              <a href="lost-password/" class="pull-right external-link" data-message="loginForgot" data-target="html"></a>
-              <ul class="form-validation alert alert-danger alert-form hide"></ul>
+              <button type="submit" class="btn btn-primary" data-message="text_button_login" data-target="html"></button>
+              <a href="lost-password/" class="pull-right external-link" data-message="text_label_forgot" data-target="html"></a>
+              <ul class="form-validation alert alert-danger"></ul>
             </div>
           </form>
         </div>
@@ -104,25 +98,29 @@
                 <small class="pull-right"></small>
               </h2>
               <dl>
-                <dt class="pull-left" data-message="userMessages" data-target="html"></dt>
+                <dt class="pull-left" data-message="text_messages" data-target="html"></dt>
                 <dd class="pull-right user-messages"></dd>
               </dl>
               <dl>
-                <dt class="pull-left" data-message="userRatings" data-target="html"></dt>
+                <dt class="pull-left" data-message="text_label_ratings" data-target="html"></dt>
                 <dd class="pull-right user-ratings"></dd>
               </dl>
               <dl>
-                <dt class="pull-left" data-message="userPoints" data-target="html"></dt>
+                <dt class="pull-left" data-message="text_label_points" data-target="html"></dt>
                 <dd class="pull-right user-points"></dd>
               </dl>
               <dl>
-                <dt class="pull-left">Feedback:</dt>
-                <dd class="pull-right feedbackStats">
-                  <span class="Positive"></span> / <span class="Negative"></span> / <span class="Neutral"></span>
+                <dt class="pull-left" data-message="text_label_trader_rating" data-target="html"></dt>
+                <dd class="pull-right traderRatingChart">
+                  <div class="inner">
+                    <div class="positive"></div>
+                    <div class="neutral"></div>
+                    <div class="negative"></div>
+                  </div>
                 </dd>
               </dl>
               <dl>
-                <dt class="pull-left" data-message="userTurkoins" data-target="html"></dt>
+                <dt class="pull-left" data-message="text_label_turkoins" data-target="html"></dt>
                 <dd class="pull-right">
                   <a href="turkoins/" class="external-link user-turkoins"></a></dd>
               </dl>
@@ -134,24 +132,24 @@
             <ul class="nav nav-pills" role="tablist">
               <li role="presentation" class="active">
                 <a href="#home" aria-controls="home" role="tab" data-toggle="tab">
-                  <span data-message="labelHome" data-target="html"></span>
+                  <span data-message="text_label_home" data-target="html"></span>
                 </a>
               </li>
               <li role="presentation">
                 <a href="#inbox" aria-controls="inbox" role="tab" data-toggle="tab">
-                  <span data-message="labelInbox" data-target="html"></span>
+                  <span data-message="text_label_inbox" data-target="html"></span>
                   <span class="label label-danger external-inbox"></span>
                 </a>
               </li>
               <li role="presentation">
                 <a href="#alerts" aria-controls="alerts" role="tab" data-toggle="tab">
-                  <span data-message="labelAlerts" data-target="html"></span>
+                  <span data-message="text_label_alerts" data-target="html"></span>
                   <span class="label label-danger external-alerts"></span>
                 </a>
               </li>
               <li role="presentation">
                 <a href="#subscriptions" aria-controls="subscriptions" role="tab" data-toggle="tab">
-                  <span data-message="labelSubscriptions" data-target="html"></span>
+                  <span data-message="text_label_subscriptions" data-target="html"></span>
                   <span class="label label-danger external-subscriptions"></span>
                 </a>
               </li>
@@ -163,82 +161,85 @@
             </ul>
             <div class="tab-content">
               <div class="tab-pane active" id="home">
+                <div class="list-group-item list-group-item-danger hide">
+                  <p data-message="text_zero_links" data-target="html"></p>
+                </div>
                 <div class="clearfix">
                   <ul class="nav nav-tabs nav-stacked col-xs-6">
                     <li role="presentation">
-                      <a href="account/personal-details" data-message="homePersonal" data-target="html" class="external-link"></a>
+                      <a href="account/personal-details" data-message="text_label_personal_details" data-target="html" class="external-link"></a>
                     </li>
                     <li role="presentation">
-                      <a href="account/signature" data-message="homeSignature" data-target="html" class="external-link"></a>
+                      <a href="account/signature" data-message="text_label_signature" data-target="html" class="external-link"></a>
                     </li>
                     <li role="presentation">
-                      <a href="account/contact-details" data-message="homeContact" data-target="html" class="external-link"></a>
+                      <a href="account/contact-details" data-message="text_label_contact_details" data-target="html" class="external-link"></a>
                     </li>
                     <li role="presentation">
-                      <a href="account/privacy" data-message="homePrivacy" data-target="html" class="external-link"></a>
+                      <a href="account/privacy" data-message="text_label_privacy" data-target="html" class="external-link"></a>
                     </li>
                     <li role="presentation">
-                      <a href="account/preferences" data-message="homePrefs" data-target="html" class="external-link"></a>
+                      <a href="account/preferences" data-message="text_label_preferences" data-target="html" class="external-link"></a>
                     </li>
                     <li role="presentation">
-                      <a href="account/alert-preferences" data-message="homeAlertPrefs" data-target="html" class="external-link"></a>
+                      <a href="account/alert-preferences" data-message="text_label_alert_preferences" data-target="html" class="external-link"></a>
                     </li>
                     <li role="presentation">
-                      <a href="account/avatar" data-message="homeAvatar" data-target="html" class="external-link"></a>
+                      <a href="account/avatar" data-message="text_label_avatar" data-target="html" class="external-link"></a>
                     </li>
                     <li role="presentation">
-                      <a href="account/external-accounts" data-message="homeExternal" data-target="html" class="external-link"></a>
+                      <a href="account/external-accounts" data-message="text_label_external_account" data-target="html" class="external-link"></a>
                     </li>
                     <li role="presentation">
-                      <a href="account/security" data-message="loginPassword" data-target="html" class="external-link"></a>
+                      <a href="account/security" data-message="text_label_password" data-target="html" class="external-link"></a>
                     </li>
                     <li role="presentation">
-                      <a href="calificaciones/preferences" data-message="homePreferences" data-target="html" class="external-link"></a>
-                    </li>
-                    <li role="presentation">
-                      <a href="account/delete-account" data-message="homeDelete" data-target="html" class="external-link"></a>
-                    </li>
-                    <li role="presentation">
-                      <a href="account/ads" data-message="homeAds" data-target="html" class="external-link"></a>
+                      <a href="account/delete-account" data-message="text_label_delete" data-target="html" class="external-link"></a>
                     </li>
                   </ul>
                   <ul class="nav nav-tabs nav-stacked col-xs-6">
                     <li role="presentation">
-                      <a href="account/news-feed" data-message="homeFeed" data-target="html" class="external-link"></a>
+                      <a href="account/news-feed" data-message="text_label_news_feed" data-target="html" class="external-link"></a>
                     </li>
                     <li role="presentation">
                       <a href="conversations/" class="external-link">
-                        <span data-message="homeInbox" data-target="html"></span>
+                        <span data-message="text_label_conversations" data-target="html"></span>
                         <span class="label label-danger external-inbox pull-right"></span>
                       </a>
                     </li>
                     <li role="presentation">
                       <a href="account/alerts" class="external-link">
-                        <span data-message="labelAlerts" data-target="html"></span>
+                        <span data-message="text_label_alerts" data-target="html"></span>
                         <span class="label label-danger external-alerts pull-right"></span>
                       </a>
                     </li>
                     <li role="presentation">
-                      <a href="account/likes" data-message="homeLikes" data-target="html" class="external-link"></a>
+                      <a href="account/likes" data-message="text_label_likes_received" data-target="html" class="external-link"></a>
                     </li>
                     <li role="presentation">
-                      <a href="search/member?user_id=" data-message="homeContent" data-target="html"
+                      <a href="search/member?user_id=" data-message="text_label_your_content" data-target="html"
                          class="external-link external-id"></a>
                     </li>
                     <li role="presentation">
-                      <a href="account/following" data-message="homeFollow" data-target="html" class="external-link"></a>
+                      <a href="compra-venta/account/classifieds" data-message="text_label_classifieds" data-target="html" class="external-link"></a>
                     </li>
                     <li role="presentation">
-                      <a href="account/ignored" data-message="homeIgnore" data-target="html" class="external-link"></a>
+                      <a href="account/following" data-message="text_label_follow" data-target="html" class="external-link"></a>
                     </li>
                     <li role="presentation">
-                      <a href="account/upgrades" data-message="homeUpgrades" data-target="html" class="external-link"></a>
+                      <a href="account/ignored" data-message="text_label_ignore" data-target="html" class="external-link"></a>
                     </li>
                     <li role="presentation">
-                      <a href="turkoins/" data-message="homeWallet" data-target="html" class="external-link"></a>
+                      <a href="account/upgrades" data-message="text_label_upgrades" data-target="html" class="external-link"></a>
                     </li>
                     <li role="presentation">
-                      <a href="account/new-post" data-message="homeNewPost" data-target="html" class="external-link"></a>
+                      <a href="turkoins/" data-message="text_label_wallet" data-target="html" class="external-link"></a>
+                    </li>
+                    <li role="presentation">
+                      <a href="account/two-step" data-message="text_label_two_steps" data-target="html" class="external-link"></a>
+                    </li>
+                    <li role="presentation">
+                      <a href="account/new-post" data-message="text_label_new_post" data-target="html" class="external-link"></a>
                     </li>
                   </ul>
                 </div>
@@ -249,7 +250,7 @@
                             name="visibilityForm" id="visibilityForm">
                         <label>
                           <input type="checkbox" name="visible" value="1">
-                          <span data-message="homeOnline" data-target="html"></span>
+                          <span data-message="text_label_online_status" data-target="html"></span>
                         </label>
                         <input type="hidden" name="_xfToken">
                         <input type="hidden" name="_xfNoRedirect" value="1">
@@ -257,16 +258,16 @@
                       </form>
                     </li>
                     <li role="presentation" class="col-xs-6">
-                      <a href="logout/?_xfToken=" data-message="homeLogout" data-target="html"
+                      <a href="logout/?_xfToken=" data-message="text_label_logout" data-target="html"
                          class="external-link external-token"></a>
                     </li>
                     <li role="presentation" class="col-xs-12">
                       <form action="members/" method="post" name="statusPoster" id="statusPoster">
-                        <textarea name="message" rows="1" data-message="homeUpdate" data-target="placeholder"
+                        <textarea name="message" rows="1" data-message="text_label_update_status" data-target="placeholder"
                                 class="form-control" id="message"></textarea>
                         <div class="col-xs-12 hide">
                           <span class="label label-success">140</span>
-                          <button type="submit" class="btn btn-primary btn-xs pull-right" data-message="homePost"
+                          <button type="submit" class="btn btn-primary btn-xs pull-right" data-message="text_button_post"
                                   data-target="html"></button>
                           <input type="hidden" name="_xfToken" value="">
                           <input type="hidden" name="return" value="1">
@@ -279,10 +280,10 @@
               <div class="tab-pane" id="inbox">
                 <div class="list-group">
                   <div class="list-group-item list-group-item-danger hide">
-                    <p data-message="zeroInbox" data-target="html"></p>
+                    <p data-message="text_zero_inbox" data-target="html"></p>
                   </div>
                   <div class="list-group-item list-group-item-info hide">
-                    <p data-message="dataLoading" data-target="html"></p>
+                    <p data-message="text_data_loading" data-target="html"></p>
                   </div>
                   <div class="list-group-item list-group-inbox-sample hide clearfix">
                     <div class="col-xs-2">
@@ -304,10 +305,10 @@
                   <div class="panel-footer">
                     <ul class="nav nav-tabs nav-options">
                       <li role="presentation" class="col-xs-6">
-                        <a href="conversations/" data-message="showAll" data-target="html" data-target="html" class="external-link"></a>
+                        <a href="conversations/" data-message="text_label_show_all" data-target="html" data-target="html" class="external-link"></a>
                       </li>
                       <li role="presentation" class="col-xs-6 text-right">
-                        <a href="conversations/add" data-message="startNew" data-target="html" class="external-link"></a>
+                        <a href="conversations/add" data-message="text_label_new_conversation" data-target="html" class="external-link"></a>
                       </li>
                     </ul>
                   </div>
@@ -316,10 +317,10 @@
               <div class="tab-pane" id="alerts">
                 <div class="list-group">
                   <div class="list-group-item list-group-item-danger hide">
-                    <p data-message="zeroAlerts" data-target="html"></p>
+                    <p data-message="text_zero_alerts" data-target="html"></p>
                   </div>
                   <div class="list-group-item list-group-item-info hide">
-                    <p data-message="dataLoading" data-target="html"></p>
+                    <p data-message="text_data_loading" data-target="html"></p>
                   </div>
                   <div class="list-group-item list-group-alert-sample hide clearfix">
                     <div class="col-xs-2">
@@ -336,10 +337,10 @@
                   <div class="panel-footer">
                     <ul class="nav nav-tabs nav-options">
                       <li role="presentation" class="col-xs-6">
-                        <a href="account/alerts" data-message="showAll" data-target="html" data-target="html" class="external-link"></a>
+                        <a href="account/alerts" data-message="text_label_show_all" data-target="html" class="external-link"></a>
                       </li>
                       <li role="presentation" class="col-xs-6 text-right">
-                        <a href="account/alert-preferences" data-message="alertPrefs" data-target="html" class="external-link"></a>
+                        <a href="account/alert-preferences" data-message="text_label_alert_preferences" data-target="html" class="external-link"></a>
                       </li>
                     </ul>
                   </div>
@@ -348,10 +349,10 @@
               <div class="tab-pane" id="subscriptions">
                 <div class="list-group">
                   <div class="list-group-item list-group-item-danger hide">
-                    <p data-message="zeroSubs" data-target="html"></p>
+                    <p data-message="text_zero_subscriptions" data-target="html"></p>
                   </div>
                   <div class="list-group-item list-group-item-info hide">
-                    <p data-message="dataLoading" data-target="html"></p>
+                    <p data-message="text_data_loading" data-target="html"></p>
                   </div>
                   <div class="list-group-item list-group-subscription-sample hide clearfix">
                     <div class="col-xs-2">
@@ -368,7 +369,7 @@
                         <div class="subscription-data"></div>
                         <div class="subscription-last-reply text-right">
                           <span class="subscription-who">
-                            <span data-message="labelLastMessage" data-target="html"></span>
+                            <span data-message="text_last_message" data-target="html"></span>
                             <span></span>
                           </span>
                           <div class="subscription-when"></div>
@@ -380,7 +381,7 @@
                   <div class="panel-footer">
                     <ul class="nav nav-tabs nav-options">
                       <li role="presentation">
-                        <a href="watched/threads/all" data-message="showAllWatched" data-target="html" data-target="html" class="external-link"></a>
+                        <a href="watched/threads/all" data-message="text_label_all_watched" data-target="html" data-target="html" class="external-link"></a>
                       </li>
                     </ul>
                   </div>
