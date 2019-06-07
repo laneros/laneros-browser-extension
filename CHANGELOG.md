@@ -2,6 +2,12 @@
 
 All notable changes to `laneros-browser-extension` will be documented in this file.
 
+## 5.5.2 | 2016-06-13
+
+### Changed
+
+- User avatar fix
+
 ## 5.5.1 | 2016-06-13
 
 ### Changed
