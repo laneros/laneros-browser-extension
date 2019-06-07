@@ -2,7 +2,7 @@
 
 All notable changes to `laneros-browser-extension` will be documented in this file.
 
-## 6.6.2 | 2018-05-09
+## 6.6.3 | 2018-05-09
 
 ### Changed
 
