@@ -2,7 +2,7 @@
  * Self-Executing Anonymous Function
  */
 (function(laneros_extension) {
-    laneros_extension.stRURL = 'https://www.laneros.com/';
+    laneros_extension.stRURL = 'http://www.laneros.com/';
     laneros_extension.objRGlobalOptions = {
         dtRTimeRev: 120000,
         bolRShowInbox: true,
