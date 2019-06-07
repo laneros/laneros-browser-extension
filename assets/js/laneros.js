@@ -803,7 +803,7 @@ var Laneros = {
                             if ($(this).attr("href").indexOf("members/") !== -1) {
                                 var inLUserID = Laneros.getUserData("inRUserId");
 
-                                $(this).attr("href", Laneros.getURL() + $(this).attr("href") + inLUserID).attr("target", "_blank");
+                                $(this).attr("href", $(this).attr("href") + stLUsername + "." + inLUserID).attr("target", "_blank");
                             }
                         });
 
