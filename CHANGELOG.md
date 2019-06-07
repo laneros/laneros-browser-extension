@@ -2,6 +2,12 @@
 
 All notable changes to `laneros-browser-extension` will be documented in this file.
 
+## 6.6.1 | 2018-04-10
+
+### Changed
+
+- Subscriptions tab fix
+
 ## 6.6 | 2018-04-07
 
 ### Changed
