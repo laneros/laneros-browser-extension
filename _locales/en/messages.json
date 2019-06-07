@@ -9,7 +9,7 @@
     "message": "News about technology, internet, games and entertainment. Colombian Community."
   },
   "text_label_options": {
-    "message": "Extension options"
+    "message": "Laneros Browser Extension - Options"
   },
   "text_data_loading": {
     "message": "Loading data"
@@ -152,14 +152,14 @@
   "text_label_trader_rating": {
     "message": "Trader rating"
   },
-  "text_label_turkoins": {
-    "message": "Turkoins"
-  },
   "text_label_home": {
     "message": "Home"
   },
   "text_zero_links": {
     "message": "There are no links to show"
+  },
+  "text_label_nickname": {
+    "message": "Change username"
   },
   "text_label_personal_details": {
     "message": "Personal details"
@@ -182,6 +182,15 @@
   "text_label_avatar": {
     "message": "Avatar"
   },
+  "text_label_external_account": {
+    "message": "External accounts"
+  },
+  "text_label_delete": {
+    "message": "Delete your account"
+  },
+  "text_label_classifieds_preferences": {
+    "message": "Trading preferences"
+  },
   "text_label_news_feed": {
     "message": "Your news feed"
   },
@@ -200,41 +209,26 @@
   "text_label_ignore": {
     "message": "People you ignore"
   },
-  "text_label_external_account": {
-    "message": "External accounts"
-  },
   "text_label_upgrades": {
     "message": "Account upgrades"
+  },
+  "text_label_two_steps": {
+    "message": "Two-step verification"
   },
   "text_label_new_post": {
     "message": "Ignore new post"
   },
-  "text_label_logout": {
-    "message": "Log out"
-  },
   "text_label_online_status": {
     "message": "Show online status"
+  },
+  "text_label_logout": {
+    "message": "Log out"
   },
   "text_label_update_status": {
     "message": "Update your status..."
   },
   "text_button_post": {
     "message": "Post"
-  },
-  "text_label_profile": {
-    "message": "Your profile page"
-  },
-  "text_label_delete": {
-    "message": "Delete your account"
-  },
-  "text_label_wallet": {
-    "message": "Wallet"
-  },
-  "text_label_classifieds": {
-    "message": "Your classifieds"
-  },
-  "text_label_two_steps": {
-    "message": "Two-step verification"
   },
   "text_label_show_all": {
     "message": "Show All ..."
@@ -248,9 +242,14 @@
   "text_last_message": {
     "message": "Last message by: "
   },
-
   "label_text_display_sections": {
     "message": "Control which sections are displayed"
+  },
+  "label_text_display_notifications": {
+    "message": "Control which notification popups are displayed"
+  },
+  "text_label_consolidated_notification": {
+    "message": "Consolidated"
   },
   "label_text_review_interval": {
     "message": "Time interval in which updates are queried ( 1 minute minimum )"
@@ -263,5 +262,17 @@
   },
   "label_text_processing": {
     "message": "Processing ..."
+  },
+  "label_title_messages": {
+    "message": "New reply to this conversation"
+  },
+  "label_title_alerts": {
+    "message": "New alert"
+  },
+  "label_title_subscription": {
+    "message": "New message(s) on this thread/forum"
+  },
+  "text_go_subscription": {
+    "message": "Go to thread/forum"
   }
 }

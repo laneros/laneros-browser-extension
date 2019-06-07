@@ -9,7 +9,7 @@
     "message": "Noticias sobre tecnología, internet, juegos y entretenimiento. Comunidad colombiana."
   },
   "text_label_options": {
-    "message": "Opciones de la extensión"
+    "message": "Extensión de navegador para Laneros - Opciones"
   },
   "text_data_loading": {
     "message": "Cargando datos"
@@ -75,7 +75,7 @@
     "message": "Sus opciones no han sido almacenadas, intente nuevamente"
   },
   "text_error_not_connected": {
-    "message": "No has iiciado sesión"
+    "message": "No has iniciado sesión"
   },
   "text_messages": {
     "message": "Mensajes"
@@ -152,14 +152,14 @@
   "text_label_trader_rating": {
     "message": "Puntuación de comerciante"
   },
-  "text_label_turkoins": {
-    "message": "Turkoins"
-  },
   "text_label_home": {
     "message": "Inicio"
   },
   "text_zero_links": {
-    "message": "No hay links para mostrar"
+    "message": "No hay vinculos para mostrar"
+  },
+  "text_label_nickname": {
+    "message": "Cambiar nombre de usuario"
   },
   "text_label_personal_details": {
     "message": "Detalles personales"
@@ -182,6 +182,15 @@
   "text_label_avatar": {
     "message": "Avatar"
   },
+  "text_label_external_account": {
+    "message": "Cuentas externas"
+  },
+  "text_label_delete": {
+    "message": "Cancela tu cuenta"
+  },
+  "text_label_classifieds_preferences": {
+    "message": "Preferencias en calificaciones"
+  },
   "text_label_news_feed": {
     "message": "Tus Noticias"
   },
@@ -200,41 +209,26 @@
   "text_label_ignore": {
     "message": "Gente ignorada"
   },
-  "text_label_external_account": {
-    "message": "Cuentas externas"
-  },
   "text_label_upgrades": {
     "message": "Suscripción de pago"
   },
-  "text_label_new_post": {
-    "message": "Ignorar Foros en Nuevos mensajes"
+  "text_label_two_steps": {
+    "message": "Verificación de dos pasos"
   },
-  "text_label_logout": {
-    "message": "Salir"
+  "text_label_new_post": {
+    "message": "Ignorar foros en Nuevos mensajes"
   },
   "text_label_online_status": {
     "message": "Ver el estado conectado"
+  },
+  "text_label_logout": {
+    "message": "Salir"
   },
   "text_label_update_status": {
     "message": "Actualizar estado ..."
   },
   "text_button_post": {
     "message": "Enviar"
-  },
-  "text_label_profile": {
-    "message": "Página de perfil"
-  },
-  "text_label_delete": {
-    "message": "Cancela tu cuenta"
-  },
-  "text_label_wallet": {
-    "message": "Turkoins"
-  },
-  "text_label_classifieds": {
-    "message": "Your clasificados"
-  },
-  "text_label_two_steps": {
-    "message": "Verificación de dos pasos"
   },
   "text_label_show_all": {
     "message": "Mostrar todos ..."
@@ -248,9 +242,14 @@
   "text_last_message": {
     "message": "Último mensaje por: "
   },
-
   "label_text_display_sections": {
     "message": "Controlar cuales secciones se muestran"
+  },
+  "label_text_display_notifications": {
+    "message": "Control cuales popups de notificaciones se muestran"
+  },
+  "text_label_consolidated_notification": {
+    "message": "Agrupadas"
   },
   "label_text_review_interval": {
     "message": "Intervalo de tiempo en el cual se consulta por actualizaciones ( mínimo 1 minuto )"
@@ -263,5 +262,17 @@
   },
   "label_text_processing": {
     "message": "Procesando ..."
+  },
+  "label_title_messages": {
+    "message": "Nueva respuesta a esta conversación"
+  },
+  "label_title_alerts": {
+    "message": "Nueva alerta"
+  },
+  "label_title_subscription": {
+    "message": "Nuevo(s) mensaje(s) en este tema/foro"
+  },
+  "text_go_subscription": {
+    "message": "Ir al tema/foro"
   }
 }

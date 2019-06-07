@@ -7,14 +7,3 @@ body {
 input[type=number] {
     text-align: right;
 }
-.form-control-label {
-    width: 100%;
-}
-.alert {
-    margin-bottom: 0;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-}
-.form-group {
-    margin-bottom: 0.4rem;
-}
