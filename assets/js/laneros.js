@@ -871,7 +871,11 @@ var Laneros = {
                     var objLConversation = $("#inbox").find(".list-group-item:first").clone();
 
                     $(this).find("a").each(function () {
-                        $(this).attr("target", "_blank").attr("href", Laneros.getURL() + $(this).attr("href"));
+                        $(this).attr("target", "_blank");
+
+                        if ($(this).attr("href").indexOf(Laneros.getURL()) === -1) {
+                            $(this).attr("href", Laneros.getURL() + $(this).attr("href"));
+                        }
                     });
 
                     $(this).find("img").each(function () {
@@ -919,7 +923,11 @@ var Laneros = {
                         var inLMessageID = arrLMessageID[arrLMessageID.length - 1].replace("/", "");
 
                         $(this).find("a").each(function () {
-                            $(this).attr("target", "_blank").attr("href", Laneros.getURL() + $(this).attr("href"));
+                            $(this).attr("target", "_blank");
+
+                            if ($(this).attr("href").indexOf(Laneros.getURL()) === -1) {
+                                $(this).attr("href", Laneros.getURL() + $(this).attr("href"));
+                            }
                         });
 
                         $(this).find("img").each(function () {
@@ -975,7 +983,11 @@ var Laneros = {
                     var objLDate = $(this).find(".DateTime");
 
                     $(this).find("a").each(function () {
-                        $(this).attr("target", "_blank").attr("href", Laneros.getURL() + $(this).attr("href"));
+                        $(this).attr("target", "_blank");
+
+                        if ($(this).attr("href").indexOf(Laneros.getURL()) === -1) {
+                            $(this).attr("href", Laneros.getURL() + $(this).attr("href"));
+                        }
                     });
 
                     $(this).find("img").each(function () {
@@ -993,12 +1005,14 @@ var Laneros = {
 
                     $(this).find(".listItemText abbr, .listItemText .newIcon").remove();
 
+
+
                     $(objLAlert).find("a:first").attr("href", $(this).find("a.avatar").attr("href"));
                     $(objLAlert).find("a:first > img").attr("src", $(this).find("a.avatar img").attr("src"))
                         .attr("alt", $(this).find("a.avatar img").attr("alt"));
 
-                    $(objLAlert).find(".media-body > a")
-                        .attr("href", $(this).find("h3 a").attr("href"));
+                    $(objLAlert).find(".media-body > h6 > a")
+                        .attr("href", $(this).find("h3.title a").attr("href"));
                     $(objLAlert).find(".media-body > p:first").html($(this).find("h3").html());
                     $(objLAlert).find(".media-body > p:last > small").html(objLDate);
 
@@ -1022,7 +1036,11 @@ var Laneros = {
                         var objLOptions = {};
 
                         $(this).find("a").each(function () {
-                            $(this).attr("target", "_blank").attr("href", Laneros.getURL() + $(this).attr("href"));
+                            $(this).attr("target", "_blank");
+
+                            if ($(this).attr("href").indexOf(Laneros.getURL()) === -1) {
+                                $(this).attr("href", Laneros.getURL() + $(this).attr("href"));
+                            }
                         });
 
                         $(this).find("img").each(function () {
@@ -1078,7 +1096,11 @@ var Laneros = {
                 $(this).find("input, .itemPageNav, .controls, .stats, .iconKey").remove();
 
                 $(this).find("a").each(function () {
-                    $(this).attr("target", "_blank").attr("href", Laneros.getURL() + $(this).attr("href"));
+                    $(this).attr("target", "_blank");
+
+                    if ($(this).attr("href").indexOf(Laneros.getURL()) === -1) {
+                        $(this).attr("href", Laneros.getURL() + $(this).attr("href"));
+                    }
                 });
 
                 $(this).find("img").each(function () {
@@ -1131,7 +1153,11 @@ var Laneros = {
                             var objLOptions = {};
 
                             $(this).find("a").each(function () {
-                                $(this).attr("target", "_blank").attr("href", Laneros.getURL() + $(this).attr("href"));
+                                $(this).attr("target", "_blank");
+
+                                if ($(this).attr("href").indexOf(Laneros.getURL()) === -1) {
+                                    $(this).attr("href", Laneros.getURL() + $(this).attr("href"));
+                                }
                             });
 
                             $(this).find("img").each(function () {
