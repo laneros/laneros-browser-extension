@@ -2,19 +2,31 @@
 
 All notable changes to `laneros-browser-extension` will be documented in this file.
 
-## 5.5.2 | 2016-06-13
+## 5.6 | 2016-11-10
+
+### Added
+
+- Some buttons to notifications
+
+### Changed
+
+- Upgraded Bootstrap
+- Updated jQuery to last version
+- Updated jQuery From validate to last version
+
+## 5.5.2 | 2016-03-27
 
 ### Changed
 
 - User avatar fix
 
-## 5.5.1 | 2016-06-13
+## 5.5.1 | 2016-03-20
 
 ### Changed
 
 - User avatar fix
 
-## 5.5 | 2016-06-13
+## 5.5 | 2016-03-20
 
 ### Changed
 
@@ -22,20 +34,20 @@ All notable changes to `laneros-browser-extension` will be documented in this fi
 - CSS improvements
 - Major javascript changes
 
-## 5.0.3 | 2016-03-24
+## 5.0.3 | 2016-03-07
 
 ### Changed
 
 - Minor CSS adjustments
 - Split user rating
 
-## 5.0.2 | 2016-03-20
+## 5.0.2 | 2016-02-22
 
 ### Changed
 
 - Minor javascript adjustments
 
-## 5.0.1 | 2016-02-16
+## 5.0.1 | 2015-12-25
 
 ### Added
 

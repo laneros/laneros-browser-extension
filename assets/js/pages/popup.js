@@ -9,7 +9,7 @@
      *
      * @param objRResponse
      */
-    function set_response(objRResponse) {
+    laneros_extension.set_response = function(objRResponse) {
         var inLCounter = parseInt(objRResponse._visitor_conversationsUnread) + parseInt(objRResponse._visitor_alertsUnread);
 
         if (objRResponse._visitor_conversationsUnread > 0) {
@@ -44,7 +44,7 @@
             var stLToken = $('input[name=_xfToken]:first', objRData).val();
 
             $('.section-loading').fadeOut(function() {
-                get_account(objLAccount, stLToken, objLResult);
+                laneros_extension.get_account(objLAccount, stLToken, objLResult);
 
                 $('.section-user').removeClass('hide').hide().fadeIn('fast');
                 $('.external-options').click(function () {
@@ -59,11 +59,11 @@
 
                 stLActiveTab = stLActiveTab.replace(laneros_extension.stRURL, '');
 
-                if (!$('.nav-pills').find('a[href=#' + stLActiveTab + ']').hasClass('hidden')) {
-                    $('.nav-pills').find('a[href=#' + stLActiveTab + ']').tab('show');
+                if (!$('.nav-pills').find('a[href="#' + stLActiveTab + '"]').hasClass('hidden')) {
+                    $('.nav-pills').find('a[href="#' + stLActiveTab + '"]').tab('show');
                 }
                 else {
-                    $('.nav-pills').find('a[href=#home]').tab('show');
+                    $('.nav-pills').find('a[href="#home"]').tab('show');
                 }
 
                 switch (stLActiveTab) {
@@ -92,13 +92,13 @@
                         });
                         break;
                     case 'inbox':
-                        get_conversations(stLToken);
+                        laneros_extension.get_conversations(stLToken);
                         break;
                     case 'alerts':
-                        get_alerts(stLToken);
+                        laneros_extension.get_alerts(stLToken);
                         break;
                     case 'subscriptions':
-                        get_subscriptions($('.discussionList .discussionListItems', objRData));
+                        laneros_extension.get_subscriptions($('.discussionList .discussionListItems', objRData));
                         break;
                 }
 
@@ -110,13 +110,13 @@
 
                     switch (stLNewActiveTab) {
                         case 'inbox':
-                            get_conversations(stLToken);
+                            laneros_extension.get_conversations(stLToken);
                             break;
                         case 'alerts':
-                            get_alerts(stLToken);
+                            laneros_extension.get_alerts(stLToken);
                             break;
                         case 'subscriptions':
-                            get_subscriptions($('.discussionList .discussionListItems', objRData));
+                            laneros_extension.get_subscriptions($('.discussionList .discussionListItems', objRData));
                             break;
                     }
 
@@ -134,7 +134,7 @@
      * @param stRToken
      * @param objRResult
      */
-    function get_account(objRAccount, stRToken, objRResult) {
+    laneros_extension.get_account = function(objRAccount, stRToken, objRResult) {
         laneros_extension.get_storage({ bolRShowLinks : laneros_extension.objRGlobalOptions.bolRShowLinks }, function(objROptions) {
             var stLUserID = $('.primaryContent a.avatar', objRAccount).attr('href');
             var stLAvatar = $('.primaryContent a.avatar span.img', objRAccount).attr('style');
@@ -241,7 +241,7 @@
      *
      * @param stRToken
      */
-    function get_conversations(stRToken) {
+    laneros_extension.get_conversations = function(stRToken) {
         $('#inbox .list-group-inbox').html('');
         $('#inbox .list-group-item-danger').addClass('hide');
         $('#inbox .list-group-item-info').removeClass('hide').show();
@@ -249,12 +249,12 @@
         $.getJSON(laneros_extension.stRURL + 'conversations/popup?_xfResponseType=json&_xfNoRedirect=1&_xfToken=' + stRToken, function(objRResponse) {
             var objLConversations = document.createElement('div');
 
-            set_response(objRResponse);
+            laneros_extension.set_response(objRResponse);
 
             $('#inbox .list-group-item-info').slideUp(function() {
                 $(objLConversations).html(objRResponse.templateHtml);
 
-                if ($(objLConversations).find('.noItems').size() == 0) {
+                if ($(objLConversations).find('.noItems').length == 0) {
                     $(objLConversations).find('.listItem').each(function () {
                         var objLConversation = $('.list-group-inbox-sample').clone();
 
@@ -297,10 +297,9 @@
      *
      * Get Alerts
      *
-     * @param theToken
+     * @param stRToken
      */
-    function get_alerts(stRToken) {
-
+    laneros_extension.get_alerts = function(stRToken) {
         $('#alerts .list-group-alerts').html('');
         $('#alerts .list-group-item-danger').addClass('hide');
         $('#alerts .list-group-item-info').removeClass('hide').show();
@@ -308,12 +307,12 @@
         $.getJSON(laneros_extension.stRURL + 'account/alerts-popup?_xfResponseType=json&_xfNoRedirect=1&_xfToken=' + stRToken, function(objRResponse) {
             var objLAlerts = document.createElement('div');
 
-            set_response(objRResponse);
+            laneros_extension.set_response(objRResponse);
 
             $('#alerts .list-group-item-info').slideUp(function() {
                 $(objLAlerts).html(objRResponse.templateHtml);
 
-                if ($(objLAlerts).find('.noItems').size() == 0) {
+                if ($(objLAlerts).find('.noItems').length == 0) {
                     $(objLAlerts).find('.listItem').each(function () {
                         var objLAlert = $('.list-group-alert-sample').clone();
                         var objLDate = $(this).find('abbr');
@@ -360,10 +359,9 @@
      *
      * Get Subscriptions
      *
-     * @param numSubscriptions
-     * @param theSubscriptions
+     * @param objRWatchedThreads
      */
-    function get_subscriptions(objRWatchedThreads) {
+    laneros_extension.get_subscriptions = function(objRWatchedThreads) {
         var bolLNew = false;;
 
         $('#subscriptions .list-group-subscriptions').html('');
@@ -395,7 +393,7 @@
 
                 $(objLThread).find('.col-xs-2 a.miniMe').attr('href', $(this).find('a.miniMe').attr('href'));
 
-                if ($(this).find('a.miniMe').size() > 0) {
+                if ($(this).find('a.miniMe').length > 0) {
                     $(objLThread).find('.col-xs-2 a.miniMe img').attr('src', $(this).find('a.miniMe img').attr('src'))
                         .attr('alt', $(this).find('a.miniMe img').attr('alt'));
                     (objLThread).find('.col-xs-2 a.miniMe').removeClass('hide');

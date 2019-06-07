@@ -10,7 +10,7 @@
      * @param inRMilliseconds
      * @returns {{inRMilliseconds: Number, inRSeconds: Number, inRMinutes: Number, inRHours: Number}}
      */
-    function get_time(inRMilliseconds) {
+    laneros_extension.get_time = function (inRMilliseconds) {
         try {
             var inLSeconds = Math.floor(inRMilliseconds / 1000);
             var inLMinutes = Math.floor(inLSeconds / 60);
@@ -34,7 +34,7 @@
      *
      * Set Extension Options
      */
-    function set_options() {
+    laneros_extension.set_options = function () {
         try {
             var dtLTimeRev = parseInt($('#extension_number_milliseconds').val())
                 + (parseInt($('#extension_number_seconds').val()) * 1000)
@@ -91,11 +91,11 @@
      */
     laneros_extension.get_options = function (objROptions) {
         try {
-            var objLReviewTime  = get_time(objROptions.dtRTimeRev);
+            var objLReviewTime  = laneros_extension.get_time(objROptions.dtRTimeRev);
 
             $('#form_options').validate({
                 errorLabelContainer: $('.panel-footer .form-validation'),
-                submitHandler: set_options
+                submitHandler: laneros_extension.set_options
             });
 
             $('input[name=extension_radio_inbox][value=' + objROptions.bolRShowInbox + ']').attr('checked', true)

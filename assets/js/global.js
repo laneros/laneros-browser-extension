@@ -2,7 +2,7 @@
  * Self-Executing Anonymous Function
  */
 (function(laneros_extension) {
-    laneros_extension.stRURL = 'http://www.laneros.com/';
+    laneros_extension.stRURL = 'https://www.laneros.com/';
     laneros_extension.objRGlobalOptions = {
         dtRTimeRev: 120000,
         bolRShowInbox: true,
@@ -56,7 +56,7 @@
         chrome.browserAction.setBadgeText({ text: ''});
 
         if (inRCounter > 0) {
-            chrome.browserAction.setBadgeBackgroundColor({ color: [255, 0, 0, 255]});
+            chrome.browserAction.setBadgeBackgroundColor({ color: [0, 177, 235, 255]});
             chrome.browserAction.setBadgeText({ text: '' + inRCounter});
         }
     };
@@ -84,45 +84,50 @@
 
                 inLConversations = parseInt($('#VisitorExtraMenu_ConversationsCounter:first .Total', objRData).text());
                 inLAlerts = parseInt($('#VisitorExtraMenu_AlertsCounter:first .Total', objRData).text());
-                inLSubscriptions = parseInt($('.discussionListItems li.unread', objRData).size());
+                inLSubscriptions = parseInt($('.discussionListItems li.unread', objRData).length);
                 inLCounter = inLConversations + inLAlerts + inLSubscriptions;
 
                 objLResult.inRConversations = inLConversations;
                 objLResult.inRAlerts = inLAlerts;
                 objLResult.inRSubscriptions = inLSubscriptions;
 
-                laneros_extension.get_storage({ bolRShowInfo : laneros_extension.objRGlobalOptions.bolRShowInfo }, function(objROptions) {
-                    if (!objROptions.bolRShowInfo) {
-                        $('.user-info').addClass('hide');
-                    }
+                laneros_extension.get_storage({ bolRShowInfo : laneros_extension.objRGlobalOptions.bolRShowInfo },
+                    function(objROptions) {
+                        if (!objROptions.bolRShowInfo) {
+                            $('.user-info').addClass('hide');
+                        }
                 });
 
-                laneros_extension.get_storage({ bolRShowInbox : laneros_extension.objRGlobalOptions.bolRShowInbox }, function(objROptions) {
-                    if (!objROptions.bolRShowInbox) {
-                        $('a[href=#inbox]').addClass('hide');
-                    }
+                laneros_extension.get_storage({ bolRShowInbox : laneros_extension.objRGlobalOptions.bolRShowInbox },
+                    function(objROptions) {
+                        if (!objROptions.bolRShowInbox) {
+                            $('a[href="#inbox"]').addClass('hide');
+                        }
                 });
 
-                laneros_extension.get_storage({ bolRShowAlerts : laneros_extension.objRGlobalOptions.bolRShowAlerts }, function(objROptions) {
-                    if (!objROptions.bolRShowAlerts) {
-                        $('a[href=#alerts]').addClass('hide');
-                    }
+                laneros_extension.get_storage({ bolRShowAlerts : laneros_extension.objRGlobalOptions.bolRShowAlerts },
+                    function(objROptions) {
+                        if (!objROptions.bolRShowAlerts) {
+                            $('a[href="#alerts"]').addClass('hide');
+                        }
                 });
 
-                laneros_extension.get_storage({ bolRShowSubs : laneros_extension.objRGlobalOptions.bolRShowSubs }, function(objROptions) {
-                    if (!objROptions.bolRShowSubs) {
-                        $('a[href=#subscriptions]').addClass('hide');
-                    }
+                laneros_extension.get_storage({ bolRShowSubs : laneros_extension.objRGlobalOptions.bolRShowSubs },
+                    function(objROptions) {
+                        if (!objROptions.bolRShowSubs) {
+                            $('a[href="#subscriptions"]').addClass('hide');
+                        }
                 });
 
                 laneros_extension.get_badge(function(inRBadgeCounter) {
                     laneros_extension.set_badge(inLCounter);
 
                     if (inRBadgeCounter < inLCounter) {
-                        laneros_extension.get_storage({ bolRShowNotification : laneros_extension.objRGlobalOptions.bolRShowNotification }, function(objROptions) {
-                            if (objROptions.bolRShowNotification) {
-                                laneros_extension.set_notification(inLConversations, inLAlerts, inLSubscriptions);
-                            }
+                        laneros_extension.get_storage({ bolRShowNotification : laneros_extension.objRGlobalOptions.bolRShowNotification },
+                            function(objROptions) {
+                                if (objROptions.bolRShowNotification) {
+                                    laneros_extension.set_notification(inLConversations, inLAlerts, inLSubscriptions);
+                                }
                         });
                     }
                 });
@@ -130,7 +135,8 @@
             catch(objRException) {
                 var dtLDate = new Date();
 
-                console.log(dtLDate.toLocaleString() + ' - ' + laneros_extension.get_message('extension_short_name') + ': ' +  objRException.message);
+                console.log(dtLDate.toLocaleString() + ' - ' + laneros_extension.get_message('extension_short_name') + ': '
+                    +  objRException.message);
             }
         };
 
@@ -138,50 +144,70 @@
             if (objRjqXHR.status == 403) {
                 laneros_extension.do_login();
 
-                laneros_extension.get_storage({ bolRShowNotification : laneros_extension.objRGlobalOptions.bolRShowNotification }, function(objROptions) {
-                    if (objROptions.bolRShowNotification) {
-                        laneros_extension.set_create_notification('laneros_not_logged_in', {
-                            type: 'basic',
-                            title: laneros_extension.get_message('extension_name'),
-                            message: laneros_extension.get_message('text_error_not_connected'),
-                            iconUrl: '../assets/img/icon.png',
-                            buttons: [{
-                                title: laneros_extension.get_message('text_go_to'),
-                                iconUrl: '../assets/img/icon.png'
-                            }]
-                        }, function(stRNotificationID, inRButtonIndex) {
-                            switch (inRButtonIndex) {
-                                default:
-                                    chrome.tabs.create({url: laneros_extension.stRURL}, function(objRTab) {});
-                                    break;
-                            }
-                        }, true);
-                    }
+                laneros_extension.get_storage({ bolRShowNotification : laneros_extension.objRGlobalOptions.bolRShowNotification },
+                    function(objROptions) {
+                        if (objROptions.bolRShowNotification) {
+                            laneros_extension.set_create_notification('laneros_not_logged_in', {
+                                type: 'basic',
+                                title: laneros_extension.get_message('extension_name'),
+                                message: laneros_extension.get_message('text_error_not_connected'),
+                                iconUrl: '../assets/img/icon.png',
+                                buttons: [{
+                                    title: laneros_extension.get_message('text_go_to'),
+                                    iconUrl: '../assets/img/icon.png'
+                                }]
+                            }, function(stRNotificationID, inRButtonIndex) {
+                                switch (inRButtonIndex) {
+                                    default:
+                                        chrome.tabs.query({ url: laneros_extension.stRURL }, function(objRTabResult) {
+                                            var arrLResult = objRTabResult.shift();
+
+                                            if (objRTabResult.length == 0) {
+                                                chrome.tabs.create({url: laneros_extension.stRURL}, function(objRTab) {});
+                                            }
+                                            else {
+                                                chrome.tabs.highlight({windowId : arrLResult.windowId, tabs : arrLResult.index});
+                                            }
+                                        });
+                                        break;
+                                }
+                            }, true);
+                        }
                 });
             }
             else {
                 $('.section-loading').removeClass('hide').hide().fadeIn().find('h3').addClass('text-danger')
-                    .removeClass('text-info').html(get_message('dataError'));
+                    .removeClass('text-info').html(laneros_extension.get_message('dataError'));
 
-                laneros_extension.get_storage({ bolRShowNotification : laneros_extension.objRGlobalOptions.bolRShowNotification }, function(objROptions) {
-                    if (objROptions.bolRShowNotification) {
-                        laneros_extension.set_create_notification('laneros_error', {
-                            type: 'basic',
-                            title: laneros_extension.get_message('extension_name'),
-                            message: laneros_extension.get_message('text_error_page'),
-                            iconUrl: '../assets/img/laneros.png',
-                            buttons: [{
-                                title: laneros_extension.get_message('text_go_to'),
-                                iconUrl: '../assets/img/icon.png'
-                            }]
-                        }, function(stRNotificationID, inRButtonIndex) {
-                            switch (inRButtonIndex) {
-                                default:
-                                    chrome.tabs.create({url: laneros_extension.stRURL}, function(objRTab) {});
-                                    break;
-                            }
-                        }, true);
-                    }
+                laneros_extension.get_storage({ bolRShowNotification : laneros_extension.objRGlobalOptions.bolRShowNotification },
+                    function(objROptions) {
+                        if (objROptions.bolRShowNotification) {
+                            laneros_extension.set_create_notification('laneros_error', {
+                                type: 'basic',
+                                title: laneros_extension.get_message('extension_name'),
+                                message: laneros_extension.get_message('text_error_page'),
+                                iconUrl: '../assets/img/icon.png',
+                                buttons: [{
+                                    title: laneros_extension.get_message('text_go_to'),
+                                    iconUrl: '../assets/img/icon.png'
+                                }]
+                            }, function(stRNotificationID, inRButtonIndex) {
+                                switch (inRButtonIndex) {
+                                    default:
+                                        chrome.tabs.query({ url: laneros_extension.stRURL }, function(objRTabResult) {
+                                            var arrLResult = objRTabResult.shift();
+
+                                            if (objRTabResult.length == 0) {
+                                                chrome.tabs.create({url: laneros_extension.stRURL});
+                                            }
+                                            else {
+                                                chrome.tabs.highlight({windowId : arrLResult.windowId, tabs : arrLResult.index});
+                                            }
+                                        });
+                                        break;
+                                }
+                            }, true);
+                        }
                 });
             }
         };
@@ -210,12 +236,12 @@
             $('#ctrl_pageLogin_password, #ctrl_pageLogin_remember').closest('.form-group').hide();
 
             if ($('#ctrl_pageLogin_not_registered').is(':checked')) {
-                $('button[type=submit]').html(get_message('text_button_register'));
+                $('button[type=submit]').html(laneros_extension.get_message('text_button_register'));
             }
             if ($('#ctrl_pageLogin_registered').is(':checked')) {
 
                 $('#ctrl_pageLogin_password, #ctrl_pageLogin_remember').closest('.form-group').slideDown(function() {
-                    $('button[type=submit]').html(get_message('text_button_login'));
+                    $('button[type=submit]').html(laneros_extension.get_message('text_button_login'));
                 });
             }
         });

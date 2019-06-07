@@ -130,10 +130,28 @@
         }, function(stRNotificationID, inRButtonIndex) {
             switch (inRButtonIndex) {
                 case 0:
-                    chrome.tabs.create({url: laneros_extension.stRURL}, function(objRTab) {});
+                    chrome.tabs.query({ url: laneros_extension.stRURL }, function(objRTabResult) {
+                        var arrLResult = objRTabResult.shift();
+
+                        if (objRTabResult.length == 0) {
+                            chrome.tabs.create({url: laneros_extension.stRURL}, function(objRTab) {});
+                        }
+                        else {
+                            chrome.tabs.highlight({windowId : arrLResult.windowId, tabs : arrLResult.index});
+                        }
+                    });
                     break;
                 default:
-                    chrome.tabs.create({url: laneros_extension.stRURL + 'account'}, function(objRTab) {});
+                    chrome.tabs.query({ url: laneros_extension.stRURL  + 'account'}, function(objRTabResult) {
+                        var arrLResult = objRTabResult.shift();
+
+                        if (objRTabResult.length == 0) {
+                            chrome.tabs.create({url: laneros_extension.stRURL + 'account'}, function(objRTab) {});
+                        }
+                        else {
+                            chrome.tabs.highlight({windowId : arrLResult.windowId, tabs : arrLResult.index});
+                        }
+                    });
                     break;
             }
         }, true);
