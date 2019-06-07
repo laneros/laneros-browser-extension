@@ -63,13 +63,13 @@
     "message": "Guardar"
   },
   "text_label_saved_header": {
-    "message": "! Opciones guardadas !"
+    "message": "¡ Opciones guardadas !"
   },
   "text_label_saved_text": {
     "message": "Sus opciones han sido almacenadas"
   },
   "text_error_saved_header": {
-    "message": "! Opciones NO guardadas !"
+    "message": "¡ Opciones NO guardadas !"
   },
   "text_error_saved_text": {
     "message": "Sus opciones no han sido almacenadas, intente nuevamente"
@@ -247,5 +247,21 @@
   },
   "text_last_message": {
     "message": "Último mensaje por: "
+  },
+
+  "label_text_display_sections": {
+    "message": "Controlar cuales secciones se muestran"
+  },
+  "label_text_review_interval": {
+    "message": "Intervalo de tiempo en el cual se consulta por actualizaciones ( mínimo 1 minuto )"
+  },
+  "label_text_required_section": {
+    "message": "Seleccione el estado de esta sección"
+  },
+  "label_text_required_review": {
+    "message": "Indique el tiempo entre consultas de acualizaciones a Laneros"
+  },
+  "label_text_processing": {
+    "message": "Procesando ..."
   }
 }

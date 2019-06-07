@@ -1,403 +1,426 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta charset="utf-8" />
-    <meta name="author" content="Alvaro Arturo Montenegro Silva">
-    <meta name="author" content="arthvrian@yahoo.com">
-    <title data-message="extension_name" data-target="html"></title>
-    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
-    <link rel="stylesheet" type="text/css" href="../assets/css/popup.css" />
-  </head>
-  <body>
-    <section class="panel panel-default">
-      <header class="panel-heading">
-        <h3 class="panel-title">
-          <a class="external-link" target="_blank" data-message="text_go_to" data-target="title" href="">
-            <img class="center-block" src="../assets/img/logo.png" alt="Laneros.com" width="240" />
-          </a>
-        </h3>
-      </header>
-      <article class="list-group">
-        <div class="section-loading">
-          <img src="../assets/img/ajax-loader.gif" alt="Icon" class="center-block" />
-          <h3 data-message="text_data_loading" data-target="html" class="text-center text-info"></h3>
-        </div>
-        <div class="section-login hide">
-          <form action="login/login" method="post" id="pageLogin" name="pageLogin" role="form" class="external-link">
-            <div class="list-group-item list-group-item-danger">
-              <h4 data-message="text_error_message" data-target="html"></h4>
-              <p data-message="text_error_not_connected" data-target="html"></p>
-            </div>
-            <div class="list-group-item">
-              <fieldset>
-                <legend data-message="text_label_login" data-target="html"></legend>
-                <div class="form-group">
-                  <label for="ctrl_pageLogin_login" data-message="text_label_nick" data-target="html" class="control-label"></label>
-                  <input type="text" class="form-control" name="login" id="ctrl_pageLogin_login" data-message="text_label_nick"
-                    data-target="placeholder" tabindex="1" required>
-                </div>
-                <div class="form-group">
-                  <label data-message="text_label_account" data-target="html"></label>
-                  <div class="radio">
-                    <label for="ctrl_pageLogin_not_registered" class="control-label">
-                      <input type="radio" name="register" id="ctrl_pageLogin_not_registered" value="1">
-                      <span data-message="text_label_no_account" data-target="html"></span>
-                    </label>
-                    <br>
-                    <label for="ctrl_pageLogin_registered" class="control-label">
-                      <input type="radio" name="register" id="ctrl_pageLogin_registered" value="0" checked>
-                      <span data-message="text_label_yes_account" data-target="html"></span>
-                    </label>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="ctrl_pageLogin_password" data-message="text_label_password" data-target="html" class="control-label"></label>
-                  <input type="password" name="password" class="form-control" id="ctrl_pageLogin_password"
-                         data-message="text_label_password" data-target="placeholder" tabindex="2" required>
-                </div>
-                <div class="form-group">
-                  <label for="ctrl_pageLogin_remember" class="control-label">
-                    <input type="checkbox" name="remember" id="ctrl_pageLogin_remember" value="1">
-                    <span data-message="text_label_stay" data-target="html"></span>
-                  </label>
-                </div>
-              </fieldset>
-              <fieldset>
-                <legend data-message="text_label_connect" data-target="html"></legend>
-                <div class="text-center">
-                  <a href="register/facebook?reg=1" class="fbLogin external-link">
-                    <span data-message="text_label_facebook" data-target="html"></span></a>
-                  <a href="register/twitter?reg=1" class="twitterLogin external-link">
-                    <span data-message="text_label_twitter" data-target="html"></span></a>
-                </div>
-              </fieldset>
-            </div>
-            <div class="panel-footer">
-              <input type="hidden" name="cookie_check" value="1">
-              <input type="hidden" name="_xfToken" value="">
-              <input type="hidden" name="redirect" value="/">
-              <input type="hidden" name="_xfResponseType" value="json">
-              <button type="submit" class="btn btn-primary" data-message="text_button_login" data-target="html"></button>
-              <a href="lost-password/" class="pull-right external-link" data-message="text_label_forgot" data-target="html"></a>
-              <ul class="form-validation alert alert-danger"></ul>
-            </div>
-          </form>
-        </div>
-      </article>
-      <article class="section-user list-group hide">
-        <div class="list-group-item list-group-item-none">
-          <div class="user-info clearfix">
-            <a class="external-link pull-left user-avatar" href="">
-              <img width="96" class="external-link" src="">
-            </a>
-            <div  class="pull-right col-xs-8">
-              <h2 class="text-left user-name">
-                <a href="" class="external-link"></a>
-                <small class="pull-right"></small>
-              </h2>
-              <dl>
-                <dt class="pull-left" data-message="text_messages" data-target="html"></dt>
-                <dd class="pull-right user-messages">-</dd>
-              </dl>
-              <dl>
-                <dt class="pull-left" data-message="text_label_ratings" data-target="html"></dt>
-                <dd class="pull-right user-ratings">-</dd>
-              </dl>
-              <dl>
-                <dt class="pull-left" data-message="text_label_points" data-target="html"></dt>
-                <dd class="pull-right user-points">-</dd>
-              </dl>
-              <dl>
-                <dt class="pull-left" data-message="text_label_trader_rating" data-target="html"></dt>
-                <dd class="pull-right traderRatingChart">
-                  <div class="inner">
-                    <div class="positive"></div>
-                    <div class="neutral"></div>
-                    <div class="negative"></div>
-                  </div>
-                </dd>
-              </dl>
-              <dl>
-                <dt class="pull-left" data-message="text_label_turkoins" data-target="html"></dt>
-                <dd class="pull-right">
-                  <a href="turkoins/" class="external-link user-turkoins">-</a></dd>
-              </dl>
-            </div>
-          </div>
-        </div>
-        <div class="list-group-item list-group-item-none">
-          <div class="tabs">
-            <ul class="nav nav-pills" role="tablist">
-              <li role="presentation" class="active">
-                <a href="#home" aria-controls="home" role="tab" data-toggle="tab">
-                  <span data-message="text_label_home" data-target="html"></span>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <meta name="author" content="arthvrian@yahoo.com">
+        <meta name="author" content="Alvaro Arturo Montenegro Silva">
+        <title data-message="text_label_options" data-target="html"></title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="../assets/css/libs/bootstrap.min.css">
+
+        <link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
+        <link rel="stylesheet" type="text/css" href="../assets/css/pages/popup.css" />
+    </head>
+    <body class="container px-0">
+        <div class="card">
+            <header class="card-header">
+                <a class="external-link" target="_blank" data-message="text_go_to" data-target="title" href="">
+                    <img class="card-img-top img-fluid py-2" src="../assets/img/logo.png" alt="Logo Laneros">
                 </a>
-              </li>
-              <li role="presentation">
-                <a href="#inbox" aria-controls="inbox" role="tab" data-toggle="tab">
-                  <span data-message="text_label_inbox" data-target="html"></span>
-                  <span class="label label-danger external-inbox"></span>
-                </a>
-              </li>
-              <li role="presentation">
-                <a href="#alerts" aria-controls="alerts" role="tab" data-toggle="tab">
-                  <span data-message="text_label_alerts" data-target="html"></span>
-                  <span class="label label-danger external-alerts"></span>
-                </a>
-              </li>
-              <li role="presentation">
-                <a href="#subscriptions" aria-controls="subscriptions" role="tab" data-toggle="tab">
-                  <span data-message="text_label_subscriptions" data-target="html"></span>
-                  <span class="label label-danger external-subscriptions"></span>
-                </a>
-              </li>
-              <li role="presentation" class="pull-right">
-                <a href="" class="external-options">
-                  <span class="glyphicon glyphicon-cog"></span>
-                </a>
-              </li>
-            </ul>
-            <div class="tab-content">
-              <div class="tab-pane active" id="home">
-                <div class="list-group-item list-group-item-danger hide">
-                  <p data-message="text_zero_links" data-target="html"></p>
+            </header>
+            <article class="list-group">
+                <div class="list-group-item list-group-item-info align-items-start list-group-item-processing py-2">
+                    <img src="../assets/img/ajax-loader.gif" alt="Loader" class="img-fluid" width="40">
+                    <strong class="lead ml-3 mt-1" data-message="label_text_processing" data-target="html"></strong>
                 </div>
-                <div class="clearfix">
-                  <ul class="nav nav-tabs nav-stacked col-xs-6">
-                    <li role="presentation">
-                      <a href="account/personal-details" data-message="text_label_personal_details" data-target="html" class="external-link"></a>
-                    </li>
-                    <li role="presentation">
-                      <a href="account/signature" data-message="text_label_signature" data-target="html" class="external-link"></a>
-                    </li>
-                    <li role="presentation">
-                      <a href="account/contact-details" data-message="text_label_contact_details" data-target="html" class="external-link"></a>
-                    </li>
-                    <li role="presentation">
-                      <a href="account/privacy" data-message="text_label_privacy" data-target="html" class="external-link"></a>
-                    </li>
-                    <li role="presentation">
-                      <a href="account/preferences" data-message="text_label_preferences" data-target="html" class="external-link"></a>
-                    </li>
-                    <li role="presentation">
-                      <a href="account/alert-preferences" data-message="text_label_alert_preferences" data-target="html" class="external-link"></a>
-                    </li>
-                    <li role="presentation">
-                      <a href="account/avatar" data-message="text_label_avatar" data-target="html" class="external-link"></a>
-                    </li>
-                    <li role="presentation">
-                      <a href="account/external-accounts" data-message="text_label_external_account" data-target="html" class="external-link"></a>
-                    </li>
-                    <li role="presentation">
-                      <a href="account/security" data-message="text_label_password" data-target="html" class="external-link"></a>
-                    </li>
-                    <li role="presentation">
-                      <a href="account/delete-account" data-message="text_label_delete" data-target="html" class="external-link"></a>
-                    </li>
-                  </ul>
-                  <ul class="nav nav-tabs nav-stacked col-xs-6">
-                    <li role="presentation">
-                      <a href="account/news-feed" data-message="text_label_news_feed" data-target="html" class="external-link"></a>
-                    </li>
-                    <li role="presentation">
-                      <a href="conversations/" class="external-link">
-                        <span data-message="text_label_conversations" data-target="html"></span>
-                        <span class="label label-danger external-inbox pull-right"></span>
-                      </a>
-                    </li>
-                    <li role="presentation">
-                      <a href="account/alerts" class="external-link">
-                        <span data-message="text_label_alerts" data-target="html"></span>
-                        <span class="label label-danger external-alerts pull-right"></span>
-                      </a>
-                    </li>
-                    <li role="presentation">
-                      <a href="account/likes" data-message="text_label_likes_received" data-target="html" class="external-link"></a>
-                    </li>
-                    <li role="presentation">
-                      <a href="search/member?user_id=" data-message="text_label_your_content" data-target="html"
-                         class="external-link external-id"></a>
-                    </li>
-                    <li role="presentation">
-                      <a href="classifieds/account/classifieds" data-message="text_label_classifieds" data-target="html" class="external-link"></a>
-                    </li>
-                    <li role="presentation">
-                      <a href="account/following" data-message="text_label_follow" data-target="html" class="external-link"></a>
-                    </li>
-                    <li role="presentation">
-                      <a href="account/ignored" data-message="text_label_ignore" data-target="html" class="external-link"></a>
-                    </li>
-                    <li role="presentation">
-                      <a href="account/upgrades" data-message="text_label_upgrades" data-target="html" class="external-link"></a>
-                    </li>
-                    <li role="presentation">
-                      <a href="turkoins/" data-message="text_label_wallet" data-target="html" class="external-link"></a>
-                    </li>
-                    <li role="presentation">
-                      <a href="account/two-step" data-message="text_label_two_steps" data-target="html" class="external-link"></a>
-                    </li>
-                    <li role="presentation">
-                      <a href="account/new-post" data-message="text_label_new_post" data-target="html" class="external-link"></a>
-                    </li>
-                  </ul>
-                </div>
-                <div class="panel-footer">
-                  <ul class="nav nav-tabs nav-options">
-                    <li role="presentation" class="col-xs-6">
-                      <form action="account/toggle-visibility" method="post" class="external-link"
-                            name="visibilityForm" id="visibilityForm">
-                        <label>
-                          <input type="checkbox" name="visible" value="1">
-                          <span data-message="text_label_online_status" data-target="html"></span>
-                        </label>
-                        <input type="hidden" name="_xfToken">
-                        <input type="hidden" name="_xfNoRedirect" value="1">
-                        <input type="hidden" name="_xfResponseType" value="json">
-                      </form>
-                    </li>
-                    <li role="presentation" class="col-xs-6">
-                      <a href="logout/?_xfToken=" data-message="text_label_logout" data-target="html"
-                         class="external-link external-token"></a>
-                    </li>
-                    <li role="presentation" class="col-xs-12">
-                      <form action="members/" method="post" name="statusPoster" id="statusPoster">
-                        <textarea name="message" rows="1" data-message="text_label_update_status" data-target="placeholder"
-                                class="form-control" id="message"></textarea>
-                        <div class="col-xs-12 hide">
-                          <span class="label label-success">140</span>
-                          <button type="submit" class="btn btn-primary btn-xs pull-right" data-message="text_button_post"
-                                  data-target="html"></button>
-                          <input type="hidden" name="_xfToken" value="">
-                          <input type="hidden" name="return" value="1">
+                <section class="section-login hidden-xs-up">
+                    <div class="list-group-item list-group-item-danger flex-column align-items-start list-group-item-message">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1" data-message="text_error_message" data-target="html"></h5>
                         </div>
-                      </form>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="tab-pane" id="inbox">
-                <div class="list-group">
-                  <div class="list-group-item list-group-item-danger hide">
-                    <p data-message="text_zero_inbox" data-target="html"></p>
-                  </div>
-                  <div class="list-group-item list-group-item-info hide">
-                    <p data-message="text_data_loading" data-target="html"></p>
-                  </div>
-                  <div class="list-group-item list-group-inbox-sample hide clearfix">
-                    <div class="col-xs-2">
-                      <a href="" class="external-link" target="_blank">
-                        <img src="" width="48" height="48" class="img-rounded">
-                      </a>
+                        <p class="mb-1" data-message="text_error_not_connected" data-target="html"></p>
                     </div>
-                    <div class="col-xs-10">
-                      <h3 class="list-group-item-heading">
-                        <a href="" class="external-link conversation-title" target="_blank"></a>
-                      </h3>
-                      <div class="list-group-item-text">
-                        <div class="conversation-participants"></div>
-                        <div class="conversation-last-reply"></div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="list-group-inbox"></div>
-                  <div class="panel-footer">
-                    <ul class="nav nav-tabs nav-options">
-                      <li role="presentation" class="col-xs-6">
-                        <a href="conversations/" data-message="text_label_show_all" data-target="html" data-target="html" class="external-link"></a>
-                      </li>
-                      <li role="presentation" class="col-xs-6 text-right">
-                        <a href="conversations/add" data-message="text_label_new_conversation" data-target="html" class="external-link"></a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="tab-pane" id="alerts">
-                <div class="list-group">
-                  <div class="list-group-item list-group-item-danger hide">
-                    <p data-message="text_zero_alerts" data-target="html"></p>
-                  </div>
-                  <div class="list-group-item list-group-item-info hide">
-                    <p data-message="text_data_loading" data-target="html"></p>
-                  </div>
-                  <div class="list-group-item list-group-alert-sample hide clearfix">
-                    <div class="col-xs-2">
-                      <a href="" class="external-link" target="_blank">
-                        <img src="" width="48" height="48" class="img-rounded">
-                      </a>
-                    </div>
-                    <div class="col-xs-10">
-                      <p class="alert-data"></p>
-                      <div class="list-group-item-text alert-date text-right"></div>
-                    </div>
-                  </div>
-                  <div class="list-group-alerts"></div>
-                  <div class="panel-footer">
-                    <ul class="nav nav-tabs nav-options">
-                      <li role="presentation" class="col-xs-6">
-                        <a href="account/alerts" data-message="text_label_show_all" data-target="html" class="external-link"></a>
-                      </li>
-                      <li role="presentation" class="col-xs-6 text-right">
-                        <a href="account/alert-preferences" data-message="text_label_alert_preferences" data-target="html" class="external-link"></a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="tab-pane" id="subscriptions">
-                <div class="list-group">
-                  <div class="list-group-item list-group-item-danger hide">
-                    <p data-message="text_zero_subscriptions" data-target="html"></p>
-                  </div>
-                  <div class="list-group-item list-group-item-info hide">
-                    <p data-message="text_data_loading" data-target="html"></p>
-                  </div>
-                  <div class="list-group-item list-group-subscription-sample hide clearfix">
-                    <div class="col-xs-2">
-                      <a href="" class="external-link" target="_blank">
-                        <img src="" width="48" height="48" class="img-rounded external-link">
-                      </a>
-                      <a href="" class="external-link miniMe hide" target="_blank">
-                        <img src="" width="20" height="20" class="img-rounded img-thumbnail external-link">
-                      </a>
-                    </div>
-                    <div class="col-xs-10">
-                      <h3 class="list-group-item-heading"></h3>
-                      <div class="list-group-item-text">
-                        <div class="subscription-data"></div>
-                        <div class="subscription-last-reply text-right">
-                          <span class="subscription-who">
-                            <span data-message="text_last_message" data-target="html"></span>
-                            <span></span>
-                          </span>
-                          <span class="subscription-when"></span>
+                    <form action="login/login" method="post" id="pageLogin" name="pageLogin" role="form" class="external-link">
+                        <div class="list-group-item flex-column align-items-start">
+                            <fieldset>
+                                <legend data-message="text_label_login" data-target="html"></legend>
+                                <div class="form-group mb-2">
+                                    <label class="form-control-label" for="ctrl_pageLogin_login" data-message="text_label_nick"
+                                           data-target="html"></label>
+                                    <input type="text" class="form-control" name="login" id="ctrl_pageLogin_login" data-message="text_label_nick"
+                                           data-target="placeholder" tabindex="1" required>
+                                </div>
+                                <div class="form-group mb-2">
+                                    <label class="form-control-label mb-2" data-message="text_label_account" data-target="html"></label>
+                                    <br>
+                                    <label for="ctrl_pageLogin_not_registered" class="custom-control custom-radio mb-0">
+                                        <input type="radio" name="register" id="ctrl_pageLogin_not_registered" value="1"
+                                               class="custom-control-input">
+                                        <span class="custom-control-indicator"></span>
+                                        <span class="custom-control-description mt-1" data-message="text_label_no_account"
+                                              data-target="html"></span>
+                                    </label>
+                                    <label for="ctrl_pageLogin_registered" class="custom-control custom-radio mb-0">
+                                        <input type="radio" name="register" id="ctrl_pageLogin_registered" value="0" checked
+                                               class="custom-control-input">
+                                        <span class="custom-control-indicator"></span>
+                                        <span class="custom-control-description mt-1" data-message="text_label_yes_account"
+                                              data-target="html"></span>
+                                    </label>
+                                </div>
+                                <div class="form-group mb-2">
+                                    <label class="form-control-label" for="ctrl_pageLogin_password" data-message="text_label_password"
+                                           data-target="html"></label>
+                                    <input type="password" class="form-control" name="password" id="ctrl_pageLogin_password" data-message="text_label_password"
+                                           data-target="placeholder" tabindex="2" required>
+                                </div>
+                                <div class="form-group mb-2">
+                                    <label for="ctrl_pageLogin_remember" class="custom-control custom-checkbox mb-0">
+                                        <input type="checkbox" class="custom-control-input" name="remember" id="ctrl_pageLogin_remember"
+                                               value="1">
+                                        <span class="custom-control-indicator"></span>
+                                        <span class="custom-control-description mt-1" data-message="text_label_stay" data-target="html"></span>
+                                    </label>
+                                </div>
+                            </fieldset>
+                            <fieldset>
+                                <legend data-message="text_label_connect" data-target="html"></legend>
+                                <div class="text-center">
+                                    <a href="register/facebook?reg=1" class="btn fbLogin external-link">
+                                        <span data-message="text_label_facebook" data-target="html"></span></a>
+                                    <a href="register/twitter?reg=1" class="btn twitterLogin external-link">
+                                        <span data-message="text_label_twitter" data-target="html"></span></a>
+                                </div>
+                            </fieldset>
                         </div>
-                      </div>
+                        <div class="list-group-item list-group-item-action">
+                            <input type="hidden" name="cookie_check" value="1">
+                            <input type="hidden" name="redirect" value=".">
+                            <input type="hidden" name="_xfToken" value="">
+                            <input type="hidden" name="_xfResponseType" value="json">
+                            <button type="submit" class="btn btn-primary" data-message="text_button_login" data-target="html"></button>
+                            <a href="lost-password/" class="ml-2 external-link" data-message="text_label_forgot" data-target="html"></a>
+                            <ul class="form-validation alert alert-danger mt-4 hidden-xs-up"></ul>
+                        </div>
+                    </form>
+                </section>
+                <section class="section-error hidden-xs-up">
+                    <div class="list-group-item list-group-item-danger flex-column align-items-start list-group-item-message">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1" data-message="text_error_message" data-target="html"></h5>
+                        </div>
+                        <p class="mb-1" data-message="text_error_page" data-target="html"></p>
                     </div>
-                  </div>
-                  <div class="list-group-subscriptions list-group-item-none"></div>
-                  <div class="panel-footer">
-                    <ul class="nav nav-tabs nav-options">
-                      <li role="presentation">
-                        <a href="watched/threads/all" data-message="text_label_all_watched" data-target="html" data-target="html" class="external-link"></a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+                </section>
+                <section class="section-user">
+                    <div class="list-group-item flex-column align-items-start hidden-xs-up list-group-item-user-info">
+                        <div class="media p-1">
+                            <a class="external-link" href="members/">
+                                <img class="d-flex mr-3 rounded" src="../assets/img/blank.png" alt="Avatar" width="96">
+                            </a>
+                            <div class="media-body">
+                                <h5 class="mt-1 text-right">
+                                    <a href="members/" class="external-link"></a>
+                                    <small class=""></small>
+                                </h5>
+                                <dl class="row mb-1">
+                                    <dt class="col-5" data-message="text_messages" data-target="html"></dt>
+                                    <dd class="col-7 text-right">-</dd>
+                                    <dt class="col-5" data-message="text_label_ratings" data-target="html"></dt>
+                                    <dd class="col-7 text-right">-</dd>
+                                    <dt class="col-5" data-message="text_label_points" data-target="html"></dt>
+                                    <dd class="col-7 text-right">-</dd>
+                                    <dt class="col-5" data-message="text_label_trader_rating" data-target="html"></dt>
+                                    <dd class="col-7 feedbackStats text-right">
+                                        <span class="positive"></span> /
+                                        <span class="neutral"></span> /
+                                        <span class="negative"></span>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tabs hidden-xs-up">
+                        <ul class="nav nav-pills nav-fill">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#home" data-toggle="tab" role="tab">
+                                    <span data-message="text_label_home" data-target="html"></span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#inbox" data-toggle="tab" role="tab">
+                                    <span data-message="text_label_inbox" data-target="html"></span>
+                                    <span class="badge badge-pill badge-danger float-right external-inbox"></span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#alerts" data-toggle="tab" role="tab">
+                                    <span data-message="text_label_alerts" data-target="html"></span>
+                                    <span class="badge badge-pill badge-danger float-right external-alerts"></span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#subscriptions" data-toggle="tab" role="tab">
+                                    <span data-message="text_label_subscriptions" data-target="html"></span>
+                                    <span class="badge badge-pill badge-danger float-right external-subscriptions"></span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link float-right external-options" href="#">
+                                    <img src="../assets/img/icon-gear.png" alt="Options" class="img-fluid" width="18">
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content list-group-item p-0">
+                            <div class="tab-pane w-100" id="home" role="tabpanel">
+                                <div class="list-group-item-danger p-1 hidden-xs-up">
+                                    <p class="lead ml-1 mb-0 p-1" data-message="text_zero_links" data-target="html"></p>
+                                </div>
+                                <div class="row m-0 hidden-xs-up">
+                                    <ul class="nav flex-column pr-0 col-6">
+                                        <li class="nav-item">
+                                            <a class="nav-link text-muted external-link" href="account/personal-details"
+                                               data-message="text_label_personal_details" data-target="html"></a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-muted external-link" href="account/signature"
+                                               data-message="text_label_signature" data-target="html"></a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-muted external-link" href="account/contact-details"
+                                               data-message="text_label_contact_details" data-target="html"></a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-muted external-link" href="account/privacy"
+                                               data-message="text_label_privacy" data-target="html"></a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-muted external-link" href="account/preferences"
+                                               data-message="text_label_preferences" data-target="html"></a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-muted external-link" href="account/alert-preferences"
+                                               data-message="text_label_alert_preferences" data-target="html"></a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-muted external-link" href="account/avatar"
+                                               data-message="text_label_avatar" data-target="html"></a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-muted external-link" href="account/external-accounts"
+                                               data-message="text_label_external_account" data-target="html"></a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-muted external-link" href="account/security"
+                                               data-message="text_label_password" data-target="html"></a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-muted external-link" href="account/delete-account"
+                                               data-message="text_label_delete" data-target="html"></a>
+                                        </li>
+                                    </ul>
+                                    <ul class="nav flex-column pr-0 col-6">
+                                        <li class="nav-item">
+                                            <a class="nav-link text-muted external-link" href="account/news-feed"
+                                               data-message="text_label_news_feed" data-target="html"></a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-muted external-link" href="conversations/">
+                                                <span data-message="text_label_conversations" data-target="html"></span>
+                                                <span class="badge badge-pill badge-danger float-right external-inbox"></span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-muted external-link" href="account/alerts">
+                                                <span data-message="text_label_alerts" data-target="html"></span>
+                                                <span class="badge badge-pill badge-danger float-right external-alerts"></span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-muted external-link" href="account/likes"
+                                               data-message="text_label_likes_received" data-target="html" ></a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-muted external-link" href="account/member?user_id="
+                                               data-message="text_label_your_content" data-target="html"></a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-muted external-link" href="classifieds/account/classifieds"
+                                               data-message="text_label_classifieds" data-target="html"></a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-muted external-link" href="account/following"
+                                               data-message="text_label_follow" data-target="html"></a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-muted external-link" href="account/ignored"
+                                               data-message="text_label_ignore" data-target="html"></a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-muted external-link" href="account/upgrades"
+                                               data-message="text_label_upgrades" data-target="html"></a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-muted external-link" href="turkoins/"
+                                               data-message="text_label_wallet" data-target="html"></a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-muted external-link" href="account/two-step"
+                                               data-message="text_label_two_steps" data-target="html"></a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link text-muted external-link" href="account/new-post"
+                                               data-message="text_label_new_post" data-target="html"></a>
+                                        </li>
+                                    </ul>
+                                    <ul class="nav flex-column pr-0 col-6">
+                                        <li class="nav-item">
+                                            <form action="account/toggle-visibility" method="post" class="external-link pb-1 pl-1"
+                                                  name="visibilityForm" id="visibilityForm">
+                                                <label class="custom-control custom-checkbox pl-1">
+                                                    <input type="checkbox" class="custom-control-input" name="visible" value="1">
+                                                    <span class="custom-control-indicator"></span>
+                                                    <span class="custom-control-description text-muted pt-1 pl-4"
+                                                          data-message="text_label_online_status" data-target="html"></span>
+                                                </label>
+                                                <input type="hidden" name="_xfToken">
+                                                <input type="hidden" name="_xfNoRedirect" value="1">
+                                                <input type="hidden" name="_xfResponseType" value="json">
+                                            </form>
+                                        </li>
+                                    </ul>
+                                    <ul class="nav flex-column pr-0 col-6">
+                                        <li class="nav-item">
+                                            <a class="nav-link text-muted external-link external-token" href="logout/?_xfToken="
+                                               data-message="text_label_logout" data-target="html"></a>
+                                        </li>
+                                    </ul>
+                                    <div class="card-footer w-100 p-2">
+                                        <ul class="nav flex-column pr-0">
+                                            <li class="nav-item">
+                                                <form action="members/" method="post" name="statusPoster" id="statusPoster">
+                                                  <textarea name="message" rows="1" data-message="text_label_update_status"
+                                                            data-target="placeholder" class="form-control form-control-sm" id="message"></textarea>
+                                                    <div class="hidden-xs-up">
+                                                        <span class="text-success status-length">140</span>
+                                                        <button type="submit" class="btn btn-primary btn-sm float-right mt-1"
+                                                                data-message="text_button_post" data-target="html"></button>
+                                                        <input type="hidden" name="_xfToken" value="">
+                                                        <input type="hidden" name="return" value="1">
+                                                    </div>
+                                                </form>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane w-100" id="inbox" role="tabpanel">
+                                <div class="list-group-item-danger p-1 hidden-xs-up">
+                                    <p class="lead ml-1 mb-0 p-1" data-message="text_zero_inbox" data-target="html"></p>
+                                </div>
+                                <ul class="list-unstyled mb-0 hidden-xs-up">
+                                    <li class="media p-2 hidden-xs-up">
+                                        <a href="" class="external-link" target="_blank">
+                                            <img class="d-flex mr-3 rounded" src="../assets/img/blank.png" alt=""
+                                                 width="48" height="48">
+                                        </a>
+                                        <div class="media-body">
+                                            <a href="" class="external-link" target="_blank">
+                                                <h5 class="mt-0 mb-1"></h5>
+                                            </a>
+                                            <div></div>
+                                            <div class="float-right"></div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="card-footer p-1">
+                                    <div class="nav d-flex justify-content-between">
+                                        <div class="nav-item">
+                                            <a href="conversations/" data-message="text_label_show_all"
+                                               data-target="html" class="nav-link text-muted external-link"></a>
+                                        </div>
+                                        <div class="nav-item">
+                                            <a class="nav-link text-muted external-link" href="conversations/add"
+                                               data-message="text_label_new_conversation" data-target="html"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane w-100" id="alerts" role="tabpanel">
+                                <div class="list-group-item-danger p-1 hidden-xs-up">
+                                    <p class="lead ml-1 mb-0 p-1" data-message="text_zero_alerts" data-target="html"></p>
+                                </div>
+                                <ul class="list-unstyled mb-0 hidden-xs-up">
+                                    <li class="media p-2 hidden-xs-up">
+                                        <a href="" class="external-link" target="_blank">
+                                            <img class="d-flex mr-3 rounded" src="../assets/img/blank.png" alt=""
+                                                 width="48" height="48">
+                                        </a>
+                                        <div class="media-body">
+                                            <p class="lead mb-1"></p>
+                                            <div class="float-right"></div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="card-footer p-1">
+                                    <div class="nav d-flex justify-content-between">
+                                        <div class="nav-item">
+                                            <a href="account/alerts" data-message="text_label_show_all"
+                                               data-target="html" class="nav-link text-muted external-link"></a>
+                                        </div>
+                                        <div class="nav-item">
+                                            <a class="nav-link text-muted external-link" href="account/alert-preferences"
+                                               data-message="text_label_alert_preferences" data-target="html"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane w-100" id="subscriptions" role="tabpanel">
+                                <div class="list-group-item-danger p-1 hidden-xs-up">
+                                    <p class="lead ml-1 mb-0 p-1" data-message="text_zero_subscriptions" data-target="html"></p>
+                                </div>
+                                <ul class="list-unstyled mb-0 hidden-xs-up">
+                                    <li class="media p-2 hidden-xs-up">
+                                        <div class="d-flex align-items-end flex-column">
+                                            <a href="" class="external-link" target="_blank">
+                                                <img class="d-flex mr-3 rounded" src="../assets/img/blank.png" alt=""
+                                                     width="48" height="48">
+                                            </a>
+                                            <a href="" class="external-link miniMe hidden-xs-up" target="_blank">
+                                                <img class="d-flex mr-3 rounded" src="../assets/img/blank.png" alt=""
+                                                     width="20" height="20">
+                                            </a>
+                                        </div>
+                                        <div class="media-body">
+                                            <a href="" class="external-link" target="_blank">
+                                                <h5 class="mt-0 mb-1"></h5>
+                                            </a>
+                                            <div></div>
+                                            <div class="float-right mt-1">
+                                                <div class="subscription-who">
+                                                  <span data-message="text_last_message" data-target="html"></span>
+                                                  <span></span>
+                                                </div>
+                                                <div class="subscription-when text-right"></div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="card-footer p-1">
+                                    <div class="nav d-flex justify-content-between">
+                                        <div class="nav-item">
+                                            <a class="nav-link text-muted external-link" href="watched/threads/all"
+                                               data-message="text_label_all_watched" data-target="html"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </article>
         </div>
-      </article>
-    </section>
-    <script type="text/javascript" src="../assets/js/jquery-3.1.1.min.js"></script>
-    <script type="text/javascript" src="../assets/js/jquery.form.min.js"></script>
-    <script type="text/javascript" src="../assets/js/jquery.validate.min.js"></script>
-    <script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../assets/js/global.js"></script>
-    <script type="text/javascript" src="../assets/js/pages/popup.js"></script>
-    <script type="text/javascript" src="../assets/js/pages/background.js"></script>
-  </body>
+        <script src="../assets/js/libs/jquery-3.2.1.min.js"></script>
+        <script src="../assets/js/libs/tether.min.js"></script>
+        <script src="../assets/js/libs/bootstrap.min.js"></script>
+
+        <script src="../assets/js/libs/jquery.form.min.js"></script>
+        <script src="../assets/js/libs/jquery.validate.min.js"></script>
+
+        <script src="../assets/js/global.js"></script>
+        <script src="../assets/js/pages/popup.js"></script>
+    </body>
 </html>

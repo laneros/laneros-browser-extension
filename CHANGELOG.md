@@ -2,6 +2,17 @@
 
 All notable changes to `laneros-browser-extension` will be documented in this file.
 
+## 6.1.3 | 2017-05-21
+
+### Changed
+
+- Bootstrap 4.0.0-alpha.6
+- CSS improvements
+- Javascript improvements
+- HTML modification to met bootstrap requirements
+- jQuery updated to last version
+- jQuery validate updated to last version
+
 ## 5.6.1 | 2016-11-10
 
 ### Changed

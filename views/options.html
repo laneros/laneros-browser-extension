@@ -1,220 +1,245 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta charset="utf-8" />
-    <meta name="author" content="Alvaro Arturo Montenegro Silva">
-    <meta name="author" content="arthvrian@yahoo.com">
-    <title data-message="text_label_options" data-target="html"></title>
-    <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
-    <link rel="stylesheet" type="text/css" href="../assets/css/options.css" />
-  </head>
-  <body>
-    <div class="loading-overlay hide">
-      <div class="loading-box">
-        <img src="../assets/img/ajax-loader.gif" alt="Icon" class="center-block" width="200" />
-        <h3 data-message="text_data_loading" data-target="html" class="text-center text-info"></h3>
-      </div>
-    </div>
-    <div class="col-xs-offset-3 col-xs-6">
-      <section class="panel panel-default">
-        <header class="panel-heading">
-          <h3 class="panel-title">
-            <a class="external-link" target="_blank" data-message="text_go_to" data-target="title" href="">
-              <img class="center-block" src="../assets/img/logo.png" alt="Laneros.com" width="240" />
-            </a>
-          </h3>
-        </header>
-        <form class="form-horizontal" role="form" id="form_options" name="form_options" method="post">
-          <div class="list-group">
-            <div class="list-group-item clearfix">
-              <fieldset class="col-xs-6">
-                <legend data-message="text_label_sections" data-target="html"></legend>
-                <div class="form-group has-feedback">
-                  <label for="extension_radio_inbox" class="col-xs-4 control-label">
-                    <span data-message="text_label_inbox" data-target="html"></span>
-                    <span class="text-danger">*</span>
-                  </label>
-                  <div class="col-xs-8">
-                    <div class="btn-group" data-toggle="buttons">
-                      <label class="btn btn-default">
-                        <input type="radio" name="extension_radio_inbox" id="extension_radio_inbox_1"
-                               autocomplete="off" value="true" required
-                               data-message="text_label_inbox" data-target="title">
-                        <span data-message="text_button_show" data-target="html"></span>
-                      </label>
-                      <label class="btn btn-default">
-                        <input type="radio" name="extension_radio_inbox" id="extension_radio_inbox_2"
-                               autocomplete="off" value="false">
-                        <span data-message="text_button_hide" data-target="html"></span>
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group has-feedback">
-                  <label for="extension_radio_alerts" class="col-xs-4 control-label">
-                    <span data-message="text_label_alerts" data-target="html"></span>
-                    <span class="text-danger">*</span>
-                  </label>
-                  <div class="col-xs-8">
-                    <div class="btn-group" data-toggle="buttons">
-                      <label class="btn btn-default">
-                        <input type="radio" name="extension_radio_alerts" id="extension_radio_alerts_1"
-                               autocomplete="off" value="true" required>
-                        <span data-message="text_button_show" data-target="html"></span>
-                      </label>
-                      <label class="btn btn-default">
-                        <input type="radio" name="extension_radio_alerts" id="extension_radio_alerts_2"
-                               autocomplete="off" value="false">
-                        <span data-message="text_button_hide" data-target="html"></span>
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group has-feedback">
-                  <label for="extension_radio_subscriptions" class="col-xs-4 control-label">
-                    <span data-message="text_label_subscriptions" data-target="html"></span>
-                    <span class="text-danger">*</span>
-                  </label>
-                  <div class="col-xs-8">
-                    <div class="btn-group" data-toggle="buttons">
-                      <label class="btn btn-default">
-                        <input type="radio" name="extension_radio_subscriptions" id="extension_radio_subscriptions_1"
-                               autocomplete="off" value="true" required>
-                        <span data-message="text_button_show" data-target="html"></span>
-                      </label>
-                      <label class="btn btn-default">
-                        <input type="radio" name="extension_radio_subscriptions" id="extension_radio_subscriptions_2"
-                               autocomplete="off" value="false">
-                        <span data-message="text_button_hide" data-target="html"></span>
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group has-feedback">
-                  <label for="extension_radio_notifications" class="col-xs-4 control-label">
-                    <span data-message="text_label_notifications" data-target="html"></span>
-                    <span class="text-danger">*</span>
-                  </label>
-                  <div class="col-xs-8">
-                    <div class="btn-group" data-toggle="buttons">
-                      <label class="btn btn-default">
-                        <input type="radio" name="extension_radio_notifications" id="extension_radio_notifications_1"
-                               autocomplete="off" value="true" required>
-                        <span data-message="text_button_show" data-target="html"></span>
-                      </label>
-                      <label class="btn btn-default">
-                        <input type="radio" name="extension_radio_notifications" id="extension_radio_notifications_2"
-                               autocomplete="off" value="false">
-                        <span data-message="text_button_hide" data-target="html"></span>
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group has-feedback">
-                  <label for="extension_radio_links" class="col-xs-4 control-label">
-                    <span data-message="text_label_links" data-target="html"></span>
-                    <span class="text-danger">*</span>
-                  </label>
-                  <div class="col-xs-8">
-                    <div class="btn-group" data-toggle="buttons">
-                      <label class="btn btn-default">
-                        <input type="radio" name="extension_radio_links" id="extension_radio_links_1"
-                               autocomplete="off" value="true" required>
-                        <span data-message="text_button_show" data-target="html"></span>
-                      </label>
-                      <label class="btn btn-default">
-                        <input type="radio" name="extension_radio_links" id="extension_radio_links_2"
-                               autocomplete="off" value="false">
-                        <span data-message="text_button_hide" data-target="html"></span>
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group has-feedback">
-                  <label for="extension_radio_info" class="col-xs-4 control-label">
-                    <span data-message="text_label_user_info" data-target="html"></span>
-                    <span class="text-danger">*</span>
-                  </label>
-                  <div class="col-xs-8">
-                    <div class="btn-group" data-toggle="buttons">
-                      <label class="btn btn-default">
-                        <input type="radio" name="extension_radio_info" id="extension_radio_info_1"
-                               autocomplete="off" value="true" required>
-                        <span data-message="text_button_show" data-target="html"></span>
-                      </label>
-                      <label class="btn btn-default">
-                        <input type="radio" name="extension_radio_info" id="extension_radio_info_2"
-                               autocomplete="off" value="false">
-                        <span data-message="text_button_hide" data-target="html"></span>
-                      </label>
-                    </div>
-                  </div>
-                </div>
-              </fieldset>
-              <fieldset class="col-xs-6">
-                <legend data-message="text_label_review" data-target="html"></legend>
-                <div class="form-group">
-                  <label for="extension_number_hours" class="col-xs-4 control-label">
-                    <span data-message="text_label_hours" data-target="html"></span>
-                    <span class="text-danger">*</span>
-                  </label>
-                  <div class="col-xs-3">
-                    <input type="number" class="form-control" max="23" min="0" maxlength="2" id="extension_number_hours"
-                           name="extension_number_hours" data-message="text_label_hours" data-target="placeholder">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="extension_number_minutes" class="col-xs-4 control-label">
-                    <span data-message="text_label_minutes" data-target="html"></span>
-                    <span class="text-danger">*</span>
-                  </label>
-                  <div class="col-xs-3">
-                    <input type="number" class="form-control" max="59" min="0" maxlength="2" id="extension_number_minutes"
-                           name="extension_number_minutes" data-message="text_label_minutes" data-target="placeholder">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="extension_number_seconds" class="col-xs-4 control-label">
-                    <span data-message="text_label_seconds" data-target="html"></span>
-                    <span class="text-danger">*</span>
-                  </label>
-                  <div class="col-xs-3">
-                    <input type="number" class="form-control" max="59" min="0" maxlength="2" id="extension_number_seconds"
-                           name="extension_number_seconds" data-message="text_label_seconds" data-target="placeholder">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="extension_number_milliseconds" class="col-xs-4 control-label">
-                    <span data-message="text_label_milliseconds" data-target="html"></span>
-                    <span class="text-danger">*</span>
-                  </label>
-                  <div class="col-xs-4">
-                    <input type="number" class="form-control" max="999" min="0" maxlength="3" id="extension_number_milliseconds"
-                           name="extension_number_milliseconds" data-message="text_label_milliseconds" data-target="placeholder">
-                  </div>
-                </div>
-              </fieldset>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <meta name="author" content="arthvrian@yahoo.com">
+        <meta name="author" content="Alvaro Arturo Montenegro Silva">
+        <title data-message="text_label_options" data-target="html"></title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="../assets/css/libs/bootstrap.min.css">
+
+        <link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
+        <link rel="stylesheet" type="text/css" href="../assets/css/pages/options.css" />
+    </head>
+    <body class="container">
+        <div class="loading-overlay">
+            <div class="loading-box">
+                <img src="../assets/img/ajax-loader.gif" alt="Icon" class="img-fluid mb-2" width="200" />
+                <h3 data-message="text_data_loading" data-target="html" class="text-info"></h3>
             </div>
-            <div class="panel-footer">
-              <button type="submit" class="btn btn-primary" data-message="text_button_save" data-target="html"></button>
-              <ul class="form-validation alert alert-danger"></ul>
-              <div class="alert hide">
+        </div>
+        <form class="card my-5" role="form" id="form_options" name="form_options" method="post">
+            <header class="card-header">
+                <a class="external-link" target="_blank" data-message="text_go_to" data-target="title" href="">
+                    <img class="card-img-top img-fluid py-2" src="../assets/img/logo.png" alt="Logo Laneros">
+                </a>
+            </header>
+            <main class="card-block row">
+                <div class="col-6">
+                    <h4 class="card-title" data-message="text_label_sections" data-target="html"></h4>
+                    <p class="card-text" data-message="label_text_display_sections" data-target="html"></p>
+                    <div class="form-group row">
+                        <label class="col-3 col-form-label">
+                            <span data-message="text_label_inbox" data-target="html"></span>
+                            <span class="text-danger">*</span>
+                        </label>
+                        <div class="btn-group col-3" data-toggle="buttons">
+                            <label class="btn btn-secondary">
+                                <input type="radio" name="extension_radio_inbox" id="extension_radio_inbox_1"
+                                       autocomplete="off" required value="true"
+                                       data-message="label_text_required_section" data-target="title">
+                                <span data-message="text_button_show" data-target="html"></span>
+                            </label>
+                            <label class="btn btn-secondary">
+                                <input type="radio" name="extension_radio_inbox" id="extension_radio_inbox_2"
+                                       autocomplete="off" value="false">
+                                <span data-message="text_button_hide" data-target="html"></span>
+                            </label>
+                        </div>
+                        <div class="col-9 offset-3 form-control-feedback invisible" data-message="label_text_required_section"
+                             data-target="html"></div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-3 col-form-label">
+                            <span data-message="text_label_alerts" data-target="html"></span>
+                            <span class="text-danger">*</span>
+                        </label>
+                        <div class="btn-group col-3" data-toggle="buttons">
+                            <label class="btn btn-secondary">
+                                <input type="radio" name="extension_radio_alerts" id="extension_radio_alerts_1"
+                                       autocomplete="off" required value="true"
+                                       data-message="label_text_required_section" data-target="title">
+                                <span data-message="text_button_show" data-target="html"></span>
+                            </label>
+                            <label class="btn btn-secondary">
+                                <input type="radio" name="extension_radio_alerts" id="extension_radio_alerts_2"
+                                       autocomplete="off" value="false">
+                                <span data-message="text_button_hide" data-target="html"></span>
+                            </label>
+                        </div>
+                        <div class="col-9 offset-3 form-control-feedback invisible" data-message="label_text_required_section"
+                             data-target="html"></div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-3 col-form-label">
+                            <span data-message="text_label_subscriptions" data-target="html"></span>
+                            <span class="text-danger">*</span>
+                        </label>
+                        <div class="btn-group col-3" data-toggle="buttons">
+                            <label class="btn btn-secondary">
+                                <input type="radio" name="extension_radio_subscriptions" id="extension_radio_subscriptions_1"
+                                       autocomplete="off" required value="true"
+                                       data-message="label_text_required_section" data-target="title">
+                                <span data-message="text_button_show" data-target="html"></span>
+                            </label>
+                            <label class="btn btn-secondary">
+                                <input type="radio" name="extension_radio_subscriptions" id="extension_radio_subscriptions_2"
+                                       autocomplete="off" value="false">
+                                <span data-message="text_button_hide" data-target="html"></span>
+                            </label>
+                        </div>
+                        <div class="col-9 offset-3 form-control-feedback invisible" data-message="label_text_required_section"
+                             data-target="html"></div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-3 col-form-label">
+                            <span data-message="text_label_notifications" data-target="html"></span>
+                            <span class="text-danger">*</span>
+                        </label>
+                        <div class="btn-group col-3" data-toggle="buttons">
+                            <label class="btn btn-secondary">
+                                <input type="radio" name="extension_radio_notifications" id="extension_radio_notifications_1"
+                                       autocomplete="off" required value="true"
+                                       data-message="label_text_required_section" data-target="title">
+                                <span data-message="text_button_show" data-target="html"></span>
+                            </label>
+                            <label class="btn btn-secondary">
+                                <input type="radio" name="extension_radio_notifications" id="extension_radio_notifications_2"
+                                       autocomplete="off" value="false">
+                                <span data-message="text_button_hide" data-target="html"></span>
+                            </label>
+                        </div>
+                        <div class="col-9 offset-3 form-control-feedback invisible" data-message="label_text_required_section"
+                             data-target="html"></div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-3 col-form-label">
+                            <span data-message="text_label_links" data-target="html"></span>
+                            <span class="text-danger">*</span>
+                        </label>
+                        <div class="btn-group col-3" data-toggle="buttons">
+                            <label class="btn btn-secondary">
+                                <input type="radio" name="extension_radio_links" id="extension_radio_links_1"
+                                       autocomplete="off" required value="true"
+                                       data-message="label_text_required_section" data-target="title">
+                                <span data-message="text_button_show" data-target="html"></span>
+                            </label>
+                            <label class="btn btn-secondary">
+                                <input type="radio" name="extension_radio_links" id="extension_radio_links_2"
+                                       autocomplete="off" value="false">
+                                <span data-message="text_button_hide" data-target="html"></span>
+                            </label>
+                        </div>
+                        <div class="col-9 offset-3 form-control-feedback invisible" data-message="label_text_required_section"
+                             data-target="html"></div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-3 col-form-label">
+                            <span data-message="text_label_user_info" data-target="html"></span>
+                            <span class="text-danger">*</span>
+                        </label>
+                        <div class="btn-group col-3" data-toggle="buttons">
+                            <label class="btn btn-secondary">
+                                <input type="radio" name="extension_radio_info" id="extension_radio_info_1"
+                                       autocomplete="off" required value="true"
+                                       data-message="label_text_required_section" data-target="title">
+                                <span data-message="text_button_show" data-target="html"></span>
+                            </label>
+                            <label class="btn btn-secondary">
+                                <input type="radio" name="extension_radio_info" id="extension_radio_info_2"
+                                       autocomplete="off" value="false">
+                                <span data-message="text_button_hide" data-target="html"></span>
+                            </label>
+                        </div>
+                        <div class="col-9 offset-3 form-control-feedback invisible" data-message="label_text_required_section"
+                             data-target="html"></div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <h4 class="card-title" data-message="text_label_review" data-target="html"></h4>
+                    <p class="card-text" data-message="label_text_review_interval" data-target="html"></p>
+                    <div class="form-group row">
+                        <label class="col-3 col-form-label">
+                            <span data-message="text_label_hours" data-target="html"></span>
+                            <span class="text-danger">*</span>
+                        </label>
+                        <div class="col-3">
+                            <input type="number" class="form-control" max="23" min="0" maxlength="2" id="extension_number_hours"
+                                   name="extension_number_hours" data-message="text_label_hours" data-target="placeholder"
+                                   required>
+                        </div>
+                        <div class="col-9 offset-3 form-control-feedback invisible" data-message="label_text_required_review"
+                             data-target="html"></div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-3 col-form-label">
+                            <span data-message="text_label_minutes" data-target="html"></span>
+                            <span class="text-danger">*</span>
+                        </label>
+                        <div class="col-3">
+                            <input type="number" class="form-control" max="59" min="0" maxlength="2" id="extension_number_minutes"
+                                   name="extension_number_minutes" data-message="text_label_hours" data-target="placeholder"
+                                   required>
+                        </div>
+                        <div class="col-9 offset-3 form-control-feedback invisible" data-message="label_text_required_review"
+                             data-target="html"></div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-3 col-form-label">
+                            <span data-message="text_label_seconds" data-target="html"></span>
+                            <span class="text-danger">*</span>
+                        </label>
+                        <div class="col-3">
+                            <input type="number" class="form-control" max="59" min="0" maxlength="2" id="extension_number_seconds"
+                                   name="extension_number_seconds" data-message="text_label_hours" data-target="placeholder"
+                                   required>
+                        </div>
+                        <div class="col-9 offset-3 form-control-feedback invisible" data-message="label_text_required_review"
+                             data-target="html"></div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-3 col-form-label">
+                            <span data-message="text_label_milliseconds" data-target="html"></span>
+                            <span class="text-danger">*</span>
+                        </label>
+                        <div class="col-3">
+                            <input type="number" class="form-control" max="999" min="0" maxlength="2" id="extension_number_milliseconds"
+                                   name="extension_number_milliseconds" data-message="text_label_hours" data-target="placeholder"
+                                   required>
+                        </div>
+                        <div class="col-9 offset-3 form-control-feedback invisible" data-message="label_text_required_review"
+                             data-target="html"></div>
+                    </div>
+                </div>
+            </main>
+            <footer class="card-footer">
+                <button type="submit" class="btn btn-primary" data-message="text_button_save" data-target="html"></button>
+                <ul class="form-validation alert alert-danger mt-4 hidden-xs-up"></ul>
+            </footer>
+            <div class="alert alert-response hidden-xs-up">
                 <h4></h4>
                 <span></span>
-              </div>
             </div>
-          </div>
+            <div class="alert alert-info alert-processing hidden-xs-up" role="alert">
+                <img src="../assets/img/ajax-loader.gif" alt="Icon" class="img-fluid" width="40" />
+                <strong class="lead ml-2" data-message="label_text_processing" data-target="html"></strong>
+            </div>
         </form>
-      </section>
-    </div>
-    <script type="text/javascript" src="../assets/js/jquery-3.1.1.min.js"></script>
-    <script type="text/javascript" src="../assets/js/jquery.form.min.js"></script>
-    <script type="text/javascript" src="../assets/js/jquery.validate.min.js"></script>
-    <script type="text/javascript" src="../assets/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../assets/js/global.js"></script>
-    <script type="text/javascript" src="../assets/js/pages/options.js"></script>
-    <script type="text/javascript" src="../assets/js/pages/background.js"></script>
-  </body>
+        <script src="../assets/js/libs/jquery-3.2.1.min.js"></script>
+        <script src="../assets/js/libs/tether.min.js"></script>
+        <script src="../assets/js/libs/bootstrap.min.js"></script>
+
+        <script src="../assets/js/libs/jquery.form.min.js"></script>
+        <script src="../assets/js/libs/jquery.validate.min.js"></script>
+
+        <script src="../assets/js/global.js"></script>
+        <script src="../assets/js/pages/options.js"></script>
+    </body>
 </html>
+
+
+
+

@@ -247,5 +247,21 @@
   },
   "text_last_message": {
     "message": "Last message by: "
+  },
+
+  "label_text_display_sections": {
+    "message": "Control which sections are displayed"
+  },
+  "label_text_review_interval": {
+    "message": "Time interval in which updates are queried ( 1 minute minimum )"
+  },
+  "label_text_required_section": {
+    "message": "Select the status of this section"
+  },
+  "label_text_required_review": {
+    "message": "Indicate the time between query updates to Laneros"
+  },
+  "label_text_processing": {
+    "message": "Processing ..."
   }
 }
