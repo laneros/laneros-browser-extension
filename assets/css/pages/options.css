@@ -1,9 +1,0 @@
-@CHARSET "UTF-8";
-
-body {
-    background-color: rgb(187, 187, 187) !important;
-    text-shadow: none !important;
-}
-input[type=number] {
-    text-align: right;
-}

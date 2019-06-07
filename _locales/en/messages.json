@@ -246,13 +246,13 @@
     "message": "Control which sections are displayed"
   },
   "label_text_display_notifications": {
-    "message": "Control which notification popups are displayed"
+    "message": "Control which notification pop-ups are displayed"
   },
   "text_label_consolidated_notification": {
     "message": "Consolidated"
   },
   "label_text_review_interval": {
-    "message": "Time interval in which updates are queried ( 1 minute minimum )"
+    "message": "Time interval for checking updates (at least 1 minute)"
   },
   "label_text_required_section": {
     "message": "Select the status of this section"

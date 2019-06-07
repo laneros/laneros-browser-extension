@@ -103,6 +103,7 @@ var Laneros = {
             chrome.browserAction.setBadgeText({text: "" + inRCounter});
         }
     },
+
     /**
      * function setAlarm
      *
@@ -297,84 +298,45 @@ var Laneros = {
     },
 
     /**
-     * function setOptions
+     * function showOptions
      *
      * Get Extension Options and set in HTML
      *
      * @param objROptions
      */
-    setOptions: function (objROptions) {
+    showOptions: function (objROptions) {
         "use strict";
 
         try {
             var objLReviewTime = Laneros.getTime(objROptions.dtRTimeRev);
-
-            $(".loading-overlay").hide();
-            Laneros.setUILanguage();
-
-            //noinspection JSUnresolvedFunction
-            $(".btn-group input").change(function () {
-                var bolRStatus = $(this).is(":checked");
-
-                if ($(this).attr("type") === "radio") {
-                    $(this).closest(".btn-group").find(".btn").removeClass("btn-success active")
-                        .addClass("btn-secondary");
-                    $(this).closest(".btn-group-vertical").find(".btn").removeClass("btn-success active")
-                        .addClass("btn-secondary");
-
-                    if (bolRStatus) {
-                        $(this).closest(".btn").addClass("btn-success active");
-                    }
-                }
-            });
-
-            if ($.validator) {
-                $.validator.setDefaults({
-                    errorElement: "li",
-                    highlight: function (element, errorClass, validClass) {
-                        $(".form-validation").removeClass("d-none");
-                        $(element).removeClass("is-valid").addClass("is-invalid mb-0");
-                        $(element).closest(".form-group").find(".form-control-label").removeClass("text-success").addClass("text-danger");
-                    },
-                    unhighlight: function (element, errorClass, validClass) {
-                        $(element).removeClass("is-invalid mb-0").addClass("is-valid");
-                        $(element).closest(".form-group").find(".form-control-label").addClass("text-success").removeClass("text-danger");
-                    },
-                    errorClass: "invalid-feedback ml-3",
-                });
-            }
 
             $("#form_options").validate({
                 errorLabelContainer: $(".form-validation"),
                 submitHandler: Laneros.saveOptions
             });
 
-            $("input[name=extension_radio_inbox][value=" + objROptions.bolRShowInbox + "]").attr("checked", true)
-                .closest("label").button("toggle");
-            $("input[name=extension_radio_alerts][value=" + objROptions.bolRShowAlerts + "]").attr("checked", true)
-                .closest("label").button("toggle");
-            $("input[name=extension_radio_subscriptions][value=" + objROptions.bolRShowSubs + "]").attr("checked", true)
-                .closest("label").button("toggle");
-            $("input[name=extension_radio_links][value=" + objROptions.bolRShowLinks + "]").attr("checked", true)
-                .closest("label").button("toggle");
-            $("input[name=extension_radio_info][value=" + objROptions.bolRShowInfo + "]").attr("checked", true)
-                .closest("label").button("toggle");
+            $("input[name=extension_radio_inbox][value=" + objROptions.bolRShowInbox + "]").attr("checked", true);
+            $("input[name=extension_radio_alerts][value=" + objROptions.bolRShowAlerts + "]").attr("checked", true);
+            $("input[name=extension_radio_subscriptions][value=" + objROptions.bolRShowSubs + "]").attr("checked", true);
+            $("input[name=extension_radio_links][value=" + objROptions.bolRShowLinks + "]").attr("checked", true);
+            $("input[name=extension_radio_info][value=" + objROptions.bolRShowInfo + "]").attr("checked", true);
 
-            $("input[name=extension_radio_notifications][value=" + objROptions.bolRShowNotification + "]").attr("checked", true)
-                .closest("label").button("toggle");
-            $("input[name=extension_radio_notification_inbox][value=" + objROptions.bolRShowMessagesNotification + "]").attr("checked", true)
-                .closest("label").button("toggle");
-            $("input[name=extension_radio_notification_alerts][value=" + objROptions.bolRShowAlertsNotification+ "]").attr("checked", true)
-                .closest("label").button("toggle");
-            $("input[name=extension_radio_notification_subscriptions][value=" + objROptions.bolRShowSubscriptionNotification + "]").attr("checked", true)
-                .closest("label").button("toggle");
+            $("input[name=extension_radio_notifications][value=" + objROptions.bolRShowNotification + "]")
+                .attr("checked", true);
+            $("input[name=extension_radio_notification_inbox][value=" + objROptions.bolRShowMessagesNotification + "]")
+                .attr("checked", true);
+            $("input[name=extension_radio_notification_alerts][value=" + objROptions.bolRShowAlertsNotification+ "]")
+                .attr("checked", true);
+            $("input[name=extension_radio_notification_subscriptions][value=" + objROptions.bolRShowSubscriptionNotification + "]")
+                .attr("checked", true);
 
             $("#extension_number_hours").val(objLReviewTime.inRHours);
             $("#extension_number_minutes").val(objLReviewTime.inRMinutes);
             $("#extension_number_seconds").val(objLReviewTime.inRSeconds);
             $("#extension_number_milliseconds").val(objLReviewTime.inRMilliseconds);
+            $(".loading-overlay").fadeOut();
         } catch (objRException) {
-            Laneros.logMessage("setOptions", objRException.message);
+            Laneros.logMessage("showOptions", objRException.message);
         }
     },
 
@@ -408,25 +370,26 @@ var Laneros = {
             };
 
             var objLCallBack = function () {
-                try {
-                    $(".alert-response").removeClass("alert-success bl-success").addClass("d-none");
+                $(".alert-response").removeClass("alert-success bl-success alert-danger bl-danger").addClass("d-none");
+                $(".alert-processing").removeClass("d-none").hide().slideDown(function () {
+                    $(".alert-processing").addClass("d-none");
 
-                    $(".alert-response h4").html(Laneros.getMessage("text_label_saved_header"));
-                    $(".alert-response span").html(Laneros.getMessage("text_label_saved_text"));
+                    try {
+                        Laneros.setBackground();
 
-                    $(".alert-processing").removeClass("d-none").hide().slideDown(function () {
-                        $(".alert-processing").addClass("d-none");
-                        $(".alert-response").addClass("alert-success bl-success").removeClass("d-none").hide().slideDown();
-                    });
+                        $(".alert-response h4").html(Laneros.getMessage("text_label_saved_header"));
+                        $(".alert-response span").html(Laneros.getMessage("text_label_saved_text"));
+                        $(".alert-response").addClass("alert-success bl-success").removeClass("d-none").hide()
+                            .slideDown();
+                    } catch (objRException) {
+                        Laneros.logMessage("objLCallBack", objRException.message);
 
-                    Laneros.setBackground();
-                } catch (objRException) {
-                    Laneros.logMessage("objLCallBack", objRException.message);
-
-                    $(".alert-response").addClass("alert-danger bl-danger").removeClass("d-none").hide().slideDown();
-                    $(".alert-response h4").html(Laneros.getMessage("text_error_saved_header"));
-                    $(".alert-response span").html(Laneros.getMessage("text_error_saved_text"));
-                }
+                        $(".alert-response h4").html(Laneros.getMessage("text_error_saved_header"));
+                        $(".alert-response span").html(Laneros.getMessage("text_error_saved_text"));
+                        $(".alert-response").addClass("alert-danger bl-danger").removeClass("d-none").hide()
+                            .slideDown();
+                    }
+                });
             };
 
             Laneros.setStorage(objLOptions, objLCallBack);
@@ -723,18 +686,18 @@ var Laneros = {
                                         iconUrl: "../assets/img/icon.png"
                                     }]
                                 }, function(stRNotificationID, inRButtonIndex) {
-                                        //noinspection JSUnresolvedVariable,JSUnresolvedFunction
-                                        chrome.tabs.query({url: Laneros.getURL()}, function(objRTabResult) {
-                                            var arrLResult = objRTabResult.shift();
+                                    //noinspection JSUnresolvedVariable,JSUnresolvedFunction
+                                    chrome.tabs.query({url: Laneros.getURL()}, function(objRTabResult) {
+                                        var arrLResult = objRTabResult.shift();
 
-                                            if (objRTabResult.length === 0) {
-                                                //noinspection JSUnresolvedVariable,JSUnresolvedFunction
-                                                chrome.tabs.create({url: Laneros.getURL()});
-                                            } else {
-                                                //noinspection JSUnresolvedVariable
-                                                chrome.tabs.highlight({windowId: arrLResult.windowId, tabs: arrLResult.index});
-                                            }
-                                        });
+                                        if (objRTabResult.length === 0) {
+                                            //noinspection JSUnresolvedVariable,JSUnresolvedFunction
+                                            chrome.tabs.create({url: Laneros.getURL()});
+                                        } else {
+                                            //noinspection JSUnresolvedVariable
+                                            chrome.tabs.highlight({windowId: arrLResult.windowId, tabs: arrLResult.index});
+                                        }
+                                    });
                                 }, true);
                             }
                         });
@@ -929,10 +892,10 @@ var Laneros = {
                         .attr("alt", $(this).find("a.avatar img").attr("alt"));
 
                     $(objLConversation).find(".media-body > a")
-                        .attr("href", $(this).find("h3.title a").attr("href"))
-                    $(objLConversation).find(".media-body > a > h5").html($(this).find("h3.title a").html());
-                    $(objLConversation).find(".media-body > div:first").html($(this).find(".posterDate").html());
-                    $(objLConversation).find(".media-body > div:last").html($(this).find(".muted:last").html());
+                        .attr("href", $(this).find("h3.title a").attr("href"));
+                    $(objLConversation).find(".media-body > h6 > a").html($(this).find("h3.title a").html());
+                    $(objLConversation).find(".media-body > p:first").html($(this).find(".posterDate").html());
+                    $(objLConversation).find(".media-body > p:last > small").html($(this).find(".muted:last").html());
 
                     $(objLConversation).removeClass("d-none").appendTo("#inbox .list-group");
                     $("#inbox").find(".list-group").removeClass("d-none");
@@ -1036,8 +999,8 @@ var Laneros = {
 
                     $(objLAlert).find(".media-body > a")
                         .attr("href", $(this).find("h3 a").attr("href"));
-                    $(objLAlert).find(".media-body > p").html($(this).find("h3").html());
-                    $(objLAlert).find(".media-body > div").html(objLDate);
+                    $(objLAlert).find(".media-body > p:first").html($(this).find("h3").html());
+                    $(objLAlert).find(".media-body > p:last > small").html(objLDate);
 
                     $(objLAlert).removeClass("d-none").appendTo("#alerts .list-group");
                     $("#alerts").find(".list-group").removeClass("d-none");
@@ -1143,10 +1106,10 @@ var Laneros = {
                     (objLThread).find("a.miniMe").removeClass("hidden-xs-up");
                 }
 
-                $(objLThread).find(".media-body > h5 > a")
+                $(objLThread).find(".media-body > h6 > a")
                     .attr("href", $(this).find("h3.title a").attr("href"))
                     .html($(this).find("h3.title a").html());
-                $(objLThread).find(".media-body > div:first").html($(this).find(".posterDate").html());
+                $(objLThread).find(".media-body > p:first").html($(this).find(".posterDate").html());
                 $(objLThread).find(".media-body .subscription-who span:last")
                     .html($(this).find(".lastPost dt").html());
                 $(objLThread).find(".media-body .subscription-when")
@@ -1193,29 +1156,15 @@ var Laneros = {
             });
         }
     },
+
     /**
      * function showLogin
      *
      * Show login form
      */
     showLogin: function () {
-        if ($.validator) {
-            $.validator.setDefaults({
-                errorElement: "li",
-                highlight: function (element, errorClass, validClass) {
-                    $(element).removeClass("is-valid").addClass("is-invalid mb-0");
-                    $(element).closest(".form-group").find(".form-control-label").removeClass("text-success").addClass("text-danger");
-                },
-                unhighlight: function (element, errorClass, validClass) {
-                    $(element).removeClass("is-invalid mb-0").addClass("is-valid");
-                    $(element).closest(".form-group").find(".form-control-label").addClass("text-success").removeClass("text-danger");
-                },
-                errorClass: "invalid-feedback ml-3",
-            });
-        }
-
         var objLChange = function() {
-            $("#ctrl_pageLogin_password").closest(".form-group").slideUp();
+            $("#ctrl_pageLogin_password").closest("div").slideUp();
             $("#ctrl_pageLogin_remember").attr("checked", false).closest("label").hide();
 
             if ($(".section-login #ctrl_pageLogin_not_registered").is(":checked")) {
@@ -1223,14 +1172,14 @@ var Laneros = {
             }
 
             if ($(".section-login #ctrl_pageLogin_registered").is(":checked")) {
-                $("#ctrl_pageLogin_password").closest(".form-group").slideDown();
+                $("#ctrl_pageLogin_password").closest("div").slideDown();
                 $("#ctrl_pageLogin_remember").closest("label").show();
                 $(".section-login button[type=submit]").html(Laneros.getMessage("text_button_login"));
             }
         };
 
         var onBeforeSubmit = function(objRResponse, stRStatus) {
-            $(".alert-error").slideUp("fast");
+            $(".alert-error").slideUp();
             $(".loading-overlay").show();
         };
 
@@ -1257,9 +1206,7 @@ var Laneros = {
 
         //noinspection JSUnresolvedFunction
         $(".section-login input[name=register]").change(objLChange);
-
         $("#pageLogin").validate({
-            errorLabelContainer: $(".form-validation"),
             submitHandler: function (form) {
                 $(form).ajaxSubmit({
                     beforeSubmit: onBeforeSubmit,
@@ -1274,8 +1221,9 @@ var Laneros = {
 
         $(".loading-overlay").fadeOut(function() {
             $("body").removeAttr("style");
-            $(".section-login").removeClass("d-none").hide().fadeIn("fast");
-            $(".section-login #ctrl_pageLogin_login").focus();
+            $(".section-login").removeClass("d-none").hide().fadeIn("fast", function() {
+                $(".section-login #ctrl_pageLogin_login").focus();
+            });
         });
     },
 
@@ -1286,7 +1234,6 @@ var Laneros = {
      */
     showPopup: function () {
         var objLResult = Laneros.getData();
-
         var objLActiveTab = function(stRActiveTab, objRData) {
             switch (stRActiveTab) {
                 case "home":
@@ -1402,20 +1349,38 @@ var Laneros = {
  */
 try {
     Laneros.getStorage({ bolRIsRunning : false }, function() {
-        if (jQuery.validator) {
-            jQuery.validator.setDefaults({
-                errorElement: "li",
+        Laneros.setUILanguage();
+
+        if ($.validator) {
+            $.validator.setDefaults({
+                errorElement: "span",
                 highlight: function (element, errorClass, validClass) {
-                    $(element).addClass("form-control-danger")
-                        .closest(".form-group").addClass("has-danger").removeClass("has-success")
-                        .find(".form-control-feedback").removeClass("invisible");
+                    $(".form-validation").removeClass("d-none");
+                    $(element).closest(".form-group").find(".form-control-label").removeClass("text-success")
+                        .addClass("text-danger");
+
+                    if ($(element).is(":radio")) {
+                        $(element).closest(".col-7").find("input").removeClass("is-valid")
+                            .addClass("is-invalid");
+                    }
+                    else {
+                        $(element).removeClass("is-valid").addClass("is-invalid mb-0");
+                    }
                 },
                 unhighlight: function (element, errorClass, validClass) {
-                    $(element).addClass("form-control-success").closest(".form-group")
-                        .removeClass("has-danger").addClass("has-success")
-                        .find(".form-control-feedback").addClass("invisible");
+                    if ($(element).is(":radio")) {
+                        $(element).closest(".col-7").find("input").removeClass("is-invalid")
+                    }
+                    else {
+                        $(element).removeClass("is-invalid");
+                    }
+
+                    $(element).closest(".form-group").find(".form-control-label").removeClass("text-danger");
                 },
-                errorClass : "form-control-feedback ml-3"
+                errorClass: "invalid-feedback",
+                errorPlacement: function(error, element) {
+                    error.appendTo(element.closest(".form-row").find("div:last"));
+                }
             });
         }
 

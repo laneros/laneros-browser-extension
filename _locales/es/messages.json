@@ -246,13 +246,13 @@
     "message": "Controlar cuales secciones se muestran"
   },
   "label_text_display_notifications": {
-    "message": "Control cuales popups de notificaciones se muestran"
+    "message": "Controlar cuales pop-ups de notificaciones se muestran"
   },
   "text_label_consolidated_notification": {
     "message": "Agrupadas"
   },
   "label_text_review_interval": {
-    "message": "Intervalo de tiempo en el cual se consulta por actualizaciones ( mínimo 1 minuto )"
+    "message": "Intervalo de tiempo para comprobar actualizaciones ( mínimo 1 minuto )"
   },
   "label_text_required_section": {
     "message": "Seleccione el estado de esta sección"

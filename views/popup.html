@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
     <head>
         <!-- Required meta tags -->
         <meta charset="utf-8">
@@ -7,24 +7,23 @@
 
         <meta name="author" content="arthvrian@yahoo.com">
         <meta name="author" content="Alvaro Arturo Montenegro Silva">
-        <title data-message="extension_name" data-target="html"></title>
+        <title data-message="text_label_options" data-target="html"></title>
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="../assets/css/libs/bootstrap.min.css">
 
-        <link rel="stylesheet" type="text/css" href="../assets/css/style.css" />
-        <link rel="stylesheet" type="text/css" href="../assets/css/pages/popup.css" />
+        <link rel="stylesheet" type="text/css" href="../assets/css/laneros.css" />
     </head>
-    <body class="container px-0">
+    <body class="container px-0 popup">
         <div class="loading-overlay">
             <div class="loading-box">
                 <img src="../assets/img/ajax-loader.gif" alt="Icon" class="img-fluid mb-2" width="200" />
-                <h3 data-message="label_text_processing" data-target="html" class="text-info"></h3>
+                <h3 data-message="text_data_loading" data-target="html" class="text-info"></h3>
             </div>
         </div>
         <form action="login/login" method="post" id="pageLogin" name="pageLogin" class="external-link card section-login d-none">
             <header class="card-header">
-                <a class="external-link" target="_blank" data-message="text_go_to" data-target="title" href="">
-                    <img class="card-img-top img-fluid py-2" src="../assets/img/logo.png" alt="Logo Laneros">
+                <a class="external-link" target="_blank" data-message="text_go_to" data-target="title" href="/">
+                    <img class="py-2" src="../assets/img/logo.png" alt="Logo Laneros" width="240">
                 </a>
             </header>
             <article class="card-body p-0">
@@ -33,42 +32,45 @@
                     <p class="mb-1" data-message="text_error_not_connected" data-target="html"></p>
                 </div>
                 <fieldset class="px-3">
-                    <legend data-message="text_label_login" data-target="html"></legend>
-                    <div class="form-group mb-3">
-                        <label class="form-control-label" for="ctrl_pageLogin_login" data-message="text_label_nick"
+                    <legend data-message="text_label_login" data-target="html" class="pt-2"></legend>
+                    <div class="form-row mb-2">
+                        <label class="col-12 form-control-label" for="ctrl_pageLogin_login" data-message="text_label_nick"
                                data-target="html"></label>
-                        <input type="text" class="form-control" name="login" id="ctrl_pageLogin_login" data-message="text_label_nick"
-                               data-target="placeholder" tabindex="1" required>
+                        <div class="col-12">
+                            <input type="text" class="form-control" name="login" id="ctrl_pageLogin_login"
+                                   data-message="text_label_nick" data-target="placeholder" tabindex="1" required>
+                        </div>
+                        <div class="col-12 pb-1 d-none">&nbsp;</div>
                     </div>
-                    <div class="form-group mb-2">
-                        <label class="form-control-label" data-message="text_label_account" data-target="html"></label>
-                        <div class="clearfix">
-                            <label for="ctrl_pageLogin_not_registered" class="custom-control custom-radio mb-0">
-                                <input type="radio" name="register" id="ctrl_pageLogin_not_registered" value="1"
-                                       class="custom-control-input">
-                                <span class="custom-control-indicator"></span>
-                                <span class="custom-control-description mt-1" data-message="text_label_no_account"
-                                      data-target="html"></span>
-                            </label>
-                            <label for="ctrl_pageLogin_registered" class="custom-control custom-radio mb-0">
-                                <input type="radio" name="register" id="ctrl_pageLogin_registered" value="0" checked
-                                       class="custom-control-input">
-                                <span class="custom-control-indicator"></span>
-                                <span class="custom-control-description mt-1" data-message="text_label_yes_account"
-                                      data-target="html"></span>
-                            </label>
+                    <div class="form-row mb-2">
+                        <label class="col-12 form-control-label" data-message="text_label_account" data-target="html"></label>
+                        <div class="col-12">
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" name="register" id="ctrl_pageLogin_not_registered"
+                                       autocomplete="off" required value="1" class="custom-control-input"
+                                       data-message="label_text_required_section" data-target="title">
+                                <label class="custom-control-label" for="ctrl_pageLogin_not_registered"
+                                       data-message="text_label_no_account" data-target="html"></label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" name="register" id="ctrl_pageLogin_registered" checked
+                                       autocomplete="off" value="0" class="custom-control-input">
+                                <label class="custom-control-label" for="ctrl_pageLogin_registered"
+                                       data-message="text_label_yes_account" data-target="html"></label>
+                            </div>
                         </div>
                     </div>
-                    <div class="form-group mb-1">
+                    <div class="form-row mx-0">
                         <label class="form-control-label" for="ctrl_pageLogin_password" data-message="text_label_password"
                                data-target="html"></label>
                         <input type="password" class="form-control" name="password" id="ctrl_pageLogin_password" data-message="text_label_password"
                                data-target="placeholder" tabindex="2" required>
+                        <div class="col-12 pb-1 d-none">&nbsp;</div>
                     </div>
                     <a href="lost-password/" class="external-link" data-message="text_label_forgot" data-target="html"></a>
                 </fieldset>
                 <fieldset class="px-3">
-                    <legend data-message="text_label_connect" data-target="html"></legend>
+                    <legend data-message="text_label_connect" data-target="html" class="pt-2"></legend>
                     <div class="text-center">
                         <a href="register/facebook?reg=1" class="btn fbLogin external-link">
                             <span data-message="text_label_facebook" data-target="html"></span></a>
@@ -80,24 +82,23 @@
             <footer class="card-footer">
                 <input type="hidden" name="cookie_check" value="1">
                 <input type="hidden" name="redirect" value=".">
-                <input type="hidden" name="_xfToken" value="">
+                <input type="hidden" name="_xfToken">
                 <input type="hidden" name="_xfResponseType" value="json">
                 <div class="form-group mb-1">
                     <button type="submit" class="btn btn-primary" data-message="text_button_login" data-target="html"></button>
-                    <label for="ctrl_pageLogin_remember" class="custom-control custom-checkbox mb-0 ml-3">
-                        <input type="checkbox" class="custom-control-input" name="remember" id="ctrl_pageLogin_remember"
-                               value="1">
-                        <span class="custom-control-indicator"></span>
-                        <span class="custom-control-description mt-1" data-message="text_label_stay" data-target="html"></span>
-                    </label>
+                    <div class="ml-2 custom-control custom-checkbox custom-control-inline">
+                        <input type="checkbox" name="remember" id="ctrl_pageLogin_remember"
+                               autocomplete="off" value="1" class="custom-control-input">
+                        <label class="custom-control-label" for="ctrl_pageLogin_remember"
+                               data-message="text_label_stay" data-target="html"></label>
+                    </div>
                 </div>
-                <ul class="form-validation alert alert-danger mt-4 d-none"></ul>
             </footer>
         </form>
         <div class="card section-error d-none">
             <header class="card-header">
-                <a class="external-link" target="_blank" data-message="text_go_to" data-target="title" href="">
-                    <img class="card-img-top img-fluid py-2" src="../assets/img/logo.png" alt="Logo Laneros">
+                <a class="external-link" target="_blank" data-message="text_go_to" data-target="title" href="/">
+                    <img class="py-2" src="../assets/img/logo.png" alt="Logo Laneros" width="240">
                 </a>
             </header>
             <article class="card-body p-0">
@@ -109,8 +110,8 @@
         </div>
         <div class="card section-user d-none">
             <header class="card-header">
-                <a class="external-link" target="_blank" data-message="text_go_to" data-target="title" href="">
-                    <img class="card-img-top img-fluid py-2" src="../assets/img/logo.png" alt="Logo Laneros">
+                <a class="external-link" target="_blank" data-message="text_go_to" data-target="title" href="/">
+                    <img class="py-2" src="../assets/img/logo.png" alt="Logo Laneros" width="240">
                 </a>
             </header>
             <article class="card-body p-0">
@@ -118,34 +119,34 @@
                     <h5 class="mb-1" data-message="text_error_message" data-target="html"></h5>
                     <p class="mb-1" data-message="text_error_page" data-target="html"></p>
                 </div>
-                <div class="media p-2 d-none media-user-info">
-                    <a class="external-link" href="members/">
-                        <img class="d-flex mr-3 mt-2" src="../assets/img/blank.png" alt="Avatar" width="96">
+                <div class="media media-user-info p-2 d-none">
+                    <a class="align-self-center external-link" href="members/">
+                        <img class="mr-3" src="../assets/img/blank.png" alt="Avatar" width="96">
                     </a>
                     <div class="media-body">
-                        <h5 class="my-1 text-right">
+                        <h6 class="mt-0 text-right">
                             <a href="members/" class="external-link"></a>
                             <br>
                             <small></small>
-                        </h5>
-                        <dl class="row my-1 mt-2">
-                            <dt class="col-5" data-message="text_messages" data-target="html"></dt>
-                            <dd class="col-7 text-right mb-0">-</dd>
-                            <dt class="col-5" data-message="text_label_ratings" data-target="html"></dt>
-                            <dd class="col-7 text-right mb-0">-</dd>
-                            <dt class="col-5" data-message="text_label_points" data-target="html"></dt>
-                            <dd class="col-7 text-right mb-0">-</dd>
-                            <dt class="col-5" data-message="text_label_trader_rating" data-target="html"></dt>
-                            <dd class="col-7 feedbackStats text-right mb-0">
-                                <span class="positive"></span> /
+                        </h6>
+                        <dl class="row my-1">
+                            <dt class="col-6" data-message="text_messages" data-target="html"></dt>
+                            <dd class="col-6 text-right mb-0">-</dd>
+                            <dt class="col-6" data-message="text_label_ratings" data-target="html"></dt>
+                            <dd class="col-6 text-right mb-0">-</dd>
+                            <dt class="col-6" data-message="text_label_points" data-target="html"></dt>
+                            <dd class="col-6 text-right mb-0">-</dd>
+                            <dt class="col-6" data-message="text_label_trader_rating" data-target="html"></dt>
+                            <dd class="col-6 feedbackStats text-right mb-0">
+                                <span class="positive text-success"></span> /
                                 <span class="neutral"></span> /
-                                <span class="negative"></span>
+                                <span class="negative text-danger"></span>
                             </dd>
                         </dl>
                     </div>
                 </div>
                 <div class="tabs">
-                    <ul class="nav nav-pills nav-fill nav-menu bg-light" role=tablist>
+                    <ul class="nav nav-pills nav-fill nav-menu bg-light border-top" role=tablist>
                         <li class="nav-item">
                             <a class="nav-link border-radius-0 h-100" href="#home" data-toggle="tab" role="tab">
                                 <span data-message="text_label_home" data-target="html"></span>
@@ -178,12 +179,12 @@
                     <div class="tab-content">
                         <div class="tab-pane" id="home" role="tabpanel">
                             <div class="card border-0">
-                                <article class="card-body p-0">
+                                <article class="card-body p-0 border-top">
                                     <div class="alert alert-danger alert-links p-2 pl-3 mb-0 border-radius-0 bl-danger d-none">
-                                        <p class="lead mb-0" data-message="text_zero_links" data-target="html"></p>
+                                        <p class="mb-0" data-message="text_zero_links" data-target="html"></p>
                                     </div>
-                                    <div class="row m-0 d-none py-2">
-                                        <ul class="nav flex-column pr-0 col-6 nav-menu pb-2">
+                                    <div class="row m-0 d-none pt-2">
+                                        <ul class="nav flex-column pr-0 col-6 nav-menu pb-1">
                                             <li class="nav-item">
                                                 <a class="nav-link text-dark external-link" href="account/change-username"
                                                    data-message="text_label_nickname" data-target="html"></a>
@@ -233,7 +234,7 @@
                                                    data-message="text_label_classifieds_preferences" data-target="html"></a>
                                             </li>
                                         </ul>
-                                        <ul class="nav flex-column pr-0 col-6 nav-menu pb-2">
+                                        <ul class="nav flex-column pr-0 col-6 nav-menu pb-1">
                                             <li class="nav-item">
                                                 <a class="nav-link text-dark external-link" href="account/news-feed"
                                                    data-message="text_label_news_feed" data-target="html"></a>
@@ -279,26 +280,27 @@
                                                    data-message="text_label_new_post" data-target="html"></a>
                                             </li>
                                         </ul>
-                                        <ul class="nav flex-column col-6">
-                                            <li class="nav-item pl-3">
+                                        <ul class="nav flex-column pr-0 col-6 border-top">
+                                            <li class="nav-item mt-1">
                                                 <form action="account/toggle-visibility" method="post" class="external-link"
                                                       name="visibilityForm" id="visibilityForm">
-                                                    <label class="custom-control custom-checkbox mb-0 mt-2">
-                                                        <input type="checkbox" class="custom-control-input" name="visible" value="1">
-                                                        <span class="custom-control-indicator"></span>
-                                                        <span class="custom-control-description text-dark pt-1"
-                                                              data-message="text_label_online_status" data-target="html"></span>
-                                                    </label>
+                                                    <div class="ml-2 custom-control custom-checkbox custom-control-inline">
+                                                        <input type="checkbox" name="visible"
+                                                               autocomplete="off" value="1" class="custom-control-input">
+                                                        <label class="custom-control-label mt-1" for="ctrl_pageLogin_remember"
+                                                               data-message="text_label_online_status" data-target="html"></label>
+                                                    </div>
                                                     <input type="hidden" name="_xfToken">
                                                     <input type="hidden" name="_xfNoRedirect" value="1">
                                                     <input type="hidden" name="_xfResponseType" value="json">
                                                 </form>
                                             </li>
                                         </ul>
-                                        <ul class="nav flex-column pr-0 col-6">
+                                        <ul class="nav flex-column pr-0 col-6 border-top">
                                             <li class="nav-item">
-                                                <a class="nav-link text-dark external-link external-token mt-1" href="logout/?_xfToken="
-                                                   data-message="text_label_logout" data-target="html"></a>
+                                                <a class="nav-link text-dark external-link external-token"
+                                                   href="logout/?_xfToken=" data-message="text_label_logout"
+                                                   data-target="html"></a>
                                             </li>
                                         </ul>
                                     </div>
@@ -323,30 +325,30 @@
                             </div>
                         </div>
                         <div class="tab-pane" id="inbox" role="tabpanel">
-                            <div class="card border-0">
+                            <div class="card border-0 border-radius-0">
                                 <article class="card-body p-0">
                                     <div class="alert alert-danger alert-inbox p-2 pl-3 mb-0 border-radius-0 bl-danger d-none">
-                                        <p class="lead mb-0" data-message="text_zero_inbox" data-target="html"></p>
+                                        <p class="mb-0" data-message="text_zero_inbox" data-target="html"></p>
                                     </div>
                                     <div class="list-group mb-0 d-none border-0">
-                                        <div class="list-group-item p-2 d-none">
+                                        <div class="list-group-item p-2 d-none border-radius-0">
                                             <div class="media">
                                                 <a href="" class="external-link" target="_blank">
                                                     <img class="d-flex mr-3 rounded" src="../assets/img/blank.png" alt=""
                                                          width="48" height="48">
                                                 </a>
                                                 <div class="media-body">
-                                                    <a href="" class="external-link" target="_blank">
-                                                        <h5 class="mt-0 mb-1"></h5>
-                                                    </a>
-                                                    <div></div>
-                                                    <div class="float-right mt-1"></div>
+                                                    <h6 class="mb-1">
+                                                        <a href="" class="external-link text-dark" target="_blank"></a>
+                                                    </h6>
+                                                    <p class="mb-0"></p>
+                                                    <p class="text-right mb-0"><small></small></p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </article>
-                                <footer class="card-footer p-1">
+                                <footer class="card-footer p-1 border-top-0">
                                     <div class="nav d-flex justify-content-between">
                                         <div class="nav-item">
                                             <a href="conversations/" data-message="text_label_show_all"
@@ -364,18 +366,18 @@
                             <div class="card border-0">
                                 <article class="card-body p-0">
                                     <div class="alert alert-danger alert-alerts p-2 pl-3 mb-0 border-radius-0 bl-danger d-none">
-                                        <p class="lead mb-0" data-message="text_zero_alerts" data-target="html"></p>
+                                        <p class="mb-0" data-message="text_zero_alerts" data-target="html"></p>
                                     </div>
                                     <div class="list-group mb-0 d-none border-0">
-                                        <div class="list-group-item p-2 d-none">
+                                        <div class="list-group-item p-2 d-none border-radius-0">
                                             <div class="media">
                                                 <a href="" class="external-link" target="_blank">
                                                     <img class="d-flex mr-3 rounded" src="../assets/img/blank.png" alt=""
                                                          width="48" height="48">
                                                 </a>
                                                 <div class="media-body">
-                                                    <p class="lead mb-1"></p>
-                                                    <div class="float-right"></div>
+                                                    <p class="mb-0"></p>
+                                                    <p class="text-right mb-0"><small></small></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -399,7 +401,7 @@
                             <div class="card border-0">
                                 <article class="card-body p-0">
                                     <div class="alert alert-danger alert-subscriptions p-2 pl-3 mb-0 border-radius-0 bl-danger d-none">
-                                        <p class="lead mb-0" data-message="text_zero_subscriptions" data-target="html"></p>
+                                        <p class="mb-0" data-message="text_zero_subscriptions" data-target="html"></p>
                                     </div>
                                     <div class="list-group mb-0 d-none border-0">
                                         <div class="list-group-item p-2 d-none">
@@ -415,17 +417,19 @@
                                                     </a>
                                                 </div>
                                                 <div class="media-body">
-                                                    <h5 class="mt-0 mb-1">
-                                                        <a href="" class="external-link" target="_blank"></a>
-                                                    </h5>
-                                                    <div></div>
-                                                    <div class="float-right mt-1">
-                                                        <div class="subscription-who">
+                                                    <h6 class="mb-1">
+                                                        <a href="" class="external-link text-dark" target="_blank"></a>
+                                                    </h6>
+                                                    <p class="mb-0"></p>
+                                                    <p class="text-right mb-0">
+                                                        <small class="subscription-who">
                                                             <span data-message="text_last_message" data-target="html"></span>
                                                             <span></span>
-                                                        </div>
-                                                        <div class="subscription-when text-right"></div>
-                                                    </div>
+                                                        </small>
+                                                    </p>
+                                                    <p class="text-right mb-0">
+                                                        <small class="subscription-when text-right"></small>
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -445,14 +449,15 @@
                 </div>
             </article>
         </div>
-        <script src="../assets/js/libs/jquery-3.2.1.min.js"></script>
+
+        <script src="../assets/js/libs/jquery-3.3.1.min.js"></script>
         <script src="../assets/js/libs/popper.min.js"></script>
         <script src="../assets/js/libs/bootstrap.min.js"></script>
 
         <script src="../assets/js/libs/jquery.form.min.js"></script>
         <script src="../assets/js/libs/jquery.validate.min.js"></script>
 
-        <script src="../assets/js/global.js"></script>
+        <script src="../assets/js/laneros.js"></script>
         <script src="../assets/js/pages/popup.js"></script>
     </body>
 </html>
