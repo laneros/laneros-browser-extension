@@ -2,6 +2,12 @@
 
 All notable changes to `laneros-browser-extension` will be documented in this file.
 
+## 6.6.4 | 2018-05-19
+
+### Changed
+
+- Conversations fix
+
 ## 6.6.3 | 2018-05-09
 
 ### Changed

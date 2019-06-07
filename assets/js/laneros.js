@@ -891,7 +891,7 @@ var Laneros = {
                     $(objLConversation).find("a:first > img").attr("src", $(this).find("a.avatar img").attr("src"))
                         .attr("alt", $(this).find("a.avatar img").attr("alt"));
 
-                    $(objLConversation).find(".media-body > a")
+                    $(objLConversation).find(".media-body > h6 > a")
                         .attr("href", $(this).find("h3.title a").attr("href"));
                     $(objLConversation).find(".media-body > h6 > a").html($(this).find("h3.title a").html());
                     $(objLConversation).find(".media-body > p:first").html($(this).find(".posterDate").html());
