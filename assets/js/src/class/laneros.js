@@ -366,7 +366,12 @@ class Laneros {
         Chrome.getStorage({bolRDarkMode: objRLaneros.getDefaults('bolRDarkMode') },
             function (objROptions) {
                 if (objROptions.bolRDarkMode) {
+                    let stLImgSrc = $('.logo-img').attr('src');
+
+                    stLImgSrc = stLImgSrc.replace('2x', '2x-blanco');
+
                     $('body').addClass('dark-mode');
+                    $('.logo-img').attr('src', stLImgSrc);
                 }
             });
 
@@ -383,7 +388,12 @@ class Laneros {
         Chrome.getStorage({bolRDarkMode: objRLaneros.getDefaults('bolRDarkMode') },
             function (objROptions) {
                 if (objROptions.bolRDarkMode) {
+                    let stLImgSrc = $('.logo-img').attr('src');
+
+                    stLImgSrc = stLImgSrc.replace('2x', '2x-blanco');
+
                     $('body').addClass('dark-mode');
+                    $('.logo-img').attr('src', stLImgSrc);
                 }
             });
 
