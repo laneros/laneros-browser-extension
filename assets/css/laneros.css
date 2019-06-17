@@ -49,8 +49,8 @@ img.rounded:hover {
 .dark-mode .bg-blue-500 {
     background-color: #3182ce;
 }
-.dark-mode .bg-yellow-100 .text-gray-700 {
-    color: #333131;
+.dark-mode .bg-yellow-100 {
+    background-color: rgba(255,255,240,.9);
 }
 
 .dark-mode .border-gray-400 {
@@ -72,6 +72,9 @@ img.rounded:hover {
 .dark-mode .text-gray-500 {
     color: #3B3A39;
 }
+.dark-mode .bg-yellow-100 .text-gray-700 {
+    color: #333131;
+}
 
 .dark-mode .hover\:border-gray-200:hover {
     border-color: #504E4D;
@@ -88,7 +91,7 @@ img.rounded:hover {
 }
 
 .dark-mode .hover\:text-gray-800:hover {
-    color: #A3A2A1;
+    color: #2F2C2B;
 }
 .dark-mode .hover\:text-red-500:hover {
      color: #e53e3e;
@@ -112,4 +115,20 @@ img.rounded:hover {
 }
 .dark-mode .hover\:text-red:hover {
     color: #e3342f;
+}
+
+.dark-themes {
+    background-color: #20201E;
+    background-color: #292929;
+    background-color: #2E2C2B; /* 100 */
+    background-color: #2F2C2B; /* 200 */
+    background-color: #333131; /* 300 */
+    background-color: #393736; /* 400 */
+    background-color: #3B3A39; /* 500 */
+    background-color: #504E4D; /* 600 */
+    background-color: #5F5E5E; /* 700 */
+    background-color: #666564; /* 800 */
+    background-color: #A3A2A1; /* 900 */
+    background-color: #C4C3C2;
+    background-color: #FAF9F8;
 }
