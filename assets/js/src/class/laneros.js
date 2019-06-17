@@ -83,6 +83,12 @@ class Laneros {
                 $(this).attr('src', stLUrl + $(this).attr('src'));
             }
         });
+
+        $(document).ajaxStop(function(objLData1, objLData2, objLData3) {
+            $('.loading-box').fadeOut();
+            $('body').css('height', 'auto');
+            $('html, body').animate({ scrollTop: 0 }, 'fast');
+        });
     }
 
     /**
@@ -411,12 +417,8 @@ class Laneros {
                 return false;
             }
         });
-
-        $('.loading-box').fadeOut(function() {
-            $('body').css('height', 'auto');
-            $('.section-login').removeClass('hidden').hide().fadeIn('fast', function() {
-                $('.section-login #ctrl_pageLogin_login').focus();
-            });
+        $('.section-login').removeClass('hidden').hide().fadeIn('fast', function() {
+            $('.section-login #ctrl_pageLogin_login').focus();
         });
     }
 
@@ -427,247 +429,239 @@ class Laneros {
      */
     showPopup(objRData) {
         let objRLaneros = this;
+        let objLActiveTab = function(stRActiveTab) {
+            switch(stRActiveTab) {
+                case 'home':
+                    $('html, body').animate({ scrollTop: 0 }, 'fast');
 
-        $('.loading-box').fadeOut('slow', function() {
-            $('body').css('height', 'auto');
-            $('.section-user').removeClass('hidden').hide().fadeIn('fast');
-            $('html, body').animate({ scrollTop: 0 }, 'slow');
+                    $('#statusPoster').find('.status-message').addClass('hidden');
+                    $('#statusPoster').find('.status-length').removeClass('text-orange text-red')
+                        .addClass('text-green').html(140);
 
-            $('.user-id').attr('href', $('.user-id').attr('href') + objRLaneros.getUserData('inRUserId'));
+                    $('.alert-user-message').hide().addClass('hidden').removeClass('bg-green-lightest border-green text-green')
+                        .removeClass('bg-red-lightest border-red text-red');
+                    break;
+                case 'inbox':
+                    objRLaneros.getConversations();
+                    break;
+                case 'alerts':
+                    objRLaneros.getAlerts();
+                    break;
+                case 'subscriptions':
+                    objRLaneros.getSubscriptions();
+                    break;
+            }
+        };
 
-            $('.token-link').attr('href', $('.token-link').attr('href') + objRLaneros.getUserData('stRToken'));
-            $('.token-value').val(objRLaneros.getUserData('stRToken'));
+        $('.section-user').removeClass('hidden').hide().fadeIn('fast');
+        $('.user-id').attr('href', $('.user-id').attr('href') + objRLaneros.getUserData('inRUserId'));
+        $('.token-link').attr('href', $('.token-link').attr('href') + objRLaneros.getUserData('stRToken'));
+        $('.token-value').val(objRLaneros.getUserData('stRToken'));
 
-            $('#statusPoster').attr('action', $('#statusPoster').attr('action') +
-                objRLaneros.getUserData('stRUsername') + '.' +
-                objRLaneros.getUserData('inRUserId') + '/post');
-            $('#statusPoster').validate({
-                submitHandler: function (form) {
-                    let onBeforeSubmit = function (objRResponse, stRStatus) {
-                        $('.alert-user-message').slideUp();
-                    };
-
-                    let onSuccess = function (objRResponse, stRStatus) {
-                        if (objRResponse._redirectStatus === 'ok') {
-                            $('.alert-user-message').slideDown();
-                            $('.alert-user-message').addClass('bg-green-lightest border-green text-green')
-                                .removeClass('bg-red-lightest border-red text-red');
-                            $('.alert-user-message h4').html(Chrome.getMessage('label_success_message'));
-                            $('.alert-user-message p').html(objRResponse._redirectMessage);
-                        } else {
-                            $('.alert-user-message').slideDown();
-                            $('.alert-user-message').addClass('bg-red-lightest border-red text-red')
-                                .removeClass('bg-green-lightest border-green text-green');
-                            $('.alert-user-message h4').html(Chrome.getMessage('label_error_message'));
-                            $('.alert-user-message p').html(objRResponse.error.message);
-                        }
-                    };
-
-                    let onError = function (objRResponse, stRStatus) {
-                        $('.alert-user-message').slideDown();
-                        $('.alert-user-message hj4').html(Chrome.getMessage('label_error_message'));
-                        $('.alert-user-message p').html(Chrome.getMessage('text_error_message'));
-                    };
-
-                    $(form).ajaxSubmit({
-                        beforeSubmit: onBeforeSubmit,
-                        success: onSuccess,
-                        error: onError,
-                        dataType: 'json'
-                    });
-
-                    return false;
-                }
-            });
-
-            $('#ctrl_pageStatus_visible').click(function() {
-                let onBeforeSubmit = function(objRResponse, stRStatus) {
-                    $('.alert-home-message').slideUp();
+        $('#statusPoster').attr('action', $('#statusPoster').attr('action') +
+            objRLaneros.getUserData('stRUsername') + '.' +
+            objRLaneros.getUserData('inRUserId') + '/post');
+        $('#statusPoster').validate({
+            submitHandler: function (form) {
+                let onBeforeSubmit = function (objRResponse, stRStatus) {
+                    $('.alert-user-message').slideUp();
                 };
-                let onSuccess = function(objRResponse, stRStatus) {
+
+                let onSuccess = function (objRResponse, stRStatus) {
                     if (objRResponse._redirectStatus === 'ok') {
-                        $('.alert-home-message').slideDown();
-                        $('.alert-home-message').addClass('bg-green-lightest border-green text-green')
+                        $('.alert-user-message').slideDown();
+                        $('.alert-user-message').addClass('bg-green-lightest border-green text-green')
                             .removeClass('bg-red-lightest border-red text-red');
-                        $('.alert-home-message h4').html(Chrome.getMessage('label_success_message'));
-                        $('.alert-home-message p').html(objRResponse._redirectMessage);
-                    }
-                    else {
-                        $('.alert-home-message').slideDown();
-                        $('.alert-home-message').addClass('bg-red-lightest border-red text-red')
+                        $('.alert-user-message h4').html(Chrome.getMessage('label_success_message'));
+                        $('.alert-user-message p').html(objRResponse._redirectMessage);
+                    } else {
+                        $('.alert-user-message').slideDown();
+                        $('.alert-user-message').addClass('bg-red-lightest border-red text-red')
                             .removeClass('bg-green-lightest border-green text-green');
-                        $('.alert-home-message h4').html(Chrome.getMessage('label_error_message'));
-                        $('.alert-home-message p').html(objRResponse._redirectMessage);
+                        $('.alert-user-message h4').html(Chrome.getMessage('label_error_message'));
+                        $('.alert-user-message p').html(objRResponse.error.message);
                     }
                 };
 
                 let onError = function (objRResponse, stRStatus) {
-                    $('.alert-home-message').slideDown();
-                    $('.alert-home-message h4').html(Chrome.getMessage('label_error_message'));
-                    $('.alert-home-message p').html(Chrome.getMessage('text_error_message'));
+                    $('.alert-user-message').slideDown();
+                    $('.alert-user-message hj4').html(Chrome.getMessage('label_error_message'));
+                    $('.alert-user-message p').html(Chrome.getMessage('text_error_message'));
                 };
 
-                $('#visibilityForm').ajaxSubmit({
+                $(form).ajaxSubmit({
                     beforeSubmit: onBeforeSubmit,
                     success: onSuccess,
                     error: onError,
                     dataType: 'json'
                 });
-            });
 
-            if ($('input[name=visible]', objRData).is(':checked')) {
-                $('#ctrl_pageStatus_visible').attr('checked', true);
+                return false;
+            }
+        });
+
+        $('#ctrl_pageStatus_visible').click(function() {
+            let onBeforeSubmit = function(objRResponse, stRStatus) {
+                $('.alert-home-message').slideUp();
+            };
+            let onSuccess = function(objRResponse, stRStatus) {
+                if (objRResponse._redirectStatus === 'ok') {
+                    $('.alert-home-message').slideDown();
+                    $('.alert-home-message').addClass('bg-green-lightest border-green text-green')
+                        .removeClass('bg-red-lightest border-red text-red');
+                    $('.alert-home-message h4').html(Chrome.getMessage('label_success_message'));
+                    $('.alert-home-message p').html(objRResponse._redirectMessage);
+                }
+                else {
+                    $('.alert-home-message').slideDown();
+                    $('.alert-home-message').addClass('bg-red-lightest border-red text-red')
+                        .removeClass('bg-green-lightest border-green text-green');
+                    $('.alert-home-message h4').html(Chrome.getMessage('label_error_message'));
+                    $('.alert-home-message p').html(objRResponse._redirectMessage);
+                }
+            };
+
+            let onError = function (objRResponse, stRStatus) {
+                $('.alert-home-message').slideDown();
+                $('.alert-home-message h4').html(Chrome.getMessage('label_error_message'));
+                $('.alert-home-message p').html(Chrome.getMessage('text_error_message'));
+            };
+
+            $('#visibilityForm').ajaxSubmit({
+                beforeSubmit: onBeforeSubmit,
+                success: onSuccess,
+                error: onError,
+                dataType: 'json'
+            });
+        });
+
+        if ($('input[name=visible]', objRData).is(':checked')) {
+            $('#ctrl_pageStatus_visible').attr('checked', true);
+        }
+
+        $('#message').on('focus', function() {
+            $('#statusPoster').find('.status-message').removeClass('hidden');
+            $('html, body').animate({ scrollTop: $(document).height() }, 'slow');
+        }).on('keyup', function() {
+            let inLTextChars = $(this).val().length;
+
+            if (inLTextChars <= 140) {
+                $('#statusPoster').find('.status-length').html(140 - inLTextChars);
+            }
+            else {
+                $(this).val($(this).val().substr(0, 140));
+                $('#statusPoster').find('.status-length').html(0);
             }
 
-            $('#message').on('focus', function() {
-                $('#statusPoster').find('.status-message').removeClass('hidden');
-                $('html, body').animate({ scrollTop: $(document).height() }, 'slow');
-            }).on('keyup', function() {
-                let inLTextChars = $(this).val().length;
+            if (inLTextChars > 100) {
+                $('#statusPoster').find('.status-length').removeClass('text-green').addClass('text-orange');
+            }
+            if (inLTextChars > 120) {
+                $('#statusPoster').find('.status-length').removeClass('text-green text-orange').addClass('text-red');
+            }
+        });
 
-                if (inLTextChars <= 140) {
-                    $('#statusPoster').find('.status-length').html(140 - inLTextChars);
-                }
-                else {
-                    $(this).val($(this).val().substr(0, 140));
-                    $('#statusPoster').find('.status-length').html(0);
-                }
+        $('.tab-list a').click(function() {
+            if ($(this).hasClass('button-options')) {
+                Chrome.createTab(1,'views/options.html');
 
-                if (inLTextChars > 100) {
-                    $('#statusPoster').find('.status-length').removeClass('text-green').addClass('text-orange');
-                }
-                if (inLTextChars > 120) {
-                    $('#statusPoster').find('.status-length').removeClass('text-green text-orange').addClass('text-red');
-                }
-            });
+                return false;
+            }
+            else {
+                let stLActiveTab = $(this).attr('href').replace('#', '');
+                let objLTabOptions = { stRActiveTab: stLActiveTab };
 
-            $('.tab-list a').click(function() {
-                if ($(this).hasClass('button-options')) {
-                    Chrome.createTab(1,'views/options.html');
+                Chrome.setStorage(objLTabOptions, objLActiveTab(stLActiveTab));
 
-                    return false;
-                }
-                else {
-                    let stLActiveTab = $(this).attr('href').replace('#', '');
-                    let objLTabOptions = { stRActiveTab: stLActiveTab };
-                    let objLActiveTab = function(stRActiveTab) {
-                        switch(stRActiveTab) {
-                            case 'home':
-                                $('html, body').animate({ scrollTop: 0 }, 'slow');
+                $('.tab-list a').removeClass('text-white bg-blue hover:bg-blue-dark')
+                    .addClass('text-blue hover:bg-grey-lightest');
 
-                                $('#statusPoster').find('.status-message').addClass('hidden');
-                                $('#statusPoster').find('.status-length').removeClass('text-orange text-red')
-                                    .addClass('text-green').html(140);
+                $(this).addClass('text-white bg-blue hover:bg-blue-dark')
+                    .removeClass('text-blue hover:bg-grey-lightest');
 
-                                $('.alert-user-message').hide().addClass('hidden').removeClass('bg-green-lightest border-green text-green')
-                                    .removeClass('bg-red-lightest border-red text-red');
-                                break;
-                            case 'inbox':
-                                objRLaneros.getConversations();
-                                break;
-                            case 'alerts':
-                                objRLaneros.getAlerts();
-                                break;
-                            case 'subscriptions':
-                                objRLaneros.getSubscriptions();
-                                break;
-                        }
-                    };
+                $('.tab-content .tab').addClass('hidden');
+                $('#' + stLActiveTab).removeClass('hidden').hide().fadeIn();
+            }
+        });
 
-                    Chrome.setStorage(objLTabOptions, objLActiveTab(stLActiveTab));
+        Chrome.getStorage({bolRShowLinks: objRLaneros.getDefaults('bolRShowLinks')},
+            function(objROptions) {
+                $('.home-tab-nav').addClass('hidden');
+                $('.inbox-tab-nav').removeClass('hidden');
 
-                    $('.tab-list a').removeClass('text-white bg-blue hover:bg-blue-dark')
-                        .addClass('text-blue hover:bg-grey-lightest');
-
-                    $(this).addClass('text-white bg-blue hover:bg-blue-dark')
-                        .removeClass('text-blue hover:bg-grey-lightest');
-
-                    $('.tab-content .tab').addClass('hidden');
-                    $('#' + stLActiveTab).removeClass('hidden').hide().fadeIn();
+                if (objROptions.bolRShowLinks) {
+                    $('.home-tab-nav').removeClass('hidden');
                 }
             });
 
-            Chrome.getStorage({bolRShowLinks: objRLaneros.getDefaults('bolRShowLinks')},
-                function(objROptions) {
-                    $('.home-tab-nav').addClass('hidden');
+        Chrome.getStorage({bolRShowInbox: objRLaneros.getDefaults('bolRShowInbox')},
+            function (objROptions) {
+                $('.inbox-tab-nav').addClass('hidden');
+                $('.alerts-tab-nav').removeClass('hidden');
+
+                if (objROptions.bolRShowInbox) {
                     $('.inbox-tab-nav').removeClass('hidden');
 
-                    if (objROptions.bolRShowLinks) {
-                        $('.home-tab-nav').removeClass('hidden');
-                    }
-                });
+                }
+            });
 
-            Chrome.getStorage({bolRShowInbox: objRLaneros.getDefaults('bolRShowInbox')},
-                function (objROptions) {
-                    $('.inbox-tab-nav').addClass('hidden');
+        Chrome.getStorage({bolRShowAlerts: objRLaneros.getDefaults('bolRShowAlerts')},
+            function (objROptions) {
+                $('.alerts-tab-nav').addClass('hidden');
+                $('.subscriptions-tab-nav').removeClass('hidden');
+
+                if (objROptions.bolRShowAlerts) {
                     $('.alerts-tab-nav').removeClass('hidden');
 
-                    if (objROptions.bolRShowInbox) {
-                        $('.inbox-tab-nav').removeClass('hidden');
+                }
+            });
 
-                    }
-                });
+        Chrome.getStorage({bolRShowSubs: objRLaneros.getDefaults('bolRShowSubs')},
+            function (objROptions) {
+                $('.subscriptions-tab-nav-nav').addClass('hidden');
 
-            Chrome.getStorage({bolRShowAlerts: objRLaneros.getDefaults('bolRShowAlerts')},
-                function (objROptions) {
-                    $('.alerts-tab-nav').addClass('hidden');
+                if (objROptions.bolRShowSubs) {
                     $('.subscriptions-tab-nav').removeClass('hidden');
 
-                    if (objROptions.bolRShowAlerts) {
-                        $('.alerts-tab-nav').removeClass('hidden');
+                }
+            });
 
-                    }
-                });
+        Chrome.getStorage({stRActiveTab: objRLaneros.getDefaults('stRActiveTab')},
+            function (objROptions) {
+                let stLActiveTab = $('a[href="#' + objROptions.stRActiveTab + '"]');
+                let stLTabId;
 
-            Chrome.getStorage({bolRShowSubs: objRLaneros.getDefaults('bolRShowSubs')},
-                function (objROptions) {
-                    $('.subscriptions-tab-nav-nav').addClass('hidden');
+                if (!$(stLActiveTab).closest('li').hasClass('hidden')) {
+                    stLTabId = '#' + objROptions.stRActiveTab;
+                    $(stLActiveTab).addClass('text-white bg-blue hover:bg-blue-dark')
+                        .removeClass('text-blue hover:bg-grey-lightest');
+                }
+                else {
+                    stLTabId = $('.tab-list').find('li:first:not(:hidden) a').attr('href');
+                    $('.tab-list').find('li:first:not(:hidden) a').addClass('text-white bg-blue hover:bg-blue-dark')
+                        .removeClass('text-blue hover:bg-grey-lightest');
+                }
 
-                    if (objROptions.bolRShowSubs) {
-                        $('.subscriptions-tab-nav').removeClass('hidden');
-
-                    }
-                });
-
-            Chrome.getStorage({stRActiveTab: objRLaneros.getDefaults('stRActiveTab')},
-                function (objROptions) {
-                    let stLActiveTab = $('a[href="#' + objROptions.stRActiveTab + '"]');
-
-                    if (!$(stLActiveTab).closest('li').hasClass('hidden')) {
-                        $(stLActiveTab).addClass('text-white bg-blue hover:bg-blue-dark')
-                            .removeClass('text-blue hover:bg-grey-lightest');
-                        $('#' + objROptions.stRActiveTab).removeClass('hidden');
-                    }
-                    else {
-                        let stLTabId = $('.tab-list').find('li:first:not(:hidden) a').attr('href');
-                        $('.tab-list').find('li:first:not(:hidden) a').addClass('text-white bg-blue hover:bg-blue-dark')
-                            .removeClass('text-blue hover:bg-grey-lightest');
-                        $(stLTabId).removeClass('hidden');
-                    }
-                });
-        });
+                $(stLTabId).removeClass('hidden');
+                objLActiveTab((stLTabId).replace('#', ''))
+            });
     }
 
     /**
      * Get Extension Data
      */
-    getData() {
+    getData(bolRAll = false) {
         let objRLaneros = this;
         let objLFail = function(objRjqXHR, stRTextStatus, objRErrorThrown) {
-            $('.loading-box').hide();
-
             try {
                 if (objRjqXHR.status === 403) {
                     objRLaneros.showLogin();
                 } else {
-                    $('.loading-box').fadeOut(function () {
-                        $('body').css('height', 'auto');
-                        $('.section-error').removeClass('hidden');
-                    });
+                    $('.section-error').removeClass('hidden');
                 }
             }
             catch(objRException) {
-                new Log('ajax-success').error(objRException);
+                new Log('getData ajax-error').error(objRException);
             }
         };
 
@@ -704,9 +698,12 @@ class Laneros {
                 });
 
                 objRLaneros.getAccount($('#AccountMenu', objRData));
-                objRLaneros.getConversations();
-                objRLaneros.getAlerts();
-                objRLaneros.getSubscriptions();
+
+                if (bolRAll) {
+                    objRLaneros.getConversations();
+                    objRLaneros.getAlerts();
+                    objRLaneros.getSubscriptions();
+                }
 
                 if (inRConversations > 0) {
                     $('.inbox-counter').removeClass('hidden').html(inRConversations);
@@ -937,8 +934,9 @@ class Laneros {
         let objRLaneros = this;
 
         Chrome.getStorage({bolRShowInfo: objRLaneros.getDefaults('bolRShowInfo') }, function (objROptions) {
+            let objLShowInfo = $('.section-user .user-info-container');
+
             if (objROptions.bolRShowInfo) {
-                let objLShowInfo = $('.section-user .user-info-container');
                 let objLAccount = document.createElement('div');
 
                 $(objLAccount).load(objRLaneros.getPageURL() + 'forums/.visitorPanel', function(objRData) {
@@ -977,10 +975,12 @@ class Laneros {
                         $(objLUserData).find('.user-feedback-neutral').html(parseInt(inLFeedbackNeutral));
                         $(objLUserData).find('.user-feedback-negative').html(parseInt(inLFeedbackNegative));
 
-                        $('html, body').animate({ scrollTop: 0 }, 'slow');
-                        $(objLShowInfo).removeClass('hidden').addClass('flex');
+                        $(objLShowInfo).removeClass('invisible').addClass('flex');
                     }
                 });
+            }
+            else {
+                $(objLShowInfo).addClass('hidden').removeClass('flex');
             }
         });
 
@@ -1005,6 +1005,7 @@ class Laneros {
 
             $(objLConversations).html(objRResponse.templateHtml);
             $('#inbox').find('.conversation-item:gt(0)').remove();
+            $('#inbox').find('.loading-data').hide();
 
             if ($(objLConversations).find('.noItems').length === 0) {
                 $(objLConversations).find('.listItem').each(function () {
@@ -1048,7 +1049,6 @@ class Laneros {
                         }
                     });
 
-                    $('html, body').animate({ scrollTop: 0 }, 'slow');
                     $(objLConversation).removeClass('hidden').appendTo('#inbox .conversation-container');
 
                     Chrome.getStorage({bolRNotificationInbox: objLLaneros.getDefaults('bolRNotificationInbox') },
@@ -1091,6 +1091,7 @@ class Laneros {
 
             $(objLAlerts).html(objRResponse.templateHtml);
             $('#alerts').find('.alert-item:gt(0)').remove();
+            $('#alerts').find('.loading-data').hide();
 
             if ($(objLAlerts).find('.noItems').length === 0) {
                 $(objLAlerts).find('.listItem').each(function () {
@@ -1131,7 +1132,6 @@ class Laneros {
                         }
                     });
 
-                    $('html, body').animate({ scrollTop: 0 }, 'slow');
                     $(objLAlert).removeClass('hidden').appendTo('#alerts .alert-container');
 
                     Chrome.getStorage({bolRNotificationAlerts: objLLaneros.getDefaults('bolRNotificationAlerts') },
@@ -1174,6 +1174,7 @@ class Laneros {
 
             $(objRThreads).html(objRResponse.templateHtml);
             $('#subscriptions').find('.thread-item:gt(0)').remove();
+            $('#subscriptions').find('.loading-data').hide();
 
             if ($(objRThreads).find('.noItems').length === 0) {
                 $(objRThreads).find('.discussionListItem').each(function () {
@@ -1199,7 +1200,6 @@ class Laneros {
                     $(objLThread).find('.thread-body .message-info .message-by').html($(this).find('.lastPostInfo dt:first').html());
                     $(objLThread).find('.thread-body .message-info .message-at').html($(this).find('.lastPostInfo dd.muted').html());
 
-
                     $(objLThread).find('a').removeClass().addClass('no-underline text-blue hover:text-blue-dark');
                     $(objLThread).find('h6 a').removeClass('text-blue hover:text-blue-dark')
                         .addClass('text-grey-darker hover:text-grey-darkest');
@@ -1220,12 +1220,11 @@ class Laneros {
                         }
                     });
 
-                    $('html, body').animate({ scrollTop: 0 }, 'slow');
                     $(objLThread).removeClass('hidden').appendTo('#subscriptions .thread-container');
 
                     Chrome.getStorage({bolRNotificationSubs: objLLaneros.getDefaults('bolRNotificationSubs') },
                         function (objROptions) {
-                            if (objROptions.bolRNotificationSubs && bolLisUnread) {
+                            if (objROptions.bolRNotificationSubs && bolLIsUnread) {
                                 let arrLMessage = $(objLMessageURL).attr('href').split('/');
                                 let arrLMessageID = arrLMessage[1].split('.');
                                 let inLMessageID = arrLMessageID.pop();
@@ -1243,6 +1242,7 @@ class Laneros {
                         });
                 });
             }
+
             if ($(objRThreads).find('.noItems').length !== 0 || !bolLUnread) {
                 $('#subscriptions').find('.alert-subscriptions-message').removeClass('hidden');
             }
