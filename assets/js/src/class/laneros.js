@@ -142,7 +142,7 @@ class Laneros {
                 inRHours: parseInt(inLHours % 60)
             };
         } catch (objRException) {
-            new Log('Laneros getTime').error(objRException);
+            new Log('getTime').error(objRException);
         }
     }
 
@@ -242,7 +242,7 @@ class Laneros {
             });
         }
          catch (objRException) {
-            new Log('Laneros setOptions').error(objRException);
+            new Log('setOptions').error(objRException);
         }
     }
 
@@ -281,7 +281,7 @@ class Laneros {
                         $('.alert-response').addClass('bg-green-lightest border-green text-green').removeClass('hidden')
                             .hide().slideDown();
                     } catch (objRException) {
-                        new Log('Laneros saveOptions - objLCallBack').error(objRException);
+                        new Log('saveOptions - objLCallBack').error(objRException);
 
                         $('.alert-response h4').html(Chrome.getMessage('label_saved_error'));
                         $('.alert-response p').html(Chrome.getMessage('message_saved_error'));
@@ -293,7 +293,7 @@ class Laneros {
 
             Chrome.setStorage(objLOptions, objLCallBack);
         } catch (objRException) {
-            new Log('Laneros saveOptions').error(objRException);
+            new Log('saveOptions').error(objRException);
         }
 
         return false;
@@ -402,7 +402,7 @@ class Laneros {
                         $('.alert-message p').html(Chrome.getMessage('text_error_login'));
                     }
                     else {
-                        $('.section-login').fadeOut('fast', objRLaneros.showPopup);
+                        $('.section-login').fadeOut('fast', objRLaneros.getData(false));
                     }
                 };
 
@@ -465,44 +465,47 @@ class Laneros {
         $('#statusPoster').attr('action', $('#statusPoster').attr('action') +
             objRLaneros.getUserData('stRUsername') + '.' +
             objRLaneros.getUserData('inRUserId') + '/post');
-        $('#statusPoster').validate({
-            submitHandler: function (form) {
-                let onBeforeSubmit = function (objRResponse, stRStatus) {
-                    $('.alert-user-message').slideUp();
-                };
 
-                let onSuccess = function (objRResponse, stRStatus) {
-                    if (objRResponse._redirectStatus === 'ok') {
+        if ($.validator) {
+            $('#statusPoster').validate({
+                submitHandler: function (form) {
+                    let onBeforeSubmit = function (objRResponse, stRStatus) {
+                        $('.alert-user-message').slideUp();
+                    };
+
+                    let onSuccess = function (objRResponse, stRStatus) {
+                        if (objRResponse._redirectStatus === 'ok') {
+                            $('.alert-user-message').slideDown();
+                            $('.alert-user-message').addClass('bg-green-lightest border-green text-green')
+                                .removeClass('bg-red-lightest border-red text-red');
+                            $('.alert-user-message h4').html(Chrome.getMessage('label_success_message'));
+                            $('.alert-user-message p').html(objRResponse._redirectMessage);
+                        } else {
+                            $('.alert-user-message').slideDown();
+                            $('.alert-user-message').addClass('bg-red-lightest border-red text-red')
+                                .removeClass('bg-green-lightest border-green text-green');
+                            $('.alert-user-message h4').html(Chrome.getMessage('label_error_message'));
+                            $('.alert-user-message p').html(objRResponse.error.message);
+                        }
+                    };
+
+                    let onError = function (objRResponse, stRStatus) {
                         $('.alert-user-message').slideDown();
-                        $('.alert-user-message').addClass('bg-green-lightest border-green text-green')
-                            .removeClass('bg-red-lightest border-red text-red');
-                        $('.alert-user-message h4').html(Chrome.getMessage('label_success_message'));
-                        $('.alert-user-message p').html(objRResponse._redirectMessage);
-                    } else {
-                        $('.alert-user-message').slideDown();
-                        $('.alert-user-message').addClass('bg-red-lightest border-red text-red')
-                            .removeClass('bg-green-lightest border-green text-green');
-                        $('.alert-user-message h4').html(Chrome.getMessage('label_error_message'));
-                        $('.alert-user-message p').html(objRResponse.error.message);
-                    }
-                };
+                        $('.alert-user-message hj4').html(Chrome.getMessage('label_error_message'));
+                        $('.alert-user-message p').html(Chrome.getMessage('text_error_message'));
+                    };
 
-                let onError = function (objRResponse, stRStatus) {
-                    $('.alert-user-message').slideDown();
-                    $('.alert-user-message hj4').html(Chrome.getMessage('label_error_message'));
-                    $('.alert-user-message p').html(Chrome.getMessage('text_error_message'));
-                };
+                    $(form).ajaxSubmit({
+                        beforeSubmit: onBeforeSubmit,
+                        success: onSuccess,
+                        error: onError,
+                        dataType: 'json'
+                    });
 
-                $(form).ajaxSubmit({
-                    beforeSubmit: onBeforeSubmit,
-                    success: onSuccess,
-                    error: onError,
-                    dataType: 'json'
-                });
-
-                return false;
-            }
-        });
+                    return false;
+                }
+            });
+        }
 
         $('#ctrl_pageStatus_visible').click(function() {
             let onBeforeSubmit = function(objRResponse, stRStatus) {
@@ -623,7 +626,7 @@ class Laneros {
 
         Chrome.getStorage({bolRShowSubs: objRLaneros.getDefaults('bolRShowSubs')},
             function (objROptions) {
-                $('.subscriptions-tab-nav-nav').addClass('hidden');
+                $('.subscriptions-tab-nav').addClass('hidden');
 
                 if (objROptions.bolRShowSubs) {
                     $('.subscriptions-tab-nav').removeClass('hidden');
@@ -689,7 +692,7 @@ class Laneros {
      * @param inRSubscriptions
      */
      createListNotification(inRConversations, inRAlerts, inRSubscriptions) {
-        let objLLaneros = this;
+        let objRLaneros = this;
         let objLListener = function (stRNotificationID, inRButtonIndex) {
             let objLCallBack;
 
@@ -699,26 +702,26 @@ class Laneros {
                         let arrLResult = objRTabResult.shift();
 
                         if (objRTabResult.length === 0) {
-                            Chrome.createTab(2, objLLaneros.getPageURL(), function (objRTab) {});
+                            Chrome.createTab(2, objRLaneros.getPageURL(), function (objRTab) {});
                         } else {
                             Chrome.highlightTab(arrLResult.windowId, arrLResult.index);
                         }
                     };
 
-                    Chrome.queryTab(objLLaneros.getPageURL(), objLCallBack);
+                    Chrome.queryTab(objRLaneros.getPageURL(), objLCallBack);
                     break;
                 default:
                     objLCallBack = function (objRTabResult) {
                         let arrLResult = objRTabResult.shift();
 
                         if (objRTabResult.length === 0) {
-                            Chrome.createTab(2, objLLaneros.getPageURL() + 'account', function (objRTab) {});
+                            Chrome.createTab(2, objRLaneros.getPageURL() + 'account', function (objRTab) {});
                         } else {
                             Chrome.highlightTab(arrLResult.windowId, arrLResult.index);
                         }
                     };
 
-                    Chrome.queryTab(objLLaneros.getPageURL() + 'account', objLCallBack);
+                    Chrome.queryTab(objRLaneros.getPageURL() + 'account', objLCallBack);
                     break;
             }
         };
@@ -771,7 +774,7 @@ class Laneros {
      * @param objROptions
      */
     createBasicNotification(stRTarget, objROptions) {
-        let objLLaneros = this;
+        let objRLaneros = this;
         let stLTarget = stRTarget.charAt(0).toUpperCase() + stRTarget.slice(1);
 
         let objLClickedListener = function (stRNotificationID, inRButtonIndex) {
@@ -825,13 +828,13 @@ class Laneros {
                                 let arrLResult = objRTabResult.shift();
 
                                 if (objRTabResult.length === 0) {
-                                    Chrome.createTab(2, objLLaneros.getPageURL(), function (objRTab) {});
+                                    Chrome.createTab(2, objRLaneros.getPageURL(), function (objRTab) {});
                                 } else {
                                     Chrome.highlightTab(arrLResult.windowId, arrLResult.index);
                                 }
                             };
 
-                            Chrome.queryTab(objLLaneros.getPageURL() + 'watched/threads/all', objLCallBack);
+                            Chrome.queryTab(objRLaneros.getPageURL() + 'watched/threads/all', objLCallBack);
                             break;
                         default:
                             objLClickedListener();
@@ -1090,15 +1093,15 @@ class Laneros {
                     Chrome.getStorage({bolRNotificationInbox: objRLaneros.getDefaults('bolRNotificationInbox') },
                         function (objROptions) {
                             if (objROptions.bolRNotificationInbox && bolLUnread) {
-                                let arrLMessage = $(objLMessageURL).attr('href').split('/');
+                                let arrLMessage = $(objLMessage).attr('href').split('/');
                                 let arrLMessageID = arrLMessage[1].split('.');
                                 let inLMessageID = arrLMessageID.pop();
 
                                 let objLOptions = {
-                                    stRMessageTitle: $(objLMessageURL).html(),
+                                    stRMessageTitle: $(objLMessage).html(),
                                     stRMessage: Chrome.getMessage('label_new_messages'),
                                     stRMessageIcon: objRLaneros.getPageURL() + $(objLMessageIcon).attr('src'),
-                                    stRMessageURL: objRLaneros.getPageURL() + $(objLMessageURL).attr('href'),
+                                    stRMessageURL: objRLaneros.getPageURL() + $(objLMessage).attr('href'),
                                     inRMessageID: inLMessageID,
                                 };
 
@@ -1120,7 +1123,7 @@ class Laneros {
      * Get Alerts
      */
     getAlerts() {
-        let objLLaneros = this;
+        let objRLaneros = this;
         let objLResponse = function(objRResponse) {
             let objLAlerts = document.createElement('div');
             let bolLUnread = false;
@@ -1159,36 +1162,36 @@ class Laneros {
                     $(objLAlert).find('a').each(function () {
                         $(this).attr('target', '_blank');
 
-                        if ($(this).attr('href').indexOf(objLLaneros.getPageURL()) === -1) {
-                            $(this).attr('href', objLLaneros.getPageURL() + $(this).attr('href'));
+                        if ($(this).attr('href').indexOf(objRLaneros.getPageURL()) === -1) {
+                            $(this).attr('href', objRLaneros.getPageURL() + $(this).attr('href'));
                         }
                     });
 
                     $(objLAlert).find('img').each(function () {
                         if ($(this).attr('src').indexOf('data/avatars') !== -1 ||
                             $(this).attr('src').indexOf('xenforo/avatars') !== -1) {
-                            $(this).attr('src', objLLaneros.getPageURL() + $(this).attr('src'));
+                            $(this).attr('src', objRLaneros.getPageURL() + $(this).attr('src'));
                         }
                     });
 
                     $(objLAlert).removeClass('hidden').appendTo('#alerts .alert-container');
 
-                    Chrome.getStorage({bolRNotificationAlerts: objLLaneros.getDefaults('bolRNotificationAlerts') },
+                    Chrome.getStorage({bolRNotificationAlerts: objRLaneros.getDefaults('bolRNotificationAlerts') },
                         function (objROptions) {
                             if (objROptions.bolRNotificationAlerts && bolLUnread) {
-                                let arrLMessage = $(objLMessageURL).attr('href').split('/');
+                                let arrLMessage = $(objLMessage).attr('href').split('/');
                                 let arrLMessageID = arrLMessage[1].split('.');
                                 let inLMessageID = arrLMessageID.pop();
 
                                 let objLOptions = {
                                     stRMessageTitle: Chrome.getMessage('label_new_alerts'),
-                                    stRMessage: $(objLMessageURL).text(),
-                                    stRMessageIcon: objLLaneros.getPageURL() + $(objLMessageIcon).attr('src'),
-                                    stRMessageURL: objLLaneros.getPageURL() + 'account/alerts',
+                                    stRMessage: $(objLMessage).text(),
+                                    stRMessageIcon: objRLaneros.getPageURL() + $(objLMessageIcon).attr('src'),
+                                    stRMessageURL: objRLaneros.getPageURL() + 'account/alerts',
                                     inRMessageID: inLMessageID,
                                 };
 
-                                objLLaneros.createBasicNotification('alerts', objLOptions);
+                                objRLaneros.createBasicNotification('alerts', objLOptions);
                             }
                         });
                 });
@@ -1198,15 +1201,15 @@ class Laneros {
             }
         };
 
-        $.getJSON(objLLaneros.getPageURL() + 'account/alerts-popup?_xfResponseType=json&_xfNoRedirect=1&_xfToken='  +
-            objLLaneros.getUserData('stRToken'), objLResponse);
+        $.getJSON(objRLaneros.getPageURL() + 'account/alerts-popup?_xfResponseType=json&_xfNoRedirect=1&_xfToken='  +
+            objRLaneros.getUserData('stRToken'), objLResponse);
     }
 
     /**
      * Get Subscriptions
      */
     getSubscriptions() {
-        let objLLaneros = this;
+        let objRLaneros = this;
         let objLResponse = function(objRResponse) {
             let objRThreads = document.createElement('div');
             let bolLUnread = false;
@@ -1275,36 +1278,36 @@ class Laneros {
                     $(objLThread).find('a').each(function () {
                         $(this).attr('target', '_blank');
 
-                        if ($(this).attr('href').indexOf(objLLaneros.getPageURL()) === -1) {
-                            $(this).attr('href', objLLaneros.getPageURL() + $(this).attr('href'));
+                        if ($(this).attr('href').indexOf(objRLaneros.getPageURL()) === -1) {
+                            $(this).attr('href', objRLaneros.getPageURL() + $(this).attr('href'));
                         }
                     });
 
                     $(objLThread).find('img').each(function () {
                         if ($(this).attr('src').indexOf('data/avatars') !== -1 ||
                             $(this).attr('src').indexOf('xenforo/avatars') !== -1) {
-                            $(this).attr('src', objLLaneros.getPageURL() + $(this).attr('src'));
+                            $(this).attr('src', objRLaneros.getPageURL() + $(this).attr('src'));
                         }
                     });
 
                     $(objLThread).removeClass('hidden').appendTo('#subscriptions .thread-container');
 
-                    Chrome.getStorage({bolRNotificationSubs: objLLaneros.getDefaults('bolRNotificationSubs') },
+                    Chrome.getStorage({bolRNotificationSubs: objRLaneros.getDefaults('bolRNotificationSubs') },
                         function (objROptions) {
                             if (objROptions.bolRNotificationSubs && bolLIsUnread) {
-                                let arrLMessage = $(objLMessageURL).attr('href').split('/');
+                                let arrLMessage = $(objLMessage).attr('href').split('/');
                                 let arrLMessageID = arrLMessage[1].split('.');
                                 let inLMessageID = arrLMessageID.pop();
 
                                 let objLOptions = {
                                     stRMessageTitle: Chrome.getMessage('label_new_subscription'),
-                                    stRMessage: $(objLMessageURL).text(),
-                                    stRMessageIcon: objLLaneros.getPageURL() + $(objLMessageIcon).attr('src'),
-                                    stRMessageURL: objLLaneros.getPageURL() + $(objLMessageURL).attr('href'),
+                                    stRMessage: $(objLMessage).text(),
+                                    stRMessageIcon: objRLaneros.getPageURL() + $(objLMessageIcon).attr('src'),
+                                    stRMessageURL: objRLaneros.getPageURL() + $(objLMessage).attr('href'),
                                     inRMessageID: inLMessageID,
                                 };
 
-                                objLLaneros.createBasicNotification('subscriptions', objLOptions);
+                                objRLaneros.createBasicNotification('subscriptions', objLOptions);
                             }
                         });
                 });
@@ -1315,8 +1318,7 @@ class Laneros {
             }
         };
 
-        $.getJSON(objLLaneros.getPageURL() + 'watched/threads?_xfResponseType=json&_xfNoRedirect=1&_xfToken='  +
-            objLLaneros.getUserData('stRToken'), objLResponse);
-
+        $.getJSON(objRLaneros.getPageURL() + 'watched/threads?_xfResponseType=json&_xfNoRedirect=1&_xfToken='  +
+            objRLaneros.getUserData('stRToken'), objLResponse);
     }
 }

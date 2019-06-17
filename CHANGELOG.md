@@ -2,6 +2,12 @@
 
 All notable changes to `laneros-browser-extension` will be documented in this file.
 
+## 7.2.1 | 2019-02-08
+
+### Added
+
+- Token on requests
+
 ## 7.2 | 2019-02-08
 
 ### Added
