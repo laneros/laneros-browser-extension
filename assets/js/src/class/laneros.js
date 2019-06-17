@@ -16,6 +16,7 @@ class Laneros {
             bolRShowInbox: true,
             bolRShowAlerts: true,
             bolRShowSubs: true,
+            bolRShowBookmarks: true,
             bolRShowLinks: true,
             bolRShowInfo: true,
             bolRNotificationConsolidated: true,
@@ -173,6 +174,9 @@ class Laneros {
             if (objROptions.bolRShowSubs) {
                 $('#checkbox_section_subscriptions').attr('checked', true);
             }
+            if (objROptions.bolRShowBookmarks) {
+                $('#checkbox_section_bookmarks').attr('checked', true);
+            }
             if (objROptions.bolRShowLinks) {
                 $('#checkbox_section_links').attr('checked', true);
             }
@@ -263,6 +267,7 @@ class Laneros {
                 bolRShowInbox: $('input[name=checkbox_section_inbox]').is(':checked'),
                 bolRShowAlerts: $('input[name=checkbox_section_alerts]').is(':checked'),
                 bolRShowSubs: $('input[name=checkbox_section_subscriptions]').is(':checked'),
+                bolRShowBookmarks: $('input[name=checkbox_section_bookmarks]').is(':checked'),
                 bolRShowLinks: $('input[name=checkbox_section_links]').is(':checked'),
                 bolRShowInfo: $('input[name=checkbox_section_info]').is(':checked'),
                 bolRNotificationConsolidated: $('input[name=checkbox_notification_consolidated]').is(':checked'),
@@ -476,6 +481,9 @@ class Laneros {
                 case 'subscriptions':
                     objRLaneros.getSubscriptions();
                     break;
+                case 'bookmarks':
+                    objRLaneros.getBookmarks();
+                    break;
             }
         };
 
@@ -648,6 +656,16 @@ class Laneros {
 
                 if (objROptions.bolRShowSubs) {
                     $('.subscriptions-tab-nav').removeClass('hidden');
+
+                }
+            });
+
+        Chrome.getStorage({bolRShowBookmarks: objRLaneros.getDefaults('bolRShowBookmarks')},
+            function (objROptions) {
+                $('.bookmarks-tab-nav').addClass('hidden');
+
+                if (objROptions.bolRShowBookmarks) {
+                    $('.bookmarks-tab-nav').removeClass('hidden');
 
                 }
             });
@@ -852,7 +870,7 @@ class Laneros {
                                 }
                             };
 
-                            Chrome.queryTab(objRLaneros.getPageURL() + 'watched/threads/all', objLCallBack);
+                            Chrome.queryTab(objRLaneros.getPageURL() + 'watched/threads', objLCallBack);
                             break;
                         default:
                             objLClickedListener();
@@ -872,6 +890,20 @@ class Laneros {
                     buttons: [{title: Chrome.getMessage('button_open_subscriptions')},
                         {title: Chrome.getMessage('button_open_subscription')}]
                 }, objLSubsListener, true);
+                break;
+            case 'bookmark':
+                let objLBookmarkListener = function(objRNotificationID) {
+                    chrome.notifications.onClicked.addListener(objLClickedListener);
+                    chrome.notifications.onButtonClicked.addListener(objLClickedListener);
+                };
+
+                Chrome.sendNotification('Laneros' + stLTarget + objROptions.inRMessageID, {
+                    type: 'basic',
+                    title: objROptions.stRMessageTitle,
+                    message: objROptions.stRMessage,
+                    iconUrl: objROptions.stRMessageIcon,
+                    buttons: [{title: Chrome.getMessage('button_open_bookmark')}]
+                }, objLMessagesListener, true);
                 break;
         }
     }
@@ -929,6 +961,7 @@ class Laneros {
                     objRLaneros.getConversations();
                     objRLaneros.getAlerts();
                     objRLaneros.getSubscriptions();
+                    objRLaneros.getBookmarks();
                 }
 
                 if (inRConversations > 0) {
@@ -1041,7 +1074,7 @@ class Laneros {
             $('#inbox').find('.loading-data').hide();
 
             if ($(objLConversations).find('div.menu-row').length === 0) {
-                $(objLConversations).find('li.menu-row').each(function () {
+                $(objLConversations).find('li.menu-row--separated').each(function () {
                     let objLConversation = $('#inbox').find('.conversation-item:first').clone();
 
                     let objLMessage = $(this).find('.contentRow-main a.fauxBlockLink-blockLink');
@@ -1144,7 +1177,7 @@ class Laneros {
             $('#alerts').find('.loading-data').hide();
 
             if ($(objLAlerts).find('div.menu-row').length === 0) {
-                $(objLAlerts).find('li.menu-row').each(function () {
+                $(objLAlerts).find('li.menu-row--separated').each(function () {
                     let objLAlert = $('#alerts').find('.alert-item:first').clone();
 
                     let objLMessage = $(this).find('.contentRow-main');
@@ -1316,6 +1349,79 @@ class Laneros {
         };
 
         $.getJSON(objRLaneros.getPageURL() + 'watched/threads?_xfResponseType=json&_xfNoRedirect=1&_xfToken='  +
+            objRLaneros.getUserData('stRToken'), objLResponse);
+    }
+
+    /**
+     * Get Bookmarks
+     */
+    getBookmarks() {
+        let objRLaneros = this;
+        let objLResponse = function(objRResponse) {
+            let objRBookmarks = document.createElement('div');
+
+            $(objRBookmarks).html(objRResponse.html.content);
+            $('#bookmarks').find('.bookmark-item:gt(0)').remove();
+            $('#bookmarks').find('.loading-data').hide();
+
+            if ($(objRBookmarks).find('.contentRow-main').length > 0) {
+                $(objRBookmarks).find('li.menu-row--separated').each(function () {
+                    let objLBookmark = $('#bookmarks').find('.bookmark-item:first').clone();
+
+                    let objLMessage = $(this).find('.contentRow-main .contentRow-title');
+                    let objLMessageFigure = $(this).find('.contentRow-figure');
+                    let objLMessageIcon = $(objLMessageFigure).find('.avatar img');
+                    let objLMessageSnippet = $(this).find('.contentRow-main .contentRow-snippet');
+                    let objLMessageMinor = $(this).find('.contentRow-main .contentRow-minor--smaller');
+                    let objLMessageTime = $(objLMessageMinor).find('time');
+                    let objLMessageTags = $(objLMessageMinor).find('.tagList');
+
+                    let stLUser = $(objLMessageIcon).attr('alt') + '.' + $(objLMessageFigure).find('.avatar').data('user-id');
+
+                    $(objLMessageTags).find('.u-srOnly').remove();
+
+                    $(objLBookmark).find('a:first').attr('href', objRLaneros.getPageURL() + 'members/' + stLUser);
+                    $(objLBookmark).find('a:first > img').attr('src', $(objLMessageIcon).attr('src'))
+                        .attr('alt', $(objLMessageIcon).attr('alt'));
+
+                    $(objLBookmark).find('.bookmark-body > p:first').html($(objLMessage).html());
+                    $(objLBookmark).find('.bookmark-body > p:eq(1)').html($(objLMessageSnippet).html());
+
+                    $(objLBookmark).find('.bookmark-body > p:last > span:first a').attr('href', objRLaneros.getPageURL() + 'members/' + stLUser)
+                        .html($(objLMessageIcon).attr('alt'));
+                    $(objLBookmark).find('.bookmark-body > p:last > span:eq(2)').html(objLMessageTime);
+
+                    if ($(objLMessageTags).find('a').length > 0) {
+                        $(objLBookmark).find('.bookmark-body > p:last > .hidden').removeClass('hidden');
+
+                        $(objLMessageTags).find('a').each(function () {
+                            let objLTag = $(objLBookmark).find('.bookmark-body > p:last > span:last > span:first').clone();
+
+                            $(objLTag).html(this).removeClass('hidden').appendTo($(objLBookmark).find('.bookmark-body > p:last > span:last'));
+                        });
+                    }
+
+                    $(objLBookmark).find('a').removeClass().addClass('no-underline text-blue hover:text-blue-dark');
+                    $(objLBookmark).find('time').removeClass().addClass('text-orange');
+
+                    $(objLBookmark).find('a').each(function () {
+                        $(this).attr('target', '_blank');
+
+                        if ($(this).attr('href').indexOf(objRLaneros.getPageURL()) === -1) {
+                            $(this).attr('href', objRLaneros.getPageURL() + $(this).attr('href'));
+                        }
+                    });
+
+                    $(objLBookmark).removeClass('hidden').appendTo('#bookmarks .bookmark-container');
+                });
+            }
+
+            if ($(objRBookmarks).find('.contentRow-main').length === 0) {
+                $('#bookmarks').find('.alert-bookmark-message').removeClass('hidden');
+            }
+        };
+
+        $.getJSON(objRLaneros.getPageURL() + 'account/bookmarks-popup?_xfResponseType=json&_xfNoRedirect=1&_xfToken='  +
             objRLaneros.getUserData('stRToken'), objLResponse);
     }
 }

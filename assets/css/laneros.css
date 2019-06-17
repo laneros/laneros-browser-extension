@@ -23,7 +23,7 @@ a.twitterLogin {
     background: #77CDF0;
 }
 .popup {
-    width: 450px;
+    min-width: 450px;
     text-shadow: none !important;
 }
 .pretty .state label:after, .pretty .state label:before {
@@ -72,10 +72,21 @@ img.rounded:hover {
 }
 .dark-mode .hover\:text-grey-darkest:hover {
     color: #A3A2A1;
+}
 
+.dark-mode .pretty .state label:after,
+.dark-mode .pretty .state label:before {
+    background-color: #ABAAAA;
+}
+
+.dark-mode .pretty.p-default input:checked~.state label:after,
+.dark-mode .pretty.p-svg input:checked~.state .svg {
+    background-color: #504E4D !important;
 }
 
 .dark-mode input[type="number"],
+.dark-mode input[type="checkbox"],
+.dark-mode input[type="radio"],
 .dark-mode input[type="text"],
 .dark-mode input[type="password"],
 .dark-mode textarea {

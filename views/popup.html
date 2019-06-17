@@ -114,8 +114,8 @@
                             <input type="checkbox" name="remember" id="ctrl_pageLogin_remember" autocomplete="off"
                                    value="1" checked data-i18n="title,message_required_section">
                             <div class="state p-primary ml-1">
-                                <svg class="svg svg-icon" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
+                                <svg class="svg svg-icon" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                                    <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z"></path>
                                 </svg>
                                 <label class="pt-px" for="ctrl_pageLogin_remember" data-i18n="html,label_user_stay"></label>
                             </div>
@@ -197,32 +197,36 @@
                     <div class="tab-container">
                         <ul class="list-reset flex text-center text-sm font-semibold border-t border-b border-grey-light bg-grey-lighter tab-list">
                             <li class="flex-grow hidden home-tab-nav">
-                                <a class="block text-blue hover:bg-grey-lightest py-2 px-3 no-underline" href="#home"
+                                <a class="block text-blue hover:bg-grey-lightest py-2 px-2 no-underline" href="#home"
                                    data-i18n="html,label_home"></a>
                             </li>
                             <li class="flex-grow hidden inbox-tab-nav">
-                                <a class="block text-blue hover:bg-grey-lightest py-2 px-3 no-underline flex justify-center"
+                                <a class="block text-blue hover:bg-grey-lightest py-2 px-2 no-underline flex justify-center"
                                    href="#inbox">
                                     <span class="mr-1" data-i18n="html,label_conversations"></span>
                                     <small class="rounded-full bg-red px-1 py-px font-bold text-white hidden inbox-counter"></small>
                                 </a>
                             </li>
                             <li class="flex-grow hidden alerts-tab-nav">
-                                <a class="block text-blue hover:bg-grey-lightest py-2 px-3 no-underline flex justify-center"
+                                <a class="block text-blue hover:bg-grey-lightest py-2 px-2 no-underline flex justify-center"
                                    href="#alerts">
                                     <span class="mr-1" data-i18n="html,label_alerts"></span>
                                     <small class="rounded-full bg-red px-1 py-px font-bold text-white hidden alert-counter"></small>
                                 </a>
                             </li>
                             <li class="flex-grow hidden subscriptions-tab-nav">
-                                <a class="block text-blue hover:bg-grey-lightest py-2 px-3 no-underline flex justify-center"
+                                <a class="block text-blue hover:bg-grey-lightest py-2 px-2 no-underline flex justify-center"
                                    href="#subscriptions">
                                     <span class="mr-1" data-i18n="html,label_subscriptions"></span>
                                     <small class="rounded-full bg-red px-1 py-px font-bold text-white hidden subscription-counter"></small>
                                 </a>
                             </li>
+                            <li class="flex-grow hiddens bookmarks-tab-nav">
+                                <a class="block text-blue hover:bg-grey-lightest py-2 px-2 no-underline flex justify-center"
+                                   href="#bookmarks" data-i18n="html,label_bookmarks"></a>
+                            </li>
                             <li class="flex-1">
-                                <a class="block text-blue hover:bg-grey-lightest py-2 px-3 no-underline flex justify-center button-options"
+                                <a class="block text-blue hover:bg-grey-lightest py-2 px-2 no-underline flex justify-center button-options"
                                    href="#">
                                     <div class="w-4 h-4 mx-auto text-black">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor">
@@ -513,7 +517,50 @@
                                 </div>
                                 <div class="flex justify-between border-t border-grey-light bg-grey-lighter p-1">
                                     <div class="p-2">
-                                        <a href="watched/threads/all" data-i18n="html,label_all_watched"
+                                        <a href="watched/threads" data-i18n="html,label_all_watched"
+                                           class="external-link no-underline text-grey-darker hover:text-black"></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab hidden" id="bookmarks">
+                                <div class="border-l-4 bg-blue-lightest border-blue text-blue px-4 py-2 flex items-center loading-data" role="alert">
+                                    <div class="w-4 h-4 text-blue">
+                                        <svg class="svg svg-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                                             fill="currentColor">
+                                            <path d="M440.935 12.574l3.966 82.766C399.416 41.904 331.674 8 256 8 134.813 8 33.933 94.924 12.296 209.824 10.908 217.193 16.604 224 24.103 224h49.084c5.57 0 10.377-3.842 11.676-9.259C103.407 137.408 172.931 80 256 80c60.893 0 114.512 30.856 146.104 77.801l-101.53-4.865c-6.845-.328-12.574 5.133-12.574 11.986v47.411c0 6.627 5.373 12 12 12h200.333c6.627 0 12-5.373 12-12V12c0-6.627-5.373-12-12-12h-47.411c-6.853 0-12.315 5.729-11.987 12.574zM256 432c-60.895 0-114.517-30.858-146.109-77.805l101.868 4.871c6.845.327 12.573-5.134 12.573-11.986v-47.412c0-6.627-5.373-12-12-12H12c-6.627 0-12 5.373-12 12V500c0 6.627 5.373 12 12 12h47.385c6.863 0 12.328-5.745 11.985-12.599l-4.129-82.575C112.725 470.166 180.405 504 256 504c121.187 0 222.067-86.924 243.704-201.824 1.388-7.369-4.308-14.176-11.807-14.176h-49.084c-5.57 0-10.377 3.842-11.676 9.259C408.593 374.592 339.069 432 256 432z"></path>
+                                        </svg>
+                                    </div>
+                                    <p class="text-sm py-1 ml-2" data-i18n="html,message_data_loading"></p>
+                                </div>
+                                <div class="border-l-4 bg-red-lightest border-red text-red px-4 py-2 hidden alert-bookmark-message"
+                                     role="alert">
+                                    <p class="text-sm py-1" data-i18n="html,message_zero_bookmarks"></p>
+                                </div>
+                                <div class="bookmark-container">
+                                    <div class="bookmark-item hidden w-full">
+                                        <div class="border-t border-grey-light bg-white px-4 py-3 flex flex-row items-center justify-between leading-normal">
+                                            <a class="external-link" target="_blank" href="#">
+                                                <img class="w-12 h-12 rounded" alt="" src="../assets/img/blank.png">
+                                            </a>
+                                            <div class="flex-1 ml-4 text-sm bookmark-body">
+                                                <p class="text-grey-darker text-xs"></p>
+                                                <p class="text-grey-darker text-xs"></p>
+                                                <p class="text-xs flex justify-end">
+                                                    <span><a class="external-link" target="_blank" href="#"></a></span>
+                                                    <span>&nbsp;-&nbsp;</span>
+                                                    <span></span>
+                                                    <span class="hidden">&nbsp;-&nbsp;</span>
+                                                    <span>
+                                                        <span class="rounded bg-grey-lighter px-1 py-px font-bold text-white mx-1 hidden"></span>
+                                                    </span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex justify-between border-t border-grey-light bg-grey-lighter p-1">
+                                    <div class="p-2">
+                                        <a href="account/bookmarks" data-i18n="html,label_show_all"
                                            class="external-link no-underline text-grey-darker hover:text-black"></a>
                                     </div>
                                 </div>

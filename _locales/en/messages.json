@@ -62,6 +62,9 @@
   "label_subscriptions": {
     "message": "Subscriptions"
   },
+  "label_bookmarks": {
+    "message": "Bookmarks"
+  },
   "label_links": {
     "message": "Links to user options"
   },
@@ -166,6 +169,9 @@
   },
   "message_zero_subscriptions": {
     "message": "You do not have subscriptions without reading"
+  },
+  "message_zero_bookmarks": {
+    "message": "You have not added any bookmarks yet"
   },
   "text_new_conversation": {
     "message": " new message(s)"
@@ -274,6 +280,9 @@
   },
   "button_open_subscription": {
     "message": "Go to thread/forum"
+  },
+  "button_open_bookmark": {
+    "message": "Go to bookmark"
   },
   "label_dark_mode": {
     "message": "Dark mode"
