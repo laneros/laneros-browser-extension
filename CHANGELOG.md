@@ -2,6 +2,12 @@
 
 All notable changes to `laneros-browser-extension` will be documented in this file.
 
+## 7.3.2 | 2019-02-14
+
+### Changed
+
+- CSS adjustments
+
 ## 7.3.1 | 2019-02-13
 
 ### Changed

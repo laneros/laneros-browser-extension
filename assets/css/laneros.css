@@ -29,6 +29,9 @@ a.twitterLogin {
 .pretty .state label:after, .pretty .state label:before {
     background-color: whitesmoke;
 }
+img.rounded:hover {
+    transform: scale(1.1);
+}
 
 .dark-mode {
     color: #C4C3C2;
@@ -62,6 +65,14 @@ a.twitterLogin {
 }
 .dark-mode .bg-yellow-lightest .text-grey-darker {
     color: #606f7b;
+}
+
+.dark-mode .hover\:bg-grey-lightest:hover {
+    background-color: #5F5E5E;
+}
+.dark-mode .hover\:text-grey-darkest:hover {
+    color: #A3A2A1;
+
 }
 
 .dark-mode input[type="number"],
