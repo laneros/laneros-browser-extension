@@ -2,7 +2,6 @@
 
 body {
     color: #4b4b4b;
-    text-shadow: 1px 1px 0 white !important;
     font-family: 'Segoe UI', Tahoma, sans-serif;
     margin: 0;
 }
@@ -29,4 +28,45 @@ a.twitterLogin {
 }
 .pretty .state label:after, .pretty .state label:before {
     background-color: whitesmoke;
+}
+
+.dark-mode {
+    color: #C4C3C2;
+}
+.dark-mode .bg-white {
+    background-color: #393736;
+}
+
+.dark-mode .border-grey {
+    border-color: #393736;
+}
+.dark-mode .border-grey-light {
+    border-color: #2F2C2B;
+}
+
+.dark-mode .bg-grey-light {
+    background-color: #3B3A39;
+}
+.dark-mode .bg-grey-lighter {
+    background-color: #504E4D;
+}
+.dark-mode .bg-grey-lightest {
+    background-color: #5F5E5E;
+}
+
+.dark-mode .text-black {
+    color: #FAF9F8;
+}
+.dark-mode .text-grey-darker {
+    color: #C4C3C2;
+}
+.dark-mode .bg-yellow-lightest .text-grey-darker {
+    color: #606f7b;
+}
+
+.dark-mode input[type="number"],
+.dark-mode input[type="text"],
+.dark-mode input[type="password"],
+.dark-mode textarea {
+    background-color : #ABAAAA;
 }

@@ -12,6 +12,7 @@ class Laneros {
         this.setDefaults({
             stRActiveTab: 'home',
             dtRTimeRev: 120000,
+            bolRDarkMode: false,
             bolRShowInbox: true,
             bolRShowAlerts: true,
             bolRShowSubs: true,
@@ -159,6 +160,10 @@ class Laneros {
                 submitHandler: Laneros.saveOptions
             });
 
+            if (objROptions.bolRDarkMode) {
+                $('#checkbox_dark_mode').attr('checked', true);
+            }
+
             if (objROptions.bolRShowInbox) {
                 $('#checkbox_section_inbox').attr('checked', true);
             }
@@ -254,6 +259,7 @@ class Laneros {
                 + (parseInt($('#number_hours').val()) * 60 * 60 * 1000);
 
             let objLOptions = {
+                bolRDarkMode: $('input[name=checkbox_dark_mode]').is(':checked'),
                 bolRShowInbox: $('input[name=checkbox_section_inbox]').is(':checked'),
                 bolRShowAlerts: $('input[name=checkbox_section_alerts]').is(':checked'),
                 bolRShowSubs: $('input[name=checkbox_section_subscriptions]').is(':checked'),
@@ -349,7 +355,15 @@ class Laneros {
      * Set option page
      */
     setOptionsPage() {
+        let objRLaneros = this;
         this.setValidator();
+
+        Chrome.getStorage({bolRDarkMode: objRLaneros.getDefaults('bolRDarkMode') },
+            function (objROptions) {
+                if (objROptions.bolRDarkMode) {
+                    $('body').addClass('dark-mode');
+                }
+            });
 
         Chrome.getStorage(this.getDefaults(), this.setOptions);
     }
@@ -358,7 +372,15 @@ class Laneros {
      * Set popup page
      */
     setPopupPage() {
+        let objRLaneros = this;
         $('body').css('height', 575);
+
+        Chrome.getStorage({bolRDarkMode: objRLaneros.getDefaults('bolRDarkMode') },
+            function (objROptions) {
+                if (objROptions.bolRDarkMode) {
+                    $('body').addClass('dark-mode');
+                }
+            });
 
         this.setValidator();
         this.getData();

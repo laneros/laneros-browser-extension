@@ -274,5 +274,11 @@
   },
   "button_open_subscription": {
     "message": "Ir al tema/foro"
+  },
+  "label_dark_mode": {
+    "message": "Modo oscuro"
+  },
+  "text_dark_mode": {
+    "message": "Usar el modo oscuro"
   }
 }

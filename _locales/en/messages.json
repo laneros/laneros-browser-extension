@@ -274,5 +274,11 @@
   },
   "button_open_subscription": {
     "message": "Go to thread/forum"
+  },
+  "label_dark_mode": {
+    "message": "Dark mode"
+  },
+  "text_dark_mode": {
+    "message": "Use dark mode"
   }
 }
