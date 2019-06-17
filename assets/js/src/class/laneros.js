@@ -462,10 +462,6 @@ class Laneros {
         $('.token-link').attr('href', $('.token-link').attr('href') + objRLaneros.getUserData('stRToken'));
         $('.token-value').val(objRLaneros.getUserData('stRToken'));
 
-        $('#statusPoster').attr('action', $('#statusPoster').attr('action') +
-            objRLaneros.getUserData('stRUsername') + '.' +
-            objRLaneros.getUserData('inRUserId') + '/post');
-
         if ($.validator) {
             $('#statusPoster').validate({
                 submitHandler: function (form) {
@@ -961,8 +957,8 @@ class Laneros {
                     let inLFeedbackNegative = $('.feedbackStats .Negative:first', objRData).text();
 
                     objRLaneros.setUserData({
-                        stRUsername: $('.contentRow-header a.username', objRData).html(),
-                        stRUserTitle: $('.contentRow-lesser .userTitle', objRData).html()
+                        stRUsername: $('.contentRow-header a.username', objRData).text(),
+                        stRUserTitle: $('.contentRow-lesser .userTitle', objRData).text()
                     });
 
                     if (stLAvatar.indexOf('data/avatars') !== -1 || stLAvatar.indexOf('xenforo/avatars') !== -1) {
@@ -979,6 +975,10 @@ class Laneros {
                                 objRLaneros.getUserData('inRUserId'));
                         }
                     });
+
+                    $('#statusPoster').attr('action', $('#statusPoster').attr('action') +
+                        objRLaneros.getUserData('stRUsername') + '.' +
+                        objRLaneros.getUserData('inRUserId') + '/post');
 
                     $(objLShowInfo).find('img').attr('src', stLAvatar);
                     $(objLUserData).find('.user-messages').html(inLMessages);
