@@ -1028,8 +1028,9 @@ class Laneros {
                     $(objLConversation).find('.conversation-body > p:first').html($(this).find('.posterDate').html());
                     $(objLConversation).find('.conversation-body > p:last small').html($(this).find('.muted:last').html());
 
-                    $(objLConversation).find('a').removeClass().addClass('no-underline text-blue');
-                    $(objLConversation).find('h6 a').removeClass('text-blue').addClass('text-grey-darker');
+                    $(objLConversation).find('a').removeClass().addClass('no-underline text-blue hover:text-blue-dark');
+                    $(objLConversation).find('h6 a').removeClass('text-blue hover:text-blue-dark')
+                        .addClass('text-grey-dark hover:text-grey-darker');
                     $(objLConversation).find('.DateTime').removeClass().addClass('text-orange');
 
                     $(objLConversation).find('a').each(function () {
@@ -1112,8 +1113,7 @@ class Laneros {
 
                     $(objLAlert).find('.alert-body > p').html(stLMessageTitle);
 
-                    $(objLAlert).find('a').removeClass().addClass('no-underline text-blue');
-                    $(objLAlert).find('h6 a').removeClass('text-blue').addClass('text-grey-darker');
+                    $(objLAlert).find('a').removeClass().addClass('no-underline text-blue hover:text-blue-dark');
                     $(objLAlert).find('.DateTime').removeClass().addClass('text-orange');
 
                     $(objLAlert).find('a').each(function () {
@@ -1195,14 +1195,15 @@ class Laneros {
                         .attr('alt', $(objLMessageIcon).attr('alt'));
 
                     $(objLThread).find('.thread-body > h6').html(stLMessageTitle);
-                    $(objLThread).find('.thread-body > h6 > a').html($(objLMessageURL).html());
                     $(objLThread).find('.thread-body > p:first').html($(this).find('.posterDate').html());
                     $(objLThread).find('.thread-body .message-info .message-by').html($(this).find('.lastPostInfo dt:first').html());
                     $(objLThread).find('.thread-body .message-info .message-at').html($(this).find('.lastPostInfo dd.muted').html());
 
-                    $(objLThread).find('a').removeClass().addClass('no-underline text-blue');
-                    $(objLThread).find('h6 a').removeClass('text-blue').addClass('text-grey-darker');
-                    $(objLThread).find('.DateTime').removeClass().addClass('text-orange');
+
+                    $(objLThread).find('a').removeClass().addClass('no-underline text-blue hover:text-blue-dark');
+                    $(objLThread).find('h6 a').removeClass('text-blue hover:text-blue-dark')
+                        .addClass('text-grey-dark hover:text-grey-darker');
+                    $(objLThread).find('.DateTime').removeClass().addClass('text-orange hover:text-orange-dark');
 
                     $(objLThread).find('a').each(function () {
                         $(this).attr('target', '_blank');

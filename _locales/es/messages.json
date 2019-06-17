@@ -11,6 +11,9 @@
   "title_options_page": {
     "message": "Opciones - Extensión de navegador para Laneros"
   },
+  "title_popup_page": {
+    "message": "Popup - Extensión de navegador para Laneros"
+  },
   "message_data_loading": {
     "message": "Cargando datos"
   },

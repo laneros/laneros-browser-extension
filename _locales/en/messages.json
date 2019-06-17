@@ -11,6 +11,9 @@
   "title_options_page": {
     "message": "Options - Laneros browser extension"
   },
+  "title_popup_page": {
+    "message": "Popup - Laneros browser extension"
+  },
   "message_data_loading": {
     "message": "Loading data"
   },

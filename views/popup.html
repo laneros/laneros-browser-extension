@@ -6,14 +6,14 @@
 
         <meta name="author" content="arthvrian@yahoo.com">
         <meta name="author" content="Alvaro Arturo Montenegro Silva">
-        <title data-i18n="html,title_options_page"></title>
+        <title data-i18n="html,title_popup_page"></title>
 
         <link rel="stylesheet" href="../vendor/css/tailwind.min.css">
         <link rel="stylesheet" href="../vendor/css/pretty-checkbox.min.css">
 
         <link rel="stylesheet" href="../assets/css/laneros.css">
     </head>
-    <body class="w-full h-screen popup">
+    <body class="w-full h-screen border border-grey-light popup">
         <div class="fixed pin z-40 overflow-auto bg-grey-lighter flex loading-box">
             <div class="relative w-full m-auto">
                 <div class="w-full text-center">
@@ -137,14 +137,14 @@
                     </a>
                     <div class="ml-3 user-info">
                         <h6 class="text-sm">
-                            <a href="members/" class="external-link no-underline text-blue" target="_blank"></a>
+                            <a href="members/" class="external-link no-underline text-blue hover:text-blue-dark" target="_blank"></a>
                             <br>
-                            <small></small>
+                            <small class="text-grey-darker"></small>
                         </h6>
                     </div>
                     <div class="ml-3 user-data flex flex-grow">
                         <div class="mx-2 text-center">
-                            <div class="w-5 h-5 mx-auto">
+                            <div class="w-5 h-5 mx-auto text-grey-darker">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill="currentColor">
                                     <path d="M416 192c0-88.4-93.1-160-208-160S0 103.6 0 192c0 34.3 14.1 65.9 38 92-13.4 30.2-35.5 54.2-35.8 54.5-2.2 2.3-2.8 5.7-1.5 8.7S4.8 352 8 352c36.6 0 66.9-12.3 88.7-25 32.2 15.7 70.3 25 111.3 25 114.9 0 208-71.6 208-160zm122 220c23.9-26 38-57.7 38-92 0-66.9-53.5-124.2-129.3-148.1.9 6.6 1.3 13.3 1.3 20.1 0 105.9-107.7 192-240 192-10.8 0-21.3-.8-31.7-1.9C207.8 439.6 281.8 480 368 480c41 0 79.1-9.2 111.3-25 21.8 12.7 52.1 25 88.7 25 3.2 0 6.1-1.9 7.3-4.8 1.3-2.9.7-6.3-1.5-8.7-.3-.3-22.4-24.2-35.8-54.5z"></path>
                                 </svg>
@@ -152,7 +152,7 @@
                             <div class="user-messages my-1">-</div>
                         </div>
                         <div class="mx-2 text-center">
-                            <div class="w-5 h-5 mx-auto">
+                            <div class="w-5 h-5 mx-auto text-grey-darker">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor">
                                     <path d="M104 224H24c-13.255 0-24 10.745-24 24v240c0 13.255 10.745 24 24 24h80c13.255 0 24-10.745 24-24V248c0-13.255-10.745-24-24-24zM64 472c-13.255 0-24-10.745-24-24s10.745-24 24-24 24 10.745 24 24-10.745 24-24 24zM384 81.452c0 42.416-25.97 66.208-33.277 94.548h101.723c33.397 0 59.397 27.746 59.553 58.098.084 17.938-7.546 37.249-19.439 49.197l-.11.11c9.836 23.337 8.237 56.037-9.308 79.469 8.681 25.895-.069 57.704-16.382 74.757 4.298 17.598 2.244 32.575-6.148 44.632C440.202 511.587 389.616 512 346.839 512l-2.845-.001c-48.287-.017-87.806-17.598-119.56-31.725-15.957-7.099-36.821-15.887-52.651-16.178-6.54-.12-11.783-5.457-11.783-11.998v-213.77c0-3.2 1.282-6.271 3.558-8.521 39.614-39.144 56.648-80.587 89.117-113.111 14.804-14.832 20.188-37.236 25.393-58.902C282.515 39.293 291.817 0 312 0c24 0 72 8 72 81.452z"></path>
                                 </svg>
@@ -160,7 +160,7 @@
                             <div class="user-rating my-1">-</div>
                         </div>
                         <div class="mx-2 text-center">
-                            <div class="w-5 h-5 mx-auto">
+                            <div class="w-5 h-5 mx-auto text-grey-darker">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" fill="currentColor">
                                     <path d="M248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm0 432c-101.69 0-184-82.29-184-184 0-101.69 82.29-184 184-184 101.69 0 184 82.29 184 184 0 101.69-82.29 184-184 184zm0-312c-70.69 0-128 57.31-128 128s57.31 128 128 128 128-57.31 128-128-57.31-128-128-128zm0 192c-35.29 0-64-28.71-64-64s28.71-64 64-64 64 28.71 64 64-28.71 64-64 64z"></path>
                                 </svg>
@@ -177,7 +177,7 @@
                                 <div class="user-feedback-positive my-1">-</div>
                             </div>
                             <div class="mx-2 text-center">
-                                <div class="w-5 h-5 mx-auto text-grey">
+                                <div class="w-5 h-5 mx-auto text-grey-dark">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" fill="currentColor">
                                         <path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm-80 168c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm176 192H152c-21.2 0-21.2-32 0-32h192c21.2 0 21.2 32 0 32zm-16-128c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z"></path>
                                     </svg>
@@ -300,14 +300,14 @@
                                             <a class="external-link no-underline text-grey-darker hover:text-black flex justify-between"
                                                href="conversations/">
                                                 <span class="mr-1" data-i18n="html,label_conversations"></span>
-                                                <span class="rounded-full bg-red px-1 py-px font-bold text-white hidden inbox-counter"></span>
+                                                <small class="rounded-full bg-red px-1 py-px font-bold text-white hidden inbox-counter"></small>
                                             </a>
                                         </li>
                                         <li class="p-2 mx-2 my-1">
                                             <a class="external-link no-underline text-grey-darker hover:text-black flex justify-between"
                                                href="account/alerts">
                                                 <span class="mr-1" data-i18n="html,label_alerts"></span>
-                                                <span class="rounded-full bg-red px-1 py-px font-bold text-white hidden alerts-counter"></span>
+                                                <small class="rounded-full bg-red px-1 py-px font-bold text-white hidden alerts-counter"></small>
                                             </a>
                                         </li>
                                         <li class="p-2 mx-2 my-1">
@@ -403,7 +403,7 @@
                                             <img class="w-12 h-12 rounded" alt="" src="../assets/img/blank.png">
                                         </a>
                                         <div class="flex-1 ml-4 text-sm conversation-body">
-                                            <h6 class="text-black font-bold text-base"></h6>
+                                            <h6 class="text-base"></h6>
                                             <p class="text-grey-dark text-xs"></p>
                                             <p class="text-grey-dark text-xs flex justify-end">
                                                 <small></small>
@@ -430,7 +430,7 @@
                             </div>
                             <div class="alert-container">
                                 <div class="alert-item hidden w-full">
-                                    <div class="border-t border-grey-light bg-white px-4 py-3 flex flex-row justify-between leading-normal">
+                                    <div class="border-t border-grey-light bg-white px-4 py-3 flex flex-row items-center justify-between leading-normal">
                                         <a class="external-link" target="_blank">
                                             <img class="w-12 h-12 rounded" alt="" src="../assets/img/blank.png">
                                         </a>
@@ -463,7 +463,7 @@
                                             <img class="w-12 h-12 rounded" alt="" src="../assets/img/blank.png">
                                         </a>
                                         <div class="flex-1 ml-4 text-sm thread-body">
-                                            <h6 class="text-black font-bold text-base"></h6>
+                                            <h6 class="text-base"></h6>
                                             <p class="text-grey-dark text-xs"></p>
                                             <p class="text-grey-dark text-xs flex justify-end message-info">
                                                 <small>
