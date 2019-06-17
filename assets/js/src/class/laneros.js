@@ -983,10 +983,6 @@ class Laneros {
                         stRUserTitle: $('.contentRow-lesser .userTitle', objRData).text()
                     });
 
-                    if (stLAvatar.indexOf('data/avatars') !== -1 || stLAvatar.indexOf('xenforo/avatars') !== -1) {
-                        stLAvatar = objRLaneros.getPageURL() + stLAvatar;
-                    }
-
                     $(objLUserInfo).find('a').html(objRLaneros.getUserData('stRUsername'));
                     $(objLUserInfo).find('small').html(objRLaneros.getUserData('stRUserTitle'));
 
@@ -1103,13 +1099,6 @@ class Laneros {
                         }
                     });
 
-                    $(objLConversation).find('img').each(function () {
-                        if ($(this).attr('src').indexOf('data/avatars') !== -1 ||
-                            $(this).attr('src').indexOf('xenforo/avatars') !== -1) {
-                            $(this).attr('src', objRLaneros.getPageURL() + $(this).attr('src'));
-                        }
-                    });
-
                     $(objLConversation).removeClass('hidden').appendTo('#inbox .conversation-container');
 
                     Chrome.getStorage({bolRNotificationInbox: objRLaneros.getDefaults('bolRNotificationInbox') },
@@ -1186,13 +1175,6 @@ class Laneros {
 
                         if ($(this).attr('href').indexOf(objRLaneros.getPageURL()) === -1) {
                             $(this).attr('href', objRLaneros.getPageURL() + $(this).attr('href'));
-                        }
-                    });
-
-                    $(objLAlert).find('img').each(function () {
-                        if ($(this).attr('src').indexOf('data/avatars') !== -1 ||
-                            $(this).attr('src').indexOf('xenforo/avatars') !== -1) {
-                            $(this).attr('src', objRLaneros.getPageURL() + $(this).attr('src'));
                         }
                     });
 
@@ -1302,13 +1284,6 @@ class Laneros {
 
                         if ($(this).attr('href').indexOf(objRLaneros.getPageURL()) === -1) {
                             $(this).attr('href', objRLaneros.getPageURL() + $(this).attr('href'));
-                        }
-                    });
-
-                    $(objLThread).find('img').each(function () {
-                        if ($(this).attr('src').indexOf('data/avatars') !== -1 ||
-                            $(this).attr('src').indexOf('xenforo/avatars') !== -1) {
-                            $(this).attr('src', objRLaneros.getPageURL() + $(this).attr('src'));
                         }
                     });
 
