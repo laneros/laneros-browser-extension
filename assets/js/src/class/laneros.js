@@ -814,110 +814,6 @@ class Laneros {
                 {title: Chrome.getMessage('button_account')}]
         }, objLListListener, true);
     }
-    /**
-     * Show Basic Notification Popup
-     *
-     * @param stRTarget
-     * @param objROptions
-     */
-    createBasicNotification(stRTarget, objROptions) {
-        let objRLaneros = this;
-        let stLTarget = stRTarget.charAt(0).toUpperCase() + stRTarget.slice(1);
-
-        let objLClickedListener = function (stRNotificationID, inRButtonIndex) {
-            let objLCallBack = function (objRTabResult) {
-                let arrLResult = objRTabResult.shift();
-
-                if (objRTabResult.length === 0) {
-                    Chrome.createTab(2, objROptions.stRMessageURL);
-                } else {
-                    Chrome.highlightTab(arrLResult.windowId, arrLResult.index);
-                }
-            };
-
-            Chrome.queryTab(objROptions.stRMessageURL, objLCallBack);
-        };
-
-        switch (stRTarget) {
-            case 'messages':
-                let objLMessagesListener = function(objRNotificationID) {
-                    chrome.notifications.onClicked.addListener(objLClickedListener);
-                    chrome.notifications.onButtonClicked.addListener(objLClickedListener);
-                };
-
-                Chrome.sendNotification('Laneros' + stLTarget + objROptions.inRMessageID, {
-                    type: 'basic',
-                    title: objROptions.stRMessageTitle,
-                    message: objROptions.stRMessage,
-                    iconUrl: objROptions.stRMessageIcon,
-                    buttons: [{title: Chrome.getMessage('button_open_message')}]
-                }, objLMessagesListener, true);
-                break;
-            case 'alerts':
-                let objLAlertsListener = function(objRNotificationID) {
-                    chrome.notifications.onClicked.addListener(objLClickedListener);
-                };
-
-                Chrome.sendNotification('Laneros' + stLTarget + objROptions.inRMessageID, {
-                    type: 'basic',
-                    title: objROptions.stRMessageTitle,
-                    message: objROptions.stRMessage,
-                    iconUrl: objROptions.stRMessageIcon
-                }, objLAlertsListener, true);
-                break;
-            case 'subscriptions':
-                let objLSubsButtonListener = function (stRNotificationID, inRButtonIndex) {
-                    let objLCallBack;
-
-                    switch (inRButtonIndex) {
-                        case 0:
-                            objLCallBack = function (objRTabResult) {
-                                let arrLResult = objRTabResult.shift();
-
-                                if (objRTabResult.length === 0) {
-                                    Chrome.createTab(2, objRLaneros.getPageURL(), function (objRTab) {});
-                                } else {
-                                    Chrome.highlightTab(arrLResult.windowId, arrLResult.index);
-                                }
-                            };
-
-                            Chrome.queryTab(objRLaneros.getPageURL() + 'watched/threads', objLCallBack);
-                            break;
-                        default:
-                            objLClickedListener();
-                            break;
-                    }
-                };
-                let objLSubsListener = function(objRNotificationID) {
-                    chrome.notifications.onClicked.addListener(objLClickedListener);
-                    chrome.notifications.onButtonClicked.addListener(objLSubsButtonListener);
-                };
-
-                Chrome.sendNotification('Laneros' + stLTarget + objROptions.inRMessageID, {
-                    type: 'basic',
-                    title: objROptions.stRMessageTitle,
-                    message: objROptions.stRMessage,
-                    iconUrl: objROptions.stRMessageIcon,
-                    buttons: [{title: Chrome.getMessage('button_open_subscriptions')},
-                        {title: Chrome.getMessage('button_open_subscription')}]
-                }, objLSubsListener, true);
-                break;
-            case 'bookmark':
-                let objLBookmarkListener = function(objRNotificationID) {
-                    chrome.notifications.onClicked.addListener(objLClickedListener);
-                    chrome.notifications.onButtonClicked.addListener(objLClickedListener);
-                };
-
-                Chrome.sendNotification('Laneros' + stLTarget + objROptions.inRMessageID, {
-                    type: 'basic',
-                    title: objROptions.stRMessageTitle,
-                    message: objROptions.stRMessage,
-                    iconUrl: objROptions.stRMessageIcon,
-                    buttons: [{title: Chrome.getMessage('button_open_bookmark')}]
-                }, objLMessagesListener, true);
-                break;
-        }
-    }
 
     /**
      * Get Extension Data
@@ -1079,6 +975,7 @@ class Laneros {
         let objLResponse = function(objRResponse) {
             let objLConversations = document.createElement('div');
             let bolLUnread = false;
+            let objLNotifications = {};
 
             $(objLConversations).html(objRResponse.html.content);
             $('#inbox').find('.conversation-item:gt(0)').remove();
@@ -1149,18 +1046,19 @@ class Laneros {
                         function (objROptions) {
                             if (objROptions.bolRNotificationInbox && bolLUnread) {
                                 let arrLMessage = $(objLMessage).attr('href').split('/');
-                                let arrLMessageID = arrLMessage[1].split('.');
+                                let arrLMessageID = arrLMessage[2].split('.');
                                 let inLMessageID = arrLMessageID.pop();
 
-                                let objLOptions = {
-                                    stRMessageTitle: $(objLMessage).html(),
-                                    stRMessage: Chrome.getMessage('label_new_messages'),
-                                    stRMessageIcon: objRLaneros.getPageURL() + $(objLMessageIcon).attr('src'),
-                                    stRMessageURL: objRLaneros.getPageURL() + $(objLMessage).attr('href'),
-                                    inRMessageID: inLMessageID,
+                                objLNotifications['Laneros.Conversations.' + inLMessageID] = {
+                                    stRNotificationURL: objRLaneros.getPageURL() + $(objLMessage).attr('href').substr(1)
                                 };
 
-                                objRLaneros.createBasicNotification('messages', objLOptions);
+                                Chrome.sendNotification('Laneros.Conversations.' + inLMessageID, {
+                                    type: 'basic',
+                                    title: Chrome.getMessage('label_new_messages'),
+                                    message: $(objLMessage).text(),
+                                    iconUrl: $(objLMessageIcon).attr('src')
+                                }, true);
                             }
                         });
                 });
@@ -1168,6 +1066,8 @@ class Laneros {
             if ($(objLConversations).find('div.menu-row').length !== 0 || !bolLUnread) {
                 $('#inbox').find('.alert-inbox-message').removeClass('hidden');
             }
+
+            Chrome.addNotificationListener(objLNotifications);
         };
 
         $.getJSON(objRLaneros.getPageURL() + 'conversations/popup?_xfResponseType=json&_xfNoRedirect=1&_xfToken='  +
@@ -1182,6 +1082,7 @@ class Laneros {
         let objLResponse = function(objRResponse) {
             let objLAlerts = document.createElement('div');
             let bolLUnread = false;
+            let objLNotifications = {};
 
             $(objLAlerts).html(objRResponse.html.content);
             $('#alerts').find('.alert-item:gt(0)').remove();
@@ -1227,19 +1128,17 @@ class Laneros {
                     Chrome.getStorage({bolRNotificationAlerts: objRLaneros.getDefaults('bolRNotificationAlerts') },
                         function (objROptions) {
                             if (objROptions.bolRNotificationAlerts && bolLUnread) {
-                                let arrLMessage = $(objLMessage).attr('href').split('/');
-                                let arrLMessageID = arrLMessage[1].split('.');
-                                let inLMessageID = arrLMessageID.pop();
+                                let inLMessageID = Math.floor((Math.random() * 100) + 1);
 
-                                let objLOptions = {
-                                    stRMessageTitle: Chrome.getMessage('label_new_alerts'),
-                                    stRMessage: $(objLMessage).text(),
-                                    stRMessageIcon: objRLaneros.getPageURL() + $(objLMessageIcon).attr('src'),
-                                    stRMessageURL: objRLaneros.getPageURL() + 'account/alerts',
-                                    inRMessageID: inLMessageID,
+                                objLNotifications['Laneros.Alerts.' + inLMessageID] = {
+                                    stRNotificationURL: objRLaneros.getPageURL() + 'account/alerts'
                                 };
-
-                                objRLaneros.createBasicNotification('alerts', objLOptions);
+                                Chrome.sendNotification('Laneros.Alerts.' + inLMessageID, {
+                                    type: 'basic',
+                                    title: Chrome.getMessage('label_new_alerts'),
+                                    message: $(objLMessage).text(),
+                                    iconUrl: $(objLMessageIcon).attr('src')
+                                }, true);
                             }
                         });
                 });
@@ -1247,6 +1146,8 @@ class Laneros {
             if ($(objLAlerts).find('div.menu-row').length !== 0 || !bolLUnread) {
                 $('#alerts').find('.alert-alerts-message').removeClass('hidden');
             }
+
+            Chrome.addNotificationListener(objLNotifications);
         };
 
         $.getJSON(objRLaneros.getPageURL() + 'account/alerts-popup?_xfResponseType=json&_xfNoRedirect=1&_xfToken='  +
@@ -1261,6 +1162,7 @@ class Laneros {
         let objLResponse = function(objRResponse) {
             let objRThreads = document.createElement('div');
             let bolLUnread = false;
+            let objLNotifications = {};
 
             $(objRThreads).html(objRResponse.html.content);
             $('#subscriptions').find('.thread-item:gt(0)').remove();
@@ -1337,26 +1239,28 @@ class Laneros {
                         function (objROptions) {
                             if (objROptions.bolRNotificationSubs && bolLIsUnread) {
                                 let arrLMessage = $(objLMessage).attr('href').split('/');
-                                let arrLMessageID = arrLMessage[1].split('.');
+                                let arrLMessageID = arrLMessage[2].split('.');
                                 let inLMessageID = arrLMessageID.pop();
 
-                                let objLOptions = {
-                                    stRMessageTitle: Chrome.getMessage('label_new_subscription'),
-                                    stRMessage: $(objLMessage).text(),
-                                    stRMessageIcon: objRLaneros.getPageURL() + $(objLMessageIcon).attr('src'),
-                                    stRMessageURL: objRLaneros.getPageURL() + $(objLMessage).attr('href'),
-                                    inRMessageID: inLMessageID,
+                                objLNotifications['Laneros.Subscriptions.' + inLMessageID] = {
+                                    stRNotificationURL: objRLaneros.getPageURL() + $(objLMessage).attr('href').substr(1)
                                 };
 
-                                objRLaneros.createBasicNotification('subscriptions', objLOptions);
+                                Chrome.sendNotification('Laneros.Subscriptions.' + inLMessageID, {
+                                    type: 'basic',
+                                    title: Chrome.getMessage('label_new_subscription'),
+                                    message: $(objLMessage).text(),
+                                    iconUrl: $(objLMessageIcon).attr('src')
+                                }, true);
                             }
                         });
                 });
             }
-
             if ($(objRThreads).find('.is-unread').length === 0 || !bolLUnread) {
                 $('#subscriptions').find('.alert-subscriptions-message').removeClass('hidden');
             }
+
+            Chrome.addNotificationListener(objLNotifications);
         };
 
         $.getJSON(objRLaneros.getPageURL() + 'watched/threads?_xfResponseType=json&_xfNoRedirect=1&_xfToken='  +
@@ -1426,7 +1330,6 @@ class Laneros {
                     $(objLBookmark).removeClass('hidden').appendTo('#bookmarks .bookmark-container');
                 });
             }
-
             if ($(objRBookmarks).find('.contentRow-main').length === 0) {
                 $('#bookmarks').find('.alert-bookmark-message').removeClass('hidden');
             }

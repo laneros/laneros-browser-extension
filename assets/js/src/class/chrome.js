@@ -58,14 +58,14 @@ class Chrome {
     static createAlarm(stRAlarmName, objROptions, objRCallback) {
         try {
             chrome.alarms.clear(stRAlarmName);
-            chrome.alarms.onAlarm.addListener(function (wasCleared) {
+            chrome.alarms.onAlarm.addListener(function(wasCleared) {
                 if (wasCleared.name === stRAlarmName) {
                     if (objRCallback !== undefined)
                         objRCallback();
                 }
             });
 
-            chrome.alarms.get(stRAlarmName, function (alarm) {
+            chrome.alarms.get(stRAlarmName, function(alarm) {
                 if (alarm === undefined) {
                     chrome.alarms.create(stRAlarmName, objROptions);
                 }
@@ -105,7 +105,7 @@ class Chrome {
      */
     static createTab(inRType, stRURL, objRCallback) {
         if (typeof  objRCallback === 'undefined') {
-            objRCallback = function (objRTab) {};
+            objRCallback = function(objRTab) {};
         }
 
         switch (inRType) {
@@ -194,21 +194,46 @@ class Chrome {
     }
 
     /**
+     * Set Notification listeners
+     *
+     * @param objROptions
+     */
+    static addNotificationListener(objROptions) {
+        let objLListener = function(stRNotificationID, inRButtonIndex) {
+            let objLCallBack = function(objRTabResult) {
+                let arrLResult = objRTabResult.shift();
+
+                if (objRTabResult.length === 0) {
+                    Chrome.createTab(2, objROptions[stRNotificationID].stRNotificationURL);
+                } else {
+                    Chrome.highlightTab(arrLResult.windowId, arrLResult.index);
+                }
+            };
+
+            if (typeof objROptions[stRNotificationID] !== 'undefined') {
+                Chrome.queryTab(objROptions[stRNotificationID].stRNotificationURL, objLCallBack);
+            }
+        };
+
+        chrome.notifications.onClicked.addListener(objLListener);
+
+    }
+
+    /**
      * Create a Chrome Notification
      *
      * @param stRNotificationID
      * @param objROptions
-     * @param objRListener
      * @param bolRIsNew
      */
-    static sendNotification(stRNotificationID, objROptions, objRListener, bolRIsNew) {
+    static sendNotification(stRNotificationID, objROptions, bolRIsNew) {
         if (bolRIsNew) {
-            chrome.notifications.clear(stRNotificationID, function (bolRWasCleared) {
-                chrome.notifications.create(stRNotificationID, objROptions, objRListener);
+            chrome.notifications.clear(stRNotificationID, function(bolRWasCleared) {
+                chrome.notifications.create(stRNotificationID, objROptions);
             });
         }
         else {
-            chrome.notifications.update(stRNotificationID, objROptions, objRListener);
+            chrome.notifications.update(stRNotificationID, objROptions);
         }
     }
 }
