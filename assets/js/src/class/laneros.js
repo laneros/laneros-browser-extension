@@ -1030,7 +1030,7 @@ class Laneros {
 
                     $(objLConversation).find('a').removeClass().addClass('no-underline text-blue hover:text-blue-dark');
                     $(objLConversation).find('h6 a').removeClass('text-blue hover:text-blue-dark')
-                        .addClass('text-grey-dark hover:text-grey-darker');
+                        .addClass('text-grey-darker hover:text-grey-darkest');
                     $(objLConversation).find('.DateTime').removeClass().addClass('text-orange');
 
                     $(objLConversation).find('a').each(function () {
@@ -1202,7 +1202,7 @@ class Laneros {
 
                     $(objLThread).find('a').removeClass().addClass('no-underline text-blue hover:text-blue-dark');
                     $(objLThread).find('h6 a').removeClass('text-blue hover:text-blue-dark')
-                        .addClass('text-grey-dark hover:text-grey-darker');
+                        .addClass('text-grey-darker hover:text-grey-darkest');
                     $(objLThread).find('.DateTime').removeClass().addClass('text-orange hover:text-orange-dark');
 
                     $(objLThread).find('a').each(function () {
