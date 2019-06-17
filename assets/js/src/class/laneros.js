@@ -157,9 +157,11 @@ class Laneros {
         try {
             let objLReviewTime = Laneros.getTime(objROptions.dtRTimeRev);
 
-            $('#form_options').validate({
-                submitHandler: Laneros.saveOptions
-            });
+            if ($.validator) {
+                $('#form_options').validate({
+                    submitHandler: Laneros.saveOptions
+                });
+            }
 
             if (objROptions.bolRDarkMode) {
                 $('#checkbox_dark_mode').attr('checked', true);
@@ -279,7 +281,7 @@ class Laneros {
             };
 
             let objLCallBack = function () {
-                $('.alert-response').removeClass('bg-green-lightest border-green text-green bg-red-lightest border-red text-red')
+                $('.alert-response').removeClass('bg-green-100 border-green-500 text-green-500 bg-red-100 border-red-500 text-red-500')
                     .addClass('hidden');
                 $('.alert-processing').removeClass('hidden').hide().slideDown(function () {
                     $('.alert-processing').addClass('hidden');
@@ -290,14 +292,14 @@ class Laneros {
 
                         $('.alert-response h4').html(Chrome.getMessage('label_saved_success'));
                         $('.alert-response p').html(Chrome.getMessage('message_saved_success'));
-                        $('.alert-response').addClass('bg-green-lightest border-green text-green').removeClass('hidden')
+                        $('.alert-response').addClass('bg-green-100 border-green-500 text-green-500').removeClass('hidden')
                             .hide().slideDown();
                     } catch (objRException) {
                         new Log('saveOptions - objLCallBack').error(objRException);
 
                         $('.alert-response h4').html(Chrome.getMessage('label_saved_error'));
                         $('.alert-response p').html(Chrome.getMessage('message_saved_error'));
-                        $('.alert-response').addClass('bg-red-lightest border-red text-red').removeClass('hidden').hide()
+                        $('.alert-response').addClass('bg-red-100 border-red-500 text-red-500').removeClass('hidden').hide()
                             .slideDown();
                     }
                 });
@@ -334,22 +336,22 @@ class Laneros {
             $.validator.setDefaults({
                 errorElement: 'div',
                 highlight: function (element, errorClass, validClass) {
-                    $(element).closest('.flex-row').find('label').removeClass('text-green-dark').addClass('text-red');
-                    $(element).removeClass('border-green-dark').addClass('border-red');
+                    $(element).closest('.flex-row').find('label').removeClass('text-green-600').addClass('text-red-500');
+                    $(element).removeClass('border-green-600').addClass('border-red-500');
 
                     if ($(element).closest('.flex-row').hasClass('mb-8')) {
                         $(element).closest('.flex-row').removeClass('mb-8').addClass('mb-4 pb-1');
                     }
                 },
                 unhighlight: function (element, errorClass, validClass) {
-                    $(element).removeClass('border-red').addClass('border-green-dark');
-                    $(element).closest('.flex-row').find('label').removeClass('text-red').addClass('text-green-dark');
+                    $(element).removeClass('border-red-500').addClass('border-green-600');
+                    $(element).closest('.flex-row').find('label').removeClass('text-red-500').addClass('text-green-600');
 
                     if ($(element).closest('.flex-row').hasClass('mb-8')) {
                         $(element).closest('.flex-row').removeClass('mb-4 pb-1').addClass('mb-8');
                     }
                 },
-                errorClass: 'invalid-feedback text-red',
+                errorClass: 'invalid-feedback text-red-500',
                 errorPlacement: function(error, element) {
                     error.appendTo(element.closest('.flex-row'));
                 }
@@ -428,37 +430,40 @@ class Laneros {
 
         $('.section-login input[name=register]').change(objLChange);
         $('.section-login input[name=_xfToken]').val(stRToken);
-        $('#pageLogin').validate({
-            submitHandler: function (form) {
-                let onBeforeSubmit = function(objRResponse, stRStatus) {
-                    $('.alert-message').slideUp();
-                };
 
-                let onSuccess = function(objRResponse, stRStatus) {
-                    if (objRResponse.html !== undefined) {
+        if ($.validator) {
+            $('#pageLogin').validate({
+                submitHandler: function (form) {
+                    let onBeforeSubmit = function (objRResponse, stRStatus) {
+                        $('.alert-message').slideUp();
+                    };
+
+                    let onSuccess = function (objRResponse, stRStatus) {
+                        if (objRResponse.html !== undefined) {
+                            $('.alert-message').slideDown();
+                            $('.alert-message p').html(Chrome.getMessage('text_error_login'));
+                        } else {
+                            $('.section-login').fadeOut('fast', objRLaneros.getData(false));
+                        }
+                    };
+
+                    let onError = function (objRResponse, stRStatus) {
                         $('.alert-message').slideDown();
-                        $('.alert-message p').html(Chrome.getMessage('text_error_login'));
-                    }
-                    else {
-                        $('.section-login').fadeOut('fast', objRLaneros.getData(false));
-                    }
-                };
+                        $('.alert-message p').html(Chrome.getMessage('text_error_message'));
+                    };
 
-                let onError = function (objRResponse, stRStatus) {
-                    $('.alert-message').slideDown();
-                    $('.alert-message p').html(Chrome.getMessage('text_error_message'));
-                };
+                    $(form).ajaxSubmit({
+                        beforeSubmit: onBeforeSubmit,
+                        success: onSuccess,
+                        error: onError,
+                        dataType: 'json'
+                    });
 
-                $(form).ajaxSubmit({
-                    beforeSubmit: onBeforeSubmit,
-                    success: onSuccess,
-                    error: onError,
-                    dataType: 'json'
-                });
+                    return false;
+                }
+            });
+        }
 
-                return false;
-            }
-        });
         $('.section-login').removeClass('hidden').hide().fadeIn('fast', function() {
             $('.section-login #ctrl_pageLogin_login').focus();
         });
@@ -471,17 +476,44 @@ class Laneros {
      */
     showPopup(objRData) {
         let objRLaneros = this;
+        let onBeforeSubmit = function (objRResponse, stRStatus) {
+            $('.alert-home-message').slideUp();
+        };
+
+        let onSuccess = function (objRResponse, stRStatus) {
+            if (objRResponse.status === 'ok') {
+                $('.alert-home-message').slideDown();
+                $('.alert-home-message').addClass('bg-green-100 border-green-500 text-green-500')
+                    .removeClass('bg-red-100 border-red-500 text-red-500');
+                $('.alert-home-message h4').html(Chrome.getMessage('label_success_message'));
+                $('.alert-home-message p').html(objRResponse.message);
+            }
+            else {
+                $('.alert-home-message').slideDown();
+                $('.alert-home-message').addClass('bg-red-100 border-red-500 text-red-500')
+                    .removeClass('bg-green-100 border-green-500 text-green-500');
+                $('.alert-home-message h4').html(Chrome.getMessage('label_error_message'));
+                $('.alert-home-message p').html(objRResponse.error.message);
+            }
+        };
+
+        let onError = function (objRResponse, stRStatus) {
+            $('.alert-home-message').slideDown();
+            $('.alert-home-message h4').html(Chrome.getMessage('label_error_message'));
+            $('.alert-home-message p').html(Chrome.getMessage('text_error_message'));
+        };
+
         let objLActiveTab = function(stRActiveTab) {
             switch(stRActiveTab) {
                 case 'home':
                     $('html, body').animate({ scrollTop: 0 }, 'fast');
 
                     $('#statusPoster').find('.status-message').addClass('hidden');
-                    $('#statusPoster').find('.status-length').removeClass('text-orange text-red')
-                        .addClass('text-green').html(140);
+                    $('#statusPoster').find('.status-length').removeClass('text-orange-500 text-red-500')
+                        .addClass('text-green-500').html(140);
 
-                    $('.alert-user-message').hide().addClass('hidden').removeClass('bg-green-lightest border-green text-green')
-                        .removeClass('bg-red-lightest border-red text-red');
+                    $('.alert-user-message').hide().addClass('hidden').removeClass('bg-green-100 border-green-500 text-green-500')
+                        .removeClass('bg-red-100 border-red-500 text-red-500');
                     break;
                 case 'inbox':
                     objRLaneros.getConversations();
@@ -506,32 +538,6 @@ class Laneros {
         if ($.validator) {
             $('#statusPoster').validate({
                 submitHandler: function (form) {
-                    let onBeforeSubmit = function (objRResponse, stRStatus) {
-                        $('.alert-user-message').slideUp();
-                    };
-
-                    let onSuccess = function (objRResponse, stRStatus) {
-                        if (objRResponse._redirectStatus === 'ok') {
-                            $('.alert-user-message').slideDown();
-                            $('.alert-user-message').addClass('bg-green-lightest border-green text-green')
-                                .removeClass('bg-red-lightest border-red text-red');
-                            $('.alert-user-message h4').html(Chrome.getMessage('label_success_message'));
-                            $('.alert-user-message p').html(objRResponse._redirectMessage);
-                        } else {
-                            $('.alert-user-message').slideDown();
-                            $('.alert-user-message').addClass('bg-red-lightest border-red text-red')
-                                .removeClass('bg-green-lightest border-green text-green');
-                            $('.alert-user-message h4').html(Chrome.getMessage('label_error_message'));
-                            $('.alert-user-message p').html(objRResponse.error.message);
-                        }
-                    };
-
-                    let onError = function (objRResponse, stRStatus) {
-                        $('.alert-user-message').slideDown();
-                        $('.alert-user-message hj4').html(Chrome.getMessage('label_error_message'));
-                        $('.alert-user-message p').html(Chrome.getMessage('text_error_message'));
-                    };
-
                     $(form).ajaxSubmit({
                         beforeSubmit: onBeforeSubmit,
                         success: onSuccess,
@@ -545,32 +551,6 @@ class Laneros {
         }
 
         $('#ctrl_pageStatus_visible').click(function() {
-            let onBeforeSubmit = function(objRResponse, stRStatus) {
-                $('.alert-home-message').slideUp();
-            };
-            let onSuccess = function(objRResponse, stRStatus) {
-                if (objRResponse._redirectStatus === 'ok') {
-                    $('.alert-home-message').slideDown();
-                    $('.alert-home-message').addClass('bg-green-lightest border-green text-green')
-                        .removeClass('bg-red-lightest border-red text-red');
-                    $('.alert-home-message h4').html(Chrome.getMessage('label_success_message'));
-                    $('.alert-home-message p').html(objRResponse._redirectMessage);
-                }
-                else {
-                    $('.alert-home-message').slideDown();
-                    $('.alert-home-message').addClass('bg-red-lightest border-red text-red')
-                        .removeClass('bg-green-lightest border-green text-green');
-                    $('.alert-home-message h4').html(Chrome.getMessage('label_error_message'));
-                    $('.alert-home-message p').html(objRResponse._redirectMessage);
-                }
-            };
-
-            let onError = function (objRResponse, stRStatus) {
-                $('.alert-home-message').slideDown();
-                $('.alert-home-message h4').html(Chrome.getMessage('label_error_message'));
-                $('.alert-home-message p').html(Chrome.getMessage('text_error_message'));
-            };
-
             $('#visibilityForm').ajaxSubmit({
                 beforeSubmit: onBeforeSubmit,
                 success: onSuccess,
@@ -598,10 +578,10 @@ class Laneros {
             }
 
             if (inLTextChars > 100) {
-                $('#statusPoster').find('.status-length').removeClass('text-green').addClass('text-orange');
+                $('#statusPoster').find('.status-length').removeClass('text-green-500').addClass('text-orange');
             }
             if (inLTextChars > 120) {
-                $('#statusPoster').find('.status-length').removeClass('text-green text-orange').addClass('text-red');
+                $('#statusPoster').find('.status-length').removeClass('text-green-500 text-orange').addClass('text-red-500');
             }
         });
 
@@ -617,11 +597,11 @@ class Laneros {
 
                 Chrome.setStorage(objLTabOptions, objLActiveTab(stLActiveTab));
 
-                $('.tab-list a').removeClass('text-white bg-blue hover:bg-blue-dark')
-                    .addClass('text-blue hover:bg-grey-lightest');
+                $('.tab-list a').removeClass('text-white bg-blue-500 hover:bg-blue-600')
+                    .addClass('text-blue-500 hover:bg-gray-100');
 
-                $(this).addClass('text-white bg-blue hover:bg-blue-dark')
-                    .removeClass('text-blue hover:bg-grey-lightest');
+                $(this).addClass('text-white bg-blue-500 hover:bg-blue-600')
+                    .removeClass('text-blue-500 hover:bg-gray-100');
 
                 $('#' + stLActiveTab).find('.loading-data').show();
                 $('.tab-content .tab').addClass('hidden');
@@ -688,13 +668,13 @@ class Laneros {
 
                 if (!$(stLActiveTab).closest('li').hasClass('hidden')) {
                     stLTabId = '#' + objROptions.stRActiveTab;
-                    $(stLActiveTab).addClass('text-white bg-blue hover:bg-blue-dark')
-                        .removeClass('text-blue hover:bg-grey-lightest');
+                    $(stLActiveTab).addClass('text-white bg-blue-500 hover:bg-blue-600')
+                        .removeClass('text-blue-500 hover:bg-gray-100');
                 }
                 else {
                     stLTabId = $('.tab-list').find('li:first:not(:hidden) a').attr('href');
-                    $('.tab-list').find('li:first:not(:hidden) a').addClass('text-white bg-blue hover:bg-blue-dark')
-                        .removeClass('text-blue hover:bg-grey-lightest');
+                    $('.tab-list').find('li:first:not(:hidden) a').addClass('text-white bg-blue-500 hover:bg-blue-600')
+                        .removeClass('text-blue-500 hover:bg-gray-100');
                 }
 
                 $(stLTabId).find('.loading-data').show();
@@ -995,7 +975,7 @@ class Laneros {
 
                     if (bolLIsUnread) {
                         bolLUnread = true;
-                        $(objLConversation).find('div:first').removeClass('bg-white').addClass('bg-yellow-lightest');
+                        $(objLConversation).find('div:first').removeClass('bg-white').addClass('bg-yellow-100');
                     }
 
                     $(objLMessageWith).find('ul').remove();
@@ -1027,10 +1007,10 @@ class Laneros {
                         }
                     });
 
-                    $(objLConversation).find('a').removeClass().addClass('no-underline text-blue hover:text-blue-dark');
-                    $(objLConversation).find('h6 a').removeClass('text-blue hover:text-blue-dark')
-                        .addClass('text-grey-darker hover:text-grey-darkest');
-                    $(objLConversation).find('time').removeClass().addClass('text-orange');
+                    $(objLConversation).find('a').removeClass().addClass('text-blue-500 hover:text-blue-600');
+                    $(objLConversation).find('h6 a').removeClass('text-blue-500 hover:text-blue-600')
+                        .addClass('text-gray-700 hover:text-gray-800');
+                    $(objLConversation).find('time').removeClass().addClass('text-orange-500 hover:text-orange-600');
 
                     $(objLConversation).find('a').each(function () {
                         $(this).attr('target', '_blank');
@@ -1100,7 +1080,7 @@ class Laneros {
 
                     if (bolLIsUnread) {
                         bolLUnread = true;
-                        $(objLAlert).find('div:first').removeClass('bg-white').addClass('bg-yellow-lightest');
+                        $(objLAlert).find('div:first').removeClass('bg-white').addClass('bg-yellow-100');
                     }
 
                     $(objLMessage).find('.contentRow-minor--smaller').remove();
@@ -1112,8 +1092,8 @@ class Laneros {
                     $(objLAlert).find('.alert-body > p:first').html($(objLMessage).html());
                     $(objLAlert).find('.alert-body > p:last').html(objLMessageTime);
 
-                    $(objLAlert).find('a').removeClass().addClass('no-underline text-blue hover:text-blue-dark');
-                    $(objLAlert).find('time').removeClass().addClass('text-orange');
+                    $(objLAlert).find('a').removeClass().addClass('text-blue-500 hover:text-blue-600');
+                    $(objLAlert).find('time').removeClass().addClass('text-orange-500 hover:text-orange-600');
 
                     $(objLAlert).find('a').each(function () {
                         $(this).attr('target', '_blank');
@@ -1193,11 +1173,11 @@ class Laneros {
 
                     if (bolLIsUnread) {
                         bolLUnread = true;
-                        $(objLThread).find('div:first').removeClass('bg-white').addClass('bg-yellow-lightest');
+                        $(objLThread).find('div:first').removeClass('bg-white').addClass('bg-yellow-100');
                     }
 
                     if ($(this).find('.structItem-secondaryIcon').length > 0) {
-                        $(objLThread).addClass('border-l-4 border-blue')
+                        $(objLThread).addClass('border-l-4 border-blue-500')
                     }
 
                     $(objLThread).find('a:first').attr('href', $(objLMessageFigure).find('a.avatar').attr('href'));
@@ -1220,10 +1200,10 @@ class Laneros {
                     $(objLThread).find('.thread-body .message-info .message-by').html($(objLMessageLatest).find('.structItem-minor').html());
                     $(objLThread).find('.thread-body .message-info .message-at').replaceWith($(objLMessageLatest).find('a:first'));
 
-                    $(objLThread).find('a').removeClass().addClass('no-underline text-blue hover:text-blue-dark');
-                    $(objLThread).find('h6 a').removeClass('text-blue hover:text-blue-dark')
-                        .addClass('text-grey-darker hover:text-grey-darkest');
-                    $(objLThread).find('time').removeClass().addClass('text-orange hover:text-orange-dark');
+                    $(objLThread).find('a').removeClass().addClass('text-blue-500 hover:text-blue-600');
+                    $(objLThread).find('h6 a').removeClass('text-blue-500 hover:text-blue-600')
+                        .addClass('text-gray-700 hover:text-gray-800');
+                    $(objLThread).find('time').removeClass().addClass('text-orange-500 hover:text-orange-600');
 
                     $(objLThread).find('a').each(function () {
                         $(this).attr('target', '_blank');
@@ -1316,8 +1296,8 @@ class Laneros {
                         });
                     }
 
-                    $(objLBookmark).find('a').removeClass().addClass('no-underline text-blue hover:text-blue-dark');
-                    $(objLBookmark).find('time').removeClass().addClass('text-orange');
+                    $(objLBookmark).find('a').removeClass().addClass('no-underline text-blue hover:text-blue-600');
+                    $(objLBookmark).find('time').removeClass().addClass('text-orange-500 hover:text-orange-600');
 
                     $(objLBookmark).find('a').each(function () {
                         $(this).attr('target', '_blank');

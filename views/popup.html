@@ -13,49 +13,67 @@
 
         <link rel="stylesheet" href="../assets/css/laneros.css">
     </head>
-    <body class="w-full h-screen popup">
-        <div class="fixed pin z-40 overflow-auto bg-grey-lighter flex loading-box">
+    <body class="w-full h-screen popup bg-white">
+        <section class="fixed inset-0 z-50 bg-gray-200 flex loading-box">
             <div class="relative w-full m-auto">
                 <div class="w-full text-center">
-                    <img src="../assets/img/ajax-loader.gif" alt="Icon" class="mb-5" width="200">
-                    <h3 data-i18n="html,message_data_loading" class="text-blue text-xl"></h3>
+                    <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"
+                         preserveAspectRatio="xMidYMid" class="mb-5 mx-auto">
+                        <g transform="translate(50 50)">
+                            <g transform="translate(-19 -19) scale(0.6)">
+                                <g transform="rotate(153.335)">
+                                    <animateTransform attributeName="transform" type="rotate" values="0;360" keyTimes="0;1"
+                                                      dur="5s" begin="0s" repeatCount="indefinite"></animateTransform>
+                                    <path d="M37.3496987939662 -7 L47.3496987939662 -7 L47.3496987939662 7 L37.3496987939662 7 A38 38 0 0 1 31.359972760794346 21.46047782418268 L31.359972760794346 21.46047782418268 L38.431040572659825 28.531545636048154 L28.531545636048154 38.431040572659825 L21.46047782418268 31.359972760794346 A38 38 0 0 1 7.0000000000000036 37.3496987939662 L7.0000000000000036 37.3496987939662 L7.000000000000004 47.3496987939662 L-6.999999999999999 47.3496987939662 L-7 37.3496987939662 A38 38 0 0 1 -21.46047782418268 31.35997276079435 L-21.46047782418268 31.35997276079435 L-28.531545636048154 38.431040572659825 L-38.43104057265982 28.531545636048158 L-31.359972760794346 21.460477824182682 A38 38 0 0 1 -37.3496987939662 7.000000000000007 L-37.3496987939662 7.000000000000007 L-47.3496987939662 7.000000000000008 L-47.3496987939662 -6.9999999999999964 L-37.3496987939662 -6.999999999999997 A38 38 0 0 1 -31.35997276079435 -21.460477824182675 L-31.35997276079435 -21.460477824182675 L-38.431040572659825 -28.531545636048147 L-28.53154563604818 -38.4310405726598 L-21.4604778241827 -31.35997276079433 A38 38 0 0 1 -6.999999999999992 -37.3496987939662 L-6.999999999999992 -37.3496987939662 L-6.999999999999994 -47.3496987939662 L6.999999999999977 -47.3496987939662 L6.999999999999979 -37.3496987939662 A38 38 0 0 1 21.460477824182686 -31.359972760794342 L21.460477824182686 -31.359972760794342 L28.531545636048158 -38.43104057265982 L38.4310405726598 -28.53154563604818 L31.35997276079433 -21.4604778241827 A38 38 0 0 1 37.3496987939662 -6.999999999999995 M0 -23A23 23 0 1 0 0 23 A23 23 0 1 0 0 -23" fill="#005caa"></path>
+                                </g>
+                            </g>
+                            <g transform="translate(19 19) scale(0.6)">
+                                <g transform="rotate(184.165)">
+                                    <animateTransform attributeName="transform" type="rotate" values="360;0" keyTimes="0;1"
+                                                      dur="5s" begin="-0.3125s" repeatCount="indefinite"></animateTransform>
+                                    <path d="M37.3496987939662 -7 L47.3496987939662 -7 L47.3496987939662 7 L37.3496987939662 7 A38 38 0 0 1 31.359972760794346 21.46047782418268 L31.359972760794346 21.46047782418268 L38.431040572659825 28.531545636048154 L28.531545636048154 38.431040572659825 L21.46047782418268 31.359972760794346 A38 38 0 0 1 7.0000000000000036 37.3496987939662 L7.0000000000000036 37.3496987939662 L7.000000000000004 47.3496987939662 L-6.999999999999999 47.3496987939662 L-7 37.3496987939662 A38 38 0 0 1 -21.46047782418268 31.35997276079435 L-21.46047782418268 31.35997276079435 L-28.531545636048154 38.431040572659825 L-38.43104057265982 28.531545636048158 L-31.359972760794346 21.460477824182682 A38 38 0 0 1 -37.3496987939662 7.000000000000007 L-37.3496987939662 7.000000000000007 L-47.3496987939662 7.000000000000008 L-47.3496987939662 -6.9999999999999964 L-37.3496987939662 -6.999999999999997 A38 38 0 0 1 -31.35997276079435 -21.460477824182675 L-31.35997276079435 -21.460477824182675 L-38.431040572659825 -28.531545636048147 L-28.53154563604818 -38.4310405726598 L-21.4604778241827 -31.35997276079433 A38 38 0 0 1 -6.999999999999992 -37.3496987939662 L-6.999999999999992 -37.3496987939662 L-6.999999999999994 -47.3496987939662 L6.999999999999977 -47.3496987939662 L6.999999999999979 -37.3496987939662 A38 38 0 0 1 21.460477824182686 -31.359972760794342 L21.460477824182686 -31.359972760794342 L28.531545636048158 -38.43104057265982 L38.4310405726598 -28.53154563604818 L31.35997276079433 -21.4604778241827 A38 38 0 0 1 37.3496987939662 -6.999999999999995 M0 -23A23 23 0 1 0 0 23 A23 23 0 1 0 0 -23" fill="#00b1eb"></path>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+                    <h3 data-i18n="html,message_data_loading" class="text-blue-500 text-xl font-bold"></h3>
                 </div>
             </div>
-        </div>
-        <div class="w-full">
-            <div class="container section-error hidden">
-                <header class="p-2 bg-grey-lighter">
-                    <a class="external-link" target="_blank" data-i18n="title,button_homepage" href="/">
-                        <img class="pt-1 logo-img" src="../assets/img/laneros2x.png" alt="Logo Laneros" width="240">
-                    </a>
-                </header>
-                <div class="border-l-4 border-red bg-red-lightest text-red px-4 py-2" role="alert">
-                    <h4 class="text-base mb-1" data-i18n="html,label_error_message"></h4>
-                    <p class="text-sm py-1" data-i18n="html,text_error_message"></p>
-                </div>
+        </section>
+        <section class="w-full section-error hidden">
+            <header class="p-2 bg-gray-200">
+                <a class="external-link inline-block" target="_blank" data-i18n="title,button_homepage" href="/">
+                    <img class="pt-1 logo-img opacity-75" src="../assets/img/laneros2x.png" alt="Logo Laneros" width="240">
+                </a>
+            </header>
+            <div class="border-l-4 border-red-500 bg-red-100 text-red-500 px-4 py-2" role="alert">
+                <h4 class="font-semibold text-lg text-base mb-1" data-i18n="html,label_error_message"></h4>
+                <p class="text-sm py-1" data-i18n="html,text_error_message"></p>
             </div>
-            <form class="external-link section-login hidden" role="form" action="login/login" method="post" id="pageLogin"
+        </section>
+        <section class="w-full section-login hidden">
+            <form class="external-link" role="form" action="login/login" method="post" id="pageLogin"
                   name="pageLogin">
-                <header class="p-2 bg-grey-lighter">
-                    <a class="external-link" target="_blank" data-i18n="title,button_homepage" href="/">
-                        <img class="pt-1 logo-img" src="../assets/img/laneros2x.png" alt="Logo Laneros" width="240">
+                <header class="p-2 bg-gray-200">
+                    <a class="external-link inline-block" target="_blank" data-i18n="title,button_homepage" href="/">
+                        <img class="pt-1 logo-img opacity-75" src="../assets/img/laneros2x.png" alt="Logo Laneros" width="240">
                     </a>
                 </header>
-                <main class="bg-grey-lightest">
-                    <div class="border-l-4 bg-red-lightest border-red text-red px-4 py-2 alert-message" role="alert">
-                        <h4 class="text-base mb-1" data-i18n="html,label_error_message"></h4>
+                <main class="bg-gray-100">
+                    <div class="border-l-4 border-red-500 bg-red-100 text-red-500 px-4 py-2 alert-message" role="alert">
+                        <h4 class="font-semibold text-lg text-base mb-1" data-i18n="html,label_error_message"></h4>
                         <p class="text-sm py-1" data-i18n="html,text_error_not_connected"></p>
                     </div>
-                    <fieldset class="px-3 my-3">
-                        <legend data-i18n="html,label_login" class="text-lg"></legend>
+                    <fieldset class="px-3 my-3 text-gray-600">
+                        <legend class="text-lg" data-i18n="html,label_login"></legend>
                         <div class="flex-row mb-1 pt-3">
                             <div class="items-center">
                                 <label class="flex-grow text-sm" for="ctrl_pageLogin_login">
                                     <span data-i18n="html,label_nick"></span>
-                                    <span class="text-red">*</span>
+                                    <span class="text-red-500">*</span>
                                 </label>
                                 <div class="flex-grow text-sm py-1">
-                                    <input class="appearance-none border border-grey rounded py-2 px-3 text-grey-darkest w-full"
+                                    <input class="border border-gray-300 text-gray-500 rounded w-full py-2 px-3"
                                            type="text" id="ctrl_pageLogin_login" name="login" required
                                            data-i18n="placeholder|title,label_nick|message_required_field">
                                 </div>
@@ -83,32 +101,32 @@
                         <div class="flex-row mb-1 pt-3">
                             <label class="text-sm" for="ctrl_pageLogin_password">
                                 <span data-i18n="html,label_password"></span>
-                                <span class="text-red">*</span>
+                                <span class="text-red-500">*</span>
                             </label>
                             <div class="text-sm py-1">
-                                <input class="appearance-none border border-grey rounded py-2 px-3 text-grey-darkest w-full"
+                                <input class="border border-gray-300 text-gray-500 rounded w-full py-2 px-3"
                                        type="password" id="ctrl_pageLogin_password" name="password" required
                                        data-i18n="placeholder|title,label_password|message_required_field">
-                                <a href="lost-password/" class="external-link no-underline text-xs text-blue" data-i18n="html,label_forgot"></a>
+                                <a href="lost-password/" class="external-link text-xs text-blue-500 hover:text-blue-600" data-i18n="html,label_forgot"></a>
                             </div>
                         </div>
                     </fieldset>
                     <fieldset class="px-3">
                         <legend data-i18n="html,label_connect" class="pt-2 text-lg"></legend>
                         <div class="text-center py-3 w-full">
-                            <a href="register/facebook?reg=1" class="external-link py-2 no-underline fbLogin">
+                            <a href="register/facebook?reg=1" class="external-link py-2 fbLogin">
                                 <span data-i18n="html,label_facebook"></span></a>
-                            <a href="register/twitter?reg=1" class="external-link py-2 no-underline twitterLogin">
+                            <a href="register/twitter?reg=1" class="external-link py-2 twitterLogin">
                                 <span data-i18n="html,label_twitter"></span></a>
                         </div>
                     </fieldset>
                 </main>
-                <footer class="px-5 py-3 bg-grey-light">
+                <footer class="px-5 py-3 bg-gray-400">
                     <input type="hidden" name="_xfRedirect" value=".">
                     <input type="hidden" name="_xfToken">
                     <input type="hidden" name="_xfResponseType" value="json">
                     <div class="flex items-center">
-                        <button class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded text-base"
+                        <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded text-base"
                                 type="submit" data-i18n="html,button_login"></button>
                         <div class="pretty p-svg p-curve p-bigger ml-4">
                             <input type="checkbox" name="remember" id="ctrl_pageLogin_remember" autocomplete="off"
@@ -123,27 +141,31 @@
                     </div>
                 </footer>
             </form>
-            <div class="container section-user hidden">
-                <header class="p-2 bg-grey-lighter">
-                    <a class="external-link" target="_blank" data-i18n="title,button_homepage" href="/">
-                        <img class="pt-1 logo-img" src="../assets/img/laneros2x.png" alt="Logo Laneros" width="240">
-                    </a>
-                </header>
-                <main class="bg-grey-lightest">
-                    <div class="flex p-2 items-center user-info-container invisible">
+        </section>
+        <section class="w-full section-user hidden">
+            <header class="p-2 bg-gray-200">
+                <a class="external-link inline-block" target="_blank" data-i18n="title,button_homepage" href="/">
+                    <img class="pt-1 logo-img opacity-75" src="../assets/img/laneros2x.png" alt="Logo Laneros" width="240">
+                </a>
+            </header>
+            <main class="bg-gray-100">
+                <div class="flex p-2 items-center user-info-container invisible flex">
+                    <div class="flex flex-grow items-center">
                         <a class="external-link" href="members/" target="_blank">
                             <img src="../assets/img/blank.png" alt="Avatar" width="48">
                         </a>
                         <div class="ml-3 user-info">
                             <h6 class="text-sm">
-                                <a href="members/" class="external-link no-underline text-blue hover:text-blue-dark" target="_blank"></a>
+                                <a href="members/" class="external-link text-blue-500 hover:text-blue-600 font-bold" target="_blank"></a>
                                 <br>
-                                <small class="text-grey-darker"></small>
+                                <small class="text-gray-700"></small>
                             </h6>
                         </div>
-                        <div class="ml-3 user-data flex flex-grow">
+                    </div>
+                    <div class="ml-3 user-data flex">
+                        <div class="text-center text-gray-600 flex flex-grow">
                             <div class="mx-2 text-center">
-                                <div class="w-5 h-5 mx-auto text-grey-darker">
+                                <div class="w-5 h-5 mx-auto">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill="currentColor">
                                         <path d="M416 192c0-88.4-93.1-160-208-160S0 103.6 0 192c0 34.3 14.1 65.9 38 92-13.4 30.2-35.5 54.2-35.8 54.5-2.2 2.3-2.8 5.7-1.5 8.7S4.8 352 8 352c36.6 0 66.9-12.3 88.7-25 32.2 15.7 70.3 25 111.3 25 114.9 0 208-71.6 208-160zm122 220c23.9-26 38-57.7 38-92 0-66.9-53.5-124.2-129.3-148.1.9 6.6 1.3 13.3 1.3 20.1 0 105.9-107.7 192-240 192-10.8 0-21.3-.8-31.7-1.9C207.8 439.6 281.8 480 368 480c41 0 79.1-9.2 111.3-25 21.8 12.7 52.1 25 88.7 25 3.2 0 6.1-1.9 7.3-4.8 1.3-2.9.7-6.3-1.5-8.7-.3-.3-22.4-24.2-35.8-54.5z"></path>
                                     </svg>
@@ -151,7 +173,7 @@
                                 <div class="user-messages my-1"></div>
                             </div>
                             <div class="mx-2 text-center">
-                                <div class="w-5 h-5 mx-auto text-grey-darker">
+                                <div class="w-5 h-5 mx-auto">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor">
                                         <path d="M104 224H24c-13.255 0-24 10.745-24 24v240c0 13.255 10.745 24 24 24h80c13.255 0 24-10.745 24-24V248c0-13.255-10.745-24-24-24zM64 472c-13.255 0-24-10.745-24-24s10.745-24 24-24 24 10.745 24 24-10.745 24-24 24zM384 81.452c0 42.416-25.97 66.208-33.277 94.548h101.723c33.397 0 59.397 27.746 59.553 58.098.084 17.938-7.546 37.249-19.439 49.197l-.11.11c9.836 23.337 8.237 56.037-9.308 79.469 8.681 25.895-.069 57.704-16.382 74.757 4.298 17.598 2.244 32.575-6.148 44.632C440.202 511.587 389.616 512 346.839 512l-2.845-.001c-48.287-.017-87.806-17.598-119.56-31.725-15.957-7.099-36.821-15.887-52.651-16.178-6.54-.12-11.783-5.457-11.783-11.998v-213.77c0-3.2 1.282-6.271 3.558-8.521 39.614-39.144 56.648-80.587 89.117-113.111 14.804-14.832 20.188-37.236 25.393-58.902C282.515 39.293 291.817 0 312 0c24 0 72 8 72 81.452z"></path>
                                     </svg>
@@ -159,417 +181,420 @@
                                 <div class="user-rating my-1"></div>
                             </div>
                             <div class="mx-2 text-center">
-                                <div class="w-5 h-5 mx-auto text-grey-darker">
+                                <div class="w-5 h-5 mx-auto">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" fill="currentColor">
                                         <path d="M248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm0 432c-101.69 0-184-82.29-184-184 0-101.69 82.29-184 184-184 101.69 0 184 82.29 184 184 0 101.69-82.29 184-184 184zm0-312c-70.69 0-128 57.31-128 128s57.31 128 128 128 128-57.31 128-128-57.31-128-128-128zm0 192c-35.29 0-64-28.71-64-64s28.71-64 64-64 64 28.71 64 64-28.71 64-64 64z"></path>
                                     </svg>
                                 </div>
                                 <p class="user-points my-1"></p>
                             </div>
-                            <div class="mx-1 flex justify-center flex-grow border-l border-black">
-                                <div class="mx-2 text-center">
-                                    <div class="w-5 h-5 mx-auto text-green">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" fill="currentColor">
-                                            <path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm80 168c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm-160 0c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm194.8 170.2C334.3 380.4 292.5 400 248 400s-86.3-19.6-114.8-53.8c-13.6-16.3 11-36.7 24.6-20.5 22.4 26.9 55.2 42.2 90.2 42.2s67.8-15.4 90.2-42.2c13.4-16.2 38.1 4.2 24.6 20.5z"></path>
-                                        </svg>
-                                    </div>
-                                    <div class="user-feedback-positive my-1"></div>
+                        </div>
+                        <div class="mx-1 justify-center border-l border-black hidden flex-grow">
+                            <div class="mx-2 text-center">
+                                <div class="w-5 h-5 mx-auto text-green-500">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" fill="currentColor">
+                                        <path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm80 168c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm-160 0c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm194.8 170.2C334.3 380.4 292.5 400 248 400s-86.3-19.6-114.8-53.8c-13.6-16.3 11-36.7 24.6-20.5 22.4 26.9 55.2 42.2 90.2 42.2s67.8-15.4 90.2-42.2c13.4-16.2 38.1 4.2 24.6 20.5z"></path>
+                                    </svg>
                                 </div>
-                                <div class="mx-2 text-center">
-                                    <div class="w-5 h-5 mx-auto text-grey-dark">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" fill="currentColor">
-                                            <path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm-80 168c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm176 192H152c-21.2 0-21.2-32 0-32h192c21.2 0 21.2 32 0 32zm-16-128c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z"></path>
-                                        </svg>
-                                    </div>
-                                    <div class="user-feedback-neutral my-1"></div>
+                                <div class="user-feedback-positive my-1"></div>
+                            </div>
+                            <div class="mx-2 text-center">
+                                <div class="w-5 h-5 mx-auto text-gray-600">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" fill="currentColor">
+                                        <path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm-80 168c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm176 192H152c-21.2 0-21.2-32 0-32h192c21.2 0 21.2 32 0 32zm-16-128c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z"></path>
+                                    </svg>
                                 </div>
-                                <div class="mx-2 text-center">
-                                    <div class="w-5 h-5 mx-auto text-red">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" fill="currentColor">
-                                            <path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm80 168c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm-160 0c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm170.2 218.2C315.8 367.4 282.9 352 248 352s-67.8 15.4-90.2 42.2c-13.5 16.3-38.1-4.2-24.6-20.5C161.7 339.6 203.6 320 248 320s86.3 19.6 114.7 53.8c13.6 16.2-11 36.7-24.5 20.4z"></path>
-                                        </svg>
-                                    </div>
-                                    <div class="user-feedback-negative my-1"></div>
+                                <div class="user-feedback-neutral my-1"></div>
+                            </div>
+                            <div class="mx-2 text-center">
+                                <div class="w-5 h-5 mx-auto text-red-500">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" fill="currentColor">
+                                        <path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm80 168c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm-160 0c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm170.2 218.2C315.8 367.4 282.9 352 248 352s-67.8 15.4-90.2 42.2c-13.5 16.3-38.1-4.2-24.6-20.5C161.7 339.6 203.6 320 248 320s86.3 19.6 114.7 53.8c13.6 16.2-11 36.7-24.5 20.4z"></path>
+                                    </svg>
                                 </div>
+                                <div class="user-feedback-negative my-1"></div>
                             </div>
                         </div>
                     </div>
-                    <div class="tab-container">
-                        <ul class="list-reset flex text-center text-sm font-semibold border-t border-b border-grey-light bg-grey-lighter tab-list">
-                            <li class="flex-grow hidden home-tab-nav">
-                                <a class="block text-blue hover:bg-grey-lightest py-2 px-2 no-underline" href="#home"
-                                   data-i18n="html,label_home"></a>
-                            </li>
-                            <li class="flex-grow hidden inbox-tab-nav">
-                                <a class="block text-blue hover:bg-grey-lightest py-2 px-2 no-underline flex justify-center"
-                                   href="#inbox">
-                                    <span class="mr-1" data-i18n="html,label_conversations"></span>
-                                    <small class="rounded-full bg-red px-1 py-px font-bold text-white hidden inbox-counter"></small>
-                                </a>
-                            </li>
-                            <li class="flex-grow hidden alerts-tab-nav">
-                                <a class="block text-blue hover:bg-grey-lightest py-2 px-2 no-underline flex justify-center"
-                                   href="#alerts">
-                                    <span class="mr-1" data-i18n="html,label_alerts"></span>
-                                    <small class="rounded-full bg-red px-1 py-px font-bold text-white hidden alert-counter"></small>
-                                </a>
-                            </li>
-                            <li class="flex-grow hidden subscriptions-tab-nav">
-                                <a class="block text-blue hover:bg-grey-lightest py-2 px-2 no-underline flex justify-center"
-                                   href="#subscriptions">
-                                    <span class="mr-1" data-i18n="html,label_subscriptions"></span>
-                                    <small class="rounded-full bg-red px-1 py-px font-bold text-white hidden subscription-counter"></small>
-                                </a>
-                            </li>
-                            <li class="flex-grow hiddens bookmarks-tab-nav">
-                                <a class="block text-blue hover:bg-grey-lightest py-2 px-2 no-underline flex justify-center"
-                                   href="#bookmarks" data-i18n="html,label_bookmarks"></a>
-                            </li>
-                            <li class="flex-1">
-                                <a class="block text-blue hover:bg-grey-lightest py-2 px-2 no-underline flex justify-center button-options"
-                                   href="#">
-                                    <div class="w-4 h-4 mx-auto text-black">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor">
-                                            <path fill="currentColor" d="M444.788 291.1l42.616 24.599c4.867 2.809 7.126 8.618 5.459 13.985-11.07 35.642-29.97 67.842-54.689 94.586a12.016 12.016 0 0 1-14.832 2.254l-42.584-24.595a191.577 191.577 0 0 1-60.759 35.13v49.182a12.01 12.01 0 0 1-9.377 11.718c-34.956 7.85-72.499 8.256-109.219.007-5.49-1.233-9.403-6.096-9.403-11.723v-49.184a191.555 191.555 0 0 1-60.759-35.13l-42.584 24.595a12.016 12.016 0 0 1-14.832-2.254c-24.718-26.744-43.619-58.944-54.689-94.586-1.667-5.366.592-11.175 5.459-13.985L67.212 291.1a193.48 193.48 0 0 1 0-70.199l-42.616-24.599c-4.867-2.809-7.126-8.618-5.459-13.985 11.07-35.642 29.97-67.842 54.689-94.586a12.016 12.016 0 0 1 14.832-2.254l42.584 24.595a191.577 191.577 0 0 1 60.759-35.13V25.759a12.01 12.01 0 0 1 9.377-11.718c34.956-7.85 72.499-8.256 109.219-.007 5.49 1.233 9.403 6.096 9.403 11.723v49.184a191.555 191.555 0 0 1 60.759 35.13l42.584-24.595a12.016 12.016 0 0 1 14.832 2.254c24.718 26.744 43.619 58.944 54.689 94.586 1.667 5.366-.592 11.175-5.459 13.985L444.788 220.9a193.485 193.485 0 0 1 0 70.2zM336 256c0-44.112-35.888-80-80-80s-80 35.888-80 80 35.888 80 80 80 80-35.888 80-80z"></path>
-                                        </svg>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="tab-content">
-                            <div class="tab hidden" id="home">
-                                <div class="border-l-4 bg-red-lightest border-red text-red px-4 py-2 hidden alert-home-message"
-                                     role="alert">
-                                    <p class="text-sm py-1" data-i18n="html,message_zero_links"></p>
+                </div>
+                <div class="tab-container">
+                    <ul class="flex text-center text-sm font-semibold border-t border-b border-gray-400 bg-gray-200 tab-list">
+                        <li class="flex-grow hidden home-tab-nav">
+                            <a class="block text-blue-500 hover:text-white hover:bg-gray-400 p-2" href="#home"
+                               data-i18n="html,label_home"></a>
+                        </li>
+                        <li class="flex-grow hidden inbox-tab-nav">
+                            <a class="block text-blue-500 hover:text-white hover:bg-gray-400 p-2 flex justify-center items-center"
+                               href="#inbox">
+                                <span class="mr-1" data-i18n="html,label_conversations"></span>
+                                <small class="rounded-full bg-red-500 px-1 font-bold text-white hidden inbox-counter"></small>
+                            </a>
+                        </li>
+                        <li class="flex-grow hidden alerts-tab-nav">
+                            <a class="block text-blue-500 hover:text-white hover:bg-gray-400 p-2 flex justify-center items-center"
+                               href="#alerts">
+                                <span class="mr-1" data-i18n="html,label_alerts"></span>
+                                <small class="rounded-full bg-red-500 px-1 font-bold text-white hidden alert-counter"></small>
+                            </a>
+                        </li>
+                        <li class="flex-grow hidden subscriptions-tab-nav">
+                            <a class="block text-blue-500 hover:text-white hover:bg-gray-400 p-2 flex justify-center items-center"
+                               href="#subscriptions">
+                                <span class="mr-1" data-i18n="html,label_subscriptions"></span>
+                                <small class="rounded-full bg-red-500 px-1 font-bold text-white hidden subscription-counter"></small>
+                            </a>
+                        </li>
+                        <li class="flex-grow hiddens bookmarks-tab-nav">
+                            <a class="block text-blue-500 hover:text-white hover:bg-gray-400 p-2"
+                               href="#bookmarks" data-i18n="html,label_bookmarks"></a>
+                        </li>
+                        <li class="flex-1">
+                            <a class="block text-blue-500 hover:text-white hover:bg-gray-400 p-2 flex justify-center items-center h-full button-options"
+                               href="#">
+                                <div class="w-4 h-4 mx-auto text-black">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor">
+                                        <path fill="currentColor" d="M444.788 291.1l42.616 24.599c4.867 2.809 7.126 8.618 5.459 13.985-11.07 35.642-29.97 67.842-54.689 94.586a12.016 12.016 0 0 1-14.832 2.254l-42.584-24.595a191.577 191.577 0 0 1-60.759 35.13v49.182a12.01 12.01 0 0 1-9.377 11.718c-34.956 7.85-72.499 8.256-109.219.007-5.49-1.233-9.403-6.096-9.403-11.723v-49.184a191.555 191.555 0 0 1-60.759-35.13l-42.584 24.595a12.016 12.016 0 0 1-14.832-2.254c-24.718-26.744-43.619-58.944-54.689-94.586-1.667-5.366.592-11.175 5.459-13.985L67.212 291.1a193.48 193.48 0 0 1 0-70.199l-42.616-24.599c-4.867-2.809-7.126-8.618-5.459-13.985 11.07-35.642 29.97-67.842 54.689-94.586a12.016 12.016 0 0 1 14.832-2.254l42.584 24.595a191.577 191.577 0 0 1 60.759-35.13V25.759a12.01 12.01 0 0 1 9.377-11.718c34.956-7.85 72.499-8.256 109.219-.007 5.49 1.233 9.403 6.096 9.403 11.723v49.184a191.555 191.555 0 0 1 60.759 35.13l42.584-24.595a12.016 12.016 0 0 1 14.832 2.254c24.718 26.744 43.619 58.944 54.689 94.586 1.667 5.366-.592 11.175-5.459 13.985L444.788 220.9a193.485 193.485 0 0 1 0 70.2zM336 256c0-44.112-35.888-80-80-80s-80 35.888-80 80 35.888 80 80 80 80-35.888 80-80z"></path>
+                                    </svg>
                                 </div>
-                                <div class="hidden user-links bg-white">
-                                    <div class="flex">
-                                        <ul class="list-reset flex-col text-grey-darker w-1/2 p-2">
-                                            <li class="p-2 mx-2 my-1">
-                                                <a class="external-link no-underline text-grey-darker hover:text-black"
-                                                   href="account/change-username" data-i18n="html,label_nickname"></a>
-                                            </li>
-                                            <li class="p-2 mx-2 my-1">
-                                                <a class="external-link no-underline text-grey-darker hover:text-black"
-                                                   href="account/account-details" data-i18n="html,label_personal_details"></a>
-                                            </li>
-                                            <li class="p-2 mx-2 my-1">
-                                                <a class="external-link no-underline text-grey-darker hover:text-black"
-                                                   href="account/signature" data-i18n="html,label_signature"></a>
-                                            </li>
-                                            <li class="p-2 mx-2 my-1">
-                                                <a class="external-link no-underline text-grey-darker hover:text-black"
-                                                   href="account/contact-details" data-i18n="html,label_contact_details"></a>
-                                            </li>
-                                            <li class="p-2 mx-2 my-1">
-                                                <a class="external-link no-underline text-grey-darker hover:text-black"
-                                                   href="account/privacy" data-i18n="html,label_privacy"></a>
-                                            </li>
-                                            <li class="p-2 mx-2 my-1">
-                                                <a class="external-link no-underline text-grey-darker hover:text-black"
-                                                   href="account/preferences" data-i18n="html,label_preferences"></a>
-                                            </li>
-                                            <li class="p-2 mx-2 my-1">
-                                                <a class="external-link no-underline text-grey-darker hover:text-black"
-                                                   href="account/alert-preferences" data-i18n="html,label_alert_preferences"></a>
-                                            </li>
-                                            <li class="p-2 mx-2 my-1">
-                                                <a class="external-link no-underline text-grey-darker hover:text-black"
-                                                   href="account/avatar" data-i18n="html,label_avatar"></a>
-                                            </li>
-                                            <li class="p-2 mx-2 my-1">
-                                                <a class="external-link no-underline text-grey-darker hover:text-black"
-                                                   href="account/connected-accounts/" data-i18n="html,label_external_accounts"></a>
-                                            </li>
-                                            <li class="p-2 mx-2 my-1">
-                                                <a class="external-link no-underline text-grey-darker hover:text-black"
-                                                   href="account/security" data-i18n="html,label_password"></a>
-                                            </li>
-                                            <li class="p-2 mx-2 my-1">
-                                                <a class="external-link no-underline text-grey-darker hover:text-black"
-                                                   href="account/delete-account" data-i18n="html,label_delete_account"></a>
-                                            </li>
-                                            <li class="p-2 mx-2 my-1">
-                                                <a class="external-link no-underline text-grey-darker hover:text-black"
-                                                   href="calificaciones/preferences" data-i18n="html,label_classifieds_preferences"></a>
-                                            </li>
-                                        </ul>
-                                        <ul class="list-reset flex-col text-grey-darker w-1/2 p-2">
-                                            <li class="p-2 mx-2 my-1">
-                                                <a class="external-link no-underline text-grey-darker hover:text-black"
-                                                   href="whats-new/news-feed" data-i18n="html,label_news_feed"></a>
-                                            </li>
-                                            <li class="p-2 mx-2 my-1">
-                                                <a class="external-link no-underline text-grey-darker hover:text-black flex justify-between"
-                                                   href="conversations/">
-                                                    <span class="mr-1" data-i18n="html,label_conversations"></span>
-                                                    <small class="rounded-full bg-red px-1 py-px font-bold text-white hidden inbox-counter"></small>
-                                                </a>
-                                            </li>
-                                            <li class="p-2 mx-2 my-1">
-                                                <a class="external-link no-underline text-grey-darker hover:text-black flex justify-between"
-                                                   href="account/alerts">
-                                                    <span class="mr-1" data-i18n="html,label_alerts"></span>
-                                                    <small class="rounded-full bg-red px-1 py-px font-bold text-white hidden alert-counter"></small>
-                                                </a>
-                                            </li>
-                                            <li class="p-2 mx-2 my-1">
-                                                <a class="external-link no-underline text-grey-darker hover:text-black"
-                                                   href="account/reactions" data-i18n="html,label_likes_received"></a>
-                                            </li>
-                                            <li class="p-2 mx-2 my-1">
-                                                <a class="external-link no-underline text-grey-darker hover:text-black"
-                                                   href="find-threads/started" data-i18n="html,label_your_content"></a>
-                                            </li>
-                                            <li class="p-2 mx-2 my-1">
-                                                <a class="external-link no-underline text-grey-darker hover:text-black"
-                                                   href="account/following" data-i18n="html,label_following"></a>
-                                            </li>
-                                            <li class="p-2 mx-2 my-1">
-                                                <a class="external-link no-underline text-grey-darker hover:text-black"
-                                                   href="account/upgrades" data-i18n="html,label_upgrades"></a>
-                                            </li>
-                                            <li class="p-2 mx-2 my-1">
-                                                <a class="external-link no-underline text-grey-darker hover:text-black"
-                                                   href="account/ignored" data-i18n="html,label_ignored"></a>
-                                            </li>
-                                            <li class="p-2 mx-2 my-1">
-                                                <a class="external-link no-underline text-grey-darker hover:text-black"
-                                                   href="account/two-step" data-i18n="html,label_two_steps"></a>
-                                            </li>
-                                            <li class="p-2 mx-2 my-1">
-                                                <a class="external-link no-underline text-grey-darker hover:text-black"
-                                                   href="account/ignorar-mensajes" data-i18n="html,label_ignore_messages"></a>
-                                            </li>
-                                        </ul>
-                                    </div>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab hidden" id="home">
+                            <div class="border-l-4 bg-red-100 border-red-500 text-red-500 px-4 py-2 hidden alert-home-message"
+                                 role="alert">
+                                <p class="text-sm py-1" data-i18n="html,message_zero_links"></p>
+                            </div>
+                            <div class="hidden user-links bg-white">
+                                <div class="flex">
+                                    <ul class="flex-col text-gray-700 w-1/2 px-2 py-3">
+                                        <li class="mx-2 flex">
+                                            <a class="external-link text-gray-700 hover:text-black border-l-2 border-transparent hover:bg-gray-100 hover:border-gray-200 p-2 w-full"
+                                               href="account/change-username" data-i18n="html,label_nickname"></a>
+                                        </li>
+                                        <li class="mx-2 flex">
+                                            <a class="external-link text-gray-700 hover:text-black border-l-2 border-transparent hover:bg-gray-100 hover:border-gray-200 p-2 w-full"
+                                               href="account/account-details" data-i18n="html,label_personal_details"></a>
+                                        </li>
+                                        <li class="mx-2 flex">
+                                            <a class="external-link text-gray-700 hover:text-black border-l-2 border-transparent hover:bg-gray-100 hover:border-gray-200 p-2 w-full"
+                                               href="account/signature" data-i18n="html,label_signature"></a>
+                                        </li>
+                                        <li class="mx-2 flex">
+                                            <a class="external-link text-gray-700 hover:text-black border-l-2 border-transparent hover:bg-gray-100 hover:border-gray-200 p-2 w-full"
+                                               href="account/contact-details" data-i18n="html,label_contact_details"></a>
+                                        </li>
+                                        <li class="mx-2 flex">
+                                            <a class="external-link text-gray-700 hover:text-black border-l-2 border-transparent hover:bg-gray-100 hover:border-gray-200 p-2 w-full"
+                                               href="account/privacy" data-i18n="html,label_privacy"></a>
+                                        </li>
+                                        <li class="mx-2 flex">
+                                            <a class="external-link text-gray-700 hover:text-black border-l-2 border-transparent hover:bg-gray-100 hover:border-gray-200 p-2 w-full"
+                                               href="account/preferences" data-i18n="html,label_preferences"></a>
+                                        </li>
+                                        <li class="mx-2 flex">
+                                            <a class="external-link text-gray-700 hover:text-black border-l-2 border-transparent hover:bg-gray-100 hover:border-gray-200 p-2 w-full"
+                                               href="account/alert-preferences" data-i18n="html,label_alert_preferences"></a>
+                                        </li>
+                                        <li class="mx-2 flex">
+                                            <a class="external-link text-gray-700 hover:text-black border-l-2 border-transparent hover:bg-gray-100 hover:border-gray-200 p-2 w-full"
+                                               href="account/avatar" data-i18n="html,label_avatar"></a>
+                                        </li>
+                                        <li class="mx-2 flex">
+                                            <a class="external-link text-gray-700 hover:text-black border-l-2 border-transparent hover:bg-gray-100 hover:border-gray-200 p-2 w-full"
+                                               href="account/connected-accounts/" data-i18n="html,label_external_accounts"></a>
+                                        </li>
+                                        <li class="mx-2 flex">
+                                            <a class="external-link text-gray-700 hover:text-black border-l-2 border-transparent hover:bg-gray-100 hover:border-gray-200 p-2 w-full"
+                                               href="account/security" data-i18n="html,label_password"></a>
+                                        </li>
+                                        <li class="mx-2 flex">
+                                            <a class="external-link text-gray-700 hover:text-black border-l-2 border-transparent hover:bg-gray-100 hover:border-gray-200 p-2 w-full"
+                                               href="account/delete-account" data-i18n="html,label_delete_account"></a>
+                                        </li>
+                                        <li class="mx-2 flex">
+                                            <a class="external-link text-gray-700 hover:text-black border-l-2 border-transparent hover:bg-gray-100 hover:border-gray-200 p-2 w-full"
+                                               href="calificaciones/preferences" data-i18n="html,label_classifieds_preferences"></a>
+                                        </li>
+                                    </ul>
+                                    <ul class="list-reset flex-col text-gray-700 w-1/2 px-2 py-3">
+                                        <li class="mx-2 flex">
+                                            <a class="external-link text-gray-700 hover:text-black border-l-2 border-transparent hover:bg-gray-100 hover:border-gray-200 p-2 w-full"
+                                               href="whats-new/news-feed" data-i18n="html,label_news_feed"></a>
+                                        </li>
+                                        <li class="mx-2 flex">
+                                            <a class="external-link text-gray-700 hover:text-black border-l-2 border-transparent hover:bg-gray-100 hover:border-gray-200 p-2 w-full flex  justify-between items-center"
+                                               href="conversations/">
+                                                <span class="mr-1" data-i18n="html,label_conversations"></span>
+                                                <small class="rounded-full bg-red-500 px-1 font-bold text-white hidden inbox-counter"></small>
+                                            </a>
+                                        </li>
+                                        <li class="mx-2 flex">
+                                            <a class="external-link text-gray-700 hover:text-black border-l-2 border-transparent hover:bg-gray-100 hover:border-gray-200 p-2 w-full flex  justify-between items-center"
+                                               href="account/alerts">
+                                                <span class="mr-1" data-i18n="html,label_alerts"></span>
+                                                <small class="rounded-full bg-red-500 px-1 font-bold text-white hidden alert-counter"></small>
+                                            </a>
+                                        </li>
+                                        <li class="mx-2 flex">
+                                            <a class="external-link text-gray-700 hover:text-black border-l-2 border-transparent hover:bg-gray-100 hover:border-gray-200 p-2 w-full"
+                                               href="account/reactions" data-i18n="html,label_likes_received"></a>
+                                        </li>
+                                        <li class="mx-2 flex">
+                                            <a class="external-link text-gray-700 hover:text-black border-l-2 border-transparent hover:bg-gray-100 hover:border-gray-200 p-2 w-full"
+                                               href="find-threads/started" data-i18n="html,label_your_content"></a>
+                                        </li>
+                                        <li class="mx-2 flex">
+                                            <a class="external-link text-gray-700 hover:text-black border-l-2 border-transparent hover:bg-gray-100 hover:border-gray-200 p-2 w-full"
+                                               href="account/following" data-i18n="html,label_following"></a>
+                                        </li>
+                                        <li class="mx-2 flex">
+                                            <a class="external-link text-gray-700 hover:text-black border-l-2 border-transparent hover:bg-gray-100 hover:border-gray-200 p-2 w-full"
+                                               href="account/upgrades" data-i18n="html,label_upgrades"></a>
+                                        </li>
+                                        <li class="mx-2 flex">
+                                            <a class="external-link text-gray-700 hover:text-black border-l-2 border-transparent hover:bg-gray-100 hover:border-gray-200 p-2 w-full"
+                                               href="account/ignored" data-i18n="html,label_ignored"></a>
+                                        </li>
+                                        <li class="mx-2 flex">
+                                            <a class="external-link text-gray-700 hover:text-black border-l-2 border-transparent hover:bg-gray-100 hover:border-gray-200 p-2 w-full"
+                                               href="account/two-step" data-i18n="html,label_two_steps"></a>
+                                        </li>
+                                        <li class="mx-2 flex">
+                                            <a class="external-link text-gray-700 hover:text-black border-l-2 border-transparent hover:bg-gray-100 hover:border-gray-200 p-2 w-full"
+                                               href="account/ignorar-mensajes" data-i18n="html,label_ignore_messages"></a>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <div class="flex border-t border-grey-light bg-white">
-                                    <ul class="list-reset flex-col text-grey-darker w-1/2 px-2 py-1">
-                                        <li class="p-2 mx-2 my-1">
-                                            <form action="account/privacy" method="post" class="external-link"
-                                                  name="visibilityForm" id="visibilityForm">
-                                                <div class="pretty p-svg p-curve p-bigger">
-                                                    <input type="checkbox" name="user[visible]" autocomplete="off" value="1"
-                                                           id="ctrl_pageStatus_visible" data-i18n="title,message_required_section">
-                                                    <div class="state p-primary ml-1">
-                                                        <svg class="svg svg-icon" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                                            <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z"
-                                                                  style="stroke: white;fill:white;"></path>
-                                                        </svg>
-                                                        <label class="pt-px" for="ctrl_pageStatus_visible"
-                                                               data-i18n="html,label_online_status"></label>
-                                                    </div>
+                            </div>
+                            <div class="flex border-t border-gray-400 bg-white">
+                                <ul class="flex-col text-gray-700 w-1/2 px-2 py-1">
+                                    <li class="p-2 mx-2 my-1">
+                                        <form action="account/privacy" method="post" class="external-link"
+                                              name="visibilityForm" id="visibilityForm">
+                                            <div class="pretty p-svg p-curve p-bigger">
+                                                <input type="checkbox" name="user[visible]" autocomplete="off" value="1"
+                                                       id="ctrl_pageStatus_visible" data-i18n="title,message_required_section">
+                                                <div class="state p-primary ml-1">
+                                                    <svg class="svg svg-icon" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z"
+                                                              style="stroke: white;fill:white;"></path>
+                                                    </svg>
+                                                    <label class="pt-px" for="ctrl_pageStatus_visible"
+                                                           data-i18n="html,label_online_status"></label>
                                                 </div>
-                                                <input class="token-value" type="hidden" name="_xfToken">
-                                                <input type="hidden" name="_xfNoRedirect" value="1">
-                                                <input type="hidden" name="_xfResponseType" value="json">
-                                            </form>
-                                        </li>
-                                    </ul>
-                                    <ul class="list-reset flex-col text-grey-darker w-1/2 px-2 py-1">
-                                        <li class="p-2 mx-2 my-1">
-                                            <a class="external-link no-underline text-grey-darker hover:text-black token-link"
-                                               href="logout/?t=" data-i18n="html,label_logout"></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="flex border-t border-grey-light bg-white p-1">
-                                    <form action="members/" method="post" name="statusPoster" id="statusPoster"
-                                          class="external-link w-full">
-                                        <textarea name="message" id="message" rows="1" data-message="label_update_status"
-                                                  class="appearance-none border border-grey rounded py-2 px-3 text-grey-darkest w-full"
-                                                  data-i18n="placeholder,label_update_status" required></textarea>
-                                        <label for="message"></label>
-                                        <div class="hidden status-message pt-1">
-                                            <div class="flex items-center justify-between">
-                                                <span class="text-green status-length">140</span>
-                                                <button class="bg-blue hover:bg-blue-dark text-white font-bold py-1 px-2 rounded"
-                                                        data-i18n="html,button_post" type="submit"></button>
                                             </div>
-                                            <input type="hidden" class="token-value" name="_xfToken">
-                                            <input type="hidden" name="return" value="1">
+                                            <input class="token-value" type="hidden" name="_xfToken">
+                                            <input type="hidden" name="_xfNoRedirect" value="1">
                                             <input type="hidden" name="_xfResponseType" value="json">
-                                        </div>
-                                    </form>
-                                </div>
+                                        </form>
+                                    </li>
+                                </ul>
+                                <ul class="flex-col w-1/2 px-2 py-1">
+                                    <li class="p-2 mx-2 my-1">
+                                        <a class="external-link text-gray-700 hover:text-red-500 token-link"
+                                           href="logout/?t=" data-i18n="html,label_logout"></a>
+                                    </li>
+                                </ul>
                             </div>
-                            <div class="tab hidden" id="inbox">
-                                <div class="border-l-4 bg-blue-lightest border-blue text-blue px-4 py-2 flex items-center loading-data" role="alert">
-                                    <div class="w-4 h-4 text-blue">
-                                        <svg class="svg svg-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
-                                             fill="currentColor">
-                                            <path d="M440.935 12.574l3.966 82.766C399.416 41.904 331.674 8 256 8 134.813 8 33.933 94.924 12.296 209.824 10.908 217.193 16.604 224 24.103 224h49.084c5.57 0 10.377-3.842 11.676-9.259C103.407 137.408 172.931 80 256 80c60.893 0 114.512 30.856 146.104 77.801l-101.53-4.865c-6.845-.328-12.574 5.133-12.574 11.986v47.411c0 6.627 5.373 12 12 12h200.333c6.627 0 12-5.373 12-12V12c0-6.627-5.373-12-12-12h-47.411c-6.853 0-12.315 5.729-11.987 12.574zM256 432c-60.895 0-114.517-30.858-146.109-77.805l101.868 4.871c6.845.327 12.573-5.134 12.573-11.986v-47.412c0-6.627-5.373-12-12-12H12c-6.627 0-12 5.373-12 12V500c0 6.627 5.373 12 12 12h47.385c6.863 0 12.328-5.745 11.985-12.599l-4.129-82.575C112.725 470.166 180.405 504 256 504c121.187 0 222.067-86.924 243.704-201.824 1.388-7.369-4.308-14.176-11.807-14.176h-49.084c-5.57 0-10.377 3.842-11.676 9.259C408.593 374.592 339.069 432 256 432z"></path>
-                                        </svg>
-                                    </div>
-                                    <p class="text-sm py-1 ml-2" data-i18n="html,message_data_loading"></p>
-                                </div>
-                                <div class="border-l-4 bg-red-lightest border-red text-red px-4 py-2 hidden alert-inbox-message"
-                                     role="alert">
-                                    <p class="text-sm py-1" data-i18n="html,message_zero_inbox"></p>
-                                </div>
-                                <div class="conversation-container">
-                                    <div class="conversation-item hidden w-full">
-                                        <div class="border-t border-grey-light bg-white px-4 py-3 flex flex-row justify-between leading-normal">
-                                            <a class="external-link" target="_blank" href="#">
-                                                <img class="w-12 h-12 rounded" alt="" src="../assets/img/blank.png">
-                                            </a>
-                                            <div class="flex-1 ml-4 text-sm conversation-body">
-                                                <h6 class="text-sm">
-                                                    <a></a>
-                                                </h6>
-                                                <p class="text-grey-darker text-xs">
-                                                    <span></span>
-                                                </p>
-                                                <p class="text-xs flex justify-end">
-                                                    <small></small>
-                                                </p>
-                                            </div>
+                            <div class="flex border-t border-gray-400 bg-white p-1">
+                                <form action="members/" method="post" name="statusPoster" id="statusPoster"
+                                      class="external-link w-full">
+                                    <textarea name="message" id="message" rows="1" data-message="label_update_status"
+                                              class="border border-gray-300 text-gray-500 rounded w-full py-2 px-3"
+                                              data-i18n="placeholder,label_update_status" required></textarea>
+                                    <label for="message"></label>
+                                    <div class="hidden status-message pt-1">
+                                        <div class="flex items-center justify-between">
+                                            <span class="text-green-500 status-length">140</span>
+                                            <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-2 rounded"
+                                                    data-i18n="html,button_post" type="submit"></button>
                                         </div>
+                                        <input type="hidden" class="token-value" name="_xfToken">
+                                        <input type="hidden" name="return" value="1">
+                                        <input type="hidden" name="_xfResponseType" value="json">
                                     </div>
-                                </div>
-                                <div class="flex justify-between border-t border-grey-light bg-grey-lighter p-1">
-                                    <div class="p-2">
-                                        <a href="conversations/" data-i18n="html,label_show_all"
-                                           class="external-link no-underline text-grey-darker hover:text-black"></a>
-                                    </div>
-                                    <div class="p-2">
-                                        <a href="conversations/add" data-i18n="html,label_new_conversation"
-                                           class="external-link no-underline text-grey-darker hover:text-black"></a>
-                                    </div>
-                                </div>
+                                </form>
                             </div>
-                            <div class="tab hidden" id="alerts">
-                                <div class="border-l-4 bg-blue-lightest border-blue text-blue px-4 py-2 flex items-center loading-data" role="alert">
-                                    <div class="w-4 h-4 text-blue">
-                                        <svg class="svg svg-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
-                                             fill="currentColor">
-                                            <path d="M440.935 12.574l3.966 82.766C399.416 41.904 331.674 8 256 8 134.813 8 33.933 94.924 12.296 209.824 10.908 217.193 16.604 224 24.103 224h49.084c5.57 0 10.377-3.842 11.676-9.259C103.407 137.408 172.931 80 256 80c60.893 0 114.512 30.856 146.104 77.801l-101.53-4.865c-6.845-.328-12.574 5.133-12.574 11.986v47.411c0 6.627 5.373 12 12 12h200.333c6.627 0 12-5.373 12-12V12c0-6.627-5.373-12-12-12h-47.411c-6.853 0-12.315 5.729-11.987 12.574zM256 432c-60.895 0-114.517-30.858-146.109-77.805l101.868 4.871c6.845.327 12.573-5.134 12.573-11.986v-47.412c0-6.627-5.373-12-12-12H12c-6.627 0-12 5.373-12 12V500c0 6.627 5.373 12 12 12h47.385c6.863 0 12.328-5.745 11.985-12.599l-4.129-82.575C112.725 470.166 180.405 504 256 504c121.187 0 222.067-86.924 243.704-201.824 1.388-7.369-4.308-14.176-11.807-14.176h-49.084c-5.57 0-10.377 3.842-11.676 9.259C408.593 374.592 339.069 432 256 432z"></path>
-                                        </svg>
-                                    </div>
-                                    <p class="text-sm py-1 ml-2" data-i18n="html,message_data_loading"></p>
+                        </div>
+                        <div class="tab hidden" id="inbox">
+                            <div class="border-l-4 bg-blue-100 border-blue text-blue-500 px-4 py-2 flex items-center loading-data" role="alert">
+                                <div class="w-4 h-4">
+                                    <svg class="svg svg-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                                         fill="currentColor">
+                                        <path d="M440.935 12.574l3.966 82.766C399.416 41.904 331.674 8 256 8 134.813 8 33.933 94.924 12.296 209.824 10.908 217.193 16.604 224 24.103 224h49.084c5.57 0 10.377-3.842 11.676-9.259C103.407 137.408 172.931 80 256 80c60.893 0 114.512 30.856 146.104 77.801l-101.53-4.865c-6.845-.328-12.574 5.133-12.574 11.986v47.411c0 6.627 5.373 12 12 12h200.333c6.627 0 12-5.373 12-12V12c0-6.627-5.373-12-12-12h-47.411c-6.853 0-12.315 5.729-11.987 12.574zM256 432c-60.895 0-114.517-30.858-146.109-77.805l101.868 4.871c6.845.327 12.573-5.134 12.573-11.986v-47.412c0-6.627-5.373-12-12-12H12c-6.627 0-12 5.373-12 12V500c0 6.627 5.373 12 12 12h47.385c6.863 0 12.328-5.745 11.985-12.599l-4.129-82.575C112.725 470.166 180.405 504 256 504c121.187 0 222.067-86.924 243.704-201.824 1.388-7.369-4.308-14.176-11.807-14.176h-49.084c-5.57 0-10.377 3.842-11.676 9.259C408.593 374.592 339.069 432 256 432z"></path>
+                                    </svg>
                                 </div>
-                                <div class="border-l-4 bg-red-lightest border-red text-red px-4 py-2 hidden alert-alerts-message"
-                                     role="alert">
-                                    <p class="text-sm py-1" data-i18n="html,message_zero_alerts"></p>
-                                </div>
-                                <div class="alert-container">
-                                    <div class="alert-item hidden w-full">
-                                        <div class="border-t border-grey-light bg-white px-4 py-3 flex flex-row items-center justify-between leading-normal">
-                                            <a class="external-link" target="_blank" href="#">
-                                                <img class="w-12 h-12 rounded" alt="" src="../assets/img/blank.png">
-                                            </a>
-                                            <div class="flex-1 ml-4 text-sm alert-body">
-                                                <p class="text-grey-darker text-xs"></p>
-                                                <p class="text-xs flex justify-end">
-                                                    <small></small>
-                                                </p>
-                                            </div>
+                                <p class="text-sm py-1 ml-2" data-i18n="html,message_data_loading"></p>
+                            </div>
+                            <div class="border-l-4 bg-red-100 border-red-500 text-red-500 px-4 py-2 hidden alert-inbox-message"
+                                 role="alert">
+                                <p class="text-sm py-1" data-i18n="html,message_zero_inbox"></p>
+                            </div>
+                            <div class="conversation-container">
+                                <div class="conversation-item hidden w-full">
+                                    <div class="border-t border-gray-400 bg-white px-3 py-2 flex flex-row justify-between items-center">
+                                        <a class="external-link" target="_blank" href="#">
+                                            <img class="w-12 h-12 rounded" alt="" src="../assets/img/blank.png">
+                                        </a>
+                                        <div class="flex-1 ml-4 text-sm conversation-body">
+                                            <h6 class="text-base font-semibold">
+                                                <a></a>
+                                            </h6>
+                                            <p class="text-gray-700 text-xs">
+                                                <span></span>
+                                            </p>
+                                            <p class="text-xs flex justify-end">
+                                                <small></small>
+                                            </p>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="flex justify-between border-t border-grey-light bg-grey-lighter p-1">
-                                    <div class="p-2">
-                                        <a href="account/alerts" data-i18n="html,label_show_all"
-                                           class="external-link no-underline text-grey-darker hover:text-black"></a>
-                                    </div>
-                                    <div class="p-2">
-                                        <a href="account/alert-preferences" data-i18n="html,label_alert_preferences"
-                                           class="external-link no-underline text-grey-darker hover:text-black"></a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab hidden" id="subscriptions">
-                                <div class="border-l-4 bg-blue-lightest border-blue text-blue px-4 py-2 flex items-center loading-data" role="alert">
-                                    <div class="w-4 h-4 text-blue">
-                                        <svg class="svg svg-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
-                                             fill="currentColor">
-                                            <path d="M440.935 12.574l3.966 82.766C399.416 41.904 331.674 8 256 8 134.813 8 33.933 94.924 12.296 209.824 10.908 217.193 16.604 224 24.103 224h49.084c5.57 0 10.377-3.842 11.676-9.259C103.407 137.408 172.931 80 256 80c60.893 0 114.512 30.856 146.104 77.801l-101.53-4.865c-6.845-.328-12.574 5.133-12.574 11.986v47.411c0 6.627 5.373 12 12 12h200.333c6.627 0 12-5.373 12-12V12c0-6.627-5.373-12-12-12h-47.411c-6.853 0-12.315 5.729-11.987 12.574zM256 432c-60.895 0-114.517-30.858-146.109-77.805l101.868 4.871c6.845.327 12.573-5.134 12.573-11.986v-47.412c0-6.627-5.373-12-12-12H12c-6.627 0-12 5.373-12 12V500c0 6.627 5.373 12 12 12h47.385c6.863 0 12.328-5.745 11.985-12.599l-4.129-82.575C112.725 470.166 180.405 504 256 504c121.187 0 222.067-86.924 243.704-201.824 1.388-7.369-4.308-14.176-11.807-14.176h-49.084c-5.57 0-10.377 3.842-11.676 9.259C408.593 374.592 339.069 432 256 432z"></path>
-                                        </svg>
-                                    </div>
-                                    <p class="text-sm py-1 ml-2" data-i18n="html,message_data_loading"></p>
+                            <div class="flex justify-between border-t border-gray-400 bg-gray-200 p-1">
+                                <div class="p-2">
+                                    <a href="conversations/" data-i18n="html,label_show_all"
+                                       class="external-link text-gray-700 hover:text-black"></a>
                                 </div>
-                                <div class="border-l-4 bg-red-lightest border-red text-red px-4 py-2 hidden alert-subscriptions-message"
-                                     role="alert">
-                                    <p class="text-sm py-1" data-i18n="html,message_zero_subscriptions"></p>
+                                <div class="p-2">
+                                    <a href="conversations/add" data-i18n="html,label_new_conversation"
+                                       class="external-link text-gray-700 hover:text-black"></a>
                                 </div>
-                                <div class="thread-container">
-                                    <div class="thread-item hidden w-full">
-                                        <div class="border-t border-grey-light bg-white px-4 py-3 flex flex-row justify-between leading-normal">
-                                            <a class="external-link" target="_blank" href="#">
-                                                <img class="w-12 h-12 rounded" alt="" src="../assets/img/blank.png">
-                                            </a>
-                                            <div class="flex-1 ml-4 thread-body">
-                                                <h6 class="text-sm">
-                                                    <a></a>
-                                                </h6>
-                                                <p class="text-xs"></p>
-                                                <p class="text-grey-dark text-xs flex justify-end message-info">
-                                                    <small>
-                                                        <span data-i18n="html,label_last_message_by"></span>
-                                                        <span class="message-by"></span>,
-                                                        <span class="message-at"></span>
-                                                    </small>
-                                                </p>
-                                            </div>
+                            </div>
+                        </div>
+                        <div class="tab hidden" id="alerts">
+                            <div class="border-l-4 bg-blue-100 border-blue-500 text-blue-500 px-4 py-2 flex items-center loading-data"
+                                 role="alert">
+                                <div class="w-4 h-4">
+                                    <svg class="svg svg-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                                         fill="currentColor">
+                                        <path d="M440.935 12.574l3.966 82.766C399.416 41.904 331.674 8 256 8 134.813 8 33.933 94.924 12.296 209.824 10.908 217.193 16.604 224 24.103 224h49.084c5.57 0 10.377-3.842 11.676-9.259C103.407 137.408 172.931 80 256 80c60.893 0 114.512 30.856 146.104 77.801l-101.53-4.865c-6.845-.328-12.574 5.133-12.574 11.986v47.411c0 6.627 5.373 12 12 12h200.333c6.627 0 12-5.373 12-12V12c0-6.627-5.373-12-12-12h-47.411c-6.853 0-12.315 5.729-11.987 12.574zM256 432c-60.895 0-114.517-30.858-146.109-77.805l101.868 4.871c6.845.327 12.573-5.134 12.573-11.986v-47.412c0-6.627-5.373-12-12-12H12c-6.627 0-12 5.373-12 12V500c0 6.627 5.373 12 12 12h47.385c6.863 0 12.328-5.745 11.985-12.599l-4.129-82.575C112.725 470.166 180.405 504 256 504c121.187 0 222.067-86.924 243.704-201.824 1.388-7.369-4.308-14.176-11.807-14.176h-49.084c-5.57 0-10.377 3.842-11.676 9.259C408.593 374.592 339.069 432 256 432z"></path>
+                                    </svg>
+                                </div>
+                                <p class="text-sm py-1 ml-2" data-i18n="html,message_data_loading"></p>
+                            </div>
+                            <div class="border-l-4 bg-red-100 border-red-500 text-red-500 px-4 py-2 hidden alert-alerts-message"
+                                 role="alert">
+                                <p class="text-sm py-1" data-i18n="html,message_zero_alerts"></p>
+                            </div>
+                            <div class="alert-container">
+                                <div class="alert-item hidden w-full">
+                                    <div class="border-t border-gray-400 bg-white px-3 py-2 flex flex-row justify-between items-center">
+                                        <a class="external-link" target="_blank" href="#">
+                                            <img class="w-12 h-12 rounded" alt="" src="../assets/img/blank.png">
+                                        </a>
+                                        <div class="flex-1 ml-4 text-sm alert-body">
+                                            <p class="text-gray-700 text-xs"></p>
+                                            <p class="text-xs flex justify-end">
+                                                <small></small>
+                                            </p>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="flex justify-between border-t border-grey-light bg-grey-lighter p-1">
-                                    <div class="p-2">
-                                        <a href="watched/threads" data-i18n="html,label_all_watched"
-                                           class="external-link no-underline text-grey-darker hover:text-black"></a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab hidden" id="bookmarks">
-                                <div class="border-l-4 bg-blue-lightest border-blue text-blue px-4 py-2 flex items-center loading-data" role="alert">
-                                    <div class="w-4 h-4 text-blue">
-                                        <svg class="svg svg-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
-                                             fill="currentColor">
-                                            <path d="M440.935 12.574l3.966 82.766C399.416 41.904 331.674 8 256 8 134.813 8 33.933 94.924 12.296 209.824 10.908 217.193 16.604 224 24.103 224h49.084c5.57 0 10.377-3.842 11.676-9.259C103.407 137.408 172.931 80 256 80c60.893 0 114.512 30.856 146.104 77.801l-101.53-4.865c-6.845-.328-12.574 5.133-12.574 11.986v47.411c0 6.627 5.373 12 12 12h200.333c6.627 0 12-5.373 12-12V12c0-6.627-5.373-12-12-12h-47.411c-6.853 0-12.315 5.729-11.987 12.574zM256 432c-60.895 0-114.517-30.858-146.109-77.805l101.868 4.871c6.845.327 12.573-5.134 12.573-11.986v-47.412c0-6.627-5.373-12-12-12H12c-6.627 0-12 5.373-12 12V500c0 6.627 5.373 12 12 12h47.385c6.863 0 12.328-5.745 11.985-12.599l-4.129-82.575C112.725 470.166 180.405 504 256 504c121.187 0 222.067-86.924 243.704-201.824 1.388-7.369-4.308-14.176-11.807-14.176h-49.084c-5.57 0-10.377 3.842-11.676 9.259C408.593 374.592 339.069 432 256 432z"></path>
-                                        </svg>
-                                    </div>
-                                    <p class="text-sm py-1 ml-2" data-i18n="html,message_data_loading"></p>
+                            <div class="flex justify-between border-t border-gray-400 bg-gray-200 p-1">
+                                <div class="p-2">
+                                    <a href="account/alerts" data-i18n="html,label_show_all"
+                                       class="external-link text-gray-700 hover:text-black"></a>
                                 </div>
-                                <div class="border-l-4 bg-red-lightest border-red text-red px-4 py-2 hidden alert-bookmark-message"
-                                     role="alert">
-                                    <p class="text-sm py-1" data-i18n="html,message_zero_bookmarks"></p>
+                                <div class="p-2">
+                                    <a href="account/alert-preferences" data-i18n="html,label_alert_preferences"
+                                       class="external-link text-gray-700 hover:text-black"></a>
                                 </div>
-                                <div class="bookmark-container">
-                                    <div class="bookmark-item hidden w-full">
-                                        <div class="border-t border-grey-light bg-white px-4 py-3 flex flex-row items-center justify-between leading-normal">
-                                            <a class="external-link" target="_blank" href="#">
-                                                <img class="w-12 h-12 rounded" alt="" src="../assets/img/blank.png">
-                                            </a>
-                                            <div class="flex-1 ml-4 text-sm bookmark-body">
-                                                <p class="text-grey-darker text-xs"></p>
-                                                <p class="text-grey-darker text-xs"></p>
-                                                <p class="text-xs flex justify-end">
-                                                    <span><a class="external-link" target="_blank" href="#"></a></span>
-                                                    <span>&nbsp;-&nbsp;</span>
-                                                    <span></span>
-                                                    <span class="hidden">&nbsp;-&nbsp;</span>
-                                                    <span>
-                                                        <span class="rounded bg-grey-lighter px-1 py-px font-bold text-white mx-1 hidden"></span>
-                                                    </span>
-                                                </p>
-                                            </div>
+                            </div>
+                        </div>
+                        <div class="tab hidden" id="subscriptions">
+                            <div class="border-l-4 bg-blue-100 border-blue-500 text-blue-500 px-4 py-2 flex items-center loading-data"
+                                 role="alert">
+                                <div class="w-4 h-4">
+                                    <svg class="svg svg-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                                         fill="currentColor">
+                                        <path d="M440.935 12.574l3.966 82.766C399.416 41.904 331.674 8 256 8 134.813 8 33.933 94.924 12.296 209.824 10.908 217.193 16.604 224 24.103 224h49.084c5.57 0 10.377-3.842 11.676-9.259C103.407 137.408 172.931 80 256 80c60.893 0 114.512 30.856 146.104 77.801l-101.53-4.865c-6.845-.328-12.574 5.133-12.574 11.986v47.411c0 6.627 5.373 12 12 12h200.333c6.627 0 12-5.373 12-12V12c0-6.627-5.373-12-12-12h-47.411c-6.853 0-12.315 5.729-11.987 12.574zM256 432c-60.895 0-114.517-30.858-146.109-77.805l101.868 4.871c6.845.327 12.573-5.134 12.573-11.986v-47.412c0-6.627-5.373-12-12-12H12c-6.627 0-12 5.373-12 12V500c0 6.627 5.373 12 12 12h47.385c6.863 0 12.328-5.745 11.985-12.599l-4.129-82.575C112.725 470.166 180.405 504 256 504c121.187 0 222.067-86.924 243.704-201.824 1.388-7.369-4.308-14.176-11.807-14.176h-49.084c-5.57 0-10.377 3.842-11.676 9.259C408.593 374.592 339.069 432 256 432z"></path>
+                                    </svg>
+                                </div>
+                                <p class="text-sm py-1 ml-2" data-i18n="html,message_data_loading"></p>
+                            </div>
+                            <div class="border-l-4 bg-red-100 border-red-500 text-red-500 px-4 py-2 hidden alert-subscriptions-message"
+                                 role="alert">
+                                <p class="text-sm py-1" data-i18n="html,message_zero_subscriptions"></p>
+                            </div>
+                            <div class="thread-container">
+                                <div class="thread-item hidden w-full">
+                                    <div class="border-t border-gray-400 bg-white px-3 py-2 flex flex-row justify-between items-center">
+                                        <a class="external-link" target="_blank" href="#">
+                                            <img class="w-12 h-12 rounded" alt="" src="../assets/img/blank.png">
+                                        </a>
+                                        <div class="flex-1 ml-4 thread-body">
+                                            <h6 class="text-base font-semibold">
+                                                <a></a>
+                                            </h6>
+                                            <p class="text-xs"></p>
+                                            <p class="text-gray-700 text-xs flex justify-end message-info">
+                                                <small>
+                                                    <span data-i18n="html,label_last_message_by"></span>
+                                                    <span class="message-by"></span>,
+                                                    <span class="message-at"></span>
+                                                </small>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="flex justify-between border-t border-grey-light bg-grey-lighter p-1">
-                                    <div class="p-2">
-                                        <a href="account/bookmarks" data-i18n="html,label_show_all"
-                                           class="external-link no-underline text-grey-darker hover:text-black"></a>
+                            </div>
+                            <div class="flex justify-between border-t border-gray-400 bg-gray-200 p-1">
+                                <div class="p-2">
+                                    <a href="watched/threads" data-i18n="html,label_all_watched"
+                                       class="external-link text-gray-700 hover:text-black"></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab hidden" id="bookmarks">
+                            <div class="border-l-4 bg-blue-100 border-blue-500 text-blue-500 px-4 py-2 flex items-center loading-data"
+                                 role="alert">
+                                <div class="w-4 h-4">
+                                    <svg class="svg svg-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                                         fill="currentColor">
+                                        <path d="M440.935 12.574l3.966 82.766C399.416 41.904 331.674 8 256 8 134.813 8 33.933 94.924 12.296 209.824 10.908 217.193 16.604 224 24.103 224h49.084c5.57 0 10.377-3.842 11.676-9.259C103.407 137.408 172.931 80 256 80c60.893 0 114.512 30.856 146.104 77.801l-101.53-4.865c-6.845-.328-12.574 5.133-12.574 11.986v47.411c0 6.627 5.373 12 12 12h200.333c6.627 0 12-5.373 12-12V12c0-6.627-5.373-12-12-12h-47.411c-6.853 0-12.315 5.729-11.987 12.574zM256 432c-60.895 0-114.517-30.858-146.109-77.805l101.868 4.871c6.845.327 12.573-5.134 12.573-11.986v-47.412c0-6.627-5.373-12-12-12H12c-6.627 0-12 5.373-12 12V500c0 6.627 5.373 12 12 12h47.385c6.863 0 12.328-5.745 11.985-12.599l-4.129-82.575C112.725 470.166 180.405 504 256 504c121.187 0 222.067-86.924 243.704-201.824 1.388-7.369-4.308-14.176-11.807-14.176h-49.084c-5.57 0-10.377 3.842-11.676 9.259C408.593 374.592 339.069 432 256 432z"></path>
+                                    </svg>
+                                </div>
+                                <p class="text-sm py-1 ml-2" data-i18n="html,message_data_loading"></p>
+                            </div>
+                            <div class="border-l-4 bg-red-100 border-red-500 text-red-500 px-4 py-2 hidden alert-bookmark-message"
+                                 role="alert">
+                                <p class="text-sm py-1" data-i18n="html,message_zero_bookmarks"></p>
+                            </div>
+                            <div class="bookmark-container">
+                                <div class="bookmark-item hidden w-full">
+                                    <div class="border-t border-gray-400 bg-white px-3 py-2 flex flex-row justify-between items-center">
+                                        <a class="external-link" target="_blank" href="#">
+                                            <img class="w-12 h-12 rounded" alt="" src="../assets/img/blank.png">
+                                        </a>
+                                        <div class="flex-1 ml-4 text-sm bookmark-body">
+                                            <p class="text-gray-700 text-xs"></p>
+                                            <p class="text-gray-700 text-xs"></p>
+                                            <p class="text-xs flex justify-end">
+                                                <span><a class="external-link" target="_blank" href="#"></a></span>
+                                                <span>&nbsp;-&nbsp;</span>
+                                                <span></span>
+                                                <span class="hidden">&nbsp;-&nbsp;</span>
+                                                <span>
+                                                    <span class="rounded bg-gray-200 px-1 py-px font-bold text-white mx-1 hidden"></span>
+                                                </span>
+                                            </p>
+                                        </div>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="flex justify-between border-t border-gray-400 bg-gray-200 p-1">
+                                <div class="p-2">
+                                    <a href="account/bookmarks" data-i18n="html,label_show_all"
+                                       class="external-link text-gray-700 hover:text-black"></a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </main>
-            </div>
-        </div>
+                </div>
+            </main>
+        </section>
 
         <script src="../vendor/js/jquery-3.3.1.min.js"></script>
         <script src="../vendor/js/jquery.form.min.js"></script>

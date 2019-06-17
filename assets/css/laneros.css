@@ -1,7 +1,6 @@
 @CHARSET "UTF-8";
 
 body {
-    color: #4b4b4b;
     font-family: 'Segoe UI', Tahoma, sans-serif;
     margin: 0;
 }
@@ -33,41 +32,68 @@ img.rounded:hover {
 
 .dark-mode {
     color: #C4C3C2;
+    background-color: #2E2C2B;
 }
 .dark-mode .bg-white {
+    background-color: #2E2C2B;
+}
+.dark-mode .bg-gray-400 {
     background-color: #393736;
 }
-.dark-mode .border-grey {
-    border-color: #393736;
-}
-.dark-mode .border-grey-light {
-    border-color: #2F2C2B;
-}
-.dark-mode .bg-grey-light {
-    background-color: #3B3A39;
-}
-.dark-mode .bg-grey-lighter {
+.dark-mode .bg-gray-200 {
     background-color: #504E4D;
 }
-.dark-mode .bg-grey-lightest {
+.dark-mode .bg-gray-100 {
     background-color: #5F5E5E;
 }
+.dark-mode .bg-blue-500 {
+    background-color: #3182ce;
+}
+.dark-mode .bg-yellow-100 .text-gray-700 {
+    color: #333131;
+}
+
+.dark-mode .border-gray-400 {
+    border-color: #393736;
+}
+.dark-mode .border-gray-300 {
+    border-color: #333131;
+}
+
 .dark-mode .text-black {
     color: #FAF9F8;
 }
-.dark-mode .text-grey-darker {
+.dark-mode .text-gray-700 {
     color: #C4C3C2;
 }
-.dark-mode .bg-yellow-lightest .text-grey-darker {
-    color: #606f7b;
+.dark-mode .text-gray-600 {
+    color: #C4C3C2;
+}
+.dark-mode .text-gray-500 {
+    color: #3B3A39;
 }
 
-.dark-mode .hover\:bg-grey-lightest:hover {
+.dark-mode .hover\:border-gray-200:hover {
+    border-color: #504E4D;
+}
+
+.dark-mode .hover\:bg-gray-100:hover {
     background-color: #5F5E5E;
 }
-.dark-mode .hover\:text-grey-darkest:hover {
+.dark-mode .hover\:bg-gray-400:hover {
+     background-color: #393736;
+ }
+.dark-mode .hover\:bg-blue-600:hover {
+    background-color: #2b6cb0;
+}
+
+.dark-mode .hover\:text-gray-800:hover {
     color: #A3A2A1;
 }
+.dark-mode .hover\:text-red-500:hover {
+     color: #e53e3e;
+ }
+
 .dark-mode .pretty .state label:after,
 .dark-mode .pretty .state label:before {
     background-color: #ABAAAA;
@@ -83,4 +109,7 @@ img.rounded:hover {
 .dark-mode input[type="password"],
 .dark-mode textarea {
     background-color : #ABAAAA;
+}
+.dark-mode .hover\:text-red:hover {
+    color: #e3342f;
 }
