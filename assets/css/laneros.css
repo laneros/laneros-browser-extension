@@ -29,95 +29,98 @@ a.twitterLogin {
     transform: scale(1.1);
 }
 
-.dark-mode {
-    color: #C4C3C2;
-    background-color: #2E2C2B;
-}
-.dark-mode .bg-white {
-    background-color: #2E2C2B;
-}
-.dark-mode .bg-gray-400 {
-    background-color: #393736;
-}
-.dark-mode .bg-gray-200 {
-    background-color: #504E4D;
-}
-.dark-mode .bg-gray-100 {
-    background-color: #5F5E5E;
-}
-.dark-mode .bg-blue-500 {
-    background-color: #3182ce;
+:root {
+    --black: black;
+    --gray-100: rgb(32, 33, 36);
+    --gray-200: rgb(60, 64, 67);
+    --gray-300: rgb(97, 97, 97);
+    --gray-400: rgb(128, 134, 139);
+    --gray-500: rgb(158, 158, 158);
+    --gray-600: rgb(189, 193, 198);
+    --gray-700: rgb(224, 224, 224);
+    --gray-800: rgb(232, 234, 237);
+    --gray-900: rgb(245, 245, 245);
 }
 
-.dark-mode .border-gray-500 {
-    border-color: #3B3A39;
-}
-.dark-mode .border-gray-400 {
-    border-color: #393736;
-}
-.dark-mode .border-gray-300 {
-    border-color: #333131;
-}
-.dark-mode .border-gray-200 {
-    border-color: #504E4D;
-}
-
-.dark-mode .text-black {
-    color: #FAF9F8;
-}
-.dark-mode .text-gray-700 {
-    color: #C4C3C2;
-}
-.dark-mode .text-gray-600 {
-    color: #C4C3C2;
-}
-.dark-mode .text-gray-500 {
-    color: #3B3A39;
-}
-.dark-mode .text-blue-600 {
-    color: #63b3ed;
-}
-.dark-mode .hover\:text-red:hover {
-    color: #e3342f;
-}
-.dark-mode .bg-yellow-100 .text-gray-700 {
-    color: #333131;
-}
-
-.dark-mode .hover\:border-gray-200:hover {
-    border-color: #504E4D;
-}
-
-.dark-mode .hover\:bg-gray-100:hover {
-    background-color: #5F5E5E;
-}
-.dark-mode .hover\:bg-gray-400:hover {
-     background-color: #393736;
- }
-.dark-mode .hover\:bg-blue-600:hover {
-    background-color: #2b6cb0;
-}
-
-.dark-mode .hover\:text-gray-800:hover {
-    color: #666564;
-}
-.dark-mode .hover\:text-red-500:hover {
-     color: #e53e3e;
-}
-.dark-mode .hover\:text-blue-700:hover {
-     color: #90cdf4;
-}
-
-.dark-mode .pretty .state label:after,
-.dark-mode .pretty .state label:before {
-    background-color: #ABAAAA;
-}
 .dark-mode input[type="number"],
 .dark-mode input[type="checkbox"],
 .dark-mode input[type="radio"],
 .dark-mode input[type="text"],
 .dark-mode input[type="password"],
 .dark-mode textarea {
-    background-color : #ABAAAA;
-    color: #393736;
+    background-color: var(--gray-400);
+    border-color: var(--gray-300);
+    color: var(--gray-100);
+}
+
+.dark-mode .bg-white {
+    background-color: var(--black);
+}
+
+.dark-mode .bg-gray-600 {
+    background-color: var(--gray-600);
+}
+.dark-mode .bg-gray-300 {
+    background-color: var(--gray-300);
+}
+.dark-mode .bg-gray-200 {
+    background-color: var(--gray-200);
+}
+.dark-mode .bg-gray-100 {
+    background-color: var(--gray-100);
+}
+
+.dark-mode .text-gray-800 {
+    color: var(--gray-800);
+}
+.dark-mode .text-gray-700 {
+    color: var(--gray-700);
+}
+.dark-mode .text-gray-600 {
+    color: var(--gray-600);
+}
+.dark-mode .text-gray-500 {
+    color: var(--gray-500);
+}
+
+.dark-mode .hover\:text-gray-900:hover {
+    color: var(--gray-900);
+}
+
+.dark-mode .border-gray-500 {
+    border-color: var(--gray-500);
+}
+.dark-mode .border-gray-300 {
+    border-color: var(--gray-300);
+}
+.dark-mode .border-gray-200 {
+    border-color: var(--gray-200);
+}
+
+.dark-mode .hover\:border-gray-300:hover {
+    border-color: var(--gray-300);
+}
+
+.dark-mode .hover\:bg-gray-400:hover {
+    background-color: var(--gray-400);
+}
+.dark-mode .hover\:bg-gray-300:hover {
+    background-color: var(--gray-300);
+}
+.dark-mode .hover\:bg-gray-200:hover {
+    background-color: var(--gray-200);
+}
+
+.dark-mode .bg-yellow-100 h6 a {
+    color: var(--gray-300);
+}
+.dark-mode .bg-yellow-100 h6 a:hover {
+    color: var(--gray-100);
+}
+
+.dark-mode .tab-list a {
+    color: var(--gray-800);
+}
+.dark-mode .tab-list a:hover {
+    color: var(--gray-900);
 }

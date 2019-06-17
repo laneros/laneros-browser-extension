@@ -13,8 +13,8 @@
 
         <link rel="stylesheet" href="../assets/css/laneros.css">
     </head>
-    <body class="antialiased bg-gray-200">
-        <div class="w-full min-h-screen flex">
+    <body class="antialiased">
+        <div class="bg-gray-200 text-gray-600 w-full min-h-screen flex">
             <section class="m-auto text-center loading-box">
                 <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"
                      preserveAspectRatio="xMidYMid">
@@ -49,18 +49,18 @@
                     </header>
                     <section class="bg-gray-100 rounded shadow">
                         <div class="flex py-5">
-                            <div class="w-1/3 mx-6">
-                                <article>
+                            <article class="w-1/3 mx-6">
+                                <div>
                                     <header class="pb-8">
                                         <h1 class="text-2xl font-semibold" data-i18n="html,header_sections"></h1>
-                                        <p class="text-base text-gray-600" data-i18n="html,text_display_sections"></p>
+                                        <p class="text-base text-gray-500" data-i18n="html,text_display_sections"></p>
                                     </header>
-                                    <div class="pb-5 text-gray-700 text-base flex flex-col">
+                                    <div class="pb-5 text-base flex flex-col">
                                         <div class="mb-6 pretty p-icon p-round p-bigger">
                                             <input type="checkbox" name="checkbox_section_info" id="checkbox_section_info"
                                                    autocomplete="off" value="true" data-i18n="title,message_required_section">
                                             <div class="state ml-1">
-                                                <svg class="icon p-px bg-blue-400 text-white stroke-current" viewBox="0 0 20 20"
+                                                <svg class="icon p-px bg-blue-400 text-gray-100 stroke-current" viewBox="0 0 20 20"
                                                      xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                                                     <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z"></path>
                                                 </svg>
@@ -71,7 +71,7 @@
                                             <input type="checkbox" name="checkbox_section_links" id="checkbox_section_links"
                                                    autocomplete="off" value="true" data-i18n="title,message_required_section">
                                             <div class="state ml-1">
-                                                <svg class="icon p-px bg-blue-400 text-white stroke-current" viewBox="0 0 20 20"
+                                                <svg class="icon p-px bg-blue-400 text-gray-100 stroke-current" viewBox="0 0 20 20"
                                                      xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                                                     <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z"></path>
                                                 </svg>
@@ -82,7 +82,7 @@
                                             <input type="checkbox" name="checkbox_section_inbox" id="checkbox_section_inbox"
                                                    autocomplete="off" value="true" data-i18n="title,message_required_section">
                                             <div class="state ml-1">
-                                                <svg class="icon p-px bg-blue-400 text-white stroke-current" viewBox="0 0 20 20"
+                                                <svg class="icon p-px bg-blue-400 text-gray-100 stroke-current" viewBox="0 0 20 20"
                                                      xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                                                     <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z"></path>
                                                 </svg>
@@ -93,7 +93,7 @@
                                             <input type="checkbox" name="checkbox_section_alerts" id="checkbox_section_alerts"
                                                    autocomplete="off" value="true" data-i18n="title,message_required_section">
                                             <div class="state ml-1">
-                                                <svg class="icon p-px bg-blue-400 text-white stroke-current" viewBox="0 0 20 20"
+                                                <svg class="icon p-px bg-blue-400 text-gray-100 stroke-current" viewBox="0 0 20 20"
                                                      xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                                                     <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z"></path>
                                                 </svg>
@@ -105,7 +105,7 @@
                                                    id="checkbox_section_subscriptions" value="true"
                                                    data-i18n="title,message_required_section">
                                             <div class="state ml-1">
-                                                <svg class="icon p-px bg-blue-400 text-white stroke-current" viewBox="0 0 20 20"
+                                                <svg class="icon p-px bg-blue-400 text-gray-100 stroke-current" viewBox="0 0 20 20"
                                                      xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                                                     <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z"></path>
                                                 </svg>
@@ -118,7 +118,7 @@
                                                    id="checkbox_section_bookmarks" value="true"
                                                    data-i18n="title,message_required_section">
                                             <div class="state ml-1">
-                                                <svg class="icon p-px bg-blue-400 text-white stroke-current" viewBox="0 0 20 20"
+                                                <svg class="icon p-px bg-blue-400 text-gray-100 stroke-current" viewBox="0 0 20 20"
                                                      xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                                                     <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z"></path>
                                                 </svg>
@@ -127,18 +127,18 @@
                                             </div>
                                         </div>
                                     </div>
-                                </article>
-                                <article>
+                                </div>
+                                <div>
                                     <header class="pb-8">
                                         <h1 class="text-2xl font-semibold" data-i18n="html,header_dark_mode"></h1>
-                                        <p class="text-base text-gray-600" data-i18n="html,text_dark_mode"></p>
+                                        <p class="text-base text-gray-500" data-i18n="html,text_dark_mode"></p>
                                     </header>
-                                    <div class="text-gray-700 text-base flex flex-col">
+                                    <div class="text-base flex flex-col">
                                         <div class="mb-6 pretty p-icon p-round p-bigger">
                                             <input type="checkbox" name="checkbox_dark_mode" id="checkbox_dark_mode"
                                                    autocomplete="off" value="true" data-i18n="title,message_required_section">
                                             <div class="state ml-1">
-                                                <svg class="icon p-px bg-blue-400 text-white stroke-current" viewBox="0 0 20 20"
+                                                <svg class="icon p-px bg-blue-400 text-gray-100 stroke-current" viewBox="0 0 20 20"
                                                      xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                                                     <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z"></path>
                                                 </svg>
@@ -146,132 +146,116 @@
                                             </div>
                                         </div>
                                     </div>
-                                </article>
-                            </div>
-                            <div class="w-1/3 mx-5">
-                                <article>
-                                    <header class="pb-8">
-                                        <h1 class="text-2xl font-semibold" data-i18n="html,header_notifications"></h1>
-                                        <p class="text-base text-gray-600" data-i18n="html,text_display_notifications"></p>
-                                    </header>
-                                    <div class="text-gray-700 text-base flex flex-col">
-                                        <div class="mb-6 pretty p-icon p-round p-bigger">
-                                            <input type="checkbox" name="checkbox_notification_consolidated"
-                                                   id="checkbox_notification_consolidated" autocomplete="off" value="true"
-                                                   data-i18n="title,message_required_notification">
-                                            <div class="state ml-1">
-                                                <svg class="icon p-px bg-blue-400 text-white stroke-current" viewBox="0 0 20 20"
-                                                     xmlns="http://www.w3.org/2000/svg" fill="currentColor">
-                                                    <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z"></path>
-                                                </svg>
-                                                <label class="pt-px" for="checkbox_notification_consolidated"
-                                                       data-i18n="html,label_consolidated_notification"></label>
-                                            </div>
-                                        </div>
-                                        <div class="mb-6 pretty p-icon p-round p-bigger">
-                                            <input type="checkbox" name="checkbox_notification_inbox"
-                                                   id="checkbox_notification_inbox" autocomplete="off" value="true"
-                                                   data-i18n="title,message_required_notification">
-                                            <div class="state ml-1">
-                                                <svg class="icon p-px bg-blue-400 text-white stroke-current" viewBox="0 0 20 20"
-                                                     xmlns="http://www.w3.org/2000/svg" fill="currentColor">
-                                                    <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z"></path>
-                                                </svg>
-                                                <label class="pt-px" for="checkbox_notification_inbox"
-                                                       data-i18n="html,label_conversations"></label>
-                                            </div>
-                                        </div>
-                                        <div class="mb-6 pretty p-icon p-round p-bigger">
-                                            <input type="checkbox" name="checkbox_notification_alerts"
-                                                   id="checkbox_notification_alerts" autocomplete="off" value="true"
-                                                   data-i18n="title,message_required_notification">
-                                            <div class="state ml-1">
-                                                <svg class="icon p-px bg-blue-400 text-white stroke-current" viewBox="0 0 20 20"
-                                                     xmlns="http://www.w3.org/2000/svg" fill="currentColor">
-                                                    <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z"></path>
-                                                </svg>
-                                                <label class="pt-px" for="checkbox_notification_alerts"
-                                                       data-i18n="html,label_alerts"></label>
-                                            </div>
-                                        </div>
-                                        <div class="mb-6 pretty p-icon p-round p-bigger">
-                                            <input type="checkbox" name="checkbox_notification_subscriptions"
-                                                   id="checkbox_notification_subscriptions" autocomplete="off" value="true"
-                                                   data-i18n="title,message_required_notification">
-                                            <div class="state ml-1">
-                                                <svg class="icon p-px bg-blue-400 text-white stroke-current" viewBox="0 0 20 20"
-                                                     xmlns="http://www.w3.org/2000/svg" fill="currentColor">
-                                                    <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z"></path>
-                                                </svg>
-                                                <label class="pt-px" for="checkbox_notification_subscriptions"
-                                                       data-i18n="html,label_subscriptions"></label>
-                                            </div>
+                                </div>
+                            </article>
+                            <article class="w-1/3 mx-5">
+                                <header class="pb-8">
+                                    <h1 class="text-2xl font-semibold" data-i18n="html,header_notifications"></h1>
+                                    <p class="text-base text-gray-500" data-i18n="html,text_display_notifications"></p>
+                                </header>
+                                <div class="text-gray-600 text-base flex flex-col">
+                                    <div class="mb-6 pretty p-icon p-round p-bigger">
+                                        <input type="checkbox" name="checkbox_notification_consolidated"
+                                               id="checkbox_notification_consolidated" autocomplete="off" value="true"
+                                               data-i18n="title,message_required_notification">
+                                        <div class="state ml-1">
+                                            <svg class="icon p-px bg-blue-400 text-gray-100 stroke-current" viewBox="0 0 20 20"
+                                                 xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                                                <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z"></path>
+                                            </svg>
+                                            <label class="pt-px" for="checkbox_notification_consolidated"
+                                                   data-i18n="html,label_consolidated_notification"></label>
                                         </div>
                                     </div>
-                                </article>
-                            </div>
-                            <div class="w-1/3 mx-5">
-                                <article>
-                                    <header class="pb-8">
-                                        <h1 class="text-2xl font-semibold" data-i18n="html,header_review"></h1>
-                                        <p class="text-base text-gray-600" data-i18n="html,text_review_interval"></p>
-                                    </header>
-                                    <div class="text-gray-700 text-base flex flex-col">
-                                        <div class="mb-6 flex items-center">
-                                            <label class="flex-grow" for="number_hours">
-                                                <span data-i18n="html,label_hours"></span>
-                                                <span class="text-red-500">*</span>
-                                            </label>
-                                            <div class="text-gray-600">
-                                                <input class="appearance-none border border-gray-300 rounded py-2 px-3 text-right"
-                                                       type="number" max="23" min="0" maxlength="2" id="number_hours"
-                                                       name="number_hours"
-                                                       data-i18n="placeholder|title,label_hours|message_required_field"
-                                                       required>
-                                            </div>
-                                        </div>
-                                        <div class="mb-6 flex items-center">
-                                            <label class="flex-grow text-base" for="number_minutes">
-                                                <span data-i18n="html,label_minutes"></span>
-                                                <span class="text-red-500">*</span>
-                                            </label>
-                                            <div class="text-gray-600">
-                                                <input class="appearance-none border border-gray-300 rounded py-2 px-3 text-right"
-                                                       type="number" max="59" min="0" maxlength="2" id="number_minutes"
-                                                       name="number_minutes"
-                                                       data-i18n="placeholder|title,label_minutes|message_required_field"
-                                                       required>
-                                            </div>
-                                        </div>
-                                        <div class="mb-6 flex items-center">
-                                            <label class="flex-grow text-base" for="number_seconds">
-                                                <span data-i18n="html,label_seconds"></span>
-                                                <span class="text-red-500">*</span>
-                                            </label>
-                                            <div class="text-gray-600">
-                                                <input class="appearance-none border border-gray-300 rounded py-2 px-3 text-right"
-                                                       type="number" max="59" min="0" maxlength="2" id="number_seconds"
-                                                       name="number_seconds"
-                                                       data-i18n="placeholder|title,label_seconds|message_required_field"
-                                                       required>
-                                            </div>
-                                        </div>
-                                        <div class="mb-6 flex items-center">
-                                            <label class="flex-grow text-base" for="number_milliseconds">
-                                                <span data-i18n="html,label_milliseconds"></span>
-                                                <span class="text-red-500">*</span>
-                                            </label>
-                                            <div class="text-gray-600">
-                                                <input class="appearance-none border border-gray-300 rounded py-2 px-3 text-right"
-                                                       type="number" max="999" min="0" maxlength="3" id="number_milliseconds"
-                                                       name="number_milliseconds"
-                                                       data-i18n="placeholder|title,label_milliseconds|message_required_field"
-                                                       required>
-                                            </div>
+                                    <div class="mb-6 pretty p-icon p-round p-bigger">
+                                        <input type="checkbox" name="checkbox_notification_inbox"
+                                               id="checkbox_notification_inbox" autocomplete="off" value="true"
+                                               data-i18n="title,message_required_notification">
+                                        <div class="state ml-1">
+                                            <svg class="icon p-px bg-blue-400 text-gray-100 stroke-current" viewBox="0 0 20 20"
+                                                 xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                                                <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z"></path>
+                                            </svg>
+                                            <label class="pt-px" for="checkbox_notification_inbox"
+                                                   data-i18n="html,label_conversations"></label>
                                         </div>
                                     </div>
-                                </article>
-                            </div>
+                                    <div class="mb-6 pretty p-icon p-round p-bigger">
+                                        <input type="checkbox" name="checkbox_notification_alerts"
+                                               id="checkbox_notification_alerts" autocomplete="off" value="true"
+                                               data-i18n="title,message_required_notification">
+                                        <div class="state ml-1">
+                                            <svg class="icon p-px bg-blue-400 text-gray-100 stroke-current" viewBox="0 0 20 20"
+                                                 xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                                                <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z"></path>
+                                            </svg>
+                                            <label class="pt-px" for="checkbox_notification_alerts"
+                                                   data-i18n="html,label_alerts"></label>
+                                        </div>
+                                    </div>
+                                    <div class="mb-6 pretty p-icon p-round p-bigger">
+                                        <input type="checkbox" name="checkbox_notification_subscriptions"
+                                               id="checkbox_notification_subscriptions" autocomplete="off" value="true"
+                                               data-i18n="title,message_required_notification">
+                                        <div class="state ml-1">
+                                            <svg class="icon p-px bg-blue-400 text-gray-100 stroke-current" viewBox="0 0 20 20"
+                                                 xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                                                <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z"></path>
+                                            </svg>
+                                            <label class="pt-px" for="checkbox_notification_subscriptions"
+                                                   data-i18n="html,label_subscriptions"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="w-1/3 mx-5">
+                                <header class="pb-8">
+                                    <h1 class="text-2xl font-semibold" data-i18n="html,header_review"></h1>
+                                    <p class="text-base text-gray-500" data-i18n="html,text_review_interval"></p>
+                                </header>
+                                <div class="text-base flex flex-col">
+                                    <div class="mb-6 flex items-center">
+                                        <label class="flex-grow" for="number_hours">
+                                            <span data-i18n="html,label_hours"></span>
+                                            <span class="text-red-500">*</span>
+                                        </label>
+                                        <input class="appearance-none border border-gray-200 rounded py-2 px-3 text-right"
+                                               type="number" max="23" min="0" maxlength="2" id="number_hours"
+                                               name="number_hours" required
+                                               data-i18n="placeholder|title,label_hours|message_required_field">
+                                    </div>
+                                    <div class="mb-6 flex items-center">
+                                        <label class="flex-grow text-base" for="number_minutes">
+                                            <span data-i18n="html,label_minutes"></span>
+                                            <span class="text-red-500">*</span>
+                                        </label>
+                                        <input class="appearance-none border border-gray-200 rounded py-2 px-3 text-right"
+                                               type="number" max="59" min="0" maxlength="2" id="number_minutes"
+                                               name="number_minutes" required
+                                               data-i18n="placeholder|title,label_minutes|message_required_field">
+                                    </div>
+                                    <div class="mb-6 flex items-center">
+                                        <label class="flex-grow text-base" for="number_seconds">
+                                            <span data-i18n="html,label_seconds"></span>
+                                            <span class="text-red-500">*</span>
+                                        </label>
+                                        <input class="appearance-none border border-gray-200 rounded py-2 px-3 text-right"
+                                               type="number" max="59" min="0" maxlength="2" id="number_seconds"
+                                               name="number_seconds" required
+                                               data-i18n="placeholder|title,label_seconds|message_required_field">
+                                    </div>
+                                    <div class="mb-6 flex items-center">
+                                        <label class="flex-grow text-base" for="number_milliseconds">
+                                            <span data-i18n="html,label_milliseconds"></span>
+                                            <span class="text-red-500">*</span>
+                                        </label>
+                                        <input class="appearance-none border border-gray-300 rounded py-2 px-3 text-right"
+                                               type="number" max="999" min="0" maxlength="3" id="number_milliseconds"
+                                               name="number_milliseconds" required
+                                               data-i18n="placeholder|title,label_milliseconds|message_required_field">
+                                    </div>
+                                </div>
+                            </article>
                         </div>
                     </section>
                     <footer class="py-3 text-right text-xl">
@@ -307,7 +291,7 @@
                             </g>
                         </svg>
                     </div>
-                    <h3 class="text-blue-600 text-2xl font-bold" data-i18n="html,message_processing"></h3>
+                    <h3 class="text-blue-500 text-2xl font-bold" data-i18n="html,message_processing"></h3>
                 </div>
             </section>
             <div class="border-l-4 p-4 hidden alert-response" role="alert">

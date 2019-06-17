@@ -88,7 +88,6 @@ class Laneros {
 
         $(document).ajaxStop(function(objLData1, objLData2, objLData3) {
             $('body').css('height', 'auto');
-            $('html, body').animate({ scrollTop: 0 }, 'fast');
         });
     }
 
@@ -467,6 +466,7 @@ class Laneros {
 
         $('.loading-box').fadeOut(function() {
             $('.section-login').fadeIn('fast');
+            $('header').removeClass('hidden');
         });
     }
 
@@ -533,7 +533,9 @@ class Laneros {
 
         $('.loading-box').fadeOut(function() {
             $('.section-user').fadeIn('fast');
+            $('header').removeClass('hidden');
         });
+
         $('.user-id').attr('href', $('.user-id').attr('href') + objRLaneros.getUserData('inRUserId'));
         $('.token-link').attr('href', $('.token-link').attr('href') + objRLaneros.getUserData('stRToken'));
         $('.token-value').val(objRLaneros.getUserData('stRToken'));
@@ -600,10 +602,10 @@ class Laneros {
             Chrome.setStorage(objLTabOptions, objLActiveTab(stLActiveTab));
 
             $('.tab-list a').removeClass('text-white bg-blue-500 hover:bg-blue-600 hover:text-white')
-                .addClass('text-blue-500 hover:text-blue-600 hover:bg-gray-300');
+                .addClass('text-blue-500 hover:text-blue-600 hover:bg-gray-400');
 
             $(this).addClass('text-white bg-blue-500 hover:bg-blue-600 hover:text-white')
-                .removeClass('text-blue-500 hover:bg-gray-100 hover:text-blue-600');
+                .removeClass('text-blue-500 hover:bg-gray-400 hover:text-blue-600');
 
             $('#' + stLActiveTab).find('.loading-data').show();
             $('.tab-content .tab').addClass('hidden');
@@ -670,12 +672,12 @@ class Laneros {
                 if (!$(stLActiveTab).closest('li').hasClass('hidden')) {
                     stLTabId = '#' + objROptions.stRActiveTab;
                     $(stLActiveTab).addClass('text-white bg-blue-500 hover:bg-blue-600 hover:text-white')
-                        .removeClass('text-blue-500 hover:bg-gray-100 hover:text-blue-600');
+                        .removeClass('text-blue-500 hover:bg-gray-400 hover:text-blue-600');
                 }
                 else {
                     stLTabId = $('.tab-list').find('li:first:not(:hidden) a').attr('href');
                     $('.tab-list').find('li:first:not(:hidden) a').addClass('text-white bg-blue-500 hover:bg-blue-600 hover:text-white')
-                        .removeClass('text-blue-500 hover:bg-gray-100 hover:text-blue-600');
+                        .removeClass('text-blue-500 hover:bg-gray-400 hover:text-blue-600');
                 }
 
                 $(stLTabId).find('.loading-data').show();
@@ -807,8 +809,11 @@ class Laneros {
                     let stLToken = $('input[name=_xfToken]:first', objRjqXHR).val();
 
                     objRLaneros.showLogin(stLToken);
-                } else {
-                    $('.section-error').removeClass('hidden');
+                }
+                else {
+                    $('.loading-box').fadeOut(function() {
+                        $('.section-error, header').removeClass('hidden');
+                    });
                 }
             }
             catch(objRException) {
@@ -913,6 +918,9 @@ class Laneros {
                                 objRLaneros.getUserData('stRUsername') + '.' +
                                 objRLaneros.getUserData('inRUserId'));
                         }
+                        if ($(this).hasClass('user-points' )) {
+                            $(this).attr('href', $(this).attr('href') + '/trophies');
+                        }
                     });
 
                     $('#statusPoster').attr('action', $('#statusPoster').attr('action') +
@@ -976,16 +984,20 @@ class Laneros {
 
                     if (bolLIsUnread) {
                         bolLUnread = true;
-                        $(objLConversation).find('div:first').removeClass('bg-white').addClass('bg-yellow-100');
+                        $(objLConversation).addClass('bg-yellow-100');
+                    }
+
+                    if ($(objLMessageIcon).length === 1) {
+                        $(objLConversation).find('.conversation-avatar > img').attr('src', $(objLMessageIcon).attr('src'))
+                            .attr('alt', $(objLMessageIcon).attr('alt'));
+                    }
+                    else {
+                        $(objLConversation).find('.conversation-avatar > img').addClass('bg-gray-600 border border-gray-900');
                     }
 
                     $(objLMessageWith).find('ul').remove();
-
                     $(objLConversation).find('.conversation-avatar')
                         .attr('href', $(objLMessageFigure).find('a.avatar').attr('href'));
-                    $(objLConversation).find('.conversation-avatar > img').attr('src', $(objLMessageIcon).attr('src'))
-                        .attr('alt', $(objLMessageIcon).attr('alt'));
-
                     $(objLConversation).find('.conversation-title').replaceWith(objLMessage);
                     $(objLConversation).find('.conversation-with').html($(objLMessageWith).text());
                     $(objLConversation).find('.conversation-time').html(objLMessageTime);
@@ -1009,10 +1021,8 @@ class Laneros {
                         }
                     });
 
-                    $(objLConversation).find('a').removeClass().addClass('text-blue-500 hover:text-blue-600');
-                    $(objLConversation).find('a:first').removeClass().addClass('w-16');
-                    $(objLConversation).find('h6 a').removeClass();
-                    $(objLConversation).find('time').removeClass().addClass('text-orange-500 hover:text-orange-600');
+                    $(objLConversation).find('.conversation-body h6 a').addClass('hover:text-gray-900');
+                    $(objLConversation).find('.conversation-with a').addClass('text-blue-500 hover:text-blue-600');
 
                     $(objLConversation).find('a').each(function () {
                         $(this).attr('target', '_blank');
@@ -1052,6 +1062,7 @@ class Laneros {
             Chrome.addNotificationListener(objLNotifications);
         };
 
+        $('#inbox').find('.conversation-item:gt(0)').remove();
         $.getJSON(objRLaneros.getPageURL() + 'conversations/popup?_xfResponseType=json&_xfNoRedirect=1&_xfToken='  +
             objRLaneros.getUserData('stRToken'), objLResponse);
     }
@@ -1077,27 +1088,29 @@ class Laneros {
                     let objLMessage = $(this).find('.contentRow-main');
                     let objLMessageFigure = $(this).find('.contentRow-figure');
                     let objLMessageIcon = $(objLMessageFigure).find('a.avatar img');
-                    let objLMessageTime = $(this).find('.contentRow-main .contentRow-minor--smaller time');
+                    let objLMessageTime = $(objLMessage).find('.contentRow-minor--smaller time');
                     let bolLIsUnread = $(this).hasClass('new');
 
                     if (bolLIsUnread) {
                         bolLUnread = true;
-                        $(objLAlert).find('div:first').removeClass('bg-white').addClass('bg-yellow-100');
+                        $(objLAlert).addClass('bg-yellow-100');
                     }
 
-                    $(objLMessage).find('.contentRow-minor--smaller').remove();
+                    if ($(objLMessageIcon).length === 1) {
+                        $(objLAlert).find('.alert-avatar > img').attr('src', $(objLMessageIcon).attr('src'))
+                            .attr('alt', $(objLMessageIcon).attr('alt'));
+                    }
+                    else {
+                        $(objLAlert).find('.alert-avatar > img').addClass('bg-gray-600 border border-gray-900');
+                    }
 
+                    $(objLMessage).find('.contentRow-minor--smaller, i, img').remove();
                     $(objLAlert).find('.alert-avatar').attr('href', $(objLMessageFigure).find('a.avatar').attr('href'));
-                    $(objLAlert).find('.alert-avatar > img').attr('src', $(objLMessageIcon).attr('src'))
-                        .attr('alt', $(objLMessageIcon).attr('alt'));
-
                     $(objLAlert).find('.alert-content').html($(objLMessage).html());
                     $(objLAlert).find('.alert-time').html(objLMessageTime);
 
-                    $(objLAlert).find('a').removeClass().addClass('text-blue-500 hover:text-blue-600');
-                    $(objLAlert).find('a:first').removeClass().addClass('w-16');
-                    $(objLAlert).find('h6 a').removeClass();
-                    $(objLAlert).find('time').removeClass().addClass('text-orange-500 hover:text-orange-600');
+                    $(objLAlert).find('.alert-with a').addClass('text-blue-500 hover:text-blue-600');
+                    $(objLAlert).find('bdi').removeClass().addClass('font-bold');
 
                     $(objLAlert).find('a').each(function () {
                         $(this).attr('target', '_blank');
@@ -1134,6 +1147,7 @@ class Laneros {
             Chrome.addNotificationListener(objLNotifications);
         };
 
+        $('#alerts').find('.alert-item:gt(0)').remove();
         $.getJSON(objRLaneros.getPageURL() + 'account/alerts-popup?_xfResponseType=json&_xfNoRedirect=1&_xfToken='  +
             objRLaneros.getUserData('stRToken'), objLResponse);
     }
@@ -1177,17 +1191,22 @@ class Laneros {
 
                     if (bolLIsUnread) {
                         bolLUnread = true;
-                        $(objLThread).find('div:first').removeClass('bg-white').addClass('bg-yellow-100');
+                        $(objLThread).addClass('bg-yellow-100');
                     }
 
                     if ($(this).find('.structItem-secondaryIcon').length > 0) {
                         $(objLThread).addClass('border-l-4 border-blue-500')
                     }
 
-                    $(objLThread).find('.thread-avatar').attr('href', $(objLMessageFigure).find('a.avatar').attr('href'));
-                    $(objLThread).find('.thread-avatar > img').attr('src', $(objLMessageIcon).attr('src'))
-                        .attr('alt', $(objLMessageIcon).attr('alt'));
+                    if ($(objLMessageIcon).length >= 1) {
+                        $(objLThread).find('.thread-avatar > img').attr('src', $(objLMessageIcon).attr('src'))
+                            .attr('alt', $(objLMessageIcon).attr('alt'));
+                    }
+                    else {
+                        $(objLThread).find('.thread-avatar > img').addClass('bg-gray-600 border border-gray-900');
+                    }
 
+                    $(objLThread).find('.thread-avatar').attr('href', $(objLMessageFigure).find('a.avatar').attr('href'));
                     $(objLThread).find('.thread-title').replaceWith(objLMessage);
 
                     $(objLAnchorUser).html(stLUsername).attr('href', 'members/' + stLUsername + '.' + inRUserId);
@@ -1204,10 +1223,10 @@ class Laneros {
                     $(objLThread).find('.message-info .message-by').html($(objLMessageLatest).find('.structItem-minor').html());
                     $(objLThread).find('.message-info .message-at').replaceWith($(objLMessageLatest).find('a:first'));
 
-                    $(objLThread).find('a').removeClass().addClass('text-blue-500 hover:text-blue-600');
-                    $(objLThread).find('a:first').removeClass().addClass('w-16');
-                    $(objLThread).find('h6 a').removeClass();
-                    $(objLThread).find('time').removeClass().addClass('text-orange-500 hover:text-orange-600');
+                    $(objLThread).find('.thread-body h6 a').addClass('hover:text-gray-900');
+                    $(objLThread).find('.thread-starter a, .message-info a').removeClass()
+                        .addClass('text-blue-500 hover:text-blue-600');
+                    $(objLThread).find('time').closest('a').removeClass().addClass('text-orange-500 hover:text-orange-600');
 
                     $(objLThread).find('a').each(function () {
                         $(this).attr('target', '_blank');
@@ -1240,13 +1259,14 @@ class Laneros {
                         });
                 });
             }
-            if ($(objRThreads).find('.is-unread').length === 0 || !bolLUnread) {
+            else {
                 $('#subscriptions').find('.alert-subscriptions-message').removeClass('hidden');
             }
 
             Chrome.addNotificationListener(objLNotifications);
         };
 
+        $('#subscriptions').find('.thread-item:gt(0)').remove();
         $.getJSON(objRLaneros.getPageURL() + 'watched/threads?_xfResponseType=json&_xfNoRedirect=1&_xfToken='  +
             objRLaneros.getUserData('stRToken'), objLResponse);
     }
@@ -1274,37 +1294,35 @@ class Laneros {
                     let objLMessageMinor = $(this).find('.contentRow-main .contentRow-minor--smaller');
                     let objLMessageTime = $(objLMessageMinor).find('time');
                     let objLMessageTags = $(objLMessageMinor).find('.tagList');
-
                     let stLUser = $(objLMessageIcon).attr('alt') + '.' + $(objLMessageFigure).find('.avatar').data('user-id');
 
+
+                    if ($(objLMessageIcon).length === 1) {
+                        $(objLBookmark).find('.bookmark-avatar > img').attr('src', $(objLMessageIcon).attr('src'))
+                            .attr('alt', $(objLMessageIcon).attr('alt'));
+                    }
+                    else {
+                        $(objLBookmark).find('.bookmark-avatar > img').addClass('bg-gray-600 border border-gray-900');
+                    }
+
                     $(objLMessageTags).find('.u-srOnly').remove();
-
                     $(objLBookmark).find('.bookmark-avatar').attr('href', objRLaneros.getPageURL() + 'members/' + stLUser);
-                    $(objLBookmark).find('.bookmark-avatar > img').attr('src', $(objLMessageIcon).attr('src'))
-                        .attr('alt', $(objLMessageIcon).attr('alt'));
-
                     $(objLBookmark).find('.bookmark-title').replaceWith(objLMessage);
                     $(objLBookmark).find('.bookmark-message').html($(objLMessageSnippet).html());
-
                     $(objLBookmark).find('.bookmark-author').attr('href', objRLaneros.getPageURL() + 'members/' + stLUser)
                         .html($(objLMessageIcon).attr('alt'));
                     $(objLBookmark).find('.bookmark-time').html(objLMessageTime);
+                    $(objLBookmark).find('.bookmark-body h6 a').addClass('hover:text-gray-900');
 
                     if ($(objLMessageTags).find('a').length > 0) {
                         $(objLBookmark).find('.bookmark-labels').removeClass('hidden');
 
                         $(objLMessageTags).find('a').each(function () {
-                            let objLTag = $(objLBookmark).find('.bookmark-labels .bookmark-label').clone();
+                            let objLTag = $(objLBookmark).find('.bookmark-labels .bookmark-label:first').clone();
 
                             $(objLTag).html(this).removeClass('hidden').appendTo($(objLBookmark).find('.bookmark-labels'));
                         });
                     }
-
-                    $(objLBookmark).find('a').removeClass().addClass('text-blue-500 hover:text-blue-600');
-                    $(objLBookmark).find('a:first').removeClass().addClass('w-16');
-                    $(objLBookmark).find('h6 a').removeClass();
-                    $(objLBookmark).find('.bookmark-label a').removeClass().addClass('text-gray-600');
-                    $(objLBookmark).find('time').removeClass().addClass('text-orange-500 hover:text-orange-600');
 
                     $(objLBookmark).find('a').each(function () {
                         $(this).attr('target', '_blank');
@@ -1322,6 +1340,7 @@ class Laneros {
             }
         };
 
+        $('#bookmarks').find('.bookmark-item:gt(0)').remove();
         $.getJSON(objRLaneros.getPageURL() + 'account/bookmarks-popup?_xfResponseType=json&_xfNoRedirect=1&_xfToken='  +
             objRLaneros.getUserData('stRToken'), objLResponse);
     }

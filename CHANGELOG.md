@@ -2,6 +2,15 @@
 
 All notable changes to `laneros-browser-extension` will be documented in this file.
 
+## 8.0.3 | 2019-06-17
+
+### Changed
+
+- Locale updated
+- CSS dark mode review
+- javascript adjustments
+- HTML improvements
+
 ## 8.0 | 2019-06-02
 
 ### Changed
