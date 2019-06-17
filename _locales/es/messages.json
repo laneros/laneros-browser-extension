@@ -32,13 +32,13 @@
   "button_register": {
     "message": "Registrarse"
   },
-  "label_sections": {
+  "header_sections": {
     "message": "Secciones"
   },
-  "label_notifications": {
+  "header_notifications": {
     "message": "Notificaciones"
   },
-  "label_review": {
+  "header_review": {
     "message": "Intervalo de revisión"
   },
   "text_display_sections": {
@@ -72,7 +72,7 @@
     "message": "Información de usuario"
   },
   "label_consolidated_notification": {
-    "message": "Agrupadas en una sola notificacion"
+    "message": "Agrupadas (una notificación)"
   },
   "label_hours": {
     "message": "Horas"
@@ -129,7 +129,7 @@
     "message": "Usuario y/o Contraseña incorrecta, intenta de nuevo"
   },
   "label_login": {
-    "message": "Accede o registrate"
+    "message": "Accede"
   },
   "label_connect": {
     "message": "... o conectate"
@@ -138,13 +138,10 @@
     "message": "Nombre o dirección e-mail"
   },
   "label_account": {
-    "message": "¿ Ya tienes cuenta ?"
+    "message": "¿ No tienes cuenta ?"
   },
-  "label_no_account": {
-    "message": "No, crear una cuenta ahora"
-  },
-  "label_yes_account": {
-    "message": "Si, mi contraseña es:"
+  "label_register": {
+    "message": "Crea una cuenta, ahora"
   },
   "label_password": {
     "message": "Contraseña"
@@ -284,10 +281,13 @@
   "button_open_bookmark": {
     "message": "Ir al marcador"
   },
-  "label_dark_mode": {
+  "header_dark_mode": {
     "message": "Modo oscuro"
   },
   "text_dark_mode": {
+    "message": "Switch the color theme of the extension"
+  },
+  "label_dark_mode": {
     "message": "Usar el modo oscuro"
   }
 }

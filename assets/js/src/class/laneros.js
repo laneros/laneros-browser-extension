@@ -87,7 +87,6 @@ class Laneros {
         });
 
         $(document).ajaxStop(function(objLData1, objLData2, objLData3) {
-            $('.loading-box').fadeOut();
             $('body').css('height', 'auto');
             $('html, body').animate({ scrollTop: 0 }, 'fast');
         });
@@ -207,14 +206,16 @@ class Laneros {
                 $('#checkbox_notification_subscriptions').attr('checked', true);
 
                 $('#checkbox_notification_consolidated').attr('checked', false).attr('disabled', true);
-            }
+            }1
 
             $('#number_hours').val(objLReviewTime.inRHours);
             $('#number_minutes').val(objLReviewTime.inRMinutes);
             $('#number_seconds').val(objLReviewTime.inRSeconds);
             $('#number_milliseconds').val(objLReviewTime.inRMilliseconds);
 
-            $('.loading-box').fadeOut();
+            $('.loading-box').fadeOut(function() {
+                $('.options-page').fadeIn();
+            });
 
             $('input[name=checkbox_notification_consolidated]').change(function () {
                 $('input[name=checkbox_notification_inbox]').attr('checked', false).attr('disabled', false);
@@ -290,15 +291,15 @@ class Laneros {
                         Laneros.setAlarm(dtLTimeRev);
                         new Background();
 
-                        $('.alert-response h4').html(Chrome.getMessage('label_saved_success'));
-                        $('.alert-response p').html(Chrome.getMessage('message_saved_success'));
+                        $('.alert-response .alert-title').html(Chrome.getMessage('label_saved_success'));
+                        $('.alert-response .alert-text').html(Chrome.getMessage('message_saved_success'));
                         $('.alert-response').addClass('bg-green-100 border-green-500 text-green-500').removeClass('hidden')
                             .hide().slideDown();
                     } catch (objRException) {
                         new Log('saveOptions - objLCallBack').error(objRException);
 
-                        $('.alert-response h4').html(Chrome.getMessage('label_saved_error'));
-                        $('.alert-response p').html(Chrome.getMessage('message_saved_error'));
+                        $('.alert-response .alert-title').html(Chrome.getMessage('label_saved_error'));
+                        $('.alert-response .alert-text').html(Chrome.getMessage('message_saved_error'));
                         $('.alert-response').addClass('bg-red-100 border-red-500 text-red-500').removeClass('hidden').hide()
                             .slideDown();
                     }
@@ -374,7 +375,7 @@ class Laneros {
                     stLImgSrc = stLImgSrc.replace('2x', '2x-blanco');
 
                     $('body').addClass('dark-mode');
-                    $('.logo-img').attr('src', stLImgSrc).css('opacity', 0.8);
+                    $('.logo-img').attr('src', stLImgSrc);
                 }
             });
 
@@ -464,8 +465,8 @@ class Laneros {
             });
         }
 
-        $('.section-login').removeClass('hidden').hide().fadeIn('fast', function() {
-            $('.section-login #ctrl_pageLogin_login').focus();
+        $('.loading-box').fadeOut(function() {
+            $('.section-login').fadeIn('fast');
         });
     }
 
@@ -530,10 +531,17 @@ class Laneros {
             }
         };
 
-        $('.section-user').removeClass('hidden').hide().fadeIn('fast');
+        $('.loading-box').fadeOut(function() {
+            $('.section-user').fadeIn('fast');
+        });
         $('.user-id').attr('href', $('.user-id').attr('href') + objRLaneros.getUserData('inRUserId'));
         $('.token-link').attr('href', $('.token-link').attr('href') + objRLaneros.getUserData('stRToken'));
         $('.token-value').val(objRLaneros.getUserData('stRToken'));
+        $('.button-options').click(function() {
+            Chrome.createTab(1,'views/options.html');
+
+            return false;
+        });
 
         if ($.validator) {
             $('#statusPoster').validate({
@@ -586,27 +594,20 @@ class Laneros {
         });
 
         $('.tab-list a').click(function() {
-            if ($(this).hasClass('button-options')) {
-                Chrome.createTab(1,'views/options.html');
+            let stLActiveTab = $(this).attr('href').replace('#', '');
+            let objLTabOptions = { stRActiveTab: stLActiveTab };
 
-                return false;
-            }
-            else {
-                let stLActiveTab = $(this).attr('href').replace('#', '');
-                let objLTabOptions = { stRActiveTab: stLActiveTab };
+            Chrome.setStorage(objLTabOptions, objLActiveTab(stLActiveTab));
 
-                Chrome.setStorage(objLTabOptions, objLActiveTab(stLActiveTab));
+            $('.tab-list a').removeClass('text-white bg-blue-500 hover:bg-blue-600 hover:text-white')
+                .addClass('text-blue-500 hover:text-blue-600 hover:bg-gray-300');
 
-                $('.tab-list a').removeClass('text-white bg-blue-500 hover:bg-blue-600')
-                    .addClass('text-blue-500 hover:bg-gray-100');
+            $(this).addClass('text-white bg-blue-500 hover:bg-blue-600 hover:text-white')
+                .removeClass('text-blue-500 hover:bg-gray-100 hover:text-blue-600');
 
-                $(this).addClass('text-white bg-blue-500 hover:bg-blue-600')
-                    .removeClass('text-blue-500 hover:bg-gray-100');
-
-                $('#' + stLActiveTab).find('.loading-data').show();
-                $('.tab-content .tab').addClass('hidden');
-                $('#' + stLActiveTab).removeClass('hidden').hide().fadeIn();
-            }
+            $('#' + stLActiveTab).find('.loading-data').show();
+            $('.tab-content .tab').addClass('hidden');
+            $('#' + stLActiveTab).removeClass('hidden').hide().fadeIn();
         });
 
         Chrome.getStorage({bolRShowLinks: objRLaneros.getDefaults('bolRShowLinks')},
@@ -668,13 +669,13 @@ class Laneros {
 
                 if (!$(stLActiveTab).closest('li').hasClass('hidden')) {
                     stLTabId = '#' + objROptions.stRActiveTab;
-                    $(stLActiveTab).addClass('text-white bg-blue-500 hover:bg-blue-600')
-                        .removeClass('text-blue-500 hover:bg-gray-100');
+                    $(stLActiveTab).addClass('text-white bg-blue-500 hover:bg-blue-600 hover:text-white')
+                        .removeClass('text-blue-500 hover:bg-gray-100 hover:text-blue-600');
                 }
                 else {
                     stLTabId = $('.tab-list').find('li:first:not(:hidden) a').attr('href');
-                    $('.tab-list').find('li:first:not(:hidden) a').addClass('text-white bg-blue-500 hover:bg-blue-600')
-                        .removeClass('text-blue-500 hover:bg-gray-100');
+                    $('.tab-list').find('li:first:not(:hidden) a').addClass('text-white bg-blue-500 hover:bg-blue-600 hover:text-white')
+                        .removeClass('text-blue-500 hover:bg-gray-100 hover:text-blue-600');
                 }
 
                 $(stLTabId).find('.loading-data').show();
@@ -852,15 +853,15 @@ class Laneros {
                 }
 
                 if (inRConversations > 0) {
-                    $('.inbox-counter').removeClass('hidden').html(inRConversations);
+                    $('.inbox-counter').removeClass('invisible').html(inRConversations);
                 }
 
                 if (inRAlerts > 0) {
-                    $('.alert-counter').removeClass('hidden').html(inRAlerts);
+                    $('.alert-counter').removeClass('invisible').html(inRAlerts);
                 }
 
                 if (inRSubscriptions > 0) {
-                    $('.subscription-counter').removeClass('hidden').html(inRSubscriptions);
+                    $('.subscription-counter').removeClass('invisible').html(inRSubscriptions);
                 }
 
                 objRLaneros.showPopup(objRData);
@@ -918,7 +919,7 @@ class Laneros {
                         objRLaneros.getUserData('stRUsername') + '.' +
                         objRLaneros.getUserData('inRUserId') + '/post');
 
-                    $(objLShowInfo).find('img').attr('src', stLAvatar);
+                    $(objLShowInfo).find('.avatar').attr('src', stLAvatar);
                     $(objLUserData).find('.user-messages').html(inLMessages);
                     $(objLUserData).find('.user-rating').html(inLRatingPositive);
                     $(objLUserData).find('.user-points').html(inLPoints);
@@ -980,18 +981,19 @@ class Laneros {
 
                     $(objLMessageWith).find('ul').remove();
 
-                    $(objLConversation).find('a:first').attr('href', $(objLMessageFigure).find('a.avatar').attr('href'));
-                    $(objLConversation).find('a:first > img').attr('src', $(objLMessageIcon).attr('src'))
+                    $(objLConversation).find('.conversation-avatar')
+                        .attr('href', $(objLMessageFigure).find('a.avatar').attr('href'));
+                    $(objLConversation).find('.conversation-avatar > img').attr('src', $(objLMessageIcon).attr('src'))
                         .attr('alt', $(objLMessageIcon).attr('alt'));
 
-                    $(objLConversation).find('.conversation-body > h6 > a').replaceWith(objLMessage);
-                    $(objLConversation).find('.conversation-body > p:first span:first').html($(objLMessageWith).text());
-                    $(objLConversation).find('.conversation-body > p:last small').html(objLMessageTime);
+                    $(objLConversation).find('.conversation-title').replaceWith(objLMessage);
+                    $(objLConversation).find('.conversation-with').html($(objLMessageWith).text());
+                    $(objLConversation).find('.conversation-time').html(objLMessageTime);
 
                     $(objLMessageWithList).find('li').each(function(inRIndex) {
                         let objLAnchor = document.createElement('a');
 
-                        let objLWith = $(objLConversation).find('.conversation-body > p:first');
+                        let objLWith = $(objLConversation).find('.conversation-with');
 
                         let objLUser = $(this).find('span:first');
                         let stLUsername = $(objLUser).text();
@@ -1008,8 +1010,8 @@ class Laneros {
                     });
 
                     $(objLConversation).find('a').removeClass().addClass('text-blue-500 hover:text-blue-600');
-                    $(objLConversation).find('h6 a').removeClass('text-blue-500 hover:text-blue-600')
-                        .addClass('text-gray-700 hover:text-gray-800');
+                    $(objLConversation).find('a:first').removeClass().addClass('w-16');
+                    $(objLConversation).find('h6 a').removeClass();
                     $(objLConversation).find('time').removeClass().addClass('text-orange-500 hover:text-orange-600');
 
                     $(objLConversation).find('a').each(function () {
@@ -1085,14 +1087,16 @@ class Laneros {
 
                     $(objLMessage).find('.contentRow-minor--smaller').remove();
 
-                    $(objLAlert).find('a:first').attr('href', $(objLMessageFigure).find('a.avatar').attr('href'));
-                    $(objLAlert).find('a:first > img').attr('src', $(objLMessageIcon).attr('src'))
+                    $(objLAlert).find('.alert-avatar').attr('href', $(objLMessageFigure).find('a.avatar').attr('href'));
+                    $(objLAlert).find('.alert-avatar > img').attr('src', $(objLMessageIcon).attr('src'))
                         .attr('alt', $(objLMessageIcon).attr('alt'));
 
-                    $(objLAlert).find('.alert-body > p:first').html($(objLMessage).html());
-                    $(objLAlert).find('.alert-body > p:last').html(objLMessageTime);
+                    $(objLAlert).find('.alert-content').html($(objLMessage).html());
+                    $(objLAlert).find('.alert-time').html(objLMessageTime);
 
                     $(objLAlert).find('a').removeClass().addClass('text-blue-500 hover:text-blue-600');
+                    $(objLAlert).find('a:first').removeClass().addClass('w-16');
+                    $(objLAlert).find('h6 a').removeClass();
                     $(objLAlert).find('time').removeClass().addClass('text-orange-500 hover:text-orange-600');
 
                     $(objLAlert).find('a').each(function () {
@@ -1160,7 +1164,7 @@ class Laneros {
                     let objLMessageFigure = $(this).find('.structItem-cell--icon');
                     let objLMessageIcon = $(objLMessageFigure).find('a.avatar img');
 
-                    let objLParts = $(objLThread).find('.thread-body > p:first');
+                    let objLParts = $(objLThread).find('.thread-starter');
                     let objLMessagePartsList = $(this).find('.structItem-cell--main .structItem-parts');
                     let objLUser = $(objLMessagePartsList).find('li:first a.username');
                     let objLTime = $(objLMessagePartsList).find('li:eq(1) a');
@@ -1180,11 +1184,11 @@ class Laneros {
                         $(objLThread).addClass('border-l-4 border-blue-500')
                     }
 
-                    $(objLThread).find('a:first').attr('href', $(objLMessageFigure).find('a.avatar').attr('href'));
-                    $(objLThread).find('a:first > img').attr('src', $(objLMessageIcon).attr('src'))
+                    $(objLThread).find('.thread-avatar').attr('href', $(objLMessageFigure).find('a.avatar').attr('href'));
+                    $(objLThread).find('.thread-avatar > img').attr('src', $(objLMessageIcon).attr('src'))
                         .attr('alt', $(objLMessageIcon).attr('alt'));
 
-                    $(objLThread).find('.thread-body > h6 a').replaceWith(objLMessage);
+                    $(objLThread).find('.thread-title').replaceWith(objLMessage);
 
                     $(objLAnchorUser).html(stLUsername).attr('href', 'members/' + stLUsername + '.' + inRUserId);
                     $(objLAnchorUser).appendTo(objLParts);
@@ -1197,12 +1201,12 @@ class Laneros {
                     $(objLAnchorForum).html(objLForum.html()).attr('href', objLForum.attr('href'));
                     $(objLAnchorForum).appendTo(objLParts);
 
-                    $(objLThread).find('.thread-body .message-info .message-by').html($(objLMessageLatest).find('.structItem-minor').html());
-                    $(objLThread).find('.thread-body .message-info .message-at').replaceWith($(objLMessageLatest).find('a:first'));
+                    $(objLThread).find('.message-info .message-by').html($(objLMessageLatest).find('.structItem-minor').html());
+                    $(objLThread).find('.message-info .message-at').replaceWith($(objLMessageLatest).find('a:first'));
 
                     $(objLThread).find('a').removeClass().addClass('text-blue-500 hover:text-blue-600');
-                    $(objLThread).find('h6 a').removeClass('text-blue-500 hover:text-blue-600')
-                        .addClass('text-gray-700 hover:text-gray-800');
+                    $(objLThread).find('a:first').removeClass().addClass('w-16');
+                    $(objLThread).find('h6 a').removeClass();
                     $(objLThread).find('time').removeClass().addClass('text-orange-500 hover:text-orange-600');
 
                     $(objLThread).find('a').each(function () {
@@ -1275,28 +1279,31 @@ class Laneros {
 
                     $(objLMessageTags).find('.u-srOnly').remove();
 
-                    $(objLBookmark).find('a:first').attr('href', objRLaneros.getPageURL() + 'members/' + stLUser);
-                    $(objLBookmark).find('a:first > img').attr('src', $(objLMessageIcon).attr('src'))
+                    $(objLBookmark).find('.bookmark-avatar').attr('href', objRLaneros.getPageURL() + 'members/' + stLUser);
+                    $(objLBookmark).find('.bookmark-avatar > img').attr('src', $(objLMessageIcon).attr('src'))
                         .attr('alt', $(objLMessageIcon).attr('alt'));
 
-                    $(objLBookmark).find('.bookmark-body > p:first').html($(objLMessage).html());
-                    $(objLBookmark).find('.bookmark-body > p:eq(1)').html($(objLMessageSnippet).html());
+                    $(objLBookmark).find('.bookmark-title').replaceWith(objLMessage);
+                    $(objLBookmark).find('.bookmark-message').html($(objLMessageSnippet).html());
 
-                    $(objLBookmark).find('.bookmark-body > p:last > span:first a').attr('href', objRLaneros.getPageURL() + 'members/' + stLUser)
+                    $(objLBookmark).find('.bookmark-author').attr('href', objRLaneros.getPageURL() + 'members/' + stLUser)
                         .html($(objLMessageIcon).attr('alt'));
-                    $(objLBookmark).find('.bookmark-body > p:last > span:eq(2)').html(objLMessageTime);
+                    $(objLBookmark).find('.bookmark-time').html(objLMessageTime);
 
                     if ($(objLMessageTags).find('a').length > 0) {
-                        $(objLBookmark).find('.bookmark-body > p:last > .hidden').removeClass('hidden');
+                        $(objLBookmark).find('.bookmark-labels').removeClass('hidden');
 
                         $(objLMessageTags).find('a').each(function () {
-                            let objLTag = $(objLBookmark).find('.bookmark-body > p:last > span:last > span:first').clone();
+                            let objLTag = $(objLBookmark).find('.bookmark-labels .bookmark-label').clone();
 
-                            $(objLTag).html(this).removeClass('hidden').appendTo($(objLBookmark).find('.bookmark-body > p:last > span:last'));
+                            $(objLTag).html(this).removeClass('hidden').appendTo($(objLBookmark).find('.bookmark-labels'));
                         });
                     }
 
-                    $(objLBookmark).find('a').removeClass().addClass('no-underline text-blue hover:text-blue-600');
+                    $(objLBookmark).find('a').removeClass().addClass('text-blue-500 hover:text-blue-600');
+                    $(objLBookmark).find('a:first').removeClass().addClass('w-16');
+                    $(objLBookmark).find('h6 a').removeClass();
+                    $(objLBookmark).find('.bookmark-label a').removeClass().addClass('text-gray-600');
                     $(objLBookmark).find('time').removeClass().addClass('text-orange-500 hover:text-orange-600');
 
                     $(objLBookmark).find('a').each(function () {

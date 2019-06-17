@@ -2,7 +2,7 @@
   "name": "__MSG_extension_name__",
   "short_name": "__MSG_extension_short_name__",
   "description": "__MSG_extension_description__",
-  "version": "7.6.2",
+  "version": "8.0",
   "manifest_version": 2,
   "options_page": "views/options.html",
   "default_locale": "es",
@@ -25,7 +25,7 @@
   "background": {
     "persistent": false,
     "scripts": [
-      "vendor/js/jquery-3.3.1.min.js",
+      "vendor/js/jquery-3.4.1.min.js",
       "assets/js/src/class/chrome.js",
       "assets/js/src/class/log.js",
       "assets/js/src/class/laneros.js",

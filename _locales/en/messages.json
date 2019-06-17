@@ -32,13 +32,13 @@
   "button_register": {
     "message": "Register"
   },
-  "label_sections": {
+  "header_sections": {
     "message": "Sections"
   },
-  "label_notifications": {
+  "header_notifications": {
     "message": "Notifications"
   },
-  "label_review": {
+  "header_review": {
     "message": "Review interval"
   },
   "text_display_sections": {
@@ -72,7 +72,7 @@
     "message": "User information"
   },
   "label_consolidated_notification": {
-    "message": "Grouped in a single notification"
+    "message": "Grouped (single notification)"
   },
   "label_hours": {
     "message": "Hours"
@@ -129,7 +129,7 @@
     "message": "Wrong user/password, try again"
   },
   "label_login": {
-    "message": "Sign in or register"
+    "message": "Sign in"
   },
   "label_connect": {
     "message": "... or connect"
@@ -138,13 +138,10 @@
     "message": "Nick or Email address"
   },
   "label_account": {
-    "message": "Already have an account ?"
+    "message": "Don't have an account ?"
   },
-  "label_no_account": {
-    "message": "No, create an account now"
-  },
-  "label_yes_account": {
-    "message": "Yes, my password is:"
+  "label_register": {
+    "message": "Create one, now"
   },
   "label_password": {
     "message": "Password"
@@ -284,10 +281,13 @@
   "button_open_bookmark": {
     "message": "Go to bookmark"
   },
-  "label_dark_mode": {
+  "header_dark_mode": {
     "message": "Dark mode"
   },
   "text_dark_mode": {
+    "message": "Switch the color theme of the extension"
+  },
+  "label_dark_mode": {
     "message": "Use dark mode"
   }
 }

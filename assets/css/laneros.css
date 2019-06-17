@@ -8,11 +8,10 @@ a.twitterLogin,
 a.fbLogin,
 .googleLogin {
     display: block;
-    margin-bottom: 5px;
+    font-weight: 600;
     color: #FFF;
     width: 100%;
     font-size: 14px;
-    border-radius: 2px;
     text-shadow: none;
 }
 a.fbLogin {
@@ -22,11 +21,11 @@ a.twitterLogin {
     background: #77CDF0;
 }
 .popup {
-    min-width: 450px;
+    min-width: 500px;
     text-shadow: none !important;
 }
 
-img.rounded:hover {
+.tab-content img.rounded:hover {
     transform: scale(1.1);
 }
 
@@ -50,11 +49,17 @@ img.rounded:hover {
     background-color: #3182ce;
 }
 
+.dark-mode .border-gray-500 {
+    border-color: #3B3A39;
+}
 .dark-mode .border-gray-400 {
     border-color: #393736;
 }
 .dark-mode .border-gray-300 {
     border-color: #333131;
+}
+.dark-mode .border-gray-200 {
+    border-color: #504E4D;
 }
 
 .dark-mode .text-black {
@@ -68,6 +73,12 @@ img.rounded:hover {
 }
 .dark-mode .text-gray-500 {
     color: #3B3A39;
+}
+.dark-mode .text-blue-600 {
+    color: #63b3ed;
+}
+.dark-mode .hover\:text-red:hover {
+    color: #e3342f;
 }
 .dark-mode .bg-yellow-100 .text-gray-700 {
     color: #333131;
@@ -88,19 +99,18 @@ img.rounded:hover {
 }
 
 .dark-mode .hover\:text-gray-800:hover {
-    color: #2F2C2B;
+    color: #666564;
 }
 .dark-mode .hover\:text-red-500:hover {
      color: #e53e3e;
- }
+}
+.dark-mode .hover\:text-blue-700:hover {
+     color: #90cdf4;
+}
 
 .dark-mode .pretty .state label:after,
 .dark-mode .pretty .state label:before {
     background-color: #ABAAAA;
-}
-.dark-mode .pretty.p-default input:checked~.state label:after,
-.dark-mode .pretty.p-svg input:checked~.state .svg {
-    background-color: #504E4D !important;
 }
 .dark-mode input[type="number"],
 .dark-mode input[type="checkbox"],
@@ -109,23 +119,5 @@ img.rounded:hover {
 .dark-mode input[type="password"],
 .dark-mode textarea {
     background-color : #ABAAAA;
-}
-.dark-mode .hover\:text-red:hover {
-    color: #e3342f;
-}
-
-.dark-themes {
-    background-color: #20201E;
-    background-color: #292929;
-    background-color: #2E2C2B; /* 100 */
-    background-color: #2F2C2B; /* 200 */
-    background-color: #333131; /* 300 */
-    background-color: #393736; /* 400 */
-    background-color: #3B3A39; /* 500 */
-    background-color: #504E4D; /* 600 */
-    background-color: #5F5E5E; /* 700 */
-    background-color: #666564; /* 800 */
-    background-color: #A3A2A1; /* 900 */
-    background-color: #C4C3C2;
-    background-color: #FAF9F8;
+    color: #393736;
 }
