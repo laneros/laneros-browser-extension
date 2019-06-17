@@ -2,6 +2,12 @@
 
 All notable changes to `laneros-browser-extension` will be documented in this file.
 
+## 7.6.2 | 2019-04-06
+
+### Changed
+
+- Dark mode CSS update
+
 ## 7.6.1 | 2019-04-06
 
 ### Changed

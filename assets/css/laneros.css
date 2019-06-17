@@ -49,9 +49,6 @@ img.rounded:hover {
 .dark-mode .bg-blue-500 {
     background-color: #3182ce;
 }
-.dark-mode .bg-yellow-100 {
-    background-color: rgba(255,255,240,.9);
-}
 
 .dark-mode .border-gray-400 {
     border-color: #393736;
