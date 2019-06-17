@@ -257,6 +257,7 @@ class Laneros {
 
     static saveOptions() {
         try {
+            let objRLaneros = this;
             let dtLTimeRev = parseInt($('#number_milliseconds').val())
                 + (parseInt($('#number_seconds').val()) * 1000)
                 + (parseInt($('#number_minutes').val()) * 60 * 1000)
@@ -371,7 +372,7 @@ class Laneros {
                     stLImgSrc = stLImgSrc.replace('2x', '2x-blanco');
 
                     $('body').addClass('dark-mode');
-                    $('.logo-img').attr('src', stLImgSrc);
+                    $('.logo-img').attr('src', stLImgSrc).css('opacity', 0.8);
                 }
             });
 
@@ -393,7 +394,7 @@ class Laneros {
                     stLImgSrc = stLImgSrc.replace('2x', '2x-blanco');
 
                     $('body').addClass('dark-mode');
-                    $('.logo-img').attr('src', stLImgSrc);
+                    $('.logo-img').attr('src', stLImgSrc).css('opacity', 0.8);
                 }
             });
 

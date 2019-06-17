@@ -26,9 +26,7 @@ a.twitterLogin {
     min-width: 450px;
     text-shadow: none !important;
 }
-.pretty .state label:after, .pretty .state label:before {
-    background-color: whitesmoke;
-}
+
 img.rounded:hover {
     transform: scale(1.1);
 }
@@ -39,14 +37,12 @@ img.rounded:hover {
 .dark-mode .bg-white {
     background-color: #393736;
 }
-
 .dark-mode .border-grey {
     border-color: #393736;
 }
 .dark-mode .border-grey-light {
     border-color: #2F2C2B;
 }
-
 .dark-mode .bg-grey-light {
     background-color: #3B3A39;
 }
@@ -56,7 +52,6 @@ img.rounded:hover {
 .dark-mode .bg-grey-lightest {
     background-color: #5F5E5E;
 }
-
 .dark-mode .text-black {
     color: #FAF9F8;
 }
@@ -73,17 +68,14 @@ img.rounded:hover {
 .dark-mode .hover\:text-grey-darkest:hover {
     color: #A3A2A1;
 }
-
 .dark-mode .pretty .state label:after,
 .dark-mode .pretty .state label:before {
     background-color: #ABAAAA;
 }
-
 .dark-mode .pretty.p-default input:checked~.state label:after,
 .dark-mode .pretty.p-svg input:checked~.state .svg {
     background-color: #504E4D !important;
 }
-
 .dark-mode input[type="number"],
 .dark-mode input[type="checkbox"],
 .dark-mode input[type="radio"],
