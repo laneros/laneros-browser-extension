@@ -1,278 +1,275 @@
 {
   "extension_name": {
-    "message": "Laneros Browser Extension"
+    "message": "Laneros browser extension"
   },
   "extension_short_name": {
     "message": "Laneros"
   },
   "extension_description": {
-    "message": "News about technology, internet, games and entertainment. Colombian Community."
+    "message": "News about technology, Internet, games and entertainment. Colombian Community."
   },
-  "text_label_options": {
-    "message": "Laneros Browser Extension - Options"
+  "title_options_page": {
+    "message": "Options - Laneros browser extension"
   },
-  "text_data_loading": {
+  "message_data_loading": {
     "message": "Loading data"
   },
-  "text_go_to": {
-    "message": "Go to Laneros Homepage"
+  "button_homepage": {
+    "message": "Homepage"
   },
-  "text_button_show": {
-    "message": "Show"
+  "button_account": {
+    "message": "My account"
   },
-  "text_button_hide": {
-    "message": "Hide"
-  },
-  "text_label_sections": {
-    "message": "Display sections"
-  },
-  "text_label_review": {
-    "message": "Review interval"
-  },
-  "text_label_inbox": {
-    "message": "Inbox"
-  },
-  "text_label_alerts": {
-    "message": "Alerts"
-  },
-  "text_label_subscriptions": {
-    "message": "Subscriptions"
-  },
-  "text_label_notifications": {
-    "message": "Notifications"
-  },
-  "text_label_links": {
-    "message": "Others links"
-  },
-  "text_label_user_info": {
-    "message": "User info"
-  },
-  "text_label_hours": {
-    "message": "Hours"
-  },
-  "text_label_minutes": {
-    "message": "Minutes"
-  },
-  "text_label_seconds": {
-    "message": "Seconds"
-  },
-  "text_label_milliseconds": {
-    "message": "Milliseconds"
-  },
-  "text_button_save": {
+  "button_save": {
     "message": "Save"
   },
-  "text_label_saved_header": {
-    "message": "Options saved !"
-  },
-  "text_label_saved_text": {
-    "message": "Your options has been saved"
-  },
-  "text_error_saved_header": {
-    "message": "Options NOT saved !"
-  },
-  "text_error_saved_text": {
-    "message": "Your options not saved, try again"
-  },
-  "text_error_not_connected": {
-    "message": "You are not Logged in"
-  },
-  "text_messages": {
-    "message": "Messages"
-  },
-  "text_zero_inbox": {
-    "message": "There are no new messages"
-  },
-  "text_zero_alerts": {
-    "message": "There are no new alerts"
-  },
-  "text_zero_subscriptions": {
-    "message": "You do not have subscriptions without reading"
-  },
-  "text_new": {
-    "message": "New"
-  },
-  "text_go_account": {
-    "message": "Go to My account"
-  },
-  "text_error_page": {
-    "message": "Laneros may be experiencing a problem"
-  },
-  "text_button_register": {
-    "message": "Register"
-  },
-  "text_button_login": {
+  "button_login": {
     "message": "Login"
   },
-  "text_error_login": {
-    "message": "Invalid Username or Password, try again"
+  "button_register": {
+    "message": "Register"
   },
-  "text_error_message": {
-    "message": "Error"
+  "label_sections": {
+    "message": "Sections"
   },
-  "text_label_login": {
-    "message": "Sign in or register"
+  "label_notifications": {
+    "message": "Notifications"
   },
-  "text_label_nick": {
-    "message": "Nick or Email address"
+  "label_review": {
+    "message": "Review interval"
   },
-  "text_label_account": {
-    "message": "Already have an account ?"
+  "text_display_sections": {
+    "message": "Select sections to show"
   },
-  "text_label_no_account": {
-    "message": "No, create an account now"
+  "text_display_notifications": {
+    "message": "Select notifications to show"
   },
-  "text_label_yes_account": {
-    "message": "Yes, my password is:"
+  "text_review_interval": {
+    "message": "Time between updates"
   },
-  "text_label_password": {
-    "message": "Password"
-  },
-  "text_label_stay": {
-    "message": "Stay logged in"
-  },
-  "text_label_connect": {
-    "message": "... or connect"
-  },
-  "text_label_facebook": {
-    "message": "Sign In with Facebook"
-  },
-  "text_label_twitter": {
-    "message": "Sign In with Twitter"
-  },
-  "text_label_forgot": {
-    "message": "Forgot password ?"
-  },
-  "text_label_ratings": {
-    "message": "Likes"
-  },
-  "text_label_points": {
-    "message": "Points"
-  },
-  "text_label_trader_rating": {
-    "message": "Trader rating"
-  },
-  "text_label_home": {
+  "label_home": {
     "message": "Home"
   },
-  "text_zero_links": {
-    "message": "There are no links to show"
-  },
-  "text_label_nickname": {
-    "message": "Change username"
-  },
-  "text_label_personal_details": {
-    "message": "Personal details"
-  },
-  "text_label_signature": {
-    "message": "Signature"
-  },
-  "text_label_contact_details": {
-    "message": "Contact details"
-  },
-  "text_label_privacy": {
-    "message": "Privacy"
-  },
-  "text_label_preferences": {
-    "message": "Preferences"
-  },
-  "text_label_alert_preferences": {
-    "message": "Alert preferences"
-  },
-  "text_label_avatar": {
-    "message": "Avatar"
-  },
-  "text_label_external_account": {
-    "message": "External accounts"
-  },
-  "text_label_delete": {
-    "message": "Delete your account"
-  },
-  "text_label_classifieds_preferences": {
-    "message": "Trading preferences"
-  },
-  "text_label_news_feed": {
-    "message": "Your news feed"
-  },
-  "text_label_conversations": {
+  "label_conversations": {
     "message": "Conversations"
   },
-  "text_label_likes_received": {
-    "message": "Likes you've received"
+  "label_alerts": {
+    "message": "Alerts"
   },
-  "text_label_your_content": {
-    "message": "Your content"
+  "label_subscriptions": {
+    "message": "Subscriptions"
   },
-  "text_label_follow": {
-    "message": "People you follow"
+  "label_links": {
+    "message": "Links to user options"
   },
-  "text_label_ignore": {
-    "message": "People you ignore"
+  "label_user_info": {
+    "message": "User information"
   },
-  "text_label_upgrades": {
-    "message": "Account upgrades"
+  "label_consolidated_notification": {
+    "message": "Grouped in a single notification"
   },
-  "text_label_two_steps": {
-    "message": "Two-step verification"
+  "label_hours": {
+    "message": "Hours"
   },
-  "text_label_new_post": {
-    "message": "Ignore new post"
+  "label_minutes": {
+    "message": "Minutes"
   },
-  "text_label_online_status": {
-    "message": "Show online status"
+  "label_seconds": {
+    "message": "Seconds"
   },
-  "text_label_logout": {
-    "message": "Log out"
+  "label_milliseconds": {
+    "message": "Milliseconds"
   },
-  "text_label_update_status": {
-    "message": "Update your status..."
+  "message_required_field": {
+    "message": "This field is required"
   },
-  "text_button_post": {
-    "message": "Post"
+  "message_required_section": {
+    "message": "Select this section status"
   },
-  "text_label_show_all": {
-    "message": "Show All ..."
+  "message_required_notification": {
+    "message": "Select this notification status"
   },
-  "text_label_new_conversation": {
-    "message": "Start a new conversation"
-  },
-  "text_label_all_watched": {
-    "message": "Show all watched threads"
-  },
-  "text_last_message": {
-    "message": "Last message by: "
-  },
-  "label_text_display_sections": {
-    "message": "Control which sections are displayed"
-  },
-  "label_text_display_notifications": {
-    "message": "Control which notification pop-ups are displayed"
-  },
-  "text_label_consolidated_notification": {
-    "message": "Consolidated"
-  },
-  "label_text_review_interval": {
-    "message": "Time interval for checking updates (at least 1 minute)"
-  },
-  "label_text_required_section": {
-    "message": "Select the status of this section"
-  },
-  "label_text_required_review": {
-    "message": "Indicate the time between query updates to Laneros"
-  },
-  "label_text_processing": {
+  "message_processing": {
     "message": "Processing ..."
   },
-  "label_title_messages": {
-    "message": "New reply to this conversation"
+  "label_saved_success": {
+    "message": "¡ Options saved !"
   },
-  "label_title_alerts": {
-    "message": "New alert"
+  "message_saved_success": {
+    "message": "Options has been stored"
   },
-  "label_title_subscription": {
+  "label_saved_error": {
+    "message": "¡ Options NOT saved !"
+  },
+  "message_saved_error": {
+    "message": "Options has been not stored, try again"
+  },
+  "label_user_stay": {
+    "message": "Stay logged in"
+  },
+  "label_error_message": {
+    "message": "Error"
+  },
+  "label_success_message": {
+    "message": "Success"
+  },
+  "text_error_message": {
+    "message": "Laneros may be experiencing a problem"
+  },
+  "text_error_not_connected": {
+    "message": "You are not login in"
+  },
+  "text_error_login": {
+    "message": "Wrong user/password, try again"
+  },
+  "label_login": {
+    "message": "Sign in or register"
+  },
+  "label_connect": {
+    "message": "... or connect"
+  },
+  "label_nick": {
+    "message": "Nick or Email address"
+  },
+  "label_account": {
+    "message": "Already have an account ?"
+  },
+  "label_no_account": {
+    "message": "No, create an account now"
+  },
+  "label_yes_account": {
+    "message": "Yes, my password is:"
+  },
+  "label_password": {
+    "message": "Password"
+  },
+  "label_forgot": {
+    "message": "Forgot password ?"
+  },
+  "label_facebook": {
+    "message": "Sign in with Facebook"
+  },
+  "label_twitter": {
+    "message": "Sign in with Twitter"
+  },
+  "message_zero_links": {
+    "message": "There are no links to show"
+  },
+  "message_zero_inbox": {
+    "message": "There are no new messages"
+  },
+  "message_zero_alerts": {
+    "message": "There are no new alerts"
+  },
+  "message_zero_subscriptions": {
+    "message": "You do not have subscriptions without reading"
+  },
+  "text_new_conversation": {
+    "message": " new message(s)"
+  },
+  "text_new_alert": {
+    "message": " new alert(s)"
+  },
+  "text_new_subscription": {
     "message": "New message(s) on this thread/forum"
   },
-  "text_go_subscription": {
+  "label_nickname": {
+    "message": "Change username"
+  },
+  "label_personal_details": {
+    "message": "Personal details"
+  },
+  "label_signature": {
+    "message": "Signature"
+  },
+  "label_contact_details": {
+    "message": "Contact details"
+  },
+  "label_privacy": {
+    "message": "Privacy"
+  },
+  "label_preferences": {
+    "message": "Preferences"
+  },
+  "label_alert_preferences": {
+    "message": "Alert preferences"
+  },
+  "label_avatar": {
+    "message": "Avatar"
+  },
+  "label_external_accounts": {
+    "message": "External accounts"
+  },
+  "label_delete_account": {
+    "message": "Delete your account"
+  },
+  "label_classifieds_preferences": {
+    "message": "Trading preferences"
+  },
+  "label_news_feed": {
+    "message": "Your news feed"
+  },
+  "label_likes_received": {
+    "message": "Likes you've received"
+  },
+  "label_your_content": {
+    "message": "Your content"
+  },
+  "label_following": {
+    "message": "People you follow"
+  },
+  "label_ignored": {
+    "message": "People you ignore"
+  },
+  "label_upgrades": {
+    "message": "Account upgrades"
+  },
+  "label_two_steps": {
+    "message": "Two-step verification"
+  },
+  "label_ignore_messages": {
+    "message": "Ignore new post"
+  },
+  "label_online_status": {
+    "message": "Show online status"
+  },
+  "label_logout": {
+    "message": "Log out"
+  },
+  "label_update_status": {
+    "message": "Update your status..."
+  },
+  "button_post": {
+    "message": "Post"
+  },
+  "label_show_all": {
+    "message": "Show All ..."
+  },
+  "label_new_conversation": {
+    "message": "Start a new conversation"
+  },
+  "label_all_watched": {
+    "message": "Show all watched threads"
+  },
+  "label_new_messages": {
+    "message": "New reply to this conversation"
+  },
+  "label_new_alerts": {
+    "message": "New alert"
+  },
+  "label_new_subscription": {
+    "message": "New message(s) on this thread/forum"
+  },
+  "label_last_message_by": {
+    "message": "Last message by: "
+  },
+  "button_open_message": {
+    "message": "Read message"
+  },
+  "button_open_subscriptions": {
+    "message": "Watched threads"
+  },
+  "button_open_subscription": {
     "message": "Go to thread/forum"
   }
 }

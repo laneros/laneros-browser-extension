@@ -6,63 +6,11 @@ body {
     font-family: 'Segoe UI', Tahoma, sans-serif;
     margin: 0;
 }
-.loading-overlay {
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    background: rgba(204, 204, 204, .8);
-    z-index: 99;
-    text-align: center;
-}
-.loading-box {
-    min-width: 200px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin: -100px 0 0 -100px;
-}
-input[type=number] {
-    text-align: right;
-}
-legend {
-    font-size: 1.1rem;
-}
-dt, dd,
-.nav-item {
-    font-size: 11px;
-}
-a:hover {
-    text-decoration: none !important;
-}
-.feedback {
-    padding-bottom: 9px;
-}
-.border-radius-0 {
-    border-radius: 0 !important;
-}
-.bl-success {
-    border-left: 5px solid #155724 !important;
-}
-.bl-danger {
-    border-left: 5px solid #721c24 !important;
-}
-.bl-info {
-    border-left: 5px solid #0c5460 !important;
-}
-.popup {
-    min-width: 375px;
-    font-size: .75rem;
-    text-shadow: none !important;
-}
 a.twitterLogin,
 a.fbLogin,
 .googleLogin {
     display: block;
     margin-bottom: 5px;
-    padding-top: 5px;
-    padding-bottom: 5px;
     color: #FFF;
     width: 100%;
     font-size: 14px;
@@ -75,17 +23,10 @@ a.fbLogin {
 a.twitterLogin {
     background: #77CDF0;
 }
-.DateTime {
-    color: #F4804D !important;
-    font-size: 11px;
+.popup {
+    width: 450px;
+    text-shadow: none !important;
 }
-.miniMe {
-    padding: 0;
-    position: relative;
-    bottom: 15px;
-    left: 8px;
-    z-index: 10;
-}
-.nav-link {
-    padding: .5rem .9rem;
+.pretty .state label:after, .pretty .state label:before {
+    background-color: whitesmoke;
 }

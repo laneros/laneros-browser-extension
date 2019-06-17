@@ -1,463 +1,501 @@
 <!doctype html>
-<html lang="en">
+<html>
     <head>
-        <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <meta name="author" content="arthvrian@yahoo.com">
         <meta name="author" content="Alvaro Arturo Montenegro Silva">
-        <title data-message="text_label_options" data-target="html"></title>
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="../assets/css/libs/bootstrap.min.css">
+        <title data-i18n="html,title_options_page"></title>
 
-        <link rel="stylesheet" type="text/css" href="../assets/css/laneros.css" />
+        <link rel="stylesheet" href="../vendor/css/tailwind.min.css">
+        <link rel="stylesheet" href="../vendor/css/pretty-checkbox.min.css">
+
+        <link rel="stylesheet" href="../assets/css/laneros.css">
     </head>
-    <body class="container px-0 popup">
-        <div class="loading-overlay">
-            <div class="loading-box">
-                <img src="../assets/img/ajax-loader.gif" alt="Icon" class="img-fluid mb-2" width="200" />
-                <h3 data-message="text_data_loading" data-target="html" class="text-info"></h3>
+    <body class="w-full h-screen popup">
+        <div class="fixed pin z-40 overflow-auto bg-grey-lighter flex loading-box">
+            <div class="relative w-full m-auto">
+                <div class="w-full text-center">
+                    <img src="../assets/img/ajax-loader.gif" alt="Icon" class="mb-5" width="200">
+                    <h3 data-i18n="html,message_data_loading" class="text-blue text-xl"></h3>
+                </div>
             </div>
         </div>
-        <form action="login/login" method="post" id="pageLogin" name="pageLogin" class="external-link card section-login d-none">
-            <header class="card-header">
-                <a class="external-link" target="_blank" data-message="text_go_to" data-target="title" href="/">
-                    <img class="py-2" src="../assets/img/logo.png" alt="Logo Laneros" width="240">
-                </a>
-            </header>
-            <article class="card-body p-0">
-                <div class="alert alert-danger alert-error p-2 pl-3 mb-0 border-radius-0 bl-danger">
-                    <h5 class="mb-1" data-message="text_error_message" data-target="html"></h5>
-                    <p class="mb-1" data-message="text_error_not_connected" data-target="html"></p>
-                </div>
-                <fieldset class="px-3">
-                    <legend data-message="text_label_login" data-target="html" class="pt-2"></legend>
-                    <div class="form-row mb-2">
-                        <label class="col-12 form-control-label" for="ctrl_pageLogin_login" data-message="text_label_nick"
-                               data-target="html"></label>
-                        <div class="col-12">
-                            <input type="text" class="form-control" name="login" id="ctrl_pageLogin_login"
-                                   data-message="text_label_nick" data-target="placeholder" tabindex="1" required>
-                        </div>
-                        <div class="col-12 pb-1 d-none">&nbsp;</div>
-                    </div>
-                    <div class="form-row mb-2">
-                        <label class="col-12 form-control-label" data-message="text_label_account" data-target="html"></label>
-                        <div class="col-12">
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" name="register" id="ctrl_pageLogin_not_registered"
-                                       autocomplete="off" required value="1" class="custom-control-input"
-                                       data-message="label_text_required_section" data-target="title">
-                                <label class="custom-control-label" for="ctrl_pageLogin_not_registered"
-                                       data-message="text_label_no_account" data-target="html"></label>
-                            </div>
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" name="register" id="ctrl_pageLogin_registered" checked
-                                       autocomplete="off" value="0" class="custom-control-input">
-                                <label class="custom-control-label" for="ctrl_pageLogin_registered"
-                                       data-message="text_label_yes_account" data-target="html"></label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-row mx-0">
-                        <label class="form-control-label" for="ctrl_pageLogin_password" data-message="text_label_password"
-                               data-target="html"></label>
-                        <input type="password" class="form-control" name="password" id="ctrl_pageLogin_password" data-message="text_label_password"
-                               data-target="placeholder" tabindex="2" required>
-                        <div class="col-12 pb-1 d-none">&nbsp;</div>
-                    </div>
-                    <a href="lost-password/" class="external-link" data-message="text_label_forgot" data-target="html"></a>
-                </fieldset>
-                <fieldset class="px-3">
-                    <legend data-message="text_label_connect" data-target="html" class="pt-2"></legend>
-                    <div class="text-center">
-                        <a href="register/facebook?reg=1" class="btn fbLogin external-link">
-                            <span data-message="text_label_facebook" data-target="html"></span></a>
-                        <a href="register/twitter?reg=1" class="btn twitterLogin external-link">
-                            <span data-message="text_label_twitter" data-target="html"></span></a>
-                    </div>
-                </fieldset>
-            </article>
-            <footer class="card-footer">
-                <input type="hidden" name="cookie_check" value="1">
-                <input type="hidden" name="redirect" value=".">
-                <input type="hidden" name="_xfToken">
-                <input type="hidden" name="_xfResponseType" value="json">
-                <div class="form-group mb-1">
-                    <button type="submit" class="btn btn-primary" data-message="text_button_login" data-target="html"></button>
-                    <div class="ml-2 custom-control custom-checkbox custom-control-inline">
-                        <input type="checkbox" name="remember" id="ctrl_pageLogin_remember"
-                               autocomplete="off" value="1" class="custom-control-input">
-                        <label class="custom-control-label" for="ctrl_pageLogin_remember"
-                               data-message="text_label_stay" data-target="html"></label>
-                    </div>
-                </div>
-            </footer>
-        </form>
-        <div class="card section-error d-none">
-            <header class="card-header">
-                <a class="external-link" target="_blank" data-message="text_go_to" data-target="title" href="/">
-                    <img class="py-2" src="../assets/img/logo.png" alt="Logo Laneros" width="240">
-                </a>
-            </header>
-            <article class="card-body p-0">
-                <div class="alert alert-danger alert-error p-2 pl-3 mb-0 border-radius-0 bl-danger">
-                    <h5 class="mb-1" data-message="text_error_message" data-target="html"></h5>
-                    <p class="mb-1" data-message="text_error_page" data-target="html"></p>
-                </div>
-            </article>
-        </div>
-        <div class="card section-user d-none">
-            <header class="card-header">
-                <a class="external-link" target="_blank" data-message="text_go_to" data-target="title" href="/">
-                    <img class="py-2" src="../assets/img/logo.png" alt="Logo Laneros" width="240">
-                </a>
-            </header>
-            <article class="card-body p-0">
-                <div class="alert alert-danger alert-error p-2 pl-3 mb-0 border-radius-0 bl-danger d-none">
-                    <h5 class="mb-1" data-message="text_error_message" data-target="html"></h5>
-                    <p class="mb-1" data-message="text_error_page" data-target="html"></p>
-                </div>
-                <div class="media media-user-info p-2 d-none">
-                    <a class="align-self-center external-link" href="members/">
-                        <img class="mr-3" src="../assets/img/blank.png" alt="Avatar" width="96">
+        <div class="w-full">
+            <div class="container section-error hidden">
+                <header class="p-2 bg-grey-light rounded-tr rounded-tl">
+                    <a class="external-link" target="_blank" data-i18n="title,button_homepage" href="/">
+                        <img class="pt-1" src="../assets/img/logo.png" alt="Logo Laneros" width="240">
                     </a>
-                    <div class="media-body">
-                        <h6 class="mt-0 text-right">
-                            <a href="members/" class="external-link"></a>
+                </header>
+                <div class="border-l-4 bg-red-lightest border-red text-red px-4 py-2" role="alert">
+                    <h4 class="text-base mb-1" data-i18n="html,label_error_message"></h4>
+                    <p class="text-sm py-1" data-i18n="html,text_error_message"></p>
+                </div>
+            </div>
+            <form class="external-link section-login hidden" role="form" action="login/login" method="post" id="pageLogin"
+                  name="pageLogin">
+                <header class="p-2 bg-grey-light rounded-tr rounded-tl">
+                    <a class="external-link" target="_blank" data-i18n="title,button_homepage" href="/">
+                        <img class="pt-1" src="../assets/img/logo.png" alt="Logo Laneros" width="240">
+                    </a>
+                </header>
+                <main class="bg-grey-lightest">
+                    <div class="border-l-4 bg-red-lightest border-red text-red px-4 py-2 alert-message" role="alert">
+                        <h4 class="text-base mb-1" data-i18n="html,label_error_message"></h4>
+                        <p class="text-sm py-1" data-i18n="html,text_error_not_connected"></p>
+                    </div>
+                    <fieldset class="px-3 my-3 mb-px">
+                        <legend data-i18n="html,label_login" class="text-lg"></legend>
+                        <div class="flex-row mb-1 pt-3">
+                            <div class="items-center">
+                                <label class="flex-grow text-sm" for="ctrl_pageLogin_login">
+                                    <span data-i18n="html,label_nick"></span>
+                                    <span class="text-red">*</span>
+                                </label>
+                                <div class="flex-grow text-sm py-1">
+                                    <input class="appearance-none border border-grey rounded py-2 px-3 text-grey-darkest w-full"
+                                           type="text" id="ctrl_pageLogin_login" name="login" required
+                                           data-i18n="placeholder|title,label_nick|message_required_field">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-1 pt-3 flex-row">
+                            <label class="text-sm flex-grow" data-i18n="html,label_account"></label>
+                            <div class="flex-grow py-2">
+                                <div class="pretty p-default p-round">
+                                    <input type="radio" name="register" id="ctrl_pageLogin_not_registered"
+                                           autocomplete="off" required value="1" data-i18n="title,message_required_field">
+                                    <div class="state">
+                                        <label for="ctrl_pageLogin_not_registered" data-i18n="html,label_no_account">Male</label>
+                                    </div>
+                                </div>
+                                <div class="pretty p-default p-round">
+                                    <input type="radio" name="register" id="ctrl_pageLogin_registered" checked
+                                           autocomplete="off" required value="0" data-i18n="title,message_required_field">
+                                    <div class="state">
+                                        <label for="ctrl_pageLogin_registered" data-i18n="html,label_yes_account">Male</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex-row mb-1 pt-3">
+                            <label class="text-sm" for="ctrl_pageLogin_password">
+                                <span data-i18n="html,label_password"></span>
+                                <span class="text-red">*</span>
+                            </label>
+                            <div class="text-sm py-1">
+                                <input class="appearance-none border border-grey rounded py-2 px-3 text-grey-darkest w-full"
+                                       type="password" id="ctrl_pageLogin_password" name="password" required
+                                       data-i18n="placeholder|title,label_password|message_required_field">
+                                <a href="lost-password/" class="external-link no-underline text-xs pt-1" data-i18n="html,label_forgot"></a>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset class="px-3 mb-px">
+                        <legend data-i18n="html,label_connect" class="pt-2 text-lg"></legend>
+                        <div class="text-center py-3 w-full">
+                            <a href="register/facebook?reg=1" class="external-link py-2 no-underline fbLogin">
+                                <span data-i18n="html,label_facebook"></span></a>
+                            <a href="register/twitter?reg=1" class="external-link py-2 no-underline twitterLogin">
+                                <span data-i18n="html,label_twitter"></span></a>
+                        </div>
+                    </fieldset>
+                </main>
+                <footer class="px-5 py-3 bg-grey-light">
+                    <input type="hidden" name="cookie_check" value="1">
+                    <input type="hidden" name="redirect" value=".">
+                    <input type="hidden" name="_xfToken">
+                    <input type="hidden" name="_xfResponseType" value="json">
+                    <div class="flex items-center">
+                        <button class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded text-base"
+                                type="submit" data-i18n="html,button_login"></button>
+                        <div class="pretty p-svg p-curve p-bigger ml-4">
+                            <input type="checkbox" name="remember"
+                                   id="ctrl_pageLogin_remember" autocomplete="off" value="1"
+                                   data-i18n="title,message_required_section">
+                            <div class="state p-primary ml-1">
+                                <svg class="svg svg-icon" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
+                                </svg>
+                                <label class="pt-px" for="ctrl_pageLogin_remember" data-i18n="html,label_user_stay"></label>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </form>
+            <div class="container section-user hidden">
+                <header class="p-2 bg-grey-light rounded-tr rounded-tl">
+                    <a class="external-link" target="_blank" data-i18n="title,button_homepage" href="/">
+                        <img class="pt-1" src="../assets/img/logo.png" alt="Logo Laneros" width="240">
+                    </a>
+                </header>
+                <div class="user-info-container p-2 hidden items-center">
+                    <a class="external-link" href="members/" target="_blank">
+                        <img src="../assets/img/blank.png" alt="Avatar" width="48">
+                    </a>
+                    <div class="ml-3 user-info">
+                        <h6 class="text-sm">
+                            <a href="members/" class="external-link no-underline text-blue" target="_blank"></a>
                             <br>
                             <small></small>
                         </h6>
-                        <dl class="row my-1">
-                            <dt class="col-6" data-message="text_messages" data-target="html"></dt>
-                            <dd class="col-6 text-right mb-0">-</dd>
-                            <dt class="col-6" data-message="text_label_ratings" data-target="html"></dt>
-                            <dd class="col-6 text-right mb-0">-</dd>
-                            <dt class="col-6" data-message="text_label_points" data-target="html"></dt>
-                            <dd class="col-6 text-right mb-0">-</dd>
-                            <dt class="col-6" data-message="text_label_trader_rating" data-target="html"></dt>
-                            <dd class="col-6 feedbackStats text-right mb-0">
-                                <span class="positive text-success"></span> /
-                                <span class="neutral"></span> /
-                                <span class="negative text-danger"></span>
-                            </dd>
-                        </dl>
+                    </div>
+                    <div class="ml-3 user-data flex flex-grow">
+                        <div class="mx-2 text-center">
+                            <div class="w-5 h-5 mx-auto">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" fill="currentColor">
+                                    <path d="M416 192c0-88.4-93.1-160-208-160S0 103.6 0 192c0 34.3 14.1 65.9 38 92-13.4 30.2-35.5 54.2-35.8 54.5-2.2 2.3-2.8 5.7-1.5 8.7S4.8 352 8 352c36.6 0 66.9-12.3 88.7-25 32.2 15.7 70.3 25 111.3 25 114.9 0 208-71.6 208-160zm122 220c23.9-26 38-57.7 38-92 0-66.9-53.5-124.2-129.3-148.1.9 6.6 1.3 13.3 1.3 20.1 0 105.9-107.7 192-240 192-10.8 0-21.3-.8-31.7-1.9C207.8 439.6 281.8 480 368 480c41 0 79.1-9.2 111.3-25 21.8 12.7 52.1 25 88.7 25 3.2 0 6.1-1.9 7.3-4.8 1.3-2.9.7-6.3-1.5-8.7-.3-.3-22.4-24.2-35.8-54.5z"></path>
+                                </svg>
+                            </div>
+                            <div class="user-messages my-1">-</div>
+                        </div>
+                        <div class="mx-2 text-center">
+                            <div class="w-5 h-5 mx-auto">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor">
+                                    <path d="M104 224H24c-13.255 0-24 10.745-24 24v240c0 13.255 10.745 24 24 24h80c13.255 0 24-10.745 24-24V248c0-13.255-10.745-24-24-24zM64 472c-13.255 0-24-10.745-24-24s10.745-24 24-24 24 10.745 24 24-10.745 24-24 24zM384 81.452c0 42.416-25.97 66.208-33.277 94.548h101.723c33.397 0 59.397 27.746 59.553 58.098.084 17.938-7.546 37.249-19.439 49.197l-.11.11c9.836 23.337 8.237 56.037-9.308 79.469 8.681 25.895-.069 57.704-16.382 74.757 4.298 17.598 2.244 32.575-6.148 44.632C440.202 511.587 389.616 512 346.839 512l-2.845-.001c-48.287-.017-87.806-17.598-119.56-31.725-15.957-7.099-36.821-15.887-52.651-16.178-6.54-.12-11.783-5.457-11.783-11.998v-213.77c0-3.2 1.282-6.271 3.558-8.521 39.614-39.144 56.648-80.587 89.117-113.111 14.804-14.832 20.188-37.236 25.393-58.902C282.515 39.293 291.817 0 312 0c24 0 72 8 72 81.452z"></path>
+                                </svg>
+                            </div>
+                            <div class="user-rating my-1">-</div>
+                        </div>
+                        <div class="mx-2 text-center">
+                            <div class="w-5 h-5 mx-auto">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" fill="currentColor">
+                                    <path d="M248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm0 432c-101.69 0-184-82.29-184-184 0-101.69 82.29-184 184-184 101.69 0 184 82.29 184 184 0 101.69-82.29 184-184 184zm0-312c-70.69 0-128 57.31-128 128s57.31 128 128 128 128-57.31 128-128-57.31-128-128-128zm0 192c-35.29 0-64-28.71-64-64s28.71-64 64-64 64 28.71 64 64-28.71 64-64 64z"></path>
+                                </svg>
+                            </div>
+                            <p class="user-points my-1">-</p>
+                        </div>
+                        <div class="mx-1 flex justify-center flex-grow border-l border-black">
+                            <div class="mx-2 text-center">
+                                <div class="w-5 h-5 mx-auto text-green">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" fill="currentColor">
+                                        <path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm80 168c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm-160 0c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm194.8 170.2C334.3 380.4 292.5 400 248 400s-86.3-19.6-114.8-53.8c-13.6-16.3 11-36.7 24.6-20.5 22.4 26.9 55.2 42.2 90.2 42.2s67.8-15.4 90.2-42.2c13.4-16.2 38.1 4.2 24.6 20.5z"></path>
+                                    </svg>
+                                </div>
+                                <div class="user-feedback-positive my-1">-</div>
+                            </div>
+                            <div class="mx-2 text-center">
+                                <div class="w-5 h-5 mx-auto text-grey">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" fill="currentColor">
+                                        <path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm-80 168c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm176 192H152c-21.2 0-21.2-32 0-32h192c21.2 0 21.2 32 0 32zm-16-128c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z"></path>
+                                    </svg>
+                                </div>
+                                <div class="user-feedback-neutral my-1">-</div>
+                            </div>
+                            <div class="mx-2 text-center">
+                                <div class="w-5 h-5 mx-auto text-red">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" fill="currentColor">
+                                        <path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm80 168c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm-160 0c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm170.2 218.2C315.8 367.4 282.9 352 248 352s-67.8 15.4-90.2 42.2c-13.5 16.3-38.1-4.2-24.6-20.5C161.7 339.6 203.6 320 248 320s86.3 19.6 114.7 53.8c13.6 16.2-11 36.7-24.5 20.4z"></path>
+                                    </svg>
+                                </div>
+                                <div class="user-feedback-negative my-1">-</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="tabs">
-                    <ul class="nav nav-pills nav-fill nav-menu bg-light border-top" role=tablist>
-                        <li class="nav-item">
-                            <a class="nav-link border-radius-0 h-100" href="#home" data-toggle="tab" role="tab">
-                                <span data-message="text_label_home" data-target="html"></span>
+                <div class="tab-container">
+                    <ul class="list-reset flex text-center text-sm font-semibold border-t border-b border-grey-light bg-grey-lighter tab-list">
+                        <li class="flex-grow hidden home-tab-nav">
+                            <a class="block text-blue hover:bg-grey-lightest py-2 px-3 no-underline" href="#home"
+                               data-i18n="html,label_home"></a>
+                        </li>
+                        <li class="flex-grow hidden inbox-tab-nav">
+                            <a class="block text-blue hover:bg-grey-lightest py-2 px-3 no-underline flex justify-center"
+                               href="#inbox">
+                                <span class="mr-1" data-i18n="html,label_conversations"></span>
+                                <small class="rounded-full bg-red px-1 py-px font-bold text-white hidden inbox-counter"></small>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link border-radius-0 h-100" href="#inbox" data-toggle="tab" role="tab">
-                                <span data-message="text_label_inbox" data-target="html"></span>
-                                <span class="badge badge-pill badge-danger external-inbox"></span>
+                        <li class="flex-grow hidden alerts-tab-nav">
+                            <a class="block text-blue hover:bg-grey-lightest py-2 px-3 no-underline flex justify-center"
+                               href="#alerts">
+                                <span class="mr-1" data-i18n="html,label_alerts"></span>
+                                <small class="rounded-full bg-red px-1 py-px font-bold text-white hidden alert-counter"></small>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link border-radius-0 h-100" href="#alerts" data-toggle="tab" role="tab">
-                                <span data-message="text_label_alerts" data-target="html"></span>
-                                <span class="badge badge-pill badge-danger external-alerts"></span>
+                        <li class="flex-grow hidden subscriptions-tab-nav">
+                            <a class="block text-blue hover:bg-grey-lightest py-2 px-3 no-underline flex justify-center"
+                               href="#subscriptions">
+                                <span class="mr-1" data-i18n="html,label_subscriptions"></span>
+                                <small class="rounded-full bg-red px-1 py-px font-bold text-white hidden subscription-counter"></small>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link border-radius-0 h-100" href="#subscriptions" data-toggle="tab" role="tab">
-                                <span data-message="text_label_subscriptions" data-target="html"></span>
-                                <span class="badge badge-pill badge-danger external-subscriptions"></span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link external-options" href="#">
-                                <img src="../assets/img/icon-gear.png" alt="Options" class="img-fluid" width="18">
+                        <li class="flex-1">
+                            <a class="block text-blue hover:bg-grey-lightest py-2 px-3 no-underline flex justify-center button-options"
+                               href="#">
+                                <div class="w-4 h-4 mx-auto text-black">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor">
+                                        <path fill="currentColor" d="M444.788 291.1l42.616 24.599c4.867 2.809 7.126 8.618 5.459 13.985-11.07 35.642-29.97 67.842-54.689 94.586a12.016 12.016 0 0 1-14.832 2.254l-42.584-24.595a191.577 191.577 0 0 1-60.759 35.13v49.182a12.01 12.01 0 0 1-9.377 11.718c-34.956 7.85-72.499 8.256-109.219.007-5.49-1.233-9.403-6.096-9.403-11.723v-49.184a191.555 191.555 0 0 1-60.759-35.13l-42.584 24.595a12.016 12.016 0 0 1-14.832-2.254c-24.718-26.744-43.619-58.944-54.689-94.586-1.667-5.366.592-11.175 5.459-13.985L67.212 291.1a193.48 193.48 0 0 1 0-70.199l-42.616-24.599c-4.867-2.809-7.126-8.618-5.459-13.985 11.07-35.642 29.97-67.842 54.689-94.586a12.016 12.016 0 0 1 14.832-2.254l42.584 24.595a191.577 191.577 0 0 1 60.759-35.13V25.759a12.01 12.01 0 0 1 9.377-11.718c34.956-7.85 72.499-8.256 109.219-.007 5.49 1.233 9.403 6.096 9.403 11.723v49.184a191.555 191.555 0 0 1 60.759 35.13l42.584-24.595a12.016 12.016 0 0 1 14.832 2.254c24.718 26.744 43.619 58.944 54.689 94.586 1.667 5.366-.592 11.175-5.459 13.985L444.788 220.9a193.485 193.485 0 0 1 0 70.2zM336 256c0-44.112-35.888-80-80-80s-80 35.888-80 80 35.888 80 80 80 80-35.888 80-80z"></path>
+                                    </svg>
+                                </div>
                             </a>
                         </li>
                     </ul>
                     <div class="tab-content">
-                        <div class="tab-pane" id="home" role="tabpanel">
-                            <div class="card border-0">
-                                <article class="card-body p-0 border-top">
-                                    <div class="alert alert-danger alert-links p-2 pl-3 mb-0 border-radius-0 bl-danger d-none">
-                                        <p class="mb-0" data-message="text_zero_links" data-target="html"></p>
-                                    </div>
-                                    <div class="row m-0 d-none pt-2">
-                                        <ul class="nav flex-column pr-0 col-6 nav-menu pb-1">
-                                            <li class="nav-item">
-                                                <a class="nav-link text-dark external-link" href="account/change-username"
-                                                   data-message="text_label_nickname" data-target="html"></a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link text-dark external-link" href="account/personal-details"
-                                                   data-message="text_label_personal_details" data-target="html"></a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link text-dark external-link" href="account/signature"
-                                                   data-message="text_label_signature" data-target="html"></a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link text-dark external-link" href="account/contact-details"
-                                                   data-message="text_label_contact_details" data-target="html"></a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link text-dark external-link" href="account/privacy"
-                                                   data-message="text_label_privacy" data-target="html"></a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link text-dark external-link" href="account/preferences"
-                                                   data-message="text_label_preferences" data-target="html"></a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link text-dark external-link" href="account/alert-preferences"
-                                                   data-message="text_label_alert_preferences" data-target="html"></a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link text-dark external-link" href="account/avatar"
-                                                   data-message="text_label_avatar" data-target="html"></a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link text-dark external-link" href="account/external-accounts"
-                                                   data-message="text_label_external_account" data-target="html"></a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link text-dark external-link" href="account/security"
-                                                   data-message="text_label_password" data-target="html"></a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link text-dark external-link" href="account/delete-account"
-                                                   data-message="text_label_delete" data-target="html"></a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link text-dark external-link" href="calificaciones/preferences"
-                                                   data-message="text_label_classifieds_preferences" data-target="html"></a>
-                                            </li>
-                                        </ul>
-                                        <ul class="nav flex-column pr-0 col-6 nav-menu pb-1">
-                                            <li class="nav-item">
-                                                <a class="nav-link text-dark external-link" href="account/news-feed"
-                                                   data-message="text_label_news_feed" data-target="html"></a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link text-dark external-link" href="conversations/">
-                                                    <span data-message="text_label_conversations" data-target="html"></span>
-                                                    <span class="badge badge-pill badge-danger float-right external-inbox"></span>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link text-dark external-link" href="account/alerts">
-                                                    <span data-message="text_label_alerts" data-target="html"></span>
-                                                    <span class="badge badge-pill badge-danger float-right external-alerts"></span>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link text-dark external-link" href="account/likes"
-                                                   data-message="text_label_likes_received" data-target="html" ></a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link text-dark external-user-id" href="search/member?user_id="
-                                                   data-message="text_label_your_content" data-target="html"></a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link text-dark external-link" href="account/following"
-                                                   data-message="text_label_follow" data-target="html"></a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link text-dark external-link" href="account/ignored"
-                                                   data-message="text_label_ignore" data-target="html"></a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link text-dark external-link" href="account/upgrades"
-                                                   data-message="text_label_upgrades" data-target="html"></a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link text-dark external-link" href="account/two-step"
-                                                   data-message="text_label_two_steps" data-target="html"></a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link text-dark external-link" href="cuenta/ignorar-mensajes"
-                                                   data-message="text_label_new_post" data-target="html"></a>
-                                            </li>
-                                        </ul>
-                                        <ul class="nav flex-column pr-0 col-6 border-top">
-                                            <li class="nav-item mt-1">
-                                                <form action="account/toggle-visibility" method="post" class="external-link"
-                                                      name="visibilityForm" id="visibilityForm">
-                                                    <div class="ml-2 custom-control custom-checkbox custom-control-inline">
-                                                        <input type="checkbox" name="visible"
-                                                               autocomplete="off" value="1" class="custom-control-input">
-                                                        <label class="custom-control-label mt-1" for="ctrl_pageLogin_remember"
-                                                               data-message="text_label_online_status" data-target="html"></label>
-                                                    </div>
-                                                    <input type="hidden" name="_xfToken">
-                                                    <input type="hidden" name="_xfNoRedirect" value="1">
-                                                    <input type="hidden" name="_xfResponseType" value="json">
-                                                </form>
-                                            </li>
-                                        </ul>
-                                        <ul class="nav flex-column pr-0 col-6 border-top">
-                                            <li class="nav-item">
-                                                <a class="nav-link text-dark external-link external-token"
-                                                   href="logout/?_xfToken=" data-message="text_label_logout"
-                                                   data-target="html"></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </article>
-                                <footer class="card-footer p-1">
-                                    <ul class="nav flex-column pr-0">
-                                        <li class="nav-item">
-                                            <form action="members/" method="post" name="statusPoster" id="statusPoster">
-                                          <textarea name="message" rows="1" data-message="text_label_update_status"
-                                                    data-target="placeholder" class="form-control form-control-sm" id="message"></textarea>
-                                                <div class="d-none status-message">
-                                                    <span class="text-success status-length">140</span>
-                                                    <button type="submit" class="btn btn-primary btn-sm float-right mt-1"
-                                                            data-message="text_button_post" data-target="html"></button>
-                                                    <input type="hidden" name="_xfToken" value="">
-                                                    <input type="hidden" name="return" value="1">
-                                                </div>
-                                            </form>
+                        <div class="tab hidden" id="home">
+                            <div class="border-l-4 bg-red-lightest border-red text-red px-4 py-2 hidden alert-home-message"
+                                 role="alert">
+                                <p class="text-sm py-1" data-i18n="html,message_zero_links"></p>
+                            </div>
+                            <div class="hidden user-links">
+                                <div class="flex">
+                                    <ul class="list-reset flex-col text-grey-darker w-1/2 p-2">
+                                        <li class="p-2 mx-2 my-1">
+                                            <a class="external-link no-underline text-grey-darker hover:text-black"
+                                               href="account/change-username" data-i18n="html,label_nickname"></a>
+                                        </li>
+                                        <li class="p-2 mx-2 my-1">
+                                            <a class="external-link no-underline text-grey-darker hover:text-black"
+                                               href="account/personal-details" data-i18n="html,label_personal_details"></a>
+                                        </li>
+                                        <li class="p-2 mx-2 my-1">
+                                            <a class="external-link no-underline text-grey-darker hover:text-black"
+                                               href="account/signature" data-i18n="html,label_signature"></a>
+                                        </li>
+                                        <li class="p-2 mx-2 my-1">
+                                            <a class="external-link no-underline text-grey-darker hover:text-black"
+                                               href="account/contact-details" data-i18n="html,label_contact_details"></a>
+                                        </li>
+                                        <li class="p-2 mx-2 my-1">
+                                            <a class="external-link no-underline text-grey-darker hover:text-black"
+                                               href="account/privacy" data-i18n="html,label_privacy"></a>
+                                        </li>
+                                        <li class="p-2 mx-2 my-1">
+                                            <a class="external-link no-underline text-grey-darker hover:text-black"
+                                               href="account/preferences" data-i18n="html,label_preferences"></a>
+                                        </li>
+                                        <li class="p-2 mx-2 my-1">
+                                            <a class="external-link no-underline text-grey-darker hover:text-black"
+                                               href="account/alert-preferences" data-i18n="html,label_alert_preferences"></a>
+                                        </li>
+                                        <li class="p-2 mx-2 my-1">
+                                            <a class="external-link no-underline text-grey-darker hover:text-black"
+                                               href="account/avatar" data-i18n="html,label_avatar"></a>
+                                        </li>
+                                        <li class="p-2 mx-2 my-1">
+                                            <a class="external-link no-underline text-grey-darker hover:text-black"
+                                               href="account//external-accounts" data-i18n="html,label_external_accounts"></a>
+                                        </li>
+                                        <li class="p-2 mx-2 my-1">
+                                            <a class="external-link no-underline text-grey-darker hover:text-black"
+                                               href="account/security" data-i18n="html,label_password"></a>
+                                        </li>
+                                        <li class="p-2 mx-2 my-1">
+                                            <a class="external-link no-underline text-grey-darker hover:text-black"
+                                               href="account/delete-account" data-i18n="html,label_delete_account"></a>
+                                        </li>
+                                        <li class="p-2 mx-2 my-1">
+                                            <a class="external-link no-underline text-grey-darker hover:text-black"
+                                               href="calificaciones/preferences" data-i18n="html,label_classifieds_preferences"></a>
                                         </li>
                                     </ul>
-                                </footer>
+                                    <ul class="list-reset flex-col text-grey-darker w-1/2 p-2">
+                                        <li class="p-2 mx-2 my-1">
+                                            <a class="external-link no-underline text-grey-darker hover:text-black"
+                                               href="account/news-feed" data-i18n="html,label_news_feed"></a>
+                                        </li>
+                                        <li class="p-2 mx-2 my-1">
+                                            <a class="external-link no-underline text-grey-darker hover:text-black flex justify-between"
+                                               href="conversations/">
+                                                <span class="mr-1" data-i18n="html,label_conversations"></span>
+                                                <span class="rounded-full bg-red px-1 py-px font-bold text-white hidden inbox-counter"></span>
+                                            </a>
+                                        </li>
+                                        <li class="p-2 mx-2 my-1">
+                                            <a class="external-link no-underline text-grey-darker hover:text-black flex justify-between"
+                                               href="account/alerts">
+                                                <span class="mr-1" data-i18n="html,label_alerts"></span>
+                                                <span class="rounded-full bg-red px-1 py-px font-bold text-white hidden alerts-counter"></span>
+                                            </a>
+                                        </li>
+                                        <li class="p-2 mx-2 my-1">
+                                            <a class="external-link no-underline text-grey-darker hover:text-black"
+                                               href="account/likes" data-i18n="html,label_likes_received"></a>
+                                        </li>
+                                        <li class="p-2 mx-2 my-1">
+                                            <a class="external-link no-underline text-grey-darker hover:text-black user-id"
+                                               href="search/member?user_id=" data-i18n="html,label_your_content"></a>
+                                        </li>
+                                        <li class="p-2 mx-2 my-1">
+                                            <a class="external-link no-underline text-grey-darker hover:text-black"
+                                               href="account/following" data-i18n="html,label_following"></a>
+                                        </li>
+                                        <li class="p-2 mx-2 my-1">
+                                            <a class="external-link no-underline text-grey-darker hover:text-black"
+                                               href="account/upgrades" data-i18n="html,label_upgrades"></a>
+                                        </li>
+                                        <li class="p-2 mx-2 my-1">
+                                            <a class="external-link no-underline text-grey-darker hover:text-black"
+                                               href="account/ignored" data-i18n="html,label_ignored"></a>
+                                        </li>
+                                        <li class="p-2 mx-2 my-1">
+                                            <a class="external-link no-underline text-grey-darker hover:text-black"
+                                               href="account/two-step" data-i18n="html,label_two_steps"></a>
+                                        </li>
+                                        <li class="p-2 mx-2 my-1">
+                                            <a class="external-link no-underline text-grey-darker hover:text-black"
+                                               href="account/ignorar-mensajes" data-i18n="html,label_ignore_messages"></a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
-                        <div class="tab-pane" id="inbox" role="tabpanel">
-                            <div class="card border-0 border-radius-0">
-                                <article class="card-body p-0">
-                                    <div class="alert alert-danger alert-inbox p-2 pl-3 mb-0 border-radius-0 bl-danger d-none">
-                                        <p class="mb-0" data-message="text_zero_inbox" data-target="html"></p>
-                                    </div>
-                                    <div class="list-group mb-0 d-none border-0">
-                                        <div class="list-group-item p-2 d-none border-radius-0">
-                                            <div class="media">
-                                                <a href="" class="external-link" target="_blank">
-                                                    <img class="d-flex mr-3 rounded" src="../assets/img/blank.png" alt=""
-                                                         width="48" height="48">
-                                                </a>
-                                                <div class="media-body">
-                                                    <h6 class="mb-1">
-                                                        <a href="" class="external-link text-dark" target="_blank"></a>
-                                                    </h6>
-                                                    <p class="mb-0"></p>
-                                                    <p class="text-right mb-0"><small></small></p>
+                            <div class="flex border-t border-grey-light">
+                                <ul class="list-reset flex-col text-grey-darker w-1/2 px-2 py-1">
+                                    <li class="p-2 mx-2 my-1">
+                                        <form action="account/toggle-visibility" method="post" class="external-link"
+                                              name="visibilityForm" id="visibilityForm">
+                                            <div class="pretty p-svg p-curve p-bigger">
+                                                <input type="checkbox" name="visible" autocomplete="off" value="1"
+                                                       id="ctrl_pageStatus_visible" data-i18n="title,message_required_section">
+                                                <div class="state p-primary ml-1">
+                                                    <svg class="svg svg-icon" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z"
+                                                              style="stroke: white;fill:white;"></path>
+                                                    </svg>
+                                                    <label class="pt-px" for="ctrl_pageStatus_visible"
+                                                           data-i18n="html,label_online_status"></label>
                                                 </div>
                                             </div>
+                                            <input class="token-value" type="hidden" name="_xfToken">
+                                            <input type="hidden" name="_xfNoRedirect" value="1">
+                                            <input type="hidden" name="_xfResponseType" value="json">
+                                        </form>
+                                    </li>
+                                </ul>
+                                <ul class="list-reset flex-col text-grey-darker w-1/2 px-2 py-1">
+                                    <li class="p-2 mx-2 my-1">
+                                        <a class="external-link no-underline text-grey-darker hover:text-black token-link"
+                                           href="logout/?_xfToken=" data-i18n="html,label_logout"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="flex border-t border-grey-light bg-grey-lightest p-1">
+                                <form action="members/" method="post" name="statusPoster" id="statusPoster"
+                                      class="external-link w-full">
+                                    <textarea name="message" id="message" rows="1" data-message="label_update_status"
+                                              class="appearance-none border border-grey rounded py-2 px-3 text-grey-darkest w-full"
+                                              data-i18n="placeholder,label_update_status" required></textarea>
+                                    <label for="message"></label>
+                                    <div class="hidden status-message pt-1">
+                                        <div class="flex items-center justify-between">
+                                            <span class="text-green status-length">140</span>
+                                            <button class="bg-blue hover:bg-blue-dark text-white font-bold py-1 px-2 rounded"
+                                                    data-i18n="html,button_post" type="submit"></button>
                                         </div>
+                                        <input type="hidden" class="token-value" name="_xfToken">
+                                        <input type="hidden" name="return" value="1">
+                                        <input type="hidden" name="_xfResponseType" value="json">
                                     </div>
-                                </article>
-                                <footer class="card-footer p-1 border-top-0">
-                                    <div class="nav d-flex justify-content-between">
-                                        <div class="nav-item">
-                                            <a href="conversations/" data-message="text_label_show_all"
-                                               data-target="html" class="nav-link text-dark external-link"></a>
-                                        </div>
-                                        <div class="nav-item">
-                                            <a class="nav-link text-dark external-link" href="conversations/add"
-                                               data-message="text_label_new_conversation" data-target="html"></a>
-                                        </div>
-                                    </div>
-                                </footer>
+                                </form>
                             </div>
                         </div>
-                        <div class="tab-pane" id="alerts" role="tabpanel">
-                            <div class="card border-0">
-                                <article class="card-body p-0">
-                                    <div class="alert alert-danger alert-alerts p-2 pl-3 mb-0 border-radius-0 bl-danger d-none">
-                                        <p class="mb-0" data-message="text_zero_alerts" data-target="html"></p>
-                                    </div>
-                                    <div class="list-group mb-0 d-none border-0">
-                                        <div class="list-group-item p-2 d-none border-radius-0">
-                                            <div class="media">
-                                                <a href="" class="external-link" target="_blank">
-                                                    <img class="d-flex mr-3 rounded" src="../assets/img/blank.png" alt=""
-                                                         width="48" height="48">
-                                                </a>
-                                                <div class="media-body">
-                                                    <p class="mb-0"></p>
-                                                    <p class="text-right mb-0"><small></small></p>
-                                                </div>
-                                            </div>
+                        <div class="tab hidden" id="inbox">
+                            <div class="border-l-4 bg-red-lightest border-red text-red px-4 py-2 hidden alert-inbox-message"
+                                 role="alert">
+                                <p class="text-sm py-1" data-i18n="html,message_zero_inbox"></p>
+                            </div>
+                            <div class="conversation-container">
+                                <div class="conversation-item hidden w-full">
+                                    <div class="border-t border-grey-light bg-white px-4 py-3 flex flex-row justify-between leading-normal">
+                                        <a class="external-link" target="_blank">
+                                            <img class="w-12 h-12 rounded" alt="" src="../assets/img/blank.png">
+                                        </a>
+                                        <div class="flex-1 ml-4 text-sm conversation-body">
+                                            <h6 class="text-black font-bold text-base"></h6>
+                                            <p class="text-grey-dark text-xs"></p>
+                                            <p class="text-grey-dark text-xs flex justify-end">
+                                                <small></small>
+                                            </p>
                                         </div>
                                     </div>
-                                </article>
-                                <footer class="card-footer p-1">
-                                    <div class="nav d-flex justify-content-between">
-                                        <div class="nav-item">
-                                            <a href="account/alerts" data-message="text_label_show_all"
-                                               data-target="html" class="nav-link text-dark external-link"></a>
-                                        </div>
-                                        <div class="nav-item">
-                                            <a class="nav-link text-dark external-link" href="account/alert-preferences"
-                                               data-message="text_label_alert_preferences" data-target="html"></a>
-                                        </div>
-                                    </div>
-                                </footer>
+                                </div>
+                            </div>
+                            <div class="flex justify-between border-t border-grey-light bg-grey-lightest p-1">
+                                <div class="p-2">
+                                    <a href="conversations/" data-i18n="html,label_show_all"
+                                       class="external-link no-underline text-grey-darker hover:text-black"></a>
+                                </div>
+                                <div class="p-2">
+                                    <a href="conversations/add" data-i18n="html,label_new_conversation"
+                                       class="external-link no-underline text-grey-darker hover:text-black"></a>
+                                </div>
                             </div>
                         </div>
-                        <div class="tab-pane" id="subscriptions" role="tabpanel">
-                            <div class="card border-0">
-                                <article class="card-body p-0">
-                                    <div class="alert alert-danger alert-subscriptions p-2 pl-3 mb-0 border-radius-0 bl-danger d-none">
-                                        <p class="mb-0" data-message="text_zero_subscriptions" data-target="html"></p>
-                                    </div>
-                                    <div class="list-group mb-0 d-none border-0">
-                                        <div class="list-group-item p-2 d-none border-radius-0">
-                                            <div class="media">
-                                                <div class="d-flex align-items-end flex-column">
-                                                    <a href="" class="external-link" target="_blank">
-                                                        <img class="d-flex mr-3 rounded" src="../assets/img/blank.png" alt=""
-                                                             width="48" height="48">
-                                                    </a>
-                                                    <a href="" class="external-link miniMe hidden-xs-up" target="_blank">
-                                                        <img class="d-flex mr-3 rounded" src="../assets/img/blank.png" alt=""
-                                                             width="20" height="20">
-                                                    </a>
-                                                </div>
-                                                <div class="media-body">
-                                                    <h6 class="mb-1">
-                                                        <a href="" class="external-link text-dark" target="_blank"></a>
-                                                    </h6>
-                                                    <p class="mb-0"></p>
-                                                    <p class="text-right mb-0">
-                                                        <small class="subscription-who">
-                                                            <span data-message="text_last_message" data-target="html"></span>
-                                                            <span></span>
-                                                        </small>
-                                                    </p>
-                                                    <p class="text-right mb-0">
-                                                        <small class="subscription-when text-right"></small>
-                                                    </p>
-                                                </div>
-                                            </div>
+                        <div class="tab hidden" id="alerts">
+                            <div class="border-l-4 bg-red-lightest border-red text-red px-4 py-2 hidden alert-alerts-message"
+                                 role="alert">
+                                <p class="text-sm py-1" data-i18n="html,message_zero_alerts"></p>
+                            </div>
+                            <div class="alert-container">
+                                <div class="alert-item hidden w-full">
+                                    <div class="border-t border-grey-light bg-white px-4 py-3 flex flex-row justify-between leading-normal">
+                                        <a class="external-link" target="_blank">
+                                            <img class="w-12 h-12 rounded" alt="" src="../assets/img/blank.png">
+                                        </a>
+                                        <div class="flex-1 ml-4 text-sm alert-body">
+                                            <p class="text-grey-dark text-xs"></p>
                                         </div>
                                     </div>
-                                </article>
-                                <footer class="card-footer p-1">
-                                    <div class="nav d-flex justify-content-between">
-                                        <div class="nav-item">
-                                            <a class="nav-link text-dark external-link" href="watched/threads/all"
-                                               data-message="text_label_all_watched" data-target="html"></a>
+                                </div>
+                            </div>
+                            <div class="flex justify-between border-t border-grey-light bg-grey-lightest p-1">
+                                <div class="p-2">
+                                    <a href="account/alerts" data-i18n="html,label_show_all"
+                                       class="external-link no-underline text-grey-darker hover:text-black"></a>
+                                </div>
+                                <div class="p-2">
+                                    <a href="account/alert-preferences" data-i18n="html,label_alert_preferences"
+                                       class="external-link no-underline text-grey-darker hover:text-black"></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab hidden" id="subscriptions">
+                            <div class="border-l-4 bg-red-lightest border-red text-red px-4 py-2 hidden alert-subscriptions-message"
+                                 role="alert">
+                                <p class="text-sm py-1" data-i18n="html,message_zero_subscriptions"></p>
+                            </div>
+                            <div class="thread-container">
+                                <div class="thread-item hidden w-full">
+                                    <div class="border-t border-grey-light bg-white px-4 py-3 flex flex-row justify-between leading-normal">
+                                        <a class="external-link" target="_blank">
+                                            <img class="w-12 h-12 rounded" alt="" src="../assets/img/blank.png">
+                                        </a>
+                                        <div class="flex-1 ml-4 text-sm thread-body">
+                                            <h6 class="text-black font-bold text-base"></h6>
+                                            <p class="text-grey-dark text-xs"></p>
+                                            <p class="text-grey-dark text-xs flex justify-end message-info">
+                                                <small>
+                                                    <span data-i18n="html,label_last_message_by"></span>
+                                                    <span class="message-by"></span>,
+                                                    <span class="message-at"></span>
+                                                </small>
+                                            </p>
                                         </div>
                                     </div>
-                                </footer>
+                                </div>
+                            </div>
+                            <div class="flex justify-between border-t border-grey-light bg-grey-lightest p-1">
+                                <div class="p-2">
+                                    <a href="watched/threads/all" data-i18n="html,label_all_watched"
+                                       class="external-link no-underline text-grey-darker hover:text-black"></a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </article>
+            </div>
         </div>
 
-        <script src="../assets/js/libs/jquery-3.3.1.min.js"></script>
-        <script src="../assets/js/libs/popper.min.js"></script>
-        <script src="../assets/js/libs/bootstrap.min.js"></script>
+        <script src="../vendor/js/jquery-3.3.1.min.js"></script>
+        <script src="../vendor/js/jquery.form.min.js"></script>
+        <script src="../vendor/js/jquery.validate.min.js"></script>
 
-        <script src="../assets/js/libs/jquery.form.min.js"></script>
-        <script src="../assets/js/libs/jquery.validate.min.js"></script>
+        <script src="../assets/js/src/class/chrome.js"></script>
+        <script src="../assets/js/src/class/log.js"></script>
+        <script src="../assets/js/src/class/laneros.js"></script>
 
-        <script src="../assets/js/laneros.js"></script>
-        <script src="../assets/js/pages/popup.js"></script>
+        <script src="../assets/js/tasks/popup.js"></script>
     </body>
 </html>

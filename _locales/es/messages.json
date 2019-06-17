@@ -6,273 +6,270 @@
     "message": "Laneros"
   },
   "extension_description": {
-    "message": "Noticias sobre tecnología, internet, juegos y entretenimiento. Comunidad colombiana."
+    "message": "Noticias sobre tecnología, Internet, juegos y entretenimiento. Comunidad colombiana."
   },
-  "text_label_options": {
-    "message": "Extensión de navegador para Laneros - Opciones"
+  "title_options_page": {
+    "message": "Opciones - Extensión de navegador para Laneros"
   },
-  "text_data_loading": {
+  "message_data_loading": {
     "message": "Cargando datos"
   },
-  "text_go_to": {
-    "message": "Ir a la página principal de Laneros"
+  "button_homepage": {
+    "message": "Página principal"
   },
-  "text_button_show": {
-    "message": "Mostrar"
+  "button_account": {
+    "message": "Mi cuenta"
   },
-  "text_button_hide": {
-    "message": "Ocultar"
-  },
-  "text_label_sections": {
-    "message": "Mostrar secciones"
-  },
-  "text_label_review": {
-    "message": "Intervalo de revisión"
-  },
-  "text_label_inbox": {
-    "message": "Buzón"
-  },
-  "text_label_alerts": {
-    "message": "Alertas"
-  },
-  "text_label_subscriptions": {
-    "message": "Suscripciones"
-  },
-  "text_label_notifications": {
-    "message": "Notificaciones"
-  },
-  "text_label_links": {
-    "message": "Vinculos adicionales"
-  },
-  "text_label_user_info": {
-    "message": "Información de usuario"
-  },
-  "text_label_hours": {
-    "message": "Horas"
-  },
-  "text_label_minutes": {
-    "message": "Minutos"
-  },
-  "text_label_seconds": {
-    "message": "Segundos"
-  },
-  "text_label_milliseconds": {
-    "message": "Milisegundos"
-  },
-  "text_button_save": {
+  "button_save": {
     "message": "Guardar"
   },
-  "text_label_saved_header": {
+  "button_login": {
+    "message": "Ingresar"
+  },
+  "button_register": {
+    "message": "Registrarse"
+  },
+  "label_sections": {
+    "message": "Secciones"
+  },
+  "label_notifications": {
+    "message": "Notificaciones"
+  },
+  "label_review": {
+    "message": "Intervalo de revisión"
+  },
+  "text_display_sections": {
+    "message": "Seleccionar cuales secciones se muestran"
+  },
+  "text_display_notifications": {
+    "message": "Seleccionar cuales notificaciones se muestran"
+  },
+  "text_review_interval": {
+    "message": "Tiempo entre busqueda de actualizaciones"
+  },
+  "label_home": {
+    "message": "Inicio"
+  },
+  "label_conversations": {
+    "message": "Charlas"
+  },
+  "label_alerts": {
+    "message": "Alertas"
+  },
+  "label_subscriptions": {
+    "message": "Suscripciones"
+  },
+  "label_links": {
+    "message": "Accesos a opciones de usuario"
+  },
+  "label_user_info": {
+    "message": "Información de usuario"
+  },
+  "label_consolidated_notification": {
+    "message": "Agrupadas en una sola notificacion"
+  },
+  "label_hours": {
+    "message": "Horas"
+  },
+  "label_minutes": {
+    "message": "Minutos"
+  },
+  "label_seconds": {
+    "message": "Segundos"
+  },
+  "label_milliseconds": {
+    "message": "Milisegundos"
+  },
+  "message_required_field": {
+    "message": "Este campo es requerido"
+  },
+  "message_required_section": {
+    "message": "Seleccione el estado de esta sección"
+  },
+  "message_required_notification": {
+    "message": "Seleccione el estado de esta notificación"
+  },
+  "message_processing": {
+    "message": "Procesando ..."
+  },
+  "label_saved_success": {
     "message": "¡ Opciones guardadas !"
   },
-  "text_label_saved_text": {
+  "message_saved_success": {
     "message": "Sus opciones han sido almacenadas"
   },
-  "text_error_saved_header": {
+  "label_saved_error": {
     "message": "¡ Opciones NO guardadas !"
   },
-  "text_error_saved_text": {
+  "message_saved_error": {
     "message": "Sus opciones no han sido almacenadas, intente nuevamente"
+  },
+  "label_user_stay": {
+    "message": "Permanecer conectado"
+  },
+  "label_error_message": {
+    "message": "Error"
+  },
+  "label_success_message": {
+    "message": "Éxito"
+  },
+  "text_error_message": {
+    "message": "Laneros puede estar experimentando problema"
   },
   "text_error_not_connected": {
     "message": "No has iniciado sesión"
   },
-  "text_messages": {
-    "message": "Mensajes"
-  },
-  "text_zero_inbox": {
-    "message": "No hay nuevos mensajes"
-  },
-  "text_zero_alerts": {
-    "message": "No hay nuevas alertas"
-  },
-  "text_zero_subscriptions": {
-    "message": "No hay temas suscritos sin leer"
-  },
-  "text_new": {
-    "message": "Nuevo"
-  },
-  "text_go_account": {
-    "message": "Ir a Mi cuenta"
-  },
-  "text_error_page": {
-    "message": "Laneros puede estar experimentando problema"
-  },
-  "text_button_register": {
-    "message": "Regístrate"
-  },
-  "text_button_login": {
-    "message": "Acceder"
-  },
   "text_error_login": {
     "message": "Usuario y/o Contraseña incorrecta, intenta de nuevo"
   },
-  "text_error_message": {
-    "message": "Error"
-  },
-  "text_label_login": {
+  "label_login": {
     "message": "Accede o registrate"
   },
-  "text_label_nick": {
-    "message": "Nombre o dirección e-mail"
-  },
-  "text_label_account": {
-    "message": "¿ Ya tienes cuenta ?"
-  },
-  "text_label_no_account": {
-    "message": "No, crear una cuenta ahora"
-  },
-  "text_label_yes_account": {
-    "message": "Si, mi contraseña es:"
-  },
-  "text_label_password": {
-    "message": "Contraseña"
-  },
-  "text_label_stay": {
-    "message": "Permanecer conectado"
-  },
-  "text_label_connect": {
+  "label_connect": {
     "message": "... o conectate"
   },
-  "text_label_facebook": {
-    "message": "Acceder con Facebook"
+  "label_nick": {
+    "message": "Nombre o dirección e-mail"
   },
-  "text_label_twitter": {
-    "message": "Acceder con Twitter"
+  "label_account": {
+    "message": "¿ Ya tienes cuenta ?"
   },
-  "text_label_forgot": {
+  "label_no_account": {
+    "message": "No, crear una cuenta ahora"
+  },
+  "label_yes_account": {
+    "message": "Si, mi contraseña es:"
+  },
+  "label_password": {
+    "message": "Contraseña"
+  },
+  "label_forgot": {
     "message": "¿ Olvidaste la contraseña ?"
   },
-  "text_label_ratings": {
-    "message": "Likes"
+  "label_facebook": {
+    "message": "Acceder con Facebook"
   },
-  "text_label_points": {
-    "message": "Puntos"
+  "label_twitter": {
+    "message": "Acceder con Twitter"
   },
-  "text_label_trader_rating": {
-    "message": "Puntuación de comerciante"
-  },
-  "text_label_home": {
-    "message": "Inicio"
-  },
-  "text_zero_links": {
+  "message_zero_links": {
     "message": "No hay vinculos para mostrar"
   },
-  "text_label_nickname": {
+  "message_zero_inbox": {
+    "message": "No hay nuevos mensajes"
+  },
+  "message_zero_alerts": {
+    "message": "No hay nuevas alertas"
+  },
+  "message_zero_subscriptions": {
+    "message": "No hay temas sin leer"
+  },
+  "text_new_conversation": {
+    "message": " mensaje(s) nuevo(s)"
+  },
+  "text_new_alert": {
+    "message": " alerta(s) nuevo(s)"
+  },
+  "text_new_subscription": {
+    "message": " tema(s) sin leer"
+  },
+  "label_nickname": {
     "message": "Cambiar nombre de usuario"
   },
-  "text_label_personal_details": {
+  "label_personal_details": {
     "message": "Detalles personales"
   },
-  "text_label_signature": {
+  "label_signature": {
     "message": "Firma"
   },
-  "text_label_contact_details": {
+  "label_contact_details": {
     "message": "Detalles de contacto"
   },
-  "text_label_privacy": {
+  "label_privacy": {
     "message": "Privacidad"
   },
-  "text_label_preferences": {
+  "label_preferences": {
     "message": "Preferencias"
   },
-  "text_label_alert_preferences": {
+  "label_alert_preferences": {
     "message": "Preferencias de alertas"
   },
-  "text_label_avatar": {
+  "label_avatar": {
     "message": "Avatar"
   },
-  "text_label_external_account": {
+  "label_external_accounts": {
     "message": "Cuentas externas"
   },
-  "text_label_delete": {
+  "label_delete_account": {
     "message": "Cancela tu cuenta"
   },
-  "text_label_classifieds_preferences": {
+  "label_classifieds_preferences": {
     "message": "Preferencias en calificaciones"
   },
-  "text_label_news_feed": {
+  "label_news_feed": {
     "message": "Tus Noticias"
   },
-  "text_label_conversations": {
-    "message": "Charlas"
-  },
-  "text_label_likes_received": {
+  "label_likes_received": {
     "message": "'Me Gusta' recibidos"
   },
-  "text_label_your_content": {
+  "label_your_content": {
     "message": "Contenido"
   },
-  "text_label_follow": {
+  "label_following": {
     "message": "Sigues a ..."
   },
-  "text_label_ignore": {
+  "label_ignored": {
     "message": "Gente ignorada"
   },
-  "text_label_upgrades": {
+  "label_upgrades": {
     "message": "Suscripción de pago"
   },
-  "text_label_two_steps": {
+  "label_two_steps": {
     "message": "Verificación de dos pasos"
   },
-  "text_label_new_post": {
-    "message": "Ignorar foros en Nuevos mensajes"
+  "label_ignore_messages": {
+    "message": "Ignorar foros en nuevos mensajes"
   },
-  "text_label_online_status": {
+  "label_online_status": {
     "message": "Ver el estado conectado"
   },
-  "text_label_logout": {
+  "label_logout": {
     "message": "Salir"
   },
-  "text_label_update_status": {
+  "label_update_status": {
     "message": "Actualizar estado ..."
   },
-  "text_button_post": {
+  "button_post": {
     "message": "Enviar"
   },
-  "text_label_show_all": {
+  "label_show_all": {
     "message": "Mostrar todos ..."
   },
-  "text_label_new_conversation": {
-    "message": "Iniciar una Nueva Charla"
+  "label_new_conversation": {
+    "message": "Iniciar una nueva charla"
   },
-  "text_label_all_watched": {
+  "label_all_watched": {
     "message": "Mostrar todos los temas seguidos"
   },
-  "text_last_message": {
-    "message": "Último mensaje por: "
-  },
-  "label_text_display_sections": {
-    "message": "Controlar cuales secciones se muestran"
-  },
-  "label_text_display_notifications": {
-    "message": "Controlar cuales pop-ups de notificaciones se muestran"
-  },
-  "text_label_consolidated_notification": {
-    "message": "Agrupadas"
-  },
-  "label_text_review_interval": {
-    "message": "Intervalo de tiempo para comprobar actualizaciones ( mínimo 1 minuto )"
-  },
-  "label_text_required_section": {
-    "message": "Seleccione el estado de esta sección"
-  },
-  "label_text_required_review": {
-    "message": "Indique el tiempo entre consultas de acualizaciones a Laneros"
-  },
-  "label_text_processing": {
-    "message": "Procesando ..."
-  },
-  "label_title_messages": {
+  "label_new_messages": {
     "message": "Nueva respuesta a esta conversación"
   },
-  "label_title_alerts": {
+  "label_new_alerts": {
     "message": "Nueva alerta"
   },
-  "label_title_subscription": {
+  "label_new_subscription": {
     "message": "Nuevo(s) mensaje(s) en este tema/foro"
   },
-  "text_go_subscription": {
+  "label_last_message_by": {
+    "message": "Último mensaje por"
+  },
+  "button_open_message": {
+    "message": "Leer conversación"
+  },
+  "button_open_subscriptions": {
+    "message": "Mis suscripciones"
+  },
+  "button_open_subscription": {
     "message": "Ir al tema/foro"
   }
 }

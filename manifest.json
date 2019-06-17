@@ -2,20 +2,16 @@
   "name": "__MSG_extension_name__",
   "short_name": "__MSG_extension_short_name__",
   "description": "__MSG_extension_description__",
-  "version": "6.6.5",
+  "version": "7.0",
   "manifest_version": 2,
   "options_page": "views/options.html",
   "default_locale": "es",
   "permissions": [
-    "https://*.laneros.com/",
+    "*://*.laneros.com/",
     "notifications",
     "alarms",
     "storage"
   ],
-  "background": {
-    "persistent": false,
-    "scripts": ["assets/js/libs/jquery-3.3.1.min.js", "assets/js/laneros.js", "assets/js/pages/background.js"]
-  },
   "browser_action": {
     "default_title": "__MSG_extension_name__",
     "default_icon": "assets/img/icon.png",
@@ -24,5 +20,16 @@
   "icons": {
     "128": "assets/img/icon.png"
   },
-  "homepage_url": "https://www.arthvrian.org"
+  "homepage_url": "https://www.arthvrian.org",
+  "background": {
+    "persistent": false,
+    "scripts": [
+      "vendor/js/jquery-3.3.1.min.js",
+      "assets/js/src/class/chrome.js",
+      "assets/js/src/class/log.js",
+      "assets/js/src/class/laneros.js",
+      "assets/js/src/class/background.js",
+      "assets/js/tasks/background.js"
+    ]
+  }
 }

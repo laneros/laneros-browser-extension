@@ -1,326 +1,268 @@
 <!doctype html>
-<html lang="en">
+<html>
     <head>
-        <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <meta name="author" content="arthvrian@yahoo.com">
         <meta name="author" content="Alvaro Arturo Montenegro Silva">
-        <title data-message="text_label_options" data-target="html"></title>
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="../assets/css/libs/bootstrap.min.css">
+        <title data-i18n="html,title_options_page"></title>
 
-        <link rel="stylesheet" type="text/css" href="../assets/css/laneros.css" />
+        <link rel="stylesheet" href="../vendor/css/tailwind.min.css">
+        <link rel="stylesheet" href="../vendor/css/pretty-checkbox.min.css">
     </head>
-    <body class="container p-5 bg-light">
-        <div class="loading-overlay">
-            <div class="loading-box">
-                <img src="../assets/img/ajax-loader.gif" alt="Icon" class="img-fluid mb-2" width="200" />
-                <h3 data-message="text_data_loading" data-target="html" class="text-info"></h3>
+    <body class="w-full h-screen opacity-75">
+        <div class="fixed pin z-40 overflow-auto bg-grey-lighter flex loading-box">
+            <div class="relative w-full m-auto">
+                <div class="w-full text-center">
+                    <img src="../assets/img/ajax-loader.gif" alt="Icon" class="mb-5" width="200">
+                    <h3 data-i18n="html,message_data_loading" class="text-blue text-xl"></h3>
+                </div>
             </div>
         </div>
-        <form class="card border-secondary my-5" role="form" id="form_options" name="form_options" method="post">
-            <header class="card-header">
-                <a class="external-link" target="_blank" data-message="text_go_to" data-target="title" href="/">
-                    <img class="py-2" src="../assets/img/logo.png" alt="Logo Laneros" width="240">
-                </a>
-            </header>
-            <main class="card-body">
-                <div class="row">
-                    <div class="col-4">
-                        <h4 class="card-title" data-message="text_label_sections" data-target="html"></h4>
-                        <p class="card-text" data-message="label_text_display_sections" data-target="html"></p>
+        <div class="fixed pin z-30 overflow-auto flex">
+            <form class="relative w-full max-w-2xl m-auto shadow-lg rounded" role="form"
+                  id="form_options" name="form_options" method="post">
+                <header class="p-5 bg-grey-light rounded-tr rounded-tl">
+                    <a class="external-link" target="_blank" data-i18n="title,text_go_to" href="/">
+                        <img class="pt-2" src="../assets/img/logo.png" alt="Logo Laneros" width="240">
+                    </a>
+                </header>
+                <main class="bg-grey-lightest">
+                    <div class="flex py-5">
+                        <div class="w-1/3 mx-5">
+                            <div class="pb-5">
+                                <h1 class="mb-3" data-i18n="html,label_sections"></h1>
+                                <p class="text-base" data-i18n="html,text_display_sections"></p>
+                            </div>
+                            <div class="pt-5">
+                                <div class="mb-8">
+                                    <div class="pretty p-svg p-curve p-bigger text-base">
+                                        <input type="checkbox" name="checkbox_section_info"
+                                               id="checkbox_section_info" autocomplete="off" value="true"
+                                               data-i18n="title,message_required_section">
+                                        <div class="state p-primary ml-2">
+                                            <svg class="svg svg-icon" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
+                                            </svg>
+                                            <label class="pt-px" for="checkbox_section_info" data-i18n="html,label_user_info"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-8">
+                                    <div class="pretty p-svg p-curve p-bigger text-base">
+                                        <input type="checkbox" name="checkbox_section_links"
+                                               id="checkbox_section_links" autocomplete="off" value="true"
+                                               data-i18n="title,message_required_section">
+                                        <div class="state p-primary ml-2">
+                                            <svg class="svg svg-icon" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
+                                            </svg>
+                                            <label class="pt-px" for="checkbox_section_links" data-i18n="html,label_links"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-8">
+                                    <div class="pretty p-svg p-curve p-bigger text-base">
+                                        <input type="checkbox" name="checkbox_section_inbox"
+                                               id="checkbox_section_inbox" autocomplete="off" value="true"
+                                               data-i18n="title,message_required_section">
+                                        <div class="state p-primary ml-2">
+                                            <svg class="svg svg-icon" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
+                                            </svg>
+                                            <label class="pt-px" for="checkbox_section_inbox" data-i18n="html,label_conversations"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-8">
+                                    <div class="pretty p-svg p-curve p-bigger text-base">
+                                        <input type="checkbox" name="checkbox_section_alerts"
+                                               id="checkbox_section_alerts" autocomplete="off" value="true"
+                                               data-i18n="title,message_required_section">
+                                        <div class="state p-primary ml-2">
+                                            <svg class="svg svg-icon" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
+                                            </svg>
+                                            <label class="pt-px" for="checkbox_section_alerts" data-i18n="html,label_alerts"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-8">
+                                    <div class="pretty p-svg p-curve p-bigger text-base">
+                                        <input type="checkbox" name="checkbox_section_subscriptions"
+                                               id="checkbox_section_subscriptions" autocomplete="off" value="true"
+                                               data-i18n="title,message_required_section">
+                                        <div class="state p-primary ml-2">
+                                            <svg class="svg svg-icon" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
+                                            </svg>
+                                            <label class="pt-px" for="checkbox_section_subscriptions" data-i18n="html,label_subscriptions"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-1/3 mx-5">
+                            <div class="pb-5">
+                                <h1 class="mb-3" data-i18n="html,label_notifications"></h1>
+                                <p class="text-base" data-i18n="html,text_display_notifications"></p>
+                            </div>
+                            <div class="pt-5">
+                                <div class="mb-8">
+                                    <div class="pretty p-svg p-curve p-bigger text-base">
+                                        <input type="checkbox" name="checkbox_notification_consolidated"
+                                               id="checkbox_notification_consolidated" autocomplete="off" value="true"
+                                               data-i18n="title,message_required_notification">
+                                        <div class="state p-primary ml-2">
+                                            <svg class="svg svg-icon" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
+                                            </svg>
+                                            <label class="pt-px" for="checkbox_notification_consolidated"
+                                                   data-i18n="html,label_consolidated_notification"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-8">
+                                    <div class="pretty p-svg p-curve p-bigger text-base">
+                                        <input type="checkbox" name="checkbox_notification_inbox"
+                                               id="checkbox_notification_inbox" autocomplete="off" value="true"
+                                               data-i18n="title,message_required_notification">
+                                        <div class="state p-primary ml-2">
+                                            <svg class="svg svg-icon" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
+                                            </svg>
+                                            <label class="pt-px" for="checkbox_notification_inbox" data-i18n="html,label_conversations"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-8">
+                                    <div class="pretty p-svg p-curve p-bigger text-base">
+                                        <input type="checkbox" name="checkbox_notification_alerts"
+                                               id="checkbox_notification_alerts" autocomplete="off" value="true"
+                                               data-i18n="title,message_required_notification">
+                                        <div class="state p-primary ml-2">
+                                            <svg class="svg svg-icon" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
+                                            </svg>
+                                            <label class="pt-px" for="checkbox_notification_alerts" data-i18n="html,label_alerts"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-8">
+                                    <div class="pretty p-svg p-curve p-bigger text-base">
+                                        <input type="checkbox" name="checkbox_notification_subscriptions"
+                                               id="checkbox_notification_subscriptions" autocomplete="off" value="true"
+                                               data-i18n="title,message_required_notification">
+                                        <div class="state p-primary ml-2">
+                                            <svg class="svg svg-icon" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M7.629,14.566c0.125,0.125,0.291,0.188,0.456,0.188c0.164,0,0.329-0.062,0.456-0.188l8.219-8.221c0.252-0.252,0.252-0.659,0-0.911c-0.252-0.252-0.659-0.252-0.911,0l-7.764,7.763L4.152,9.267c-0.252-0.251-0.66-0.251-0.911,0c-0.252,0.252-0.252,0.66,0,0.911L7.629,14.566z" style="stroke: white;fill:white;"></path>
+                                            </svg>
+                                            <label class="pt-px" for="checkbox_notification_subscriptions" data-i18n="html,label_subscriptions"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-1/3 mx-5">
+                            <div class="pb-5">
+                                <h1 class="mb-3" data-i18n="html,label_review"></h1>
+                                <p class="text-base" data-i18n="html,text_review_interval"></p>
+                            </div>
+                            <div class="pt-5">
+                                <div class="mb-8 flex-row">
+                                    <div class="flex items-center">
+                                        <label class="flex-grow text-base" for="number_hours">
+                                            <span data-i18n="html,label_hours"></span>
+                                            <span class="text-red">*</span>
+                                        </label>
+                                        <div class="text-right text-base">
+                                            <input class="appearance-none border border-grey rounded py-2 px-3 text-grey-darkest text-right"
+                                                   type="number" max="23" min="0" maxlength="2" id="number_hours"
+                                                   name="number_hours"
+                                                   data-i18n="placeholder|title,label_hours|message_required_field"
+                                                   required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-8 flex-row">
+                                    <div class="flex items-center">
+                                        <label class="flex-grow text-base" for="number_minutes">
+                                            <span data-i18n="html,label_minutes"></span>
+                                            <span class="text-red">*</span>
+                                        </label>
+                                        <div class="text-right text-base">
+                                            <input class="appearance-none border border-grey rounded py-2 px-3 text-grey-darkest text-right"
+                                                   type="number" max="59" min="0" maxlength="2" id="number_minutes"
+                                                   name="number_minutes"
+                                                   data-i18n="placeholder|title,label_minutes|message_required_field"
+                                                   required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-8 flex-row">
+                                    <div class="flex items-center">
+                                        <label class="flex-grow text-base" for="number_seconds">
+                                            <span data-i18n="html,label_seconds"></span>
+                                            <span class="text-red">*</span>
+                                        </label>
+                                        <div class="text-right text-base">
+                                            <input class="appearance-none border border-grey rounded py-2 px-3 text-grey-darkest text-right"
+                                                   type="number" max="59" min="0" maxlength="2" id="number_seconds"
+                                                   name="number_seconds"
+                                                   data-i18n="placeholder|title,label_seconds|message_required_field"
+                                                   required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-8 flex-row">
+                                    <div class="flex items-center">
+                                        <label class="flex-grow text-base" for="number_milliseconds">
+                                            <span data-i18n="html,label_milliseconds"></span>
+                                            <span class="text-red">*</span>
+                                        </label>
+                                        <div class="text-right text-base">
+                                            <input class="appearance-none border border-grey rounded py-2 px-3 text-grey-darkest text-right"
+                                                   type="number" max="999" min="0" maxlength="3" id="number_milliseconds"
+                                                   name="number_milliseconds"
+                                                   data-i18n="placeholder|title,label_milliseconds|message_required_field"
+                                                   required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-4">
-                        <h4 class="card-title" data-message="text_label_notifications" data-target="html"></h4>
-                        <p class="card-text" data-message="label_text_display_notifications" data-target="html"></p>
+                </main>
+                <footer class="p-5 bg-grey-light text-right">
+                    <button class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded text-base"
+                            type="submit" data-i18n="html,button_save"></button>
+                </footer>
+            </form>
+        </div>
+        <div>
+            <div class="bg-blue-lightest border-l-4 border-blue text-blue-dark p-4 hidden alert-processing" role="alert">
+                <div class="flex items-center">
+                    <div class="mr-3">
+                        <img src="../assets/img/ajax-loader.gif" alt="Icon" width="40" height="40">
                     </div>
-                    <div class="col-4">
-                        <h4 class="card-title" data-message="text_label_review" data-target="html"></h4>
-                        <p class="card-text" data-message="label_text_review_interval" data-target="html"></p>
-                    </div>
+                    <strong class="text-lg" data-i18n="html,message_processing"></strong>
                 </div>
-                <div class="row pt-4">
-                    <div class="col-4">
-                        <div class="form-row">
-                            <label class="col-5 form-control-label">
-                                <span data-message="text_label_conversations" data-target="html"></span>
-                                <span class="text-danger">*</span>
-                            </label>
-                            <div class="col-7">
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" name="extension_radio_inbox" id="extension_radio_inbox_1"
-                                           autocomplete="off" required value="true" class="custom-control-input"
-                                           data-message="label_text_required_section" data-target="title">
-                                    <label class="custom-control-label" for="extension_radio_inbox_1"
-                                           data-message="text_button_show" data-target="html"></label>
-                                </div>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" name="extension_radio_inbox" id="extension_radio_inbox_2"
-                                           autocomplete="off" value="false" class="custom-control-input">
-                                    <label class="custom-control-label" for="extension_radio_inbox_2"
-                                           data-message="text_button_hide" data-target="html"></label>
-                                </div>
-                            </div>
-                            <div class="col-12 pb-1">&nbsp;</div>
-                        </div>
-                        <div class="form-row">
-                            <label class="col-5 form-control-label">
-                                <span data-message="text_label_alerts" data-target="html"></span>
-                                <span class="text-danger">*</span>
-                            </label>
-                            <div class="col-7">
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" name="extension_radio_alerts" id="extension_radio_alerts_1"
-                                           autocomplete="off" required value="true" class="custom-control-input"
-                                           data-message="label_text_required_section" data-target="title">
-                                    <label class="custom-control-label" for="extension_radio_alerts_1"
-                                           data-message="text_button_show" data-target="html"></label>
-                                </div>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" name="extension_radio_alerts" id="extension_radio_alerts_2"
-                                           autocomplete="off" value="false" class="custom-control-input">
-                                    <label class="custom-control-label" for="extension_radio_alerts_2"
-                                           data-message="text_button_hide" data-target="html"></label>
-                                </div>
-                            </div>
-                            <div class="col-12 pb-1">&nbsp;</div>
-                        </div>
-                        <div class="form-row">
-                            <label class="col-5 form-control-label">
-                                <span data-message="text_label_subscriptions" data-target="html"></span>
-                                <span class="text-danger">*</span>
-                            </label>
-                            <div class="col-7">
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" name="extension_radio_subscriptions" id="extension_radio_subscriptions_1"
-                                           autocomplete="off" required value="true" class="custom-control-input"
-                                           data-message="label_text_required_section" data-target="title">
-                                    <label class="custom-control-label" for="extension_radio_subscriptions_1"
-                                           data-message="text_button_show" data-target="html"></label>
-                                </div>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" name="extension_radio_subscriptions" id="extension_radio_subscriptions_2"
-                                           autocomplete="off" value="false" class="custom-control-input">
-                                    <label class="custom-control-label" for="extension_radio_subscriptions_2"
-                                           data-message="text_button_hide" data-target="html"></label>
-                                </div>
-                            </div>
-                            <div class="col-12 pb-1">&nbsp;</div>
-                        </div>
-                        <div class="form-row">
-                            <label class="col-5 form-control-label">
-                                <span data-message="text_label_links" data-target="html"></span>
-                                <span class="text-danger">*</span>
-                            </label>
-                            <div class="col-7">
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" name="extension_radio_links" id="extension_radio_links_1"
-                                           autocomplete="off" required value="true" class="custom-control-input"
-                                           data-message="label_text_required_section" data-target="title">
-                                    <label class="custom-control-label" for="extension_radio_links_1"
-                                           data-message="text_button_show" data-target="html"></label>
-                                </div>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" name="extension_radio_links" id="extension_radio_links_2"
-                                           autocomplete="off" value="false" class="custom-control-input">
-                                    <label class="custom-control-label" for="extension_radio_links_2"
-                                           data-message="text_button_hide" data-target="html"></label>
-                                </div>
-                            </div>
-                            <div class="col-12 pb-1">&nbsp;</div>
-                        </div>
-                        <div class="form-row">
-                            <label class="col-5 form-control-label">
-                                <span data-message="text_label_user_info" data-target="html"></span>
-                                <span class="text-danger">*</span>
-                            </label>
-                            <div class="col-7">
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" name="extension_radio_info" id="extension_radio_info_1"
-                                           autocomplete="off" required value="true" class="custom-control-input"
-                                           data-message="label_text_required_section" data-target="title">
-                                    <label class="custom-control-label" for="extension_radio_info_1"
-                                           data-message="text_button_show" data-target="html"></label>
-                                </div>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" name="extension_radio_info" id="extension_radio_info_2"
-                                           autocomplete="off" value="false" class="custom-control-input">
-                                    <label class="custom-control-label" for="extension_radio_info_2"
-                                           data-message="text_button_hide" data-target="html"></label>
-                                </div>
-                            </div>
-                            <div class="col-12 pb-1">&nbsp;</div>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <div class="form-row">
-                            <label class="col-5 form-control-label">
-                                <span data-message="text_label_conversations" data-target="html"></span>
-                                <span class="text-danger">*</span>
-                            </label>
-                            <div class="col-7">
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" name="extension_radio_notification_inbox" id="extension_radio_notification_inbox_1"
-                                           autocomplete="off" required value="true" class="custom-control-input"
-                                           data-message="label_text_required_section" data-target="title">
-                                    <label class="custom-control-label" for="extension_radio_notification_inbox_1"
-                                           data-message="text_button_show" data-target="html"></label>
-                                </div>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" name="extension_radio_notification_inbox" id="extension_radio_notification_inbox_2"
-                                           autocomplete="off" value="false" class="custom-control-input">
-                                    <label class="custom-control-label" for="extension_radio_notification_inbox_2"
-                                           data-message="text_button_hide" data-target="html"></label>
-                                </div>
-                            </div>
-                            <div class="col-12 pb-1">&nbsp;</div>
-                        </div>
-                        <div class="form-row">
-                            <label class="col-5 form-control-label">
-                                <span data-message="text_label_alerts" data-target="html"></span>
-                                <span class="text-danger">*</span>
-                            </label>
-                            <div class="col-7">
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" name="extension_radio_notification_alerts" id="extension_radio_notification_alerts_1"
-                                           autocomplete="off" required value="true" class="custom-control-input"
-                                           data-message="label_text_required_section" data-target="title">
-                                    <label class="custom-control-label" for="extension_radio_notification_alerts_1"
-                                           data-message="text_button_show" data-target="html"></label>
-                                </div>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" name="extension_radio_notification_alerts" id="extension_radio_notification_alerts_2"
-                                           autocomplete="off" value="false" class="custom-control-input">
-                                    <label class="custom-control-label" for="extension_radio_notification_alerts_2"
-                                           data-message="text_button_hide" data-target="html"></label>
-                                </div>
-                            </div>
-                            <div class="col-12 pb-1">&nbsp;</div>
-                        </div>
-                        <div class="form-row">
-                            <label class="col-5 form-control-label">
-                                <span data-message="text_label_subscriptions" data-target="html"></span>
-                                <span class="text-danger">*</span>
-                            </label>
-                            <div class="col-7">
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" name="extension_radio_notification_subscriptions" id="extension_radio_notification_subscriptions_1"
-                                           autocomplete="off" required value="true" class="custom-control-input"
-                                           data-message="label_text_required_section" data-target="title">
-                                    <label class="custom-control-label" for="extension_radio_notification_subscriptions_1"
-                                           data-message="text_button_show" data-target="html"></label>
-                                </div>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" name="extension_radio_notification_subscriptions" id="extension_radio_notification_subscriptions_2"
-                                           autocomplete="off" value="false" class="custom-control-input">
-                                    <label class="custom-control-label" for="extension_radio_notification_subscriptions_2"
-                                           data-message="text_button_hide" data-target="html"></label>
-                                </div>
-                            </div>
-                            <div class="col-12 pb-1">&nbsp;</div>
-                        </div>
-                        <div class="form-row">
-                            <label class="col-5 form-control-label">
-                                <span data-message="text_label_consolidated_notification" data-target="html"></span>
-                                <span class="text-danger">*</span>
-                            </label>
-                            <div class="col-7">
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" name="extension_radio_notifications" id="extension_radio_notifications_1"
-                                           autocomplete="off" required value="true" class="custom-control-input"
-                                           data-message="label_text_required_section" data-target="title">
-                                    <label class="custom-control-label" for="extension_radio_notifications_1"
-                                           data-message="text_button_show" data-target="html"></label>
-                                </div>
-                                <div class="custom-control custom-radio custom-control-inline">
-                                    <input type="radio" name="extension_radio_notifications" id="extension_radio_notifications_2"
-                                           autocomplete="off" value="false" class="custom-control-input">
-                                    <label class="custom-control-label" for="extension_radio_notifications_2"
-                                           data-message="text_button_hide" data-target="html"></label>
-                                </div>
-                            </div>
-                            <div class="col-12 pb-1">&nbsp;</div>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <div class="form-row">
-                            <label class="col-7 form-control-label">
-                                <span data-message="text_label_hours" data-target="html"></span>
-                                <span class="text-danger">*</span>
-                            </label>
-                            <div class="col-5">
-                                <input type="number" class="form-control" max="23" min="0" maxlength="2" id="extension_number_hours"
-                                       name="extension_number_hours" data-message="text_label_hours" data-target="placeholder"
-                                       required>
-                            </div>
-                            <div class="col-12 pb-1">&nbsp;</div>
-                        </div>
-                        <div class="form-row">
-                            <label class="col-7 form-control-label">
-                                <span data-message="text_label_minutes" data-target="html"></span>
-                                <span class="text-danger">*</span>
-                            </label>
-                            <div class="col-5">
-                                <input type="number" class="form-control" max="59" min="0" maxlength="2" id="extension_number_minutes"
-                                       name="extension_number_minutes" data-message="text_label_minutes" data-target="placeholder"
-                                       required>
-                            </div>
-                            <div class="col-12 pb-1">&nbsp;</div>
-                        </div>
-                        <div class="form-row">
-                            <label class="col-7 form-control-label">
-                                <span data-message="text_label_seconds" data-target="html"></span>
-                                <span class="text-danger">*</span>
-                            </label>
-                            <div class="col-5">
-                                <input type="number" class="form-control" max="59" min="0" maxlength="2" id="extension_number_seconds"
-                                       name="extension_number_seconds" data-message="text_label_seconds" data-target="placeholder"
-                                       required>
-                            </div>
-                            <div class="col-12 pb-1">&nbsp;</div>
-                        </div>
-                        <div class="form-row">
-                            <label class="col-5 form-control-label">
-                                <span data-message="text_label_milliseconds" data-target="html"></span>
-                                <span class="text-danger">*</span>
-                            </label>
-                            <div class="col-7">
-                                <input type="number" class="form-control" max="999" min="0" maxlength="3" id="extension_number_milliseconds"
-                                       name="extension_number_milliseconds" data-message="text_label_milliseconds" data-target="placeholder"
-                                       required>
-                            </div>
-                            <div class="col-12 pb-1">&nbsp;</div>
-                        </div>
-                    </div>
-                </div>
-            </main>
-            <footer class="card-footer text-right">
-                <button type="submit" class="btn btn-primary" data-message="text_button_save" data-target="html"></button>
-            </footer>
-            <div class="alert alert-response d-none mb-0 border-radius-0">
-                <h4></h4>
-                <span></span>
             </div>
-            <div class="alert alert-info alert-processing d-none mb-0 border-radius-0" role="alert">
-                <img src="../assets/img/ajax-loader.gif" alt="Icon" class="img-fluid" width="40" />
-                <strong class="lead ml-2" data-message="label_text_processing" data-target="html"></strong>
+            <div class="border-l-4 p-4 hidden alert-response" role="alert">
+                <h4 class="text-lg mb-1"></h4>
+                <p class="text-base py-1"></p>
             </div>
-        </form>
+        </div>
+        <script src="../vendor/js/jquery-3.3.1.min.js"></script>
+        <script src="../vendor/js/jquery.form.min.js"></script>
+        <script src="../vendor/js/jquery.validate.min.js"></script>
 
-        <script src="../assets/js/libs/jquery-3.3.1.min.js"></script>
-        <script src="../assets/js/libs/popper.min.js"></script>
-        <script src="../assets/js/libs/bootstrap.min.js"></script>
+        <script src="../assets/js/src/class/chrome.js"></script>
+        <script src="../assets/js/src/class/log.js"></script>
+        <script src="../assets/js/src/class/laneros.js"></script>
+        <script src="../assets/js/src/class/background.js"></script>
 
-        <script src="../assets/js/libs/jquery.form.min.js"></script>
-        <script src="../assets/js/libs/jquery.validate.min.js"></script>
-
-        <script src="../assets/js/laneros.js"></script>
-        <script src="../assets/js/pages/options.js"></script>
+        <script src="../assets/js/tasks/options.js"></script>
     </body>
 </html>
-
-
-
-

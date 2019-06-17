@@ -2,6 +2,21 @@
 
 All notable changes to `laneros-browser-extension` will be documented in this file.
 
+## 7.0 | 2018-12-24
+
+### Added
+
+- Tailwind
+
+### Changed
+
+- Almost complete rewrite of the javascript
+- Minor bug fixes
+
+### Removed
+
+- Bootstrap
+
 ## 6.6.5 | 2018-05-30
 
 ### Changed
