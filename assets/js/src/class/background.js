@@ -35,16 +35,24 @@ class Background {
         let objRLaneros = new Laneros();
         let objLSuccess = function(objRData, stRTextStatus, objRjqXHR) {
             try {
-                let inRConversations = parseInt($("#VisitorExtraMenu_ConversationsCounter:first .Total", objRData).text());
-                let inRAlerts = parseInt($("#VisitorExtraMenu_AlertsCounter:first .Total", objRData).text());
-                let inRSubscriptions = parseInt($(".discussionListItems li.unread", objRData).length);
+                let stRToken = $('input[name=_xfToken]:first', objRData).val();
+                let inRUserId = $('.p-account .avatar', objRData).data('user-id');
+                let inRConversations = parseInt($('.p-account .js-badge--conversations', objRData).data('badge'));
+                let inRAlerts = parseInt($('.p-account .js-badge--alerts', objRData).data('badge'));
+                let inRSubscriptions = parseInt($('.structItemContainer .is-unread', objRData).length);
                 let inLCounter = inRConversations + inRAlerts + inRSubscriptions;
 
+                objRLaneros.setUserData({
+                    stRToken: stRToken,
+                    inRUserId: inRUserId
+                });
+
                 Chrome.getBadge(function(inRBadgeCounter) {
+                    inRBadgeCounter = parseInt(inRBadgeCounter);
                     Chrome.setBadge(inLCounter);
 
-                    if (isNaN(parseInt(inRBadgeCounter)) || (parseInt(inRBadgeCounter) < inLCounter)) {
-                        Chrome.getStorage({bolRNotificationConsolidated: objRLaneros.getDefaults("bolRNotificationConsolidated")},
+                    if (isNaN(inRBadgeCounter) || inRBadgeCounter < inLCounter) {
+                        Chrome.getStorage({bolRNotificationConsolidated: objRLaneros.getDefaults('bolRNotificationConsolidated')},
                             function (objROptions) {
                                 if (objROptions.bolRNotificationConsolidated) {
                                     objRLaneros.createListNotification(inRConversations, inRAlerts, inRSubscriptions);
@@ -53,13 +61,13 @@ class Background {
                     }
                 });
 
-                objRLaneros.getData(true);
+                //objRLaneros.getData(true);
             }
             catch(objRException) {
                 new Log('ajax-success').error(objRException);
             }
         };
 
-        $.get(objRLaneros.getPageURL() + "watched/threads/all").done(objLSuccess);
+        $.get(objRLaneros.getPageURL() + 'watched/threads').done(objLSuccess);
     }
 }

@@ -366,8 +366,11 @@ class Laneros {
 
     /**
      * Show login form
+     *
+     * @param stRToken
      */
-    showLogin() {
+    showLogin(stRToken) {
+        let objRLaneros = this;
         let objLChange = function() {
             $('.section-login #ctrl_pageLogin_password').closest('.flex-row').slideUp();
             $('.section-login #ctrl_pageLogin_remember').attr('checked', false).closest('div').hide();
@@ -386,6 +389,7 @@ class Laneros {
         Chrome.setBadge(0);
 
         $('.section-login input[name=register]').change(objLChange);
+        $('.section-login input[name=_xfToken]').val(stRToken);
         $('#pageLogin').validate({
             submitHandler: function (form) {
                 let onBeforeSubmit = function(objRResponse, stRStatus) {
@@ -393,12 +397,12 @@ class Laneros {
                 };
 
                 let onSuccess = function(objRResponse, stRStatus) {
-                    if (objRResponse._redirectStatus === 'ok') {
-                        $('.section-login').fadeOut('fast', Laneros.showPopup);
-                    }
-                    if (objRResponse.title === 'Error') {
+                    if (objRResponse.html !== undefined) {
                         $('.alert-message').slideDown();
                         $('.alert-message p').html(Chrome.getMessage('text_error_login'));
+                    }
+                    else {
+                        $('.section-login').fadeOut('fast', objRLaneros.showPopup);
                     }
                 };
 
@@ -650,92 +654,17 @@ class Laneros {
     }
 
     /**
-     * Get Extension Data
-     */
-    getData(bolRAll = false) {
-        let objRLaneros = this;
-        let objLFail = function(objRjqXHR, stRTextStatus, objRErrorThrown) {
-            try {
-                if (objRjqXHR.status === 403) {
-                    objRLaneros.showLogin();
-                } else {
-                    $('.section-error').removeClass('hidden');
-                }
-            }
-            catch(objRException) {
-                new Log('getData ajax-error').error(objRException);
-            }
-        };
-
-        let objLSuccess = function(objRData, stRTextStatus, objRjqXHR) {
-            try {
-                let stLToken = $('input[name=_xfToken]:first', objRData).val();
-                let inRConversations = parseInt($('#VisitorExtraMenu_ConversationsCounter:first .Total', objRData).text());
-                let inRAlerts = parseInt($('#VisitorExtraMenu_AlertsCounter:first .Total', objRData).text());
-                let inRSubscriptions = parseInt($('.discussionListItems li.unread', objRData).length);
-                let inLCounter = inRConversations + inRAlerts + inRSubscriptions;
-
-                objRLaneros.setUserData({
-                    stRToken: stLToken,
-                    inRUserId: stLToken.split(',').shift(),
-                    stRUsername: $('#AccountMenu .primaryContent h3 a', objRData).html(),
-                    stRUserTitle: $('#AccountMenu .primaryContent .muted', objRData).html(),
-                    inRConversations: inRConversations,
-                    inRAlerts: inRAlerts,
-                    inRSubscriptions: inRSubscriptions,
-                    inRCounter: inLCounter
-                });
-
-                Chrome.getBadge(function (inRBadgeCounter) {
-                    Chrome.setBadge(inLCounter);
-
-                    if (parseInt(inRBadgeCounter) < inLCounter) {
-                        Chrome.getStorage({bolRNotificationConsolidated: objRLaneros.getDefaults('bolRNotificationConsolidated')},
-                            function (objROptions) {
-                                if (objROptions.bolRNotificationConsolidated) {
-                                    objRLaneros.createListNotification(inRConversations, inRAlerts, inRSubscriptions);
-                                }
-                            });
-                    }
-                });
-
-                objRLaneros.getAccount($('#AccountMenu', objRData));
-
-                if (bolRAll) {
-                    objRLaneros.getConversations();
-                    objRLaneros.getAlerts();
-                    objRLaneros.getSubscriptions();
-                }
-
-                if (inRConversations > 0) {
-                    $('.inbox-counter').removeClass('hidden').html(inRConversations);
-                }
-
-                if (inRAlerts > 0) {
-                    $('.alert-counter').removeClass('hidden').html(inRAlerts);
-                }
-
-                if (inRSubscriptions > 0) {
-                    $('.subscription-counter').removeClass('hidden').html(inRSubscriptions);
-                }
-
-                objRLaneros.showPopup(objRData);
-            }
-            catch(objRException) {
-                new Log('ajax-success').error(objRException);
-            }
-        };
-
-        $.get(this.getPageURL() + 'watched/threads/all').done(objLSuccess).fail(objLFail);
-    }
-
-    /**
      * Set user data
      *
      * @param objRUserData
      */
     setUserData(objRUserData) {
-        this._userData = objRUserData;
+        if (typeof this._userData !== 'undefined') {
+            this._userData = Object.assign(this._userData, objRUserData);
+        }
+        else {
+            this._userData = objRUserData;
+        }
     }
 
     /**
@@ -751,7 +680,6 @@ class Laneros {
 
         return this._userData;
     }
-
 
     /**
      * Show List Notification Popup
@@ -928,58 +856,140 @@ class Laneros {
     }
 
     /**
-     * Get Account Data
-     *
-     * @param objRAccount
+     * Get Extension Data
      */
-    getAccount(objRAccount) {
+    getData(bolRAll = false) {
+        let objRLaneros = this;
+        let objLFail = function(objRjqXHR, stRTextStatus, objRErrorThrown) {
+            try {
+                if (objRjqXHR.status === 403) {
+                    let stLToken = $('input[name=_xfToken]:first', objRjqXHR).val();
+
+                    objRLaneros.showLogin(stLToken);
+                } else {
+                    $('.section-error').removeClass('hidden');
+                }
+            }
+            catch(objRException) {
+                new Log('getData ajax-error').error(objRException);
+            }
+        };
+
+        let objLSuccess = function(objRData, stRTextStatus, objRjqXHR) {
+            try {
+                let stRToken = $('input[name=_xfToken]:first', objRData).val();
+                let inRUserId = $('.p-account .avatar', objRData).data('user-id');
+                let inRConversations = parseInt($('.p-account .js-badge--conversations', objRData).data('badge'));
+                let inRAlerts = parseInt($('.p-account .js-badge--alerts', objRData).data('badge'));
+                let inRSubscriptions = parseInt($('.structItemContainer .is-unread', objRData).length);
+                let inLCounter = inRConversations + inRAlerts + inRSubscriptions;
+
+                objRLaneros.setUserData({
+                    stRToken: stRToken,
+                    inRUserId: inRUserId
+                });
+
+                Chrome.getBadge(function (inRBadgeCounter) {
+                    Chrome.setBadge(inLCounter);
+
+                    if (parseInt(inRBadgeCounter) < inLCounter) {
+                        Chrome.getStorage({bolRNotificationConsolidated: objRLaneros.getDefaults('bolRNotificationConsolidated')},
+                            function (objROptions) {
+                                if (objROptions.bolRNotificationConsolidated) {
+                                    objRLaneros.createListNotification(inRConversations, inRAlerts, inRSubscriptions);
+                                }
+                            });
+                    }
+                });
+
+                objRLaneros.getAccount();
+
+                if (bolRAll) {
+                    objRLaneros.getConversations();
+                    objRLaneros.getAlerts();
+                    objRLaneros.getSubscriptions();
+                }
+
+                if (inRConversations > 0) {
+                    $('.inbox-counter').removeClass('hidden').html(inRConversations);
+                }
+
+                if (inRAlerts > 0) {
+                    $('.alert-counter').removeClass('hidden').html(inRAlerts);
+                }
+
+                if (inRSubscriptions > 0) {
+                    $('.subscription-counter').removeClass('hidden').html(inRSubscriptions);
+                }
+
+                objRLaneros.showPopup(objRData);
+            }
+            catch(objRException) {
+                new Log('ajax-success').error(objRException);
+            }
+        };
+
+        $.get(objRLaneros.getPageURL() + 'watched/threads').done(objLSuccess).fail(objLFail);
+    }
+
+    /**
+     * Get Account Data
+     */
+    getAccount() {
         let objRLaneros = this;
 
         Chrome.getStorage({bolRShowInfo: objRLaneros.getDefaults('bolRShowInfo') }, function (objROptions) {
             let objLShowInfo = $('.section-user .user-info-container');
 
             if (objROptions.bolRShowInfo) {
-                let objLAccount = document.createElement('div');
+                let objRData = document.createElement('div');
+                let objLResponse = function(objRResponse, stRTextStatus, objRjqXHR) {
+                    let objLUserInfo = $(objLShowInfo).find('.user-info');
+                    let objLUserData = $(objLShowInfo).find('.user-data');
 
-                $(objLAccount).load(objRLaneros.getPageURL() + 'forums/.visitorPanel', function(objRData) {
-                    if (objRData) {
-                        let objLUserInfo = $(objLShowInfo).find('.user-info');
-                        let objLUserData = $(objLShowInfo).find('.user-data');
+                    objRData = $(objRResponse.html.content);
 
-                        let stLAvatar = $('.secondaryContent .avatar img', objRData).attr('src');
-                        let inLMessages = $('.visitorText dl:first dd', objRData).html();
-                        let inLRatingPositive = $('.visitorText dl:eq(1) dd', objRData).html();
-                        let inLPoints = $('.visitorText dl:eq(2) dd', objRData).html();
-                        let inLFeedbackPositive = $('.feedbackStats .Positive:first', objRData).text();
-                        let inLFeedbackNeutral = $('.feedbackStats .Neutral:first', objRData).text();
-                        let inLFeedbackNegative = $('.feedbackStats .Negative:first', objRData).text();
+                    let stLAvatar = $('.avatarWrapper .avatar img', objRData).attr('src');
+                    let inLMessages = $('.contentRow-minor .fauxBlockLink:first dd a', objRData).html();
+                    let inLRatingPositive = $('.contentRow-minor .fauxBlockLink:eq(1) dd a', objRData).html();
+                    let inLPoints = $('.contentRow-minor .fauxBlockLink:last dd a', objRData).html();
+                    let inLFeedbackPositive = $('.feedbackStats .Positive:first', objRData).text();
+                    let inLFeedbackNeutral = $('.feedbackStats .Neutral:first', objRData).text();
+                    let inLFeedbackNegative = $('.feedbackStats .Negative:first', objRData).text();
 
-                        if (stLAvatar.indexOf('data/avatars') !== -1 || stLAvatar.indexOf('xenforo/avatars') !== -1) {
-                            stLAvatar = objRLaneros.getPageURL() + stLAvatar;
-                        }
+                    objRLaneros.setUserData({
+                        stRUsername: $('.contentRow-header a.username', objRData).html(),
+                        stRUserTitle: $('.contentRow-lesser .userTitle', objRData).html()
+                    });
 
-                        $(objLUserInfo).find('a').html(objRLaneros.getUserData('stRUsername'));
-                        $(objLUserInfo).find('small').html(objRLaneros.getUserData('stRUserTitle'));
-
-                        $(objLShowInfo).find('a').each(function () {
-                            if ($(this).attr('href').indexOf('members/') !== -1) {
-                                $(this).attr('href', $(this).attr('href') +
-                                    objRLaneros.getUserData('stRUsername') + '.' +
-                                    objRLaneros.getUserData('inRUserId'));
-                            }
-                        });
-
-                        $(objLShowInfo).find('img').attr('src', stLAvatar);
-                        $(objLUserData).find('.user-messages').html(inLMessages);
-                        $(objLUserData).find('.user-rating').html(inLRatingPositive);
-                        $(objLUserData).find('.user-points').html(inLPoints);
-                        $(objLUserData).find('.user-feedback-positive').html(parseInt(inLFeedbackPositive));
-                        $(objLUserData).find('.user-feedback-neutral').html(parseInt(inLFeedbackNeutral));
-                        $(objLUserData).find('.user-feedback-negative').html(parseInt(inLFeedbackNegative));
-
-                        $(objLShowInfo).removeClass('invisible').addClass('flex');
+                    if (stLAvatar.indexOf('data/avatars') !== -1 || stLAvatar.indexOf('xenforo/avatars') !== -1) {
+                        stLAvatar = objRLaneros.getPageURL() + stLAvatar;
                     }
-                });
+
+                    $(objLUserInfo).find('a').html(objRLaneros.getUserData('stRUsername'));
+                    $(objLUserInfo).find('small').html(objRLaneros.getUserData('stRUserTitle'));
+
+                    $(objLShowInfo).find('a').each(function () {
+                        if ($(this).attr('href').indexOf('members/') !== -1) {
+                            $(this).attr('href', $(this).attr('href') +
+                                objRLaneros.getUserData('stRUsername') + '.' +
+                                objRLaneros.getUserData('inRUserId'));
+                        }
+                    });
+
+                    $(objLShowInfo).find('img').attr('src', stLAvatar);
+                    $(objLUserData).find('.user-messages').html(inLMessages);
+                    $(objLUserData).find('.user-rating').html(inLRatingPositive);
+                    $(objLUserData).find('.user-points').html(inLPoints);
+                    $(objLUserData).find('.user-feedback-positive').html(inLFeedbackPositive ? inLFeedbackPositive : 0);
+                    $(objLUserData).find('.user-feedback-neutral').html(inLFeedbackNeutral ? inLFeedbackNeutral : 0);
+                    $(objLUserData).find('.user-feedback-negative').html(inLFeedbackNegative ? inLFeedbackNegative : 0);
+
+                    $(objLShowInfo).removeClass('invisible').addClass('flex');
+                };
+
+                $.getJSON(objRLaneros.getPageURL() + 'account/visitor-menu?_xfResponseType=json&_xfNoRedirect=1&_xfToken=' +
+                    objRLaneros.getUserData('stRToken'), objLResponse);
             }
             else {
                 $(objLShowInfo).addClass('hidden').removeClass('flex');
@@ -1000,60 +1010,84 @@ class Laneros {
      * Get Conversations
      */
     getConversations() {
-        let objLLaneros = this;
+        let objRLaneros = this;
         let objLResponse = function(objRResponse) {
             let objLConversations = document.createElement('div');
             let bolLUnread = false;
 
-            $(objLConversations).html(objRResponse.templateHtml);
+            $(objLConversations).html(objRResponse.html.content);
             $('#inbox').find('.conversation-item:gt(0)').remove();
             $('#inbox').find('.loading-data').hide();
 
-            if ($(objLConversations).find('.noItems').length === 0) {
-                $(objLConversations).find('.listItem').each(function () {
+            if ($(objLConversations).find('div.menu-row').length === 0) {
+                $(objLConversations).find('li.menu-row').each(function () {
                     let objLConversation = $('#inbox').find('.conversation-item:first').clone();
-                    let stLMessageTitle = $(this).find('.listItemText h3.title').html();
-                    let objLMessageURL = $(this).find('.listItemText h3.title a');
-                    let objLMessageIcon = $(this).find('a.avatar img');
-                    let bolLIsUnread = $(this).hasClass('unread');
+
+                    let objLMessage = $(this).find('.contentRow-main a.fauxBlockLink-blockLink');
+                    let objLMessageFigure = $(this).find('.contentRow-figure');
+                    let objLMessageIcon = $(objLMessageFigure).find('a.avatar img');
+                    let objLMessageWith = $(this).find('.contentRow-main .contentRow-minor--hideLinks');
+                    let objLMessageWithList = $(objLMessageWith).find('ul');
+                    let objLMessageTime = $(this).find('.contentRow-main .contentRow-minor--smaller time');
+                    let bolLIsUnread = $(this).hasClass('menu-row--highlighted');
 
                     if (bolLIsUnread) {
                         bolLUnread = true;
                         $(objLConversation).find('div:first').removeClass('bg-white').addClass('bg-yellow-lightest');
                     }
 
-                    $(objLConversation).find('a:first').attr('href', $(this).find('a.avatar').attr('href'));
+                    $(objLMessageWith).find('ul').remove();
+
+                    $(objLConversation).find('a:first').attr('href', $(objLMessageFigure).find('a.avatar').attr('href'));
                     $(objLConversation).find('a:first > img').attr('src', $(objLMessageIcon).attr('src'))
                         .attr('alt', $(objLMessageIcon).attr('alt'));
 
-                    $(objLConversation).find('.conversation-body > h6').html(stLMessageTitle);
-                    $(objLConversation).find('.conversation-body > h6 > a').html($(objLMessageURL).html());
-                    $(objLConversation).find('.conversation-body > p:first').html($(this).find('.posterDate').html());
-                    $(objLConversation).find('.conversation-body > p:last small').html($(this).find('.muted:last').html());
+                    $(objLConversation).find('.conversation-body > h6 > a').replaceWith(objLMessage);
+                    $(objLConversation).find('.conversation-body > p:first span:first').html($(objLMessageWith).text());
+                    $(objLConversation).find('.conversation-body > p:last small').html(objLMessageTime);
+
+                    $(objLMessageWithList).find('li').each(function(inRIndex) {
+                        let objLAnchor = document.createElement('a');
+
+                        let objLWith = $(objLConversation).find('.conversation-body > p:first');
+
+                        let objLUser = $(this).find('span:first');
+                        let stLUsername = $(objLUser).text();
+                        let inRUserId = $(objLUser).data('user-id');
+                        let stRTitle = $(objLUser).attr('title');
+
+                        $(objLAnchor).html(stLUsername).attr('title', stRTitle).attr('href', 'members/' + stLUsername
+                            + '.' + inRUserId);
+                        $(objLAnchor).appendTo(objLWith);
+
+                        if (inRIndex < $(objLMessageWithList).find('li').length - 1) {
+                            $(objLWith).append(', ');
+                        }
+                    });
 
                     $(objLConversation).find('a').removeClass().addClass('no-underline text-blue hover:text-blue-dark');
                     $(objLConversation).find('h6 a').removeClass('text-blue hover:text-blue-dark')
                         .addClass('text-grey-darker hover:text-grey-darkest');
-                    $(objLConversation).find('.DateTime').removeClass().addClass('text-orange');
+                    $(objLConversation).find('time').removeClass().addClass('text-orange');
 
                     $(objLConversation).find('a').each(function () {
                         $(this).attr('target', '_blank');
 
-                        if ($(this).attr('href').indexOf(objLLaneros.getPageURL()) === -1) {
-                            $(this).attr('href', objLLaneros.getPageURL() + $(this).attr('href'));
+                        if ($(this).attr('href').indexOf(objRLaneros.getPageURL()) === -1) {
+                            $(this).attr('href', objRLaneros.getPageURL() + $(this).attr('href'));
                         }
                     });
 
                     $(objLConversation).find('img').each(function () {
                         if ($(this).attr('src').indexOf('data/avatars') !== -1 ||
                             $(this).attr('src').indexOf('xenforo/avatars') !== -1) {
-                            $(this).attr('src', objLLaneros.getPageURL() + $(this).attr('src'));
+                            $(this).attr('src', objRLaneros.getPageURL() + $(this).attr('src'));
                         }
                     });
 
                     $(objLConversation).removeClass('hidden').appendTo('#inbox .conversation-container');
 
-                    Chrome.getStorage({bolRNotificationInbox: objLLaneros.getDefaults('bolRNotificationInbox') },
+                    Chrome.getStorage({bolRNotificationInbox: objRLaneros.getDefaults('bolRNotificationInbox') },
                         function (objROptions) {
                             if (objROptions.bolRNotificationInbox && bolLUnread) {
                                 let arrLMessage = $(objLMessageURL).attr('href').split('/');
@@ -1063,23 +1097,23 @@ class Laneros {
                                 let objLOptions = {
                                     stRMessageTitle: $(objLMessageURL).html(),
                                     stRMessage: Chrome.getMessage('label_new_messages'),
-                                    stRMessageIcon: objLLaneros.getPageURL() + $(objLMessageIcon).attr('src'),
-                                    stRMessageURL: objLLaneros.getPageURL() + $(objLMessageURL).attr('href'),
+                                    stRMessageIcon: objRLaneros.getPageURL() + $(objLMessageIcon).attr('src'),
+                                    stRMessageURL: objRLaneros.getPageURL() + $(objLMessageURL).attr('href'),
                                     inRMessageID: inLMessageID,
                                 };
 
-                                objLLaneros.createBasicNotification('messages', objLOptions);
+                                objRLaneros.createBasicNotification('messages', objLOptions);
                             }
                         });
                 });
             }
-            if ($(objLConversations).find('.noItems').length !== 0 || !bolLUnread) {
+            if ($(objLConversations).find('div.menu-row').length !== 0 || !bolLUnread) {
                 $('#inbox').find('.alert-inbox-message').removeClass('hidden');
             }
         };
 
-        $.getJSON(objLLaneros.getPageURL() + 'conversations/popup?_xfResponseType=json&_xfNoRedirect=1&_xfToken='  +
-            objLLaneros.getUserData('stRToken'), objLResponse);
+        $.getJSON(objRLaneros.getPageURL() + 'conversations/popup?_xfResponseType=json&_xfNoRedirect=1&_xfToken='  +
+            objRLaneros.getUserData('stRToken'), objLResponse);
     }
 
     /**
@@ -1091,18 +1125,18 @@ class Laneros {
             let objLAlerts = document.createElement('div');
             let bolLUnread = false;
 
-            $(objLAlerts).html(objRResponse.templateHtml);
+            $(objLAlerts).html(objRResponse.html.content);
             $('#alerts').find('.alert-item:gt(0)').remove();
             $('#alerts').find('.loading-data').hide();
 
-            if ($(objLAlerts).find('.noItems').length === 0) {
-                $(objLAlerts).find('.listItem').each(function () {
-                    $(this).find(".listItemText abbr, .listItemText .newIcon").remove();
-
+            if ($(objLAlerts).find('div.menu-row').length === 0) {
+                $(objLAlerts).find('li.menu-row').each(function () {
                     let objLAlert = $('#alerts').find('.alert-item:first').clone();
-                    let stLMessageTitle = $(this).find('.listItemText h3').html();
-                    let objLMessageURL = $(this).find('.listItemText h3 a');
-                    let objLMessageIcon = $(this).find('a.avatar img');
+
+                    let objLMessage = $(this).find('.contentRow-main');
+                    let objLMessageFigure = $(this).find('.contentRow-figure');
+                    let objLMessageIcon = $(objLMessageFigure).find('a.avatar img');
+                    let objLMessageTime = $(this).find('.contentRow-main .contentRow-minor--smaller time');
                     let bolLIsUnread = $(this).hasClass('new');
 
                     if (bolLIsUnread) {
@@ -1110,14 +1144,17 @@ class Laneros {
                         $(objLAlert).find('div:first').removeClass('bg-white').addClass('bg-yellow-lightest');
                     }
 
-                    $(objLAlert).find('a:first').attr('href', $(this).find('a.avatar').attr('href'));
+                    $(objLMessage).find('.contentRow-minor--smaller').remove();
+
+                    $(objLAlert).find('a:first').attr('href', $(objLMessageFigure).find('a.avatar').attr('href'));
                     $(objLAlert).find('a:first > img').attr('src', $(objLMessageIcon).attr('src'))
                         .attr('alt', $(objLMessageIcon).attr('alt'));
 
-                    $(objLAlert).find('.alert-body > p').html(stLMessageTitle);
+                    $(objLAlert).find('.alert-body > p:first').html($(objLMessage).html());
+                    $(objLAlert).find('.alert-body > p:last').html(objLMessageTime);
 
                     $(objLAlert).find('a').removeClass().addClass('no-underline text-blue hover:text-blue-dark');
-                    $(objLAlert).find('.DateTime').removeClass().addClass('text-orange');
+                    $(objLAlert).find('time').removeClass().addClass('text-orange');
 
                     $(objLAlert).find('a').each(function () {
                         $(this).attr('target', '_blank');
@@ -1156,7 +1193,7 @@ class Laneros {
                         });
                 });
             }
-            if ($(objLAlerts).find('.noItems').length !== 0 || !bolLUnread) {
+            if ($(objLAlerts).find('div.menu-row').length !== 0 || !bolLUnread) {
                 $('#alerts').find('.alert-alerts-message').removeClass('hidden');
             }
         };
@@ -1174,38 +1211,66 @@ class Laneros {
             let objRThreads = document.createElement('div');
             let bolLUnread = false;
 
-            $(objRThreads).html(objRResponse.templateHtml);
+            $(objRThreads).html(objRResponse.html.content);
             $('#subscriptions').find('.thread-item:gt(0)').remove();
             $('#subscriptions').find('.loading-data').hide();
 
-            if ($(objRThreads).find('.noItems').length === 0) {
-                $(objRThreads).find('.discussionListItem').each(function () {
-                    $(this).find("input, .itemPageNav, .controls, .stats, .iconKey").remove();
+            if ($(objRThreads).find('.structItem--thread').length > 0) {
+                $(objRThreads).find('.structItem--thread').each(function () {
+                    let objLAnchorUser = document.createElement('a');
+                    let objLAnchorTime = document.createElement('a');
+                    let objLAnchorForum = document.createElement('a');
 
                     let objLThread = $('#subscriptions').find('.thread-item:first').clone();
-                    let stLMessageTitle = $(this).find('.titleText h3.title').html();
-                    let objLMessageURL = $(this).find('.titleText h3.title a');
-                    let objLMessageIcon = $(this).find('a.avatar img');
-                    let bolLIsUnread = $(this).hasClass('unread');
+
+                    let objLMessage = $(this).find('.structItem-cell--main .structItem-title a');
+                    let objLMessageFigure = $(this).find('.structItem-cell--icon');
+                    let objLMessageIcon = $(objLMessageFigure).find('a.avatar img');
+
+                    let objLParts = $(objLThread).find('.thread-body > p:first');
+                    let objLMessagePartsList = $(this).find('.structItem-cell--main .structItem-parts');
+                    let objLUser = $(objLMessagePartsList).find('li:first a.username');
+                    let objLTime = $(objLMessagePartsList).find('li:eq(1) a');
+                    let objLForum = $(objLMessagePartsList).find('li:last a');
+                    let stLUsername = $(objLUser).text();
+                    let inRUserId = $(objLUser).data('user-id');
+
+                    let objLMessageLatest = $(this).find('.structItem-cell--latest');
+                    let bolLIsUnread = $(this).hasClass('is-unread');
 
                     if (bolLIsUnread) {
                         bolLUnread = true;
                         $(objLThread).find('div:first').removeClass('bg-white').addClass('bg-yellow-lightest');
                     }
 
-                    $(objLThread).find('a:first').attr('href', $(this).find('a.avatar').attr('href'));
+                    if ($(this).find('.structItem-secondaryIcon').length > 0) {
+                        $(objLThread).addClass('border-l-4 border-blue')
+                    }
+
+                    $(objLThread).find('a:first').attr('href', $(objLMessageFigure).find('a.avatar').attr('href'));
                     $(objLThread).find('a:first > img').attr('src', $(objLMessageIcon).attr('src'))
                         .attr('alt', $(objLMessageIcon).attr('alt'));
 
-                    $(objLThread).find('.thread-body > h6').html(stLMessageTitle);
-                    $(objLThread).find('.thread-body > p:first').html($(this).find('.posterDate').html());
-                    $(objLThread).find('.thread-body .message-info .message-by').html($(this).find('.lastPostInfo dt:first').html());
-                    $(objLThread).find('.thread-body .message-info .message-at').html($(this).find('.lastPostInfo dd.muted').html());
+                    $(objLThread).find('.thread-body > h6 a').replaceWith(objLMessage);
+
+                    $(objLAnchorUser).html(stLUsername).attr('href', 'members/' + stLUsername + '.' + inRUserId);
+                    $(objLAnchorUser).appendTo(objLParts);
+                    $(objLParts).append(' · ');
+
+                    $(objLAnchorTime).html(objLTime.html()).attr('href', objLTime.attr('href'));
+                    $(objLAnchorTime).appendTo(objLParts);
+                    $(objLParts).append(' · ');
+
+                    $(objLAnchorForum).html(objLForum.html()).attr('href', objLForum.attr('href'));
+                    $(objLAnchorForum).appendTo(objLParts);
+
+                    $(objLThread).find('.thread-body .message-info .message-by').html($(objLMessageLatest).find('.structItem-minor').html());
+                    $(objLThread).find('.thread-body .message-info .message-at').replaceWith($(objLMessageLatest).find('a:first'));
 
                     $(objLThread).find('a').removeClass().addClass('no-underline text-blue hover:text-blue-dark');
                     $(objLThread).find('h6 a').removeClass('text-blue hover:text-blue-dark')
                         .addClass('text-grey-darker hover:text-grey-darkest');
-                    $(objLThread).find('.DateTime').removeClass().addClass('text-orange hover:text-orange-dark');
+                    $(objLThread).find('time').removeClass().addClass('text-orange hover:text-orange-dark');
 
                     $(objLThread).find('a').each(function () {
                         $(this).attr('target', '_blank');
@@ -1245,12 +1310,12 @@ class Laneros {
                 });
             }
 
-            if ($(objRThreads).find('.noItems').length !== 0 || !bolLUnread) {
+            if ($(objRThreads).find('.is-unread').length === 0 || !bolLUnread) {
                 $('#subscriptions').find('.alert-subscriptions-message').removeClass('hidden');
             }
         };
 
-        $.getJSON(objLLaneros.getPageURL() + 'watched/threads/all?_xfResponseType=json&_xfNoRedirect=1&_xfToken='  +
+        $.getJSON(objLLaneros.getPageURL() + 'watched/threads?_xfResponseType=json&_xfNoRedirect=1&_xfToken='  +
             objLLaneros.getUserData('stRToken'), objLResponse);
 
     }
