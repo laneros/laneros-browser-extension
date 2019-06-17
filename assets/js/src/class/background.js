@@ -53,7 +53,7 @@ class Background {
                     }
                 });
 
-                objRLaneros.getData();
+                objRLaneros.getData(true);
             }
             catch(objRException) {
                 new Log('ajax-success').error(objRException);

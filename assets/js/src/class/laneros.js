@@ -579,6 +579,7 @@ class Laneros {
                 $(this).addClass('text-white bg-blue hover:bg-blue-dark')
                     .removeClass('text-blue hover:bg-grey-lightest');
 
+                $('#' + stLActiveTab).find('.loading-data').show();
                 $('.tab-content .tab').addClass('hidden');
                 $('#' + stLActiveTab).removeClass('hidden').hide().fadeIn();
             }
@@ -642,6 +643,7 @@ class Laneros {
                         .removeClass('text-blue hover:bg-grey-lightest');
                 }
 
+                $(stLTabId).find('.loading-data').show();
                 $(stLTabId).removeClass('hidden');
                 objLActiveTab((stLTabId).replace('#', ''))
             });
