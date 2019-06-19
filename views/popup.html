@@ -141,7 +141,8 @@
                             </a>
                             <div class="ml-3 user-info">
                                 <h6 class="text-sm flex flex-col">
-                                    <a href="members/" class="external-link text-blue-600 hover:text-blue-700 font-bold" target="_blank"></a>
+                                    <a class="external-link text-blue-600 hover:text-blue-700 font-bold user-id-full"
+                                       target="_blank" href="members/{user-id-full}"></a>
                                     <small></small>
                                 </h6>
                             </div>
@@ -175,8 +176,34 @@
                                         </svg>
                                     </div>
                                     <p class="my-1">
-                                        <a class="external-link user-points" href="members/"></a>
+                                        <a class="external-link user-points user-id-full" href="members/{user-id-full}/trophies"></a>
                                     </p>
+                                </div>
+                            </div>
+                            <div class="flex justify-center items-center flex-grow ml-1 border-l border-gray-500">
+                                <div class="mx-2 text-center">
+                                    <div class="w-5 h-5 mx-auto text-green-500">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" fill="currentColor">
+                                            <path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm80 168c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm-160 0c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm194.8 170.2C334.3 380.4 292.5 400 248 400s-86.3-19.6-114.8-53.8c-13.6-16.3 11-36.7 24.6-20.5 22.4 26.9 55.2 42.2 90.2 42.2s67.8-15.4 90.2-42.2c13.4-16.2 38.1 4.2 24.6 20.5z"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="user-feedback-positive my-1"></div>
+                                </div>
+                                <div class="mx-2 text-center">
+                                    <div class="w-5 h-5 mx-auto text-gray-500">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" fill="currentColor">
+                                            <path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm-80 168c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm176 192H152c-21.2 0-21.2-32 0-32h192c21.2 0 21.2 32 0 32zm-16-128c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="user-feedback-neutral my-1"></div>
+                                </div>
+                                <div class="mx-2 text-center">
+                                    <div class="w-5 h-5 mx-auto text-red-500">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" fill="currentColor">
+                                            <path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm80 168c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm-160 0c17.7 0 32 14.3 32 32s-14.3 32-32 32-32-14.3-32-32 14.3-32 32-32zm170.2 218.2C315.8 367.4 282.9 352 248 352s-67.8 15.4-90.2 42.2c-13.5 16.3-38.1-4.2-24.6-20.5C161.7 339.6 203.6 320 248 320s86.3 19.6 114.7 53.8c13.6 16.2-11 36.7-24.5 20.4z"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="user-feedback-negative my-1"></div>
                                 </div>
                             </div>
                         </div>
@@ -222,7 +249,7 @@
                                 <div class="hidden user-links">
                                     <div class="flex">
                                         <ul class="flex flex-col w-1/2 px-2 py-3">
-                                            <li class="mx-2 flex">
+                                            <li class="mx-2 flex hidden">
                                                 <a class="external-link border-l-2 border-transparent hover:bg-gray-200 hover:border-gray-300 hover:text-gray-900 p-2 w-full"
                                                    href="account/change-username" data-i18n="html,label_nickname"></a>
                                             </li>
@@ -234,7 +261,7 @@
                                                 <a class="external-link border-l-2 border-transparent hover:bg-gray-200 hover:border-gray-300 hover:text-gray-900 p-2 w-full"
                                                    href="account/signature" data-i18n="html,label_signature"></a>
                                             </li>
-                                            <li class="mx-2 flex">
+                                            <li class="mx-2 flex hidden">
                                                 <a class="external-link border-l-2 border-transparent hover:bg-gray-200 hover:border-gray-300 hover:text-gray-900 p-2 w-full"
                                                    href="account/contact-details" data-i18n="html,label_contact_details"></a>
                                             </li>
@@ -246,7 +273,7 @@
                                                 <a class="external-link border-l-2 border-transparent hover:bg-gray-200 hover:border-gray-300 hover:text-gray-900 p-2 w-full"
                                                    href="account/preferences" data-i18n="html,label_preferences"></a>
                                             </li>
-                                            <li class="mx-2 flex">
+                                            <li class="mx-2 flex hidden">
                                                 <a class="external-link border-l-2 border-transparent hover:bg-gray-200 hover:border-gray-300 hover:text-gray-900 p-2 w-full"
                                                    href="account/alert-preferences" data-i18n="html,label_alert_preferences"></a>
                                             </li>
@@ -267,8 +294,8 @@
                                                    href="account/delete" data-i18n="html,label_delete_account"></a>
                                             </li>
                                             <li class="mx-2 flex">
-                                                <a class="external-link border-l-2 border-transparent hover:bg-gray-200 hover:border-gray-300 hover:text-gray-900 p-2 w-full"
-                                                   href="calificaciones/preferences" data-i18n="html,label_classifieds_preferences"></a>
+                                                <a class="external-link user-id-full border-l-2 border-transparent hover:bg-gray-200 hover:border-gray-300 hover:text-gray-900 p-2 w-full"
+                                                   href="feedback/{user-id-full}/preferences" data-i18n="html,label_classifieds_preferences"></a>
                                             </li>
                                         </ul>
                                         <ul class="flex flex-col w-1/2 px-2 py-3">
@@ -314,7 +341,7 @@
                                                 <a class="external-link border-l-2 border-transparent hover:bg-gray-200 hover:border-gray-300 hover:text-gray-900 p-2 w-full"
                                                    href="account/two-step" data-i18n="html,label_two_steps"></a>
                                             </li>
-                                            <li class="mx-2 flex">
+                                            <li class="mx-2 flex hidden">
                                                 <a class="external-link border-l-2 border-transparent hover:bg-gray-200 hover:border-gray-300 hover:text-gray-900 p-2 w-full"
                                                    href="account/ignorar-mensajes" data-i18n="html,label_ignore_messages"></a>
                                             </li>
@@ -351,8 +378,8 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <form action="members/" method="post" name="statusPoster" id="statusPoster"
-                                      class="external-link w-full p-1 pb-0">
+                                <form action="members/{user-id-full}/post" method="post" name="statusPoster" id="statusPoster"
+                                      class="external-link w-full p-1 pb-0 user-id-full">
                                     <textarea name="message" id="message" rows="1" data-message="label_update_status"
                                               class="border border-gray-200 rounded w-full py-2 px-3"
                                               data-i18n="placeholder,label_update_status" required></textarea>

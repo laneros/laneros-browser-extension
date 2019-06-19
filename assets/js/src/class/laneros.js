@@ -886,11 +886,26 @@ class Laneros {
         let objRLaneros = this;
 
         Chrome.getStorage({bolRShowInfo: objRLaneros.getDefaults('bolRShowInfo') }, function (objROptions) {
-            let objLShowInfo = $('.section-user .user-info-container');
+            let objLSectionUser = $('.section-user');
+            let objLShowInfo = $(objLSectionUser).find('.user-info-container');
 
             if (objROptions.bolRShowInfo) {
                 let objRData = document.createElement('div');
-                let objLResponse = function(objRResponse, stRTextStatus, objRjqXHR) {
+                let objLResponseFeedback = function(objRResponse, stRTextStatus, objRjqXHR) {
+                    let objLUserData = $(objLShowInfo).find('.user-data')
+
+                    objRData = $(objRResponse.html.content);
+
+                    let inLFeedbackPositive = $('.statsList .pairsJustified .formRow:eq(1) dd', objRData).text();
+                    let inLFeedbackNeutral = $('.statsList .pairsJustified .formRow:eq(2) dd', objRData).text();
+                    let inLFeedbackNegative = $('.statsList .pairsJustified .formRow:eq(3) dd', objRData).text();
+
+                    $(objLUserData).find('.user-feedback-positive').html(inLFeedbackPositive ? inLFeedbackPositive : 0);
+                    $(objLUserData).find('.user-feedback-neutral').html(inLFeedbackNeutral ? inLFeedbackNeutral : 0);
+                    $(objLUserData).find('.user-feedback-negative').html(inLFeedbackNegative ? inLFeedbackNegative : 0);
+
+                };
+                let objLResponseMenu = function(objRResponse, stRTextStatus, objRjqXHR) {
                     let objLUserInfo = $(objLShowInfo).find('.user-info');
                     let objLUserData = $(objLShowInfo).find('.user-data');
 
@@ -900,46 +915,43 @@ class Laneros {
                     let inLMessages = $('.contentRow-minor .fauxBlockLink:first dd a', objRData).html();
                     let inLRatingPositive = $('.contentRow-minor .fauxBlockLink:eq(1) dd a', objRData).html();
                     let inLPoints = $('.contentRow-minor .fauxBlockLink:last dd a', objRData).html();
-                    let inLFeedbackPositive = $('.feedbackStats .Positive:first', objRData).text();
-                    let inLFeedbackNeutral = $('.feedbackStats .Neutral:first', objRData).text();
-                    let inLFeedbackNegative = $('.feedbackStats .Negative:first', objRData).text();
 
                     objRLaneros.setUserData({
                         stRUsername: $('.contentRow-header a.username', objRData).text(),
-                        stRUserTitle: $('.contentRow-lesser .userTitle', objRData).text()
+                        stRUserTitle: $('.contentRow-lesser .userTitle', objRData).text(),
+                        stRUserFullId: $('.contentRow-header a.username', objRData).text() + '.' +
+                            objRLaneros.getUserData('inRUserId')
+                    });
+
+                    $(objLSectionUser).find('.user-id-full').each(function() {
+                        if($(this).attr('href') !== undefined) {
+                            let stLHref = $(this).attr('href').replace('{user-id-full}', objRLaneros.getUserData('stRUserFullId'));
+
+                            $(this).attr('href', stLHref);
+                        }
+                        if($(this).attr('action') !== undefined) {
+                            let stLAction = $(this).attr('action').replace('{user-id-full}', objRLaneros.getUserData('stRUserFullId'));
+
+                            $(this).attr('action', stLAction);
+                        }
                     });
 
                     $(objLUserInfo).find('a').html(objRLaneros.getUserData('stRUsername'));
                     $(objLUserInfo).find('small').html(objRLaneros.getUserData('stRUserTitle'));
-
-                    $(objLShowInfo).find('a').each(function () {
-                        if ($(this).attr('href').indexOf('members/') !== -1) {
-                            $(this).attr('href', $(this).attr('href') +
-                                objRLaneros.getUserData('stRUsername') + '.' +
-                                objRLaneros.getUserData('inRUserId'));
-                        }
-                        if ($(this).hasClass('user-points' )) {
-                            $(this).attr('href', $(this).attr('href') + '/trophies');
-                        }
-                    });
-
-                    $('#statusPoster').attr('action', $('#statusPoster').attr('action') +
-                        objRLaneros.getUserData('stRUsername') + '.' +
-                        objRLaneros.getUserData('inRUserId') + '/post');
-
                     $(objLShowInfo).find('.avatar').attr('src', stLAvatar);
+
                     $(objLUserData).find('.user-messages').html(inLMessages);
                     $(objLUserData).find('.user-rating').html(inLRatingPositive);
                     $(objLUserData).find('.user-points').html(inLPoints);
-                    $(objLUserData).find('.user-feedback-positive').html(inLFeedbackPositive ? inLFeedbackPositive : 0);
-                    $(objLUserData).find('.user-feedback-neutral').html(inLFeedbackNeutral ? inLFeedbackNeutral : 0);
-                    $(objLUserData).find('.user-feedback-negative').html(inLFeedbackNegative ? inLFeedbackNegative : 0);
 
                     $(objLShowInfo).removeClass('invisible').addClass('flex');
                 };
 
                 $.getJSON(objRLaneros.getPageURL() + 'account/visitor-menu?_xfResponseType=json&_xfNoRedirect=1&_xfToken=' +
-                    objRLaneros.getUserData('stRToken'), objLResponse);
+                    objRLaneros.getUserData('stRToken'), objLResponseMenu);
+
+                $.getJSON(objRLaneros.getPageURL() + 'feedback/'+ objRLaneros.getUserData('inRUserId') +
+                    '/authors?_xfResponseType=json&_xfNoRedirect=1&_xfToken=' + objRLaneros.getUserData('stRToken'), objLResponseFeedback);
             }
             else {
                 $(objLShowInfo).addClass('hidden').removeClass('flex');

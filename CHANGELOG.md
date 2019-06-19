@@ -2,6 +2,16 @@
 
 All notable changes to `laneros-browser-extension` will be documented in this file.
 
+## 8.1 | 2019-06-19
+
+### Added
+
+- Feedback is back
+
+### Removed
+
+- Removed some links in Home tab 
+
 ## 8.0.3 | 2019-06-17
 
 ### Changed
