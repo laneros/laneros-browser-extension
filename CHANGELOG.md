@@ -2,6 +2,12 @@
 
 All notable changes to `laneros-browser-extension` will be documented in this file.
 
+## 8.1.1 | 2019-06-19
+
+### Added
+
+- Feedback filters
+
 ## 8.1 | 2019-06-19
 
 ### Added
