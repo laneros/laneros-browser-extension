@@ -23,13 +23,13 @@ Colombian technological community discussing current issues, news, traders secti
 
 Official thread on Laneros website
 
-https://www.laneros.com/temas/app-google-chrome-de-laneros-com.183029/
+[App Google Chrome de LANeros.com | Laneros.com](https://www.laneros.com/temas/app-google-chrome-de-laneros-com.183029/)
 
 ## Install
 
 Available on Chrome Web Store
 
-https://chrome.google.com/webstore/detail/extensi%C3%B3n-de-navegador-pa/odcfloakhlmignakgflbofpdaiaclijg
+[Laneros browser extension - Chrome Web Store](https://chrome.google.com/webstore/detail/extensi%C3%B3n-de-navegador-pa/odcfloakhlmignakgflbofpdaiaclijg)
 
 ## Credits
 
