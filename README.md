@@ -34,8 +34,8 @@ https://chrome.google.com/webstore/detail/extensi%C3%B3n-de-navegador-pa/odcfloa
 ## Credits
 
 - [Alvaro Montenegro](https://github.com/arthvrian)
-- [.::BillGabo::.](https://www.laneros.com/miembros/billgabo.84502/)
-- [Cacharrin](https://www.laneros.com/miembros/cacharrin.126363/)
+- [Felipe Botero](https://github.com/cacharrin)
+- [William Campos](https://github.com/billgabo)
 
 ## License
 
