@@ -2,7 +2,7 @@
   "name": "__MSG_extension_name__",
   "short_name": "__MSG_extension_short_name__",
   "description": "__MSG_extension_description__",
-  "version": "8.1.2",
+  "version": "8.1.3",
   "manifest_version": 2,
   "options_page": "views/options.html",
   "default_locale": "es",
@@ -29,8 +29,7 @@
       "assets/js/src/class/chrome.js",
       "assets/js/src/class/log.js",
       "assets/js/src/class/laneros.js",
-      "assets/js/src/class/background.js",
-      "assets/js/tasks/background.js"
+      "assets/js/src/class/background.js"
     ]
   }
 }
