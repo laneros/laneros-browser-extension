@@ -5,8 +5,7 @@ body {
     margin: 0;
 }
 a.twitterLogin,
-a.fbLogin,
-.googleLogin {
+a.fbLogin {
     display: block;
     font-weight: 600;
     color: #FFF;

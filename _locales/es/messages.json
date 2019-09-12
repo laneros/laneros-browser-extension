@@ -269,23 +269,11 @@
   "label_last_message_by": {
     "message": "Último mensaje por"
   },
-  "button_open_message": {
-    "message": "Leer conversación"
-  },
-  "button_open_subscriptions": {
-    "message": "Mis suscripciones"
-  },
-  "button_open_subscription": {
-    "message": "Ir al tema/foro"
-  },
-  "button_open_bookmark": {
-    "message": "Ir al marcador"
-  },
   "header_dark_mode": {
     "message": "Modo oscuro"
   },
   "text_dark_mode": {
-    "message": "Switch the color theme of the extension"
+    "message": "Cambiar el color de tema de la extensión"
   },
   "label_dark_mode": {
     "message": "Usar el modo oscuro"

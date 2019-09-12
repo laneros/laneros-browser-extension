@@ -86,7 +86,7 @@ class Laneros {
             }
         });
 
-        $(document).ajaxStop(function(objLData1, objLData2, objLData3) {
+        $(document).ajaxStop(function() {
             $('body').css('height', 'auto');
         });
     }
@@ -205,7 +205,7 @@ class Laneros {
                 $('#checkbox_notification_subscriptions').attr('checked', true);
 
                 $('#checkbox_notification_consolidated').attr('checked', false).attr('disabled', true);
-            }1
+            }
 
             $('#number_hours').val(objLReviewTime.inRHours);
             $('#number_minutes').val(objLReviewTime.inRMinutes);
@@ -259,7 +259,6 @@ class Laneros {
 
     static saveOptions() {
         try {
-            let objRLaneros = this;
             let dtLTimeRev = parseInt($('#number_milliseconds').val())
                 + (parseInt($('#number_seconds').val()) * 1000)
                 + (parseInt($('#number_minutes').val()) * 60 * 1000)
@@ -335,7 +334,7 @@ class Laneros {
         if ($.validator) {
             $.validator.setDefaults({
                 errorElement: 'div',
-                highlight: function (element, errorClass, validClass) {
+                highlight: function (element) {
                     $(element).closest('.flex-row').find('label').removeClass('text-green-600').addClass('text-red-500');
                     $(element).removeClass('border-green-600').addClass('border-red-500');
 
@@ -343,7 +342,7 @@ class Laneros {
                         $(element).closest('.flex-row').removeClass('mb-8').addClass('mb-4 pb-1');
                     }
                 },
-                unhighlight: function (element, errorClass, validClass) {
+                unhighlight: function (element) {
                     $(element).removeClass('border-red-500').addClass('border-green-600');
                     $(element).closest('.flex-row').find('label').removeClass('text-red-500').addClass('text-green-600');
 
@@ -434,11 +433,11 @@ class Laneros {
         if ($.validator) {
             $('#pageLogin').validate({
                 submitHandler: function (form) {
-                    let onBeforeSubmit = function (objRResponse, stRStatus) {
+                    let onBeforeSubmit = function() {
                         $('.alert-message').slideUp();
                     };
 
-                    let onSuccess = function (objRResponse, stRStatus) {
+                    let onSuccess = function (objRResponse) {
                         if (objRResponse.html !== undefined) {
                             $('.alert-message').slideDown();
                             $('.alert-message p').html(Chrome.getMessage('text_error_login'));
@@ -447,7 +446,7 @@ class Laneros {
                         }
                     };
 
-                    let onError = function (objRResponse, stRStatus) {
+                    let onError = function() {
                         $('.alert-message').slideDown();
                         $('.alert-message p').html(Chrome.getMessage('text_error_message'));
                     };
@@ -892,7 +891,7 @@ class Laneros {
             if (objROptions.bolRShowInfo) {
                 let objRData = document.createElement('div');
                 let objLResponseFeedback = function(objRResponse, stRTextStatus, objRjqXHR) {
-                    let objLUserData = $(objLShowInfo).find('.user-data')
+                    let objLUserData = $(objLShowInfo).find('.user-data');
 
                     objRData = $(objRResponse.html.content);
 
@@ -905,7 +904,7 @@ class Laneros {
                     $(objLUserData).find('.user-feedback-negative').html(inLFeedbackNegative ? inLFeedbackNegative : 0);
 
                 };
-                let objLResponseMenu = function(objRResponse, stRTextStatus, objRjqXHR) {
+                let objLResponseMenu = function(objRResponse) {
                     let objLUserInfo = $(objLShowInfo).find('.user-info');
                     let objLUserData = $(objLShowInfo).find('.user-data');
 
@@ -1012,7 +1011,8 @@ class Laneros {
                         .attr('href', $(objLMessageFigure).find('a.avatar').attr('href'));
                     $(objLConversation).find('.conversation-title').replaceWith(objLMessage);
                     $(objLConversation).find('.conversation-with').html($(objLMessageWith).text());
-                    $(objLConversation).find('.conversation-time').html(objLMessageTime);
+                    $(objLConversation).find('.conversation-time').html($(objLMessageTime).html())
+                        .attr('title', $(objLMessageTime).attr('title'));
 
                     $(objLMessageWithList).find('li').each(function(inRIndex) {
                         let objLAnchor = document.createElement('a');
@@ -1119,7 +1119,8 @@ class Laneros {
                     $(objLMessage).find('.contentRow-minor--smaller, i, img').remove();
                     $(objLAlert).find('.alert-avatar').attr('href', $(objLMessageFigure).find('a.avatar').attr('href'));
                     $(objLAlert).find('.alert-content').html($(objLMessage).html());
-                    $(objLAlert).find('.alert-time').html(objLMessageTime);
+                    $(objLAlert).find('.alert-time').html($(objLMessageTime).html())
+                        .attr('title', $(objLMessageTime).attr('title'));
 
                     $(objLAlert).find('.alert-with a').addClass('text-blue-500 hover:text-blue-600');
                     $(objLAlert).find('bdi').removeClass().addClass('font-bold');
@@ -1232,7 +1233,7 @@ class Laneros {
                     $(objLAnchorForum).html(objLForum.html()).attr('href', objLForum.attr('href'));
                     $(objLAnchorForum).appendTo(objLParts);
 
-                    $(objLThread).find('.message-info .message-by').html($(objLMessageLatest).find('.structItem-minor').html());
+                    $(objLThread).find('.message-info .message-by').replaceWith($(objLMessageLatest).find('.structItem-minor a'));
                     $(objLThread).find('.message-info .message-at').replaceWith($(objLMessageLatest).find('a:first'));
 
                     $(objLThread).find('.thread-body h6 a').addClass('hover:text-gray-900');
