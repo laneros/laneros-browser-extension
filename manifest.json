@@ -29,7 +29,8 @@
       "assets/js/src/class/chrome.js",
       "assets/js/src/class/log.js",
       "assets/js/src/class/laneros.js",
-      "assets/js/src/class/background.js"
+      "assets/js/src/class/background.js",
+      "assets/js/tasks/background.js"
     ]
   }
 }
