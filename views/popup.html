@@ -41,7 +41,7 @@
                     <h3 data-i18n="html,message_data_loading" class="text-blue-600 text-2xl font-bold mt-8"></h3>
                 </div>
             </section>
-            <article class="m-auto w-full">
+            <div class="m-auto w-full">
                 <header class="p-2 pb-1 flex justify-between items-baseline hidden">
                     <a class="external-link inline-block" target="_blank" href="/">
                         <img class="pt-1 logo-img" src="../assets/img/laneros2x.png" alt="Logo Laneros" width="240">
@@ -61,7 +61,7 @@
                     </div>
                 </section>
                 <section class="bg-gray-100 section-login hidden">
-                    <form class="external-link" role="form" action="login/login" method="post" id="pageLogin" name="pageLogin">
+                    <form class="external-link" action="login/login" method="post" id="pageLogin" name="pageLogin">
                         <div class="border-l-4 border-red-500 bg-red-100 px-4 py-2 mb-3 alert-message" role="alert">
                             <h4 class="font-semibold text-lg text-red-500" data-i18n="html,label_error_message"></h4>
                             <p class="text-sm text-red-400" data-i18n="html,text_error_not_connected"></p>
@@ -95,8 +95,8 @@
                             <div class="my-2 text-sm">
                                 <div class="py-1">
                                     <div class="pretty p-icon p-round">
-                                        <input type="checkbox" name="remember" id="ctrl_pageLogin_remember" autocomplete="off"
-                                               value="1" checked data-i18n="title,message_required_section">
+                                        <input type="checkbox" name="remember" id="ctrl_pageLogin_remember"
+                                               value="1" checked data-i18n="title,message_required_field">
                                         <div class="state ml-1">
                                             <svg class="icon p-px bg-blue-400 text-gray-100 stroke-current" viewBox="0 0 20 20"
                                                  xmlns="http://www.w3.org/2000/svg" fill="currentColor">
@@ -188,7 +188,7 @@
                                         </svg>
                                     </div>
                                     <div class="my-1">
-                                        <a class="external-link user-feedback-positive user-id-full" href="feedback/{user-id-full}?reloadList=1&amountFilter[0]=1"></a>
+                                        <a class="external-link user-feedback-positive user-id-full" href="feedback/{user-id-full}?reloadList=1&amountFilter%5B0%5D=1"></a>
                                     </div>
                                 </div>
                                 <div class="mx-1 hover:text-gray-900">
@@ -198,7 +198,7 @@
                                         </svg>
                                     </div>
                                     <div class="my-1">
-                                        <a class="external-link user-feedback-neutral user-id-full" href="feedback/{user-id-full}?reloadList=1&amountFilter[0]=-1"></a>
+                                        <a class="external-link user-feedback-neutral user-id-full" href="feedback/{user-id-full}?reloadList=1&amountFilter%5B0%5D=-1"></a>
                                     </div>
                                 </div>
                                 <div class="mx-1 hover:text-gray-900">
@@ -208,7 +208,7 @@
                                         </svg>
                                     </div>
                                     <div class="my-1">
-                                        <a class="external-link user-feedback-negative user-id-full" href="feedback/{user-id-full}?reloadList=1&amountFilter[0]=0"></a>
+                                        <a class="external-link user-feedback-negative user-id-full" href="feedback/{user-id-full}?reloadList=1&amountFilter%5B0%5D=0"></a>
                                     </div>
                                 </div>
                             </div>
@@ -360,7 +360,7 @@
                                             <form action="account/privacy" method="post" class="external-link"
                                                   name="visibilityForm" id="visibilityForm">
                                                 <div class="pretty p-icon p-round p-bigger mt-px">
-                                                    <input type="checkbox" name="user[visible]" autocomplete="off" value="1"
+                                                    <input type="checkbox" name="user[visible]" value="1"
                                                            id="ctrl_pageStatus_visible" data-i18n="title,label_online_status">
                                                     <div class="state ml-1">
                                                         <svg class="icon p-px bg-blue-400 text-gray-100 stroke-current"
@@ -427,7 +427,7 @@
                                             </a>
                                             <div class="conversation-body w-full ml-3">
                                                 <h6 class="text-base font-semibold">
-                                                    <a class="conversation-title" href="#"></a>
+                                                    <a class="conversation-title" href="#">&nbsp;</a>
                                                 </h6>
                                                 <p class="text-gray-500 text-xs conversation-with"></p>
                                                 <p class="flex justify-end text-xs">
@@ -509,7 +509,7 @@
                                             <div class="thread-body w-full ml-3">
                                                 <div class="w-full">
                                                     <h6 class="text-base font-semibold">
-                                                        <a class="thread-title" href="#"></a>
+                                                        <a class="thread-title" href="#">&nbsp;</a>
                                                     </h6>
                                                     <p class="text-xs thread-starter"></p>
                                                 </div>
@@ -555,7 +555,7 @@
                                             <div class="bookmark-body w-full ml-3">
                                                 <div class="w-full">
                                                     <h6 class="text-base font-semibold">
-                                                        <a class="bookmark-title" href="#"></a>
+                                                        <a class="bookmark-title" href="#">&nbsp;</a>
                                                     </h6>
                                                     <blockquote class="text-sm bookmark-message italic mt-1 pl-3 border-l-2 border-gray-500 text-gray-500"></blockquote>
                                                 </div>
@@ -583,7 +583,7 @@
                         </div>
                     </div>
                 </section>
-            </article>
+            </div>
         </main>
 
         <script src="../vendor/js/jquery-3.4.1.min.js"></script>
