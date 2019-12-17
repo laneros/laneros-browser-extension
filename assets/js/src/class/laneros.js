@@ -76,7 +76,8 @@ class Laneros {
 
         $(objRHtml).find('.external-link').each(function() {
             if($(this).is('a')) {
-                $(this).attr('href', stLUrl + $(this).attr('href')).attr('target', '_blank');
+                $(this).attr('href', stLUrl + $(this).attr('href'))
+                    .attr('target', '_blank');
             }
             if($(this).is('form')) {
                 $(this).attr('action', stLUrl + $(this).attr('action'));
@@ -154,6 +155,10 @@ class Laneros {
     setOptions(objROptions) {
         try {
             let objLReviewTime = Laneros.getTime(objROptions.dtRTimeRev);
+            let checkboxNotificationConsolidated = $('input[name=checkbox_notification_consolidated]');
+            let checkboxNotificationInbox = $('input[name=checkbox_notification_inbox]');
+            let checkboxNotificationAlerts = $('input[name=checkbox_notification_alerts]');
+            let checkboxNotificationSubscriptions = $('input[name=checkbox_notification_subscriptions]');
 
             if ($.validator) {
                 $('#form_options').validate({
@@ -187,24 +192,30 @@ class Laneros {
             if (objROptions.bolRNotificationConsolidated) {
                 $('#checkbox_notification_consolidated').attr('checked', true);
 
-                $('#checkbox_notification_inbox').attr('checked', false).attr('disabled', true);
-                $('#checkbox_notification_alerts').attr('checked', false).attr('disabled', true);
-                $('#checkbox_notification_subscriptions').attr('checked', false).attr('disabled', true);
+                $('#checkbox_notification_inbox').attr('checked', false)
+                    .attr('disabled', true);
+                $('#checkbox_notification_alerts').attr('checked', false)
+                    .attr('disabled', true);
+                $('#checkbox_notification_subscriptions').attr('checked', false)
+                    .attr('disabled', true);
             }
             if (objROptions.bolRNotificationInbox) {
                 $('#checkbox_notification_inbox').attr('checked', true);
 
-                $('#checkbox_notification_consolidated').attr('checked', false).attr('disabled', true);
+                $('#checkbox_notification_consolidated').attr('checked', false)
+                    .attr('disabled', true);
             }
             if (objROptions.bolRNotificationAlerts) {
                 $('#checkbox_notification_alerts').attr('checked', true);
 
-                $('#checkbox_notification_consolidated').attr('checked', false).attr('disabled', true);
+                $('#checkbox_notification_consolidated').attr('checked', false)
+                    .attr('disabled', true);
             }
             if (objROptions.bolRNotificationSubs) {
                 $('#checkbox_notification_subscriptions').attr('checked', true);
 
-                $('#checkbox_notification_consolidated').attr('checked', false).attr('disabled', true);
+                $('#checkbox_notification_consolidated').attr('checked', false)
+                    .attr('disabled', true);
             }
 
             $('#number_hours').val(objLReviewTime.inRHours);
@@ -216,39 +227,51 @@ class Laneros {
                 $('.options-page').fadeIn();
             });
 
-            $('input[name=checkbox_notification_consolidated]').change(function () {
-                $('input[name=checkbox_notification_inbox]').attr('checked', false).attr('disabled', false);
-                $('input[name=checkbox_notification_alerts]').attr('checked', false).attr('disabled', false);
-                $('input[name=checkbox_notification_subscriptions]').attr('checked', false).attr('disabled', false);
+            checkboxNotificationConsolidated.change(function () {
+                checkboxNotificationInbox.attr('checked', false)
+                    .attr('disabled', false);
+                checkboxNotificationAlerts.attr('checked', false)
+                    .attr('disabled', false);
+                checkboxNotificationSubscriptions.attr('checked', false)
+                    .attr('disabled', false);
 
                 if ($(this).is(':checked')) {
-                    $('input[name=checkbox_notification_inbox]').attr('disabled', true).attr('checked', false);
-                    $('input[name=checkbox_notification_alerts]').attr('checked', false).attr('disabled', true);
-                    $('input[name=checkbox_notification_subscriptions]').attr('checked', false).attr('disabled', true);
+                    checkboxNotificationInbox.attr('disabled', true)
+                        .attr('checked', false);
+                    checkboxNotificationAlerts.attr('checked', false)
+                        .attr('disabled', true);
+                    checkboxNotificationSubscriptions.attr('checked', false)
+                        .attr('disabled', true);
                 }
             });
 
-            $('input[name=checkbox_notification_inbox]').change(function () {
-                $('input[name=checkbox_notification_consolidated]').attr('disabled', false).attr('checked', false);
+            checkboxNotificationInbox.change(function () {
+                checkboxNotificationConsolidated.attr('disabled', false)
+                    .attr('checked', false);
 
                 if ($(this).is(':checked')) {
-                    $('input[name=checkbox_notification_consolidated]').attr('disabled', true).attr('checked', false);
+                    checkboxNotificationConsolidated.attr('disabled', true)
+                        .attr('checked', false);
                 }
             });
 
-            $('input[name=checkbox_notification_alerts]').change(function () {
-                $('input[name=checkbox_notification_consolidated]').attr('disabled', false).attr('checked', false);
+            checkboxNotificationAlerts.change(function () {
+                checkboxNotificationConsolidated.attr('disabled', false)
+                    .attr('checked', false);
 
                 if ($(this).is(':checked')) {
-                    $('input[name=checkbox_notification_consolidated]').attr('disabled', true).attr('checked', false);
+                    checkboxNotificationConsolidated.attr('disabled', true)
+                        .attr('checked', false);
                 }
             });
 
-            $('input[name=checkbox_notification_subscriptions]').change(function () {
-                $('input[name=checkbox_notification_consolidated]').attr('disabled', false).attr('checked', false);
+            checkboxNotificationSubscriptions.change(function () {
+                checkboxNotificationConsolidated.attr('disabled', false)
+                    .attr('checked', false);
 
                 if ($(this).is(':checked')) {
-                    $('input[name=checkbox_notification_consolidated]').attr('disabled', true).attr('checked', false);
+                    checkboxNotificationConsolidated.attr('disabled', true)
+                        .attr('checked', false);
                 }
             });
         }
@@ -265,14 +288,20 @@ class Laneros {
                 + (parseInt($('#number_hours').val()) * 60 * 60 * 1000);
 
             let objLOptions = {
-                bolRDarkMode: $('input[name=checkbox_dark_mode]').is(':checked'),
-                bolRShowInbox: $('input[name=checkbox_section_inbox]').is(':checked'),
-                bolRShowAlerts: $('input[name=checkbox_section_alerts]').is(':checked'),
-                bolRShowSubs: $('input[name=checkbox_section_subscriptions]').is(':checked'),
-                bolRShowBookmarks: $('input[name=checkbox_section_bookmarks]').is(':checked'),
+                bolRDarkMode: $('input[name=checkbox_dark_mode]')
+                    .is(':checked'),
+                bolRShowInbox: $('input[name=checkbox_section_inbox]')
+                    .is(':checked'),
+                bolRShowAlerts: $('input[name=checkbox_section_alerts]')
+                    .is(':checked'),
+                bolRShowSubs: $('input[name=checkbox_section_subscriptions]')
+                    .is(':checked'),
+                bolRShowBookmarks: $('input[name=checkbox_section_bookmarks]')
+                    .is(':checked'),
                 bolRShowLinks: $('input[name=checkbox_section_links]').is(':checked'),
                 bolRShowInfo: $('input[name=checkbox_section_info]').is(':checked'),
-                bolRNotificationConsolidated: $('input[name=checkbox_notification_consolidated]').is(':checked'),
+                bolRNotificationConsolidated: $('input[name=checkbox_notification_consolidated]')
+                    .is(':checked'),
                 bolRNotificationInbox: $('input[name=checkbox_notification_inbox]').is(':checked'),
                 bolRNotificationAlerts: $('input[name=checkbox_notification_alerts]').is(':checked'),
                 bolRNotificationSubs: $('input[name=checkbox_notification_subscriptions]').is(':checked'),
@@ -282,25 +311,26 @@ class Laneros {
             let objLCallBack = function () {
                 $('.alert-response').removeClass('bg-green-100 border-green-500 text-green-500 bg-red-100 border-red-500 text-red-500')
                     .addClass('hidden');
-                $('.alert-processing').removeClass('hidden').hide().slideDown(function () {
-                    $('.alert-processing').addClass('hidden');
+                $('.alert-processing').removeClass('hidden').hide()
+                    .slideDown(function () {
+                        $('.alert-processing').addClass('hidden');
 
-                    try {
-                        Laneros.setAlarm(dtLTimeRev);
-                        new Background();
+                        try {
+                            Laneros.setAlarm(dtLTimeRev);
+                            new Background();
 
-                        $('.alert-response .alert-title').html(Chrome.getMessage('label_saved_success'));
-                        $('.alert-response .alert-text').html(Chrome.getMessage('message_saved_success'));
-                        $('.alert-response').addClass('bg-green-100 border-green-500 text-green-500').removeClass('hidden')
-                            .hide().slideDown();
-                    } catch (objRException) {
-                        new Log('saveOptions - objLCallBack').error(objRException);
+                            $('.alert-response .alert-title').html(Chrome.getMessage('label_saved_success'));
+                            $('.alert-response .alert-text').html(Chrome.getMessage('message_saved_success'));
+                            $('.alert-response').addClass('bg-green-100 border-green-500 text-green-500')
+                                .removeClass('hidden').hide().slideDown();
+                        } catch (objRException) {
+                            new Log('saveOptions - objLCallBack').error(objRException);
 
-                        $('.alert-response .alert-title').html(Chrome.getMessage('label_saved_error'));
-                        $('.alert-response .alert-text').html(Chrome.getMessage('message_saved_error'));
-                        $('.alert-response').addClass('bg-red-100 border-red-500 text-red-500').removeClass('hidden').hide()
-                            .slideDown();
-                    }
+                            $('.alert-response .alert-title').html(Chrome.getMessage('label_saved_error'));
+                            $('.alert-response .alert-text').html(Chrome.getMessage('message_saved_error'));
+                            $('.alert-response').addClass('bg-red-100 border-red-500 text-red-500')
+                                .removeClass('hidden').hide().slideDown();
+                        }
                 });
             };
 
@@ -335,19 +365,23 @@ class Laneros {
             $.validator.setDefaults({
                 errorElement: 'div',
                 highlight: function (element) {
-                    $(element).closest('.flex-row').find('label').removeClass('text-green-600').addClass('text-red-500');
+                    $(element).closest('.flex-row').find('label')
+                        .removeClass('text-green-600').addClass('text-red-500');
                     $(element).removeClass('border-green-600').addClass('border-red-500');
 
                     if ($(element).closest('.flex-row').hasClass('mb-8')) {
-                        $(element).closest('.flex-row').removeClass('mb-8').addClass('mb-4 pb-1');
+                        $(element).closest('.flex-row').removeClass('mb-8')
+                            .addClass('mb-4 pb-1');
                     }
                 },
                 unhighlight: function (element) {
                     $(element).removeClass('border-red-500').addClass('border-green-600');
-                    $(element).closest('.flex-row').find('label').removeClass('text-red-500').addClass('text-green-600');
+                    $(element).closest('.flex-row').find('label')
+                        .removeClass('text-red-500').addClass('text-green-600');
 
                     if ($(element).closest('.flex-row').hasClass('mb-8')) {
-                        $(element).closest('.flex-row').removeClass('mb-4 pb-1').addClass('mb-8');
+                        $(element).closest('.flex-row').removeClass('mb-4 pb-1')
+                            .addClass('mb-8');
                     }
                 },
                 errorClass: 'invalid-feedback text-red-500',
@@ -368,12 +402,13 @@ class Laneros {
         Chrome.getStorage({bolRDarkMode: objRLaneros.getDefaults('bolRDarkMode') },
             function (objROptions) {
                 if (objROptions.bolRDarkMode) {
-                    let stLImgSrc = $('.logo-img').attr('src');
+                    let logoImg = $('.logo-img');
+                    let stLImgSrc = logoImg.attr('src');
 
                     stLImgSrc = stLImgSrc.replace('2x', '2x-blanco');
 
                     $('body').addClass('dark-mode');
-                    $('.logo-img').attr('src', stLImgSrc);
+                    logoImg.attr('src', stLImgSrc);
                 }
             });
 
@@ -390,12 +425,13 @@ class Laneros {
         Chrome.getStorage({bolRDarkMode: objRLaneros.getDefaults('bolRDarkMode') },
             function (objROptions) {
                 if (objROptions.bolRDarkMode) {
-                    let stLImgSrc = $('.logo-img').attr('src');
+                    let logoImg = $('.logo-img');
+                    let stLImgSrc = logoImg.attr('src');
 
                     stLImgSrc = stLImgSrc.replace('2x', '2x-blanco');
 
                     $('body').addClass('dark-mode');
-                    $('.logo-img').attr('src', stLImgSrc).css('opacity', 0.8);
+                    logoImg.attr('src', stLImgSrc).css('opacity', 0.8);
                 }
             });
 
@@ -411,16 +447,20 @@ class Laneros {
     showLogin(stRToken) {
         let objRLaneros = this;
         let objLChange = function() {
-            $('.section-login #ctrl_pageLogin_password').closest('.flex-row').slideUp();
-            $('.section-login #ctrl_pageLogin_remember').attr('checked', false).closest('div').hide();
+            let ctrlPageLoginPassword = $('.section-login #ctrl_pageLogin_password');
+            let ctrlPageLoginRemember = $('.section-login #ctrl_pageLogin_remember');
+
+            ctrlPageLoginPassword.closest('.flex-row').slideUp();
+            ctrlPageLoginRemember.attr('checked', false).closest('div')
+                .hide();
 
             if ($('.section-login #ctrl_pageLogin_not_registered').is(':checked')) {
                 $('.section-login button[type=submit]').html(Chrome.getMessage('button_register'));
             }
 
             if ($('.section-login #ctrl_pageLogin_registered').is(':checked')) {
-                $('.section-login #ctrl_pageLogin_password').closest('.flex-row').slideDown();
-                $('.section-login #ctrl_pageLogin_remember').closest('div').show();
+                ctrlPageLoginPassword.closest('.flex-row').slideDown();
+                ctrlPageLoginRemember.closest('div').show();
                 $('.section-login button[type=submit]').html(Chrome.getMessage('button_login'));
             }
         };
@@ -476,22 +516,22 @@ class Laneros {
      */
     showPopup(objRData) {
         let objRLaneros = this;
+        let userID = $('.user-id');
+        let tokenLink = $('.token-link');
         let onBeforeSubmit = function (objRResponse, stRStatus) {
             $('.alert-home-message').slideUp();
         };
 
         let onSuccess = function (objRResponse, stRStatus) {
             if (objRResponse.status === 'ok') {
-                $('.alert-home-message').slideDown();
                 $('.alert-home-message').addClass('bg-green-100 border-green-500 text-green-500')
-                    .removeClass('bg-red-100 border-red-500 text-red-500');
+                    .removeClass('bg-red-100 border-red-500 text-red-500').slideDown();
                 $('.alert-home-message h4').html(Chrome.getMessage('label_success_message'));
                 $('.alert-home-message p').html(objRResponse.message);
             }
             else {
-                $('.alert-home-message').slideDown();
                 $('.alert-home-message').addClass('bg-red-100 border-red-500 text-red-500')
-                    .removeClass('bg-green-100 border-green-500 text-green-500');
+                    .removeClass('bg-green-100 border-green-500 text-green-500').slideDown();
                 $('.alert-home-message h4').html(Chrome.getMessage('label_error_message'));
                 $('.alert-home-message p').html(objRResponse.error.message);
             }
@@ -506,13 +546,16 @@ class Laneros {
         let objLActiveTab = function(stRActiveTab) {
             switch(stRActiveTab) {
                 case 'home':
+                    let statusPoster = $('#statusPoster');
                     $('html, body').animate({ scrollTop: 0 }, 'fast');
 
-                    $('#statusPoster').find('.status-message').addClass('hidden');
-                    $('#statusPoster').find('.status-length').removeClass('text-orange-500 text-red-500')
+                    statusPoster.find('.status-message').addClass('hidden');
+                    statusPoster.find('.status-length')
+                        .removeClass('text-orange-500 text-red-500')
                         .addClass('text-green-500').html(140);
 
-                    $('.alert-user-message').hide().addClass('hidden').removeClass('bg-green-100 border-green-500 text-green-500')
+                    $('.alert-user-message').hide().addClass('hidden')
+                        .removeClass('bg-green-100 border-green-500 text-green-500')
                         .removeClass('bg-red-100 border-red-500 text-red-500');
                     break;
                 case 'inbox':
@@ -535,8 +578,10 @@ class Laneros {
             $('header').removeClass('hidden');
         });
 
-        $('.user-id').attr('href', $('.user-id').attr('href') + objRLaneros.getUserData('inRUserId'));
-        $('.token-link').attr('href', $('.token-link').attr('href') + objRLaneros.getUserData('stRToken'));
+        userID.attr('href', userID.attr('href') +
+            objRLaneros.getUserData('inRUserId'));
+        tokenLink.attr('href', tokenLink.attr('href') +
+            objRLaneros.getUserData('stRToken'));
         $('.token-value').val(objRLaneros.getUserData('stRToken'));
         $('.button-options').click(function() {
             Chrome.createTab(1,'views/options.html');
@@ -587,10 +632,12 @@ class Laneros {
             }
 
             if (inLTextChars > 100) {
-                $('#statusPoster').find('.status-length').removeClass('text-green-500').addClass('text-orange');
+                $('#statusPoster').find('.status-length')
+                    .removeClass('text-green-500').addClass('text-orange');
             }
             if (inLTextChars > 120) {
-                $('#statusPoster').find('.status-length').removeClass('text-green-500 text-orange').addClass('text-red-500');
+                $('#statusPoster').find('.status-length')
+                    .removeClass('text-green-500 text-orange').addClass('text-red-500');
             }
         });
 
@@ -675,7 +722,8 @@ class Laneros {
                 }
                 else {
                     stLTabId = $('.tab-list').find('li:first:not(:hidden) a').attr('href');
-                    $('.tab-list').find('li:first:not(:hidden) a').addClass('text-white bg-blue-500 hover:bg-blue-600 hover:text-white')
+                    $('.tab-list').find('li:first:not(:hidden) a')
+                        .addClass('text-white bg-blue-500 hover:bg-blue-600 hover:text-white')
                         .removeClass('text-blue-500 hover:bg-gray-400 hover:text-blue-600');
                 }
 
@@ -826,7 +874,7 @@ class Laneros {
                 let inRUserId = $('.p-account .avatar', objRData).data('user-id');
                 let inRConversations = parseInt($('.p-account .js-badge--conversations', objRData).data('badge'));
                 let inRAlerts = parseInt($('.p-account .js-badge--alerts', objRData).data('badge'));
-                let inRSubscriptions = parseInt($('.structItemContainer .is-unread', objRData).length);
+                let inRSubscriptions = parseInt($('.structItemContainer .is-unread', objRData).length) ;
                 let inLCounter = inRConversations + inRAlerts + inRSubscriptions;
 
                 objRLaneros.setUserData({
@@ -899,9 +947,12 @@ class Laneros {
                     let inLFeedbackNeutral = $('.statsList .pairsJustified .formRow:eq(2) dd', objRData).text();
                     let inLFeedbackNegative = $('.statsList .pairsJustified .formRow:eq(3) dd', objRData).text();
 
-                    $(objLUserData).find('.user-feedback-positive').html(inLFeedbackPositive ? inLFeedbackPositive : 0);
-                    $(objLUserData).find('.user-feedback-neutral').html(inLFeedbackNeutral ? inLFeedbackNeutral : 0);
-                    $(objLUserData).find('.user-feedback-negative').html(inLFeedbackNegative ? inLFeedbackNegative : 0);
+                    $(objLUserData).find('.user-feedback-positive')
+                        .html(inLFeedbackPositive ? inLFeedbackPositive : 0);
+                    $(objLUserData).find('.user-feedback-neutral')
+                        .html(inLFeedbackNeutral ? inLFeedbackNeutral : 0);
+                    $(objLUserData).find('.user-feedback-negative')
+                        .html(inLFeedbackNegative ? inLFeedbackNegative : 0);
 
                 };
                 let objLResponseMenu = function(objRResponse) {
@@ -924,12 +975,14 @@ class Laneros {
 
                     $(objLSectionUser).find('.user-id-full').each(function() {
                         if($(this).attr('href') !== undefined) {
-                            let stLHref = $(this).attr('href').replace('{user-id-full}', objRLaneros.getUserData('stRUserFullId'));
+                            let stLHref = $(this).attr('href')
+                                .replace('{user-id-full}', objRLaneros.getUserData('stRUserFullId'));
 
                             $(this).attr('href', stLHref);
                         }
                         if($(this).attr('action') !== undefined) {
-                            let stLAction = $(this).attr('action').replace('{user-id-full}', objRLaneros.getUserData('stRUserFullId'));
+                            let stLAction = $(this).attr('action')
+                                .replace('{user-id-full}', objRLaneros.getUserData('stRUserFullId'));
 
                             $(this).attr('action', stLAction);
                         }
@@ -950,20 +1003,22 @@ class Laneros {
                     objRLaneros.getUserData('stRToken'), objLResponseMenu);
 
                 $.getJSON(objRLaneros.getPageURL() + 'feedback/'+ objRLaneros.getUserData('inRUserId') +
-                    '/authors?_xfResponseType=json&_xfNoRedirect=1&_xfToken=' + objRLaneros.getUserData('stRToken'), objLResponseFeedback);
+                    '/authors?_xfResponseType=json&_xfNoRedirect=1&_xfToken=' +
+                    objRLaneros.getUserData('stRToken'), objLResponseFeedback);
             }
             else {
                 $(objLShowInfo).addClass('hidden').removeClass('flex');
             }
         });
 
-        Chrome.getStorage({bolRShowLinks: objRLaneros.getDefaults('bolRShowLinks') }, function (objROptions) {
-            if (objROptions.bolRShowLinks) {
-                $('.user-links').removeClass('hidden');
-            }
-            else {
-                $('.alert-home-message').removeClass('hidden');
-            }
+        Chrome.getStorage({bolRShowLinks: objRLaneros.getDefaults('bolRShowLinks') },
+            function (objROptions) {
+                if (objROptions.bolRShowLinks) {
+                    $('.user-links').removeClass('hidden');
+                }
+                else {
+                    $('.alert-home-message').removeClass('hidden');
+                }
         });
     }
 
@@ -999,11 +1054,13 @@ class Laneros {
                     }
 
                     if ($(objLMessageIcon).length === 1) {
-                        $(objLConversation).find('.conversation-avatar > img').attr('src', $(objLMessageIcon).attr('src'))
+                        $(objLConversation).find('.conversation-avatar > img')
+                            .attr('src', $(objLMessageIcon).attr('src'))
                             .attr('alt', $(objLMessageIcon).attr('alt'));
                     }
                     else {
-                        $(objLConversation).find('.conversation-avatar > img').addClass('bg-gray-600 border border-gray-900');
+                        $(objLConversation).find('.conversation-avatar > img')
+                            .addClass('bg-gray-600 border border-gray-900');
                     }
 
                     $(objLMessageWith).find('ul').remove();
@@ -1024,8 +1081,8 @@ class Laneros {
                         let inRUserId = $(objLUser).data('user-id');
                         let stRTitle = $(objLUser).attr('title');
 
-                        $(objLAnchor).html(stLUsername).attr('title', stRTitle).attr('href', 'members/' + stLUsername
-                            + '.' + inRUserId);
+                        $(objLAnchor).html(stLUsername).attr('title', stRTitle)
+                            .attr('href', 'members/' + stLUsername + '.' + inRUserId);
                         $(objLAnchor).appendTo(objLWith);
 
                         if (inRIndex < $(objLMessageWithList).find('li').length - 1) {
@@ -1033,14 +1090,17 @@ class Laneros {
                         }
                     });
 
-                    $(objLConversation).find('.conversation-body h6 a').addClass('hover:text-gray-900');
-                    $(objLConversation).find('.conversation-with a').addClass('text-blue-500 hover:text-blue-600');
+                    $(objLConversation).find('.conversation-body h6 a')
+                        .addClass('hover:text-gray-900');
+                    $(objLConversation).find('.conversation-with a')
+                        .addClass('text-blue-500 hover:text-blue-600');
 
                     $(objLConversation).find('a').each(function () {
                         $(this).attr('target', '_blank');
 
                         if ($(this).attr('href').indexOf(objRLaneros.getPageURL()) === -1) {
-                            $(this).attr('href', objRLaneros.getPageURL() + $(this).attr('href'));
+                            $(this).attr('href', objRLaneros.getPageURL() + $(this)
+                                .attr('href'));
                         }
                     });
 
@@ -1054,7 +1114,8 @@ class Laneros {
                                 let inLMessageID = arrLMessageID.pop();
 
                                 objLNotifications['Laneros.Conversations.' + inLMessageID] = {
-                                    stRNotificationURL: objRLaneros.getPageURL() + $(objLMessage).attr('href').substr(1)
+                                    stRNotificationURL: objRLaneros.getPageURL() +
+                                        $(objLMessage).attr('href').substr(1)
                                 };
 
                                 Chrome.sendNotification('Laneros.Conversations.' + inLMessageID, {
@@ -1109,15 +1170,18 @@ class Laneros {
                     }
 
                     if ($(objLMessageIcon).length === 1) {
-                        $(objLAlert).find('.alert-avatar > img').attr('src', $(objLMessageIcon).attr('src'))
+                        $(objLAlert).find('.alert-avatar > img')
+                            .attr('src', $(objLMessageIcon).attr('src'))
                             .attr('alt', $(objLMessageIcon).attr('alt'));
                     }
                     else {
-                        $(objLAlert).find('.alert-avatar > img').addClass('bg-gray-600 border border-gray-900');
+                        $(objLAlert).find('.alert-avatar > img')
+                            .addClass('bg-gray-600 border border-gray-900');
                     }
 
                     $(objLMessage).find('.contentRow-minor--smaller, i, img').remove();
-                    $(objLAlert).find('.alert-avatar').attr('href', $(objLMessageFigure).find('a.avatar').attr('href'));
+                    $(objLAlert).find('.alert-avatar')
+                        .attr('href', $(objLMessageFigure).find('a.avatar').attr('href'));
                     $(objLAlert).find('.alert-content').html($(objLMessage).html());
                     $(objLAlert).find('.alert-time').html($(objLMessageTime).html())
                         .attr('title', $(objLMessageTime).attr('title'));
@@ -1212,14 +1276,17 @@ class Laneros {
                     }
 
                     if ($(objLMessageIcon).length >= 1) {
-                        $(objLThread).find('.thread-avatar > img').attr('src', $(objLMessageIcon).attr('src'))
+                        $(objLThread).find('.thread-avatar > img')
+                            .attr('src', $(objLMessageIcon).attr('src'))
                             .attr('alt', $(objLMessageIcon).attr('alt'));
                     }
                     else {
-                        $(objLThread).find('.thread-avatar > img').addClass('bg-gray-600 border border-gray-900');
+                        $(objLThread).find('.thread-avatar > img')
+                            .addClass('bg-gray-600 border border-gray-900');
                     }
 
-                    $(objLThread).find('.thread-avatar').attr('href', $(objLMessageFigure).find('a.avatar').attr('href'));
+                    $(objLThread).find('.thread-avatar')
+                        .attr('href', $(objLMessageFigure).find('a.avatar').attr('href'));
                     $(objLThread).find('.thread-title').replaceWith(objLMessage);
 
                     $(objLAnchorUser).html(stLUsername).attr('href', 'members/' + stLUsername + '.' + inRUserId);
@@ -1233,13 +1300,16 @@ class Laneros {
                     $(objLAnchorForum).html(objLForum.html()).attr('href', objLForum.attr('href'));
                     $(objLAnchorForum).appendTo(objLParts);
 
-                    $(objLThread).find('.message-info .message-by').replaceWith($(objLMessageLatest).find('.structItem-minor a'));
-                    $(objLThread).find('.message-info .message-at').replaceWith($(objLMessageLatest).find('a:first'));
+                    $(objLThread).find('.message-info .message-by')
+                        .replaceWith($(objLMessageLatest).find('.structItem-minor a'));
+                    $(objLThread).find('.message-info .message-at')
+                        .replaceWith($(objLMessageLatest).find('a:first'));
 
                     $(objLThread).find('.thread-body h6 a').addClass('hover:text-gray-900');
                     $(objLThread).find('.thread-starter a, .message-info a').removeClass()
                         .addClass('text-blue-500 hover:text-blue-600');
-                    $(objLThread).find('time').closest('a').removeClass().addClass('text-orange-500 hover:text-orange-600');
+                    $(objLThread).find('time').closest('a').removeClass()
+                        .addClass('text-orange-500 hover:text-orange-600');
 
                     $(objLThread).find('a').each(function () {
                         $(this).attr('target', '_blank');
@@ -1307,33 +1377,41 @@ class Laneros {
                     let objLMessageMinor = $(this).find('.contentRow-main .contentRow-minor--smaller');
                     let objLMessageTime = $(objLMessageMinor).find('time');
                     let objLMessageTags = $(objLMessageMinor).find('.tagList');
-                    let stLUser = $(objLMessageIcon).attr('alt') + '.' + $(objLMessageFigure).find('.avatar').data('user-id');
+                    let stLUser = $(objLMessageIcon).attr('alt') + '.' +
+                        $(objLMessageFigure).find('.avatar').data('user-id');
 
 
                     if ($(objLMessageIcon).length === 1) {
-                        $(objLBookmark).find('.bookmark-avatar > img').attr('src', $(objLMessageIcon).attr('src'))
+                        $(objLBookmark).find('.bookmark-avatar > img')
+                            .attr('src', $(objLMessageIcon).attr('src'))
                             .attr('alt', $(objLMessageIcon).attr('alt'));
                     }
                     else {
-                        $(objLBookmark).find('.bookmark-avatar > img').addClass('bg-gray-600 border border-gray-900');
+                        $(objLBookmark).find('.bookmark-avatar > img')
+                            .addClass('bg-gray-600 border border-gray-900');
                     }
 
                     $(objLMessageTags).find('.u-srOnly').remove();
-                    $(objLBookmark).find('.bookmark-avatar').attr('href', objRLaneros.getPageURL() + 'members/' + stLUser);
+                    $(objLBookmark).find('.bookmark-avatar')
+                        .attr('href', objRLaneros.getPageURL() + 'members/' + stLUser);
                     $(objLBookmark).find('.bookmark-title').replaceWith(objLMessage);
                     $(objLBookmark).find('.bookmark-message').html($(objLMessageSnippet).html());
-                    $(objLBookmark).find('.bookmark-author').attr('href', objRLaneros.getPageURL() + 'members/' + stLUser)
+                    $(objLBookmark).find('.bookmark-author')
+                        .attr('href', objRLaneros.getPageURL() + 'members/' + stLUser)
                         .html($(objLMessageIcon).attr('alt'));
                     $(objLBookmark).find('.bookmark-time').html(objLMessageTime);
-                    $(objLBookmark).find('.bookmark-body h6 a').addClass('hover:text-gray-900');
+                    $(objLBookmark).find('.bookmark-body h6 a')
+                        .addClass('hover:text-gray-900');
 
                     if ($(objLMessageTags).find('a').length > 0) {
                         $(objLBookmark).find('.bookmark-labels').removeClass('hidden');
 
                         $(objLMessageTags).find('a').each(function () {
-                            let objLTag = $(objLBookmark).find('.bookmark-labels .bookmark-label:first').clone();
+                            let objLTag = $(objLBookmark).find('.bookmark-labels .bookmark-label:first')
+                                .clone();
 
-                            $(objLTag).html(this).removeClass('hidden').appendTo($(objLBookmark).find('.bookmark-labels'));
+                            $(objLTag).html(this).removeClass('hidden')
+                                .appendTo($(objLBookmark).find('.bookmark-labels'));
                         });
                     }
 
