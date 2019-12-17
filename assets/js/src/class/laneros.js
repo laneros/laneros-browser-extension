@@ -874,7 +874,7 @@ class Laneros {
                 let inRUserId = $('.p-account .avatar', objRData).data('user-id');
                 let inRConversations = parseInt($('.p-account .js-badge--conversations', objRData).data('badge'));
                 let inRAlerts = parseInt($('.p-account .js-badge--alerts', objRData).data('badge'));
-                let inRSubscriptions = parseInt($('.structItemContainer .is-unread', objRData).length) ;
+                let inRSubscriptions = parseInt($('.structItemContainer .is-unread', objRData).length);
                 let inLCounter = inRConversations + inRAlerts + inRSubscriptions;
 
                 objRLaneros.setUserData({
