@@ -938,23 +938,6 @@ class Laneros {
 
             if (objROptions.bolRShowInfo) {
                 let objRData = document.createElement('div');
-                let objLResponseFeedback = function(objRResponse, stRTextStatus, objRjqXHR) {
-                    let objLUserData = $(objLShowInfo).find('.user-data');
-
-                    objRData = $(objRResponse.html.content);
-
-                    let inLFeedbackPositive = $('.statsList .pairsJustified .formRow:eq(1) dd', objRData).text();
-                    let inLFeedbackNeutral = $('.statsList .pairsJustified .formRow:eq(2) dd', objRData).text();
-                    let inLFeedbackNegative = $('.statsList .pairsJustified .formRow:eq(3) dd', objRData).text();
-
-                    $(objLUserData).find('.user-feedback-positive')
-                        .html(inLFeedbackPositive ? inLFeedbackPositive : 0);
-                    $(objLUserData).find('.user-feedback-neutral')
-                        .html(inLFeedbackNeutral ? inLFeedbackNeutral : 0);
-                    $(objLUserData).find('.user-feedback-negative')
-                        .html(inLFeedbackNegative ? inLFeedbackNegative : 0);
-
-                };
                 let objLResponseMenu = function(objRResponse) {
                     let objLUserInfo = $(objLShowInfo).find('.user-info');
                     let objLUserData = $(objLShowInfo).find('.user-data');
@@ -964,7 +947,11 @@ class Laneros {
                     let stLAvatar = $('.avatarWrapper .avatar img', objRData).attr('src');
                     let inLMessages = $('.contentRow-minor .fauxBlockLink:first dd a', objRData).html();
                     let inLRatingPositive = $('.contentRow-minor .fauxBlockLink:eq(1) dd a', objRData).html();
-                    let inLPoints = $('.contentRow-minor .fauxBlockLink:last dd a', objRData).html();
+                    let inLPoints = $('.contentRow-minor .fauxBlockLink:eq(2) dd a', objRData).html();
+
+                    let inLFeedbackPositive = $('.contentRow-minor .feedbackStats dd .Positive', objRData).text();
+                    let inLFeedbackNeutral = $('.contentRow-minor .feedbackStats dd .Neutral', objRData).text();
+                    let inLFeedbackNegative = $('.contentRow-minor .feedbackStats dd .Negative', objRData).text();
 
                     objRLaneros.setUserData({
                         stRUsername: $('.contentRow-header a.username', objRData).text(),
@@ -996,15 +983,18 @@ class Laneros {
                     $(objLUserData).find('.user-rating').html(inLRatingPositive);
                     $(objLUserData).find('.user-points').html(inLPoints);
 
+                    $(objLUserData).find('.user-feedback-positive')
+                        .html(inLFeedbackPositive ? inLFeedbackPositive : 0);
+                    $(objLUserData).find('.user-feedback-neutral')
+                        .html(inLFeedbackNeutral ? inLFeedbackNeutral : 0);
+                    $(objLUserData).find('.user-feedback-negative')
+                        .html(inLFeedbackNegative ? inLFeedbackNegative : 0);
+
                     $(objLShowInfo).removeClass('invisible').addClass('flex');
                 };
 
                 $.getJSON(objRLaneros.getPageURL() + 'account/visitor-menu?_xfResponseType=json&_xfNoRedirect=1&_xfToken=' +
                     objRLaneros.getUserData('stRToken'), objLResponseMenu);
-
-                $.getJSON(objRLaneros.getPageURL() + 'feedback/'+ objRLaneros.getUserData('inRUserId') +
-                    '/authors?_xfResponseType=json&_xfNoRedirect=1&_xfToken=' +
-                    objRLaneros.getUserData('stRToken'), objLResponseFeedback);
             }
             else {
                 $(objLShowInfo).addClass('hidden').removeClass('flex');

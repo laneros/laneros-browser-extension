@@ -183,7 +183,7 @@
     "message": "Cambiar nombre de usuario"
   },
   "label_personal_details": {
-    "message": "Detalles personales"
+    "message": "Detalles de la cuenta"
   },
   "label_signature": {
     "message": "Firma"
@@ -204,7 +204,7 @@
     "message": "Avatar"
   },
   "label_external_accounts": {
-    "message": "Cuentas externas"
+    "message": "Cuentas conectadas"
   },
   "label_delete_account": {
     "message": "Cancela tu cuenta"
@@ -216,19 +216,19 @@
     "message": "Tus Noticias"
   },
   "label_likes_received": {
-    "message": "Reacciones recibidos"
+    "message": "Reacciones recibidas"
   },
   "label_your_content": {
-    "message": "Contenido"
+    "message": "Tus mensajes"
   },
   "label_following": {
-    "message": "Sigues a ..."
+    "message": "Seguidos"
   },
   "label_ignored": {
-    "message": "Gente ignorada"
+    "message": "Ignorados"
   },
   "label_upgrades": {
-    "message": "Suscripción de pago"
+    "message": "Suscripciones"
   },
   "label_two_steps": {
     "message": "Verificación de dos pasos"

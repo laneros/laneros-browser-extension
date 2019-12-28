@@ -183,7 +183,7 @@
     "message": "Change username"
   },
   "label_personal_details": {
-    "message": "Personal details"
+    "message": "Account details"
   },
   "label_signature": {
     "message": "Signature"
@@ -204,7 +204,7 @@
     "message": "Avatar"
   },
   "label_external_accounts": {
-    "message": "External accounts"
+    "message": "Connected accounts"
   },
   "label_delete_account": {
     "message": "Delete your account"
@@ -222,10 +222,10 @@
     "message": "Your content"
   },
   "label_following": {
-    "message": "People you follow"
+    "message": "Following"
   },
   "label_ignored": {
-    "message": "People you ignore"
+    "message": "Ignoring"
   },
   "label_upgrades": {
     "message": "Account upgrades"
