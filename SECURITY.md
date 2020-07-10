@@ -11,5 +11,5 @@ Security updates currently being supported on this versions of the project
 
 ## Reporting a Vulnerability
 
-For reporting a security vulnerability, please e-mail the repository maintainer at arthvrian @ yahoo.com for further instructions. 
+For reporting a security vulnerability, please e-mail the repository maintainer: arthvrian (at) yahoo.com for further instructions. 
 Do not include confidential information in the e-mail.
