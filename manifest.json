@@ -2,7 +2,7 @@
   "name": "__MSG_extension_name__",
   "short_name": "__MSG_extension_short_name__",
   "description": "__MSG_extension_description__",
-  "version": "9",
+  "version": "9.0.1",
   "manifest_version": 2,
   "options_page": "views/options.html",
   "default_locale": "es",
