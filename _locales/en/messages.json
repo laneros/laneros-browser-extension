@@ -42,10 +42,10 @@
     "message": "Review interval"
   },
   "text_display_sections": {
-    "message": "Select sections to show"
+    "message": "Select which sections are shown"
   },
   "text_display_notifications": {
-    "message": "Select notifications to show"
+    "message": "Select which notifications are displayed"
   },
   "text_review_interval": {
     "message": "Time between updates"
@@ -71,8 +71,11 @@
   "label_user_info": {
     "message": "User information"
   },
-  "label_consolidated_notification": {
-    "message": "Grouped (single notification)"
+  "label_single_notification": {
+    "message": "Single notification (grouped)"
+  },
+  "label_interval": {
+    "message": "Check interval [HH:mm:ss:ms]"
   },
   "label_hours": {
     "message": "Hours"
@@ -91,6 +94,9 @@
   },
   "message_required_section": {
     "message": "Select this section status"
+  },
+  "message_required_mode": {
+    "message": "Select theme color"
   },
   "message_required_notification": {
     "message": "Select this notification status"
@@ -128,6 +134,9 @@
   "text_error_login": {
     "message": "Wrong user/password, try again"
   },
+  "text_success_login": {
+    "message": "Logged in"
+  },
   "label_login": {
     "message": "Sign in"
   },
@@ -155,6 +164,15 @@
   "label_twitter": {
     "message": "Sign in with Twitter"
   },
+  "label_search": {
+    "message": "Search"
+  },
+  "label_advanced_search": {
+    "message": "Advanced search"
+  },
+  "message_zero_sections": {
+    "message": "There are no sections to show"
+  },
   "message_zero_links": {
     "message": "There are no links to show"
   },
@@ -169,6 +187,9 @@
   },
   "message_zero_bookmarks": {
     "message": "You have not added any bookmarks yet"
+  },
+  "message_zero_results": {
+    "message": "An error occurred"
   },
   "text_new_conversation": {
     "message": " new message(s)"
@@ -273,7 +294,7 @@
     "message": "Dark mode"
   },
   "text_dark_mode": {
-    "message": "Change the theme color of the extension"
+    "message": "Change theme color of extension"
   },
   "label_dark_mode": {
     "message": "Use dark mode"

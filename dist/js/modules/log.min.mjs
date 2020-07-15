@@ -1,0 +1,1 @@
+import e from"./chrome.min.mjs";export default class r{constructor(r){let t=(new Date).toLocaleString(),o=e.get_message("extension_short_name");return this.log(t+" | "+o+" - "+r),this}error(e){return console.error(e),this}log(e){return console.log(e),this}withTrace(){return console.trace(),this}}

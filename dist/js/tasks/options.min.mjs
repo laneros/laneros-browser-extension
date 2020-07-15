@@ -1,0 +1,1 @@
+import o from"../modules/options.min.mjs";import m from"../modules/log.min.mjs";try{(new o).set_page()}catch(o){new m("Options Task").error(o)}

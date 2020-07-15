@@ -71,8 +71,11 @@
   "label_user_info": {
     "message": "Información de usuario"
   },
-  "label_consolidated_notification": {
-    "message": "Agrupadas (una notificación)"
+  "label_single_notification": {
+    "message": "Una notificación (agrupadas)"
+  },
+  "label_interval": {
+    "message": "Intervalo de comprobación [HH:mm:ss:ms]"
   },
   "label_hours": {
     "message": "Horas"
@@ -91,6 +94,9 @@
   },
   "message_required_section": {
     "message": "Seleccione el estado de esta sección"
+  },
+  "message_required_mode": {
+    "message": "Seleccione el color del tema"
   },
   "message_required_notification": {
     "message": "Seleccione el estado de esta notificación"
@@ -128,6 +134,9 @@
   "text_error_login": {
     "message": "Usuario y/o Contraseña incorrecta, intenta de nuevo"
   },
+  "text_success_login": {
+    "message": "Conectad@"
+  },
   "label_login": {
     "message": "Accede"
   },
@@ -155,6 +164,15 @@
   "label_twitter": {
     "message": "Acceder con Twitter"
   },
+  "label_search": {
+    "message": "Buscar"
+  },
+  "label_advanced_search": {
+    "message": "Búsqueda avanzada"
+  },
+  "message_zero_sections": {
+    "message": "No hay secciones para mostrar"
+  },
   "message_zero_links": {
     "message": "No hay vinculos para mostrar"
   },
@@ -169,6 +187,9 @@
   },
   "message_zero_bookmarks": {
     "message": "No hay marcadores todavia"
+  },
+  "message_zero_results": {
+    "message": "Ocurrió un error"
   },
   "text_new_conversation": {
     "message": " mensaje(s) nuevo(s)"

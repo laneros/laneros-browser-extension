@@ -1,0 +1,1 @@
+import o from"../modules/log.min.mjs";import m from"../modules/background.min.mjs";try{(new m).on_installed()}catch(m){new o("Background task").error(m)}
