@@ -1,19 +1,21 @@
 # Laneros Browser Extension
 
-Designed for www.laneros.com, this extension allows access to a range of options in a fast way: 
+Designed for www.laneros.com, this extension allows access to a variety of options quickly:
 
-1. Conversations
-2. Alerts 
-3. Subscriptions 
-4. User Info
+1. Quick links to different user options
+2. Conversations
+3. Alerts
+4. Subscriptions
 5. Bookmarks
 
-Also has a section with quick links to different user options 
+Also, it has a section where basic user information can be found
 
-Finally, periodically check (with interval adjustment in extension options) if there are new conversations, 
-new alerts or unread subscriptions and if so, displays a consolidated or individual notification
+Option to search in the site from the extension pop-up window
 
-Normal mode or dark mode available
+Finally, it checks periodically (with interval adjustment in the extension's options) if there are new conversations, 
+new alerts or unread subscriptions and if so displays a consolidated notification or an individual notification
+
+Available in normal and dark mode (configurable in the options)
 
 ## About Laneros
 
@@ -27,6 +29,7 @@ Official thread on Laneros website
 
 ## Install
 
+It can be installed in any Chromium-based browser (Brave, Vivaldi, Opera, Edge, Chrome, etc.)
 Available on Chrome Web Store
 
 [Laneros browser extension - Chrome Web Store](https://chrome.google.com/webstore/detail/extensi%C3%B3n-de-navegador-pa/odcfloakhlmignakgflbofpdaiaclijg)
