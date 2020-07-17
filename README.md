@@ -30,6 +30,7 @@ Official thread on Laneros website
 ## Install
 
 It can be installed in any Chromium-based browser (Brave, Vivaldi, Opera, Edge, Chrome, etc.)
+
 Available on Chrome Web Store
 
 [Laneros browser extension - Chrome Web Store](https://chrome.google.com/webstore/detail/extensi%C3%B3n-de-navegador-pa/odcfloakhlmignakgflbofpdaiaclijg)
