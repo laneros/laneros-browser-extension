@@ -42,13 +42,13 @@
     "message": "Intervalo de revisión"
   },
   "text_display_sections": {
-    "message": "Seleccionar cuales secciones se muestran"
+    "message": "Seleccione las secciones que se mostrarán"
   },
   "text_display_notifications": {
-    "message": "Seleccionar cuales notificaciones se muestran"
+    "message": "Seleccione las notificaciones a mostrar"
   },
   "text_review_interval": {
-    "message": "Tiempo entre busqueda de actualizaciones"
+    "message": "Tiempo entre búsqueda de actualizaciones"
   },
   "label_home": {
     "message": "Inicio"

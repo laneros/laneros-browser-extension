@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -12,10 +12,9 @@
         <link rel="stylesheet" href="../dist/css/laneros.min.css">
     </head>
     <body class="antialiased">
-        <main class="bg-gray-300 w-full min-h-screen flex">
+        <main class="bg-gray-200 w-full min-h-screen flex dark:bg-gray-700">
             <section class="m-auto text-center loading-box">
-                <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"
-                     preserveAspectRatio="xMidYMid">
+                <svg class="w-60 h-60" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
                     <g transform="translate(50 50)">
                         <g transform="translate(-19 -19) scale(0.6)">
                             <g transform="rotate(153.335)">
@@ -35,202 +34,179 @@
                         </g>
                     </g>
                 </svg>
-                <h3 data-i18n="html,message_data_loading" class="text-blue-600 text-3xl font-bold mt-8"></h3>
+                <h3 data-i18n="html,message_data_loading" class="text-blue-700 text-3xl font-bold mt-8"></h3>
             </section>
-            <div class="text-gray-600 m-auto w-full max-w-4xl options-page hidden" data-dark="text-gray-600,text-gray-400">
-                <form id="form_options" name="form_options" method="post">
-                    <header class="py-5">
-                        <a class="external-link inline-block" target="_blank" href="/">
-                            <img class="pt-1 opacity-75 logo-img" src="../dist/img/laneros2x.png" alt="Brand logo">
-                        </a>
-                    </header>
-                    <div class="bg-gray-100 rounded shadow">
-                        <section class="p-6 px-8 grid grid-flow-col grid-cols-2">
-                            <article>
+            <div class="text-gray-600 m-auto w-full max-w-4xl options-page hidden dark:text-gray-300">
+                <header class="py-5">
+                    <a class="external-link inline-block" target="_blank" href="/">
+                        <img class="pt-1 logo-img" src="../dist/img/laneros2x.png" alt="Brand logo">
+                    </a>
+                </header>
+                <form id="form_options" name="form_options" method="post" class="shadow rounded-lg">
+                    <div class="bg-gray-50 dark:bg-gray-800 p-6 px-8 rounded-t-lg relative">
+                        <section class="grid grid-flow-col grid-cols-3 gap-4">
+                            <article class="text-base">
                                 <header class="pb-8">
-                                    <h2 class="text-2xl font-semibold text-gray-700"
-                                        data-dark="text-gray-700,text-gray-300" data-i18n="html,header_sections"></h2>
-                                    <p class="text-base text-gray-600" data-dark="text-gray-600,text-gray-400"
+                                    <h2 class="text-black text-2xl font-semibold dark:text-gray-100"
+                                        data-i18n="html,header_sections"></h2>
+                                    <p class="text-gray-500 font-medium dark:text-gray-400"
                                        data-i18n="html,text_display_sections"></p>
                                 </header>
-                                <div class="flex items-center mb-6 text-base">
+                                <div class="flex items-center mb-6">
                                     <input class="hidden" type="checkbox" id="section_user_info"
                                            name="section_user_info" value="true" data-i18n="title,message_required_section">
                                     <label for="section_user_info" class="flex items-center cursor-pointer">
-                                        <span class="w-5 h-5 inline-block mr-2 rounded border border-gray-400 bg-white checkbox"></span>
+                                        <span class="transition duration-500 ease-in-out transform hover:scale-125 bg-white w-5 h-5 inline-block mr-2 rounded border border-gray-300 dark:bg-black dark:border-gray-600"></span>
                                         <span data-i18n="html,label_user_info"></span></label>
                                 </div>
-                                <div class="flex items-center mb-6 text-base">
+                                <div class="flex items-center mb-6">
                                     <input class="hidden" type="checkbox" id="section_links"
                                            name="section_links" value="true" data-i18n="title,message_required_section">
                                     <label for="section_links" class="flex items-center cursor-pointer">
-                                        <span class="w-5 h-5 inline-block mr-2 rounded border border-gray-400 bg-white checkbox"></span>
+                                        <span class="transition duration-500 ease-in-out transform hover:scale-125 bg-white w-5 h-5 inline-block mr-2 rounded border border-gray-300 dark:bg-black dark:border-gray-600"></span>
                                         <span data-i18n="html,label_links"></span></label>
                                 </div>
-                                <div class="flex items-center mb-6 text-base">
+                                <div class="flex items-center mb-6">
                                     <input class="hidden" type="checkbox" id="section_inbox"
                                            name="section_inbox" value="true" data-i18n="title,message_required_section">
                                     <label for="section_inbox" class="flex items-center cursor-pointer">
-                                        <span class="w-5 h-5 inline-block mr-2 rounded border border-gray-400 bg-white checkbox"></span>
+                                        <span class="transition duration-500 ease-in-out transform hover:scale-125 bg-white w-5 h-5 inline-block mr-2 rounded border border-gray-300 dark:bg-black dark:border-gray-600"></span>
                                         <span data-i18n="html,label_conversations"></span></label>
                                 </div>
-                                <div class="flex items-center mb-6 text-base">
+                                <div class="flex items-center mb-6">
                                     <input class="hidden" type="checkbox" id="section_alerts"
                                            name="section_alerts" value="true" data-i18n="title,message_required_section">
                                     <label for="section_alerts" class="flex items-center cursor-pointer">
-                                        <span class="w-5 h-5 inline-block mr-2 rounded border border-gray-400 bg-white checkbox"></span>
+                                        <span class="transition duration-500 ease-in-out transform hover:scale-125 bg-white w-5 h-5 inline-block mr-2 rounded border border-gray-300 dark:bg-black dark:border-gray-600"></span>
                                         <span data-i18n="html,label_alerts"></span></label>
                                 </div>
-                                <div class="flex items-center mb-6 text-base">
+                                <div class="flex items-center mb-6">
                                     <input class="hidden" type="checkbox" id="section_subscriptions"
                                            name="section_subscriptions" value="true" data-i18n="title,message_required_section">
                                     <label for="section_subscriptions" class="flex items-center cursor-pointer">
-                                        <span class="w-5 h-5 inline-block mr-2 rounded border border-gray-400 bg-white checkbox"></span>
+                                        <span class="transition duration-500 ease-in-out transform hover:scale-125 bg-white w-5 h-5 inline-block mr-2 rounded border border-gray-300 dark:bg-black dark:border-gray-600"></span>
                                         <span data-i18n="html,label_subscriptions"></span></label>
                                 </div>
-                                <div class="flex items-center mb-6 text-base">
+                                <div class="flex items-center mb-6">
                                     <input class="hidden" type="checkbox" id="section_bookmarks"
                                            name="section_bookmarks" value="true" data-i18n="title,message_required_section">
                                     <label for="section_bookmarks" class="flex items-center cursor-pointer">
-                                        <span class="w-5 h-5 inline-block mr-2 rounded border border-gray-400 bg-white checkbox"></span>
+                                        <span class="transition duration-500 ease-in-out transform hover:scale-125 bg-white w-5 h-5 inline-block mr-2 rounded border border-gray-300 dark:bg-black dark:border-gray-600"></span>
                                         <span data-i18n="html,label_bookmarks"></span></label>
                                 </div>
                             </article>
-                            <article>
+                            <article class="text-base">
                                 <header class="pb-8">
-                                    <h2 class="text-2xl font-semibold text-gray-700"
-                                        data-dark="text-gray-700,text-gray-300" data-i18n="html,header_notifications"></h2>
-                                    <p class="text-base text-gray-600" data-dark="text-gray-600,text-gray-400"
+                                    <h2 class="text-black text-2xl font-semibold dark:text-gray-100"
+                                        data-i18n="html,header_notifications"></h2>
+                                    <p class="text-gray-500 font-medium dark:text-gray-400"
                                        data-i18n="html,text_display_notifications"></p>
                                 </header>
-                                <div class="flex items-center mb-6 text-base">
+                                <div class="flex items-center mb-6">
                                     <input class="hidden" type="checkbox" id="single_notification"
                                            name="single_notification" value="true" data-i18n="title,message_required_section">
                                     <label for="single_notification" class="flex items-center cursor-pointer">
-                                        <span class="w-5 h-5 inline-block mr-2 rounded border border-gray-400 bg-white checkbox"></span>
+                                        <span class="transition duration-500 ease-in-out transform hover:scale-125 bg-white w-5 h-5 inline-block mr-2 rounded border border-gray-300 dark:bg-black dark:border-gray-600"></span>
                                         <span data-i18n="html,label_single_notification"></span></label>
                                 </div>
-                                <div class="flex items-center mb-6 text-base">
+                                <div class="flex items-center mb-6">
                                     <input class="hidden" type="checkbox" id="inbox_notification"
                                            name="inbox_notification" value="true" data-i18n="title,message_required_section">
                                     <label for="inbox_notification" class="flex items-center cursor-pointer">
-                                        <span class="w-5 h-5 inline-block mr-2 rounded border border-gray-400 bg-white checkbox"></span>
+                                        <span class="transition duration-500 ease-in-out transform hover:scale-125 bg-white w-5 h-5 inline-block mr-2 rounded border border-gray-300 dark:bg-black dark:border-gray-600"></span>
                                         <span data-i18n="html,label_conversations"></span></label>
                                 </div>
-                                <div class="flex items-center mb-6 text-base">
+                                <div class="flex items-center mb-6">
                                     <input class="hidden" type="checkbox" id="alerts_notification"
                                            name="alerts_notification" value="true" data-i18n="title,message_required_section">
                                     <label for="alerts_notification" class="flex items-center cursor-pointer">
-                                        <span class="w-5 h-5 inline-block mr-2 rounded border border-gray-400 bg-white checkbox"></span>
+                                        <span class="transition duration-500 ease-in-out transform hover:scale-125 bg-white w-5 h-5 inline-block mr-2 rounded border border-gray-300 dark:bg-black dark:border-gray-600"></span>
                                         <span data-i18n="html,label_alerts"></span></label>
                                 </div>
-                                <div class="flex items-center mb-6 text-base">
+                                <div class="flex items-center mb-6">
                                     <input class="hidden" type="checkbox" id="subscriptions_notification"
                                            name="subscriptions_notification" value="true" data-i18n="title,message_required_section">
                                     <label for="subscriptions_notification" class="flex items-center cursor-pointer">
-                                        <span class="w-5 h-5 inline-block mr-2 rounded border border-gray-400 bg-white checkbox"></span>
+                                        <span class="transition duration-500 ease-in-out transform hover:scale-125 bg-white w-5 h-5 inline-block mr-2 rounded border border-gray-300 dark:bg-black dark:border-gray-600"></span>
                                         <span data-i18n="html,label_subscriptions"></span></label>
                                 </div>
                             </article>
-                        </section>
-                        <section class="p-6 px-8 grid grid-flow-col grid-cols-2 gap-4">
-                            <article>
+                            <article class="text-base">
                                 <header class="pb-8">
-                                    <h2 class="text-2xl font-semibold text-gray-700"
-                                        data-dark="text-gray-700,text-gray-300" data-i18n="html,header_dark_mode"></h2>
-                                    <p class="text-base text-gray-600" data-dark="text-gray-600,text-gray-400"
-                                       data-i18n="html,text_dark_mode"></p>
-                                </header>
-                                <div class="flex items-center mb-6 text-base">
-                                    <input class="hidden" type="checkbox" id="dark_mode"
-                                           name="dark_mode" value="true" data-i18n="title,message_required_section">
-                                    <label for="dark_mode" class="flex items-center cursor-pointer">
-                                        <span class="w-5 h-5 inline-block mr-2 rounded border border-gray-400 bg-white checkbox"></span>
-                                        <span data-i18n="html,label_dark_mode"></span></label>
-                                </div>
-                            </article>
-                            <article>
-                                <header class="pb-8">
-                                    <h2 class="text-2xl font-semibold text-gray-700"
-                                        data-dark="text-gray-700,text-gray-300" data-i18n="html,header_review"></h2>
-                                    <p class="text-base text-gray-600" data-dark="text-gray-600,text-gray-400"
+                                    <h2 class="text-black text-2xl font-semibold dark:text-gray-100"
+                                        data-i18n="html,header_review"></h2>
+                                    <p class="text-gray-500 font-medium dark:text-gray-400"
                                        data-i18n="html,text_review_interval"></p>
                                 </header>
-                                <div class="pb-5 text-base">
-                                    <label for="hours">
-                                        <span data-i18n="html,label_interval"></span>
-                                        <span class="text-red-500">*</span>
-                                    </label>
-                                    <div class="mt-3">
-                                        <div class="flex">
-                                            <input class="appearance-none p-1 text-right placeholder-gray-500 placeholder-opacity-75 w-12 rounded border border-gray-400 leading-tight focus:outline-none focus:border-gray-500 text-gray-600"
-                                                   data-dark="text-gray-600,text-gray-400" type="number" max="23" min="0"
-                                                   id="hours" name="hours" required
-                                                   data-i18n="placeholder|title,label_hours|message_required_field">
-                                            <label for="minutes" class="bg-transparent px-1 flex items-center pb-1">:</label>
-                                            <input class="appearance-none p-1 text-right placeholder-gray-500 placeholder-opacity-75 w-12 rounded border border-gray-400 leading-tight focus:outline-none focus:border-gray-500 text-gray-600"
-                                                   data-dark="text-gray-600,text-gray-400" type="number" max="59" min="0"
-                                                   id="minutes" name="minutes" required
-                                                   data-i18n="placeholder|title,label_minutes|message_required_field">
-                                            <label for="seconds" class="bg-transparent px-1 flex items-center pb-1">:</label>
-                                            <input class="appearance-none p-1 text-right placeholder-gray-500 placeholder-opacity-75 w-12 rounded border border-gray-400 leading-tight focus:outline-none focus:border-gray-500 text-gray-600"
-                                                   data-dark="text-gray-600,text-gray-400" type="number" max="59" min="0"
-                                                   id="seconds" name="seconds" required
-                                                   data-i18n="placeholder|title,label_seconds|message_required_field">
-                                            <label for="milliseconds" class="bg-transparent px-1 flex items-center pb-1">:</label>
-                                            <input class="appearance-none p-1 text-right placeholder-gray-500 placeholder-opacity-75 w-12 rounded border border-gray-400 leading-tight focus:outline-none focus:border-gray-500 text-gray-600"
-                                                   data-dark="text-gray-600,text-gray-400" type="number" max="999" min="0"
-                                                   id="milliseconds" name="milliseconds" required
-                                                   data-i18n="placeholder|title,label_milliseconds|message_required_field">
-                                        </div>
-                                        <small class="text-red-500 invisible" data-i18n="html,message_required_field"></small>
+                                <label for="hours">
+                                    <span data-i18n="html,label_interval"></span>
+                                    <span class="text-red-500">*</span>
+                                </label>
+                                <div class="mt-3">
+                                    <div class="flex">
+                                        <input class="appearance-none text-gray-600 p-1 text-right placeholder-gray-500 placeholder-opacity-75 w-12 rounded border border-gray-300 leading-tight focus:outline-none focus:border-gray-400 dark:text-gray-400 dark:bg-gray-700 dark:border-gray-600 dark:focus:border-gray-500"
+                                               type="number" max="23" min="0" id="hours" name="hours" required
+                                               data-i18n="placeholder|title,label_hours|message_required_field">
+                                        <label for="minutes" class="bg-transparent px-1 flex items-center pb-1">:</label>
+                                        <input class="appearance-none text-gray-600 p-1 text-right placeholder-gray-500 placeholder-opacity-75 w-12 rounded border border-gray-300 leading-tight focus:outline-none focus:border-gray-400 dark:text-gray-400 dark:bg-gray-700 dark:border-gray-600 dark:focus:border-gray-500"
+                                               type="number" max="59" min="0" id="minutes" name="minutes" required
+                                               data-i18n="placeholder|title,label_minutes|message_required_field">
+                                        <label for="seconds" class="bg-transparent px-1 flex items-center pb-1">:</label>
+                                        <input class="appearance-none text-gray-600 p-1 text-right placeholder-gray-500 placeholder-opacity-75 w-12 rounded border border-gray-300 leading-tight focus:outline-none focus:border-gray-400 dark:text-gray-400 dark:bg-gray-700 dark:border-gray-600 dark:focus:border-gray-500"
+                                               type="number" max="59" min="0" id="seconds" name="seconds" required
+                                               data-i18n="placeholder|title,label_seconds|message_required_field">
+                                        <label for="milliseconds" class="bg-transparent px-1 flex items-center pb-1">:</label>
+                                        <input class="appearance-none text-gray-600 p-1 text-right placeholder-gray-500 placeholder-opacity-75 w-12 rounded border border-gray-300 leading-tight focus:outline-none focus:border-gray-400 dark:text-gray-400 dark:bg-gray-700 dark:border-gray-600 dark:focus:border-gray-500"
+                                               type="number" max="999" min="0" id="milliseconds" name="milliseconds" required
+                                               data-i18n="placeholder|title,label_milliseconds|message_required_field">
                                     </div>
+                                    <small class="text-red-500 invisible" data-i18n="html,message_required_field"></small>
                                 </div>
                             </article>
                         </section>
+                        <section class="absolute bottom-0 right-0 mb-3 mr-3 w-64">
+                            <div class="bg-blue-100 border-l-4 border-blue-500 text-blue-500 p-3 rounded shadow hidden alert-processing"
+                                 role="alert">
+                                <div class="flex items-center">
+                                    <div class="mr-4">
+                                        <svg class="w-10 h10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"
+                                             preserveAspectRatio="xMidYMid">
+                                            <g transform="translate(50 50)">
+                                                <g transform="translate(-19 -19) scale(0.6)">
+                                                    <g transform="rotate(153.335)">
+                                                        <animateTransform attributeName="transform" type="rotate" values="0;360"
+                                                                          keyTimes="0;1" dur="5s" begin="0s"
+                                                                          repeatCount="indefinite"></animateTransform>
+                                                        <path d="M37.3496987939662 -7 L47.3496987939662 -7 L47.3496987939662 7 L37.3496987939662 7 A38 38 0 0 1 31.359972760794346 21.46047782418268 L31.359972760794346 21.46047782418268 L38.431040572659825 28.531545636048154 L28.531545636048154 38.431040572659825 L21.46047782418268 31.359972760794346 A38 38 0 0 1 7.0000000000000036 37.3496987939662 L7.0000000000000036 37.3496987939662 L7.000000000000004 47.3496987939662 L-6.999999999999999 47.3496987939662 L-7 37.3496987939662 A38 38 0 0 1 -21.46047782418268 31.35997276079435 L-21.46047782418268 31.35997276079435 L-28.531545636048154 38.431040572659825 L-38.43104057265982 28.531545636048158 L-31.359972760794346 21.460477824182682 A38 38 0 0 1 -37.3496987939662 7.000000000000007 L-37.3496987939662 7.000000000000007 L-47.3496987939662 7.000000000000008 L-47.3496987939662 -6.9999999999999964 L-37.3496987939662 -6.999999999999997 A38 38 0 0 1 -31.35997276079435 -21.460477824182675 L-31.35997276079435 -21.460477824182675 L-38.431040572659825 -28.531545636048147 L-28.53154563604818 -38.4310405726598 L-21.4604778241827 -31.35997276079433 A38 38 0 0 1 -6.999999999999992 -37.3496987939662 L-6.999999999999992 -37.3496987939662 L-6.999999999999994 -47.3496987939662 L6.999999999999977 -47.3496987939662 L6.999999999999979 -37.3496987939662 A38 38 0 0 1 21.460477824182686 -31.359972760794342 L21.460477824182686 -31.359972760794342 L28.531545636048158 -38.43104057265982 L38.4310405726598 -28.53154563604818 L31.35997276079433 -21.4604778241827 A38 38 0 0 1 37.3496987939662 -6.999999999999995 M0 -23A23 23 0 1 0 0 23 A23 23 0 1 0 0 -23"
+                                                              fill="#005caa"></path>
+                                                    </g>
+                                                </g>
+                                                <g transform="translate(19 19) scale(0.6)">
+                                                    <g transform="rotate(184.165)">
+                                                        <animateTransform attributeName="transform" type="rotate" values="360;0"
+                                                                          keyTimes="0;1" dur="5s" begin="-0.3125s"
+                                                                          repeatCount="indefinite"></animateTransform>
+                                                        <path d="M37.3496987939662 -7 L47.3496987939662 -7 L47.3496987939662 7 L37.3496987939662 7 A38 38 0 0 1 31.359972760794346 21.46047782418268 L31.359972760794346 21.46047782418268 L38.431040572659825 28.531545636048154 L28.531545636048154 38.431040572659825 L21.46047782418268 31.359972760794346 A38 38 0 0 1 7.0000000000000036 37.3496987939662 L7.0000000000000036 37.3496987939662 L7.000000000000004 47.3496987939662 L-6.999999999999999 47.3496987939662 L-7 37.3496987939662 A38 38 0 0 1 -21.46047782418268 31.35997276079435 L-21.46047782418268 31.35997276079435 L-28.531545636048154 38.431040572659825 L-38.43104057265982 28.531545636048158 L-31.359972760794346 21.460477824182682 A38 38 0 0 1 -37.3496987939662 7.000000000000007 L-37.3496987939662 7.000000000000007 L-47.3496987939662 7.000000000000008 L-47.3496987939662 -6.9999999999999964 L-37.3496987939662 -6.999999999999997 A38 38 0 0 1 -31.35997276079435 -21.460477824182675 L-31.35997276079435 -21.460477824182675 L-38.431040572659825 -28.531545636048147 L-28.53154563604818 -38.4310405726598 L-21.4604778241827 -31.35997276079433 A38 38 0 0 1 -6.999999999999992 -37.3496987939662 L-6.999999999999992 -37.3496987939662 L-6.999999999999994 -47.3496987939662 L6.999999999999977 -47.3496987939662 L6.999999999999979 -37.3496987939662 A38 38 0 0 1 21.460477824182686 -31.359972760794342 L21.460477824182686 -31.359972760794342 L28.531545636048158 -38.43104057265982 L38.4310405726598 -28.53154563604818 L31.35997276079433 -21.4604778241827 A38 38 0 0 1 37.3496987939662 -6.999999999999995 M0 -23A23 23 0 1 0 0 23 A23 23 0 1 0 0 -23"
+                                                              fill="#00b1eb"></path>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                    <h3 class="text-blue-500 text-lg font-bold" data-i18n="html,message_processing"></h3>
+                                </div>
+                            </div>
+                            <div class="border-l-4 p-3 rounded shadow hidden alert-response" role="alert">
+                                <h3 class="text-lg font-semibold alert-title">&nbsp;</h3>
+                                <p class="text-sm pt-1 alert-text"></p>
+                            </div>
+                        </section>
                     </div>
-                    <footer class="py-3 text-right text-xl">
-                        <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded shadow"
+                    <footer class="p-3 bg-gray-100 text-right text-lg rounded-b-lg dark:bg-gray-900">
+                        <button class="bg-blue-500 hover:bg-blue-700 border-blue-500 dark:border-blue-600 hover:border-blue-700 text-gray-100 font-bold py-2 px-5 rounded dark:hover:bg-blue-800 dark:bg-blue-600 dark:hover:border-blue-800"
                                 type="submit" data-i18n="html,button_save"></button>
                     </footer>
                 </form>
-            </div>
-            <div class="absolute top-0 w-full">
-                <section class="bg-blue-100 border-l-4 border-blue-500 text-blue-500 p-4 z-50 m-1 hidden alert-processing"
-                         role="alert">
-                    <div class="flex items-center">
-                        <div class="mr-4">
-                            <svg width="50" height="50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"
-                                 preserveAspectRatio="xMidYMid">
-                                <g transform="translate(50 50)">
-                                    <g transform="translate(-19 -19) scale(0.6)">
-                                        <g transform="rotate(153.335)">
-                                            <animateTransform attributeName="transform" type="rotate" values="0;360"
-                                                              keyTimes="0;1" dur="5s" begin="0s"
-                                                              repeatCount="indefinite"></animateTransform>
-                                            <path d="M37.3496987939662 -7 L47.3496987939662 -7 L47.3496987939662 7 L37.3496987939662 7 A38 38 0 0 1 31.359972760794346 21.46047782418268 L31.359972760794346 21.46047782418268 L38.431040572659825 28.531545636048154 L28.531545636048154 38.431040572659825 L21.46047782418268 31.359972760794346 A38 38 0 0 1 7.0000000000000036 37.3496987939662 L7.0000000000000036 37.3496987939662 L7.000000000000004 47.3496987939662 L-6.999999999999999 47.3496987939662 L-7 37.3496987939662 A38 38 0 0 1 -21.46047782418268 31.35997276079435 L-21.46047782418268 31.35997276079435 L-28.531545636048154 38.431040572659825 L-38.43104057265982 28.531545636048158 L-31.359972760794346 21.460477824182682 A38 38 0 0 1 -37.3496987939662 7.000000000000007 L-37.3496987939662 7.000000000000007 L-47.3496987939662 7.000000000000008 L-47.3496987939662 -6.9999999999999964 L-37.3496987939662 -6.999999999999997 A38 38 0 0 1 -31.35997276079435 -21.460477824182675 L-31.35997276079435 -21.460477824182675 L-38.431040572659825 -28.531545636048147 L-28.53154563604818 -38.4310405726598 L-21.4604778241827 -31.35997276079433 A38 38 0 0 1 -6.999999999999992 -37.3496987939662 L-6.999999999999992 -37.3496987939662 L-6.999999999999994 -47.3496987939662 L6.999999999999977 -47.3496987939662 L6.999999999999979 -37.3496987939662 A38 38 0 0 1 21.460477824182686 -31.359972760794342 L21.460477824182686 -31.359972760794342 L28.531545636048158 -38.43104057265982 L38.4310405726598 -28.53154563604818 L31.35997276079433 -21.4604778241827 A38 38 0 0 1 37.3496987939662 -6.999999999999995 M0 -23A23 23 0 1 0 0 23 A23 23 0 1 0 0 -23"
-                                                  fill="#005caa"></path>
-                                        </g>
-                                    </g>
-                                    <g transform="translate(19 19) scale(0.6)">
-                                        <g transform="rotate(184.165)">
-                                            <animateTransform attributeName="transform" type="rotate" values="360;0"
-                                                              keyTimes="0;1" dur="5s" begin="-0.3125s"
-                                                              repeatCount="indefinite"></animateTransform>
-                                            <path d="M37.3496987939662 -7 L47.3496987939662 -7 L47.3496987939662 7 L37.3496987939662 7 A38 38 0 0 1 31.359972760794346 21.46047782418268 L31.359972760794346 21.46047782418268 L38.431040572659825 28.531545636048154 L28.531545636048154 38.431040572659825 L21.46047782418268 31.359972760794346 A38 38 0 0 1 7.0000000000000036 37.3496987939662 L7.0000000000000036 37.3496987939662 L7.000000000000004 47.3496987939662 L-6.999999999999999 47.3496987939662 L-7 37.3496987939662 A38 38 0 0 1 -21.46047782418268 31.35997276079435 L-21.46047782418268 31.35997276079435 L-28.531545636048154 38.431040572659825 L-38.43104057265982 28.531545636048158 L-31.359972760794346 21.460477824182682 A38 38 0 0 1 -37.3496987939662 7.000000000000007 L-37.3496987939662 7.000000000000007 L-47.3496987939662 7.000000000000008 L-47.3496987939662 -6.9999999999999964 L-37.3496987939662 -6.999999999999997 A38 38 0 0 1 -31.35997276079435 -21.460477824182675 L-31.35997276079435 -21.460477824182675 L-38.431040572659825 -28.531545636048147 L-28.53154563604818 -38.4310405726598 L-21.4604778241827 -31.35997276079433 A38 38 0 0 1 -6.999999999999992 -37.3496987939662 L-6.999999999999992 -37.3496987939662 L-6.999999999999994 -47.3496987939662 L6.999999999999977 -47.3496987939662 L6.999999999999979 -37.3496987939662 A38 38 0 0 1 21.460477824182686 -31.359972760794342 L21.460477824182686 -31.359972760794342 L28.531545636048158 -38.43104057265982 L38.4310405726598 -28.53154563604818 L31.35997276079433 -21.4604778241827 A38 38 0 0 1 37.3496987939662 -6.999999999999995 M0 -23A23 23 0 1 0 0 23 A23 23 0 1 0 0 -23"
-                                                  fill="#00b1eb"></path>
-                                        </g>
-                                    </g>
-                                </g>
-                            </svg>
-                        </div>
-                        <h3 class="text-blue-500 text-2xl font-bold" data-i18n="html,message_processing"></h3>
-                    </div>
-                </section>
-                <div class="border-l-4 p-4 m-1 hidden alert-response" role="alert">
-                    <h3 class="text-2xl font-semibold alert-title">&nbsp;</h3>
-                    <p class="text-base py-1 alert-text"></p>
-                </div>
             </div>
         </main>
         <script type="module" src="../dist/js/tasks/options.min.mjs"></script>

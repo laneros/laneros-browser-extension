@@ -42,13 +42,13 @@
     "message": "Review interval"
   },
   "text_display_sections": {
-    "message": "Select which sections are shown"
+    "message": "Select the sections to display"
   },
   "text_display_notifications": {
-    "message": "Select which notifications are displayed"
+    "message": "Select the notifications to display"
   },
   "text_review_interval": {
-    "message": "Time between updates"
+    "message": "Time between checking for updates"
   },
   "label_home": {
     "message": "Home"

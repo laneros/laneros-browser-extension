@@ -5,6 +5,15 @@ All notable changes to `laneros-browser-extension` will be documented in this fi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 9.2 | 2020-12-17
+
+### Changed
+
+- Dark mode detection from JS 
+- Tailwind CSS version 2
+- The dark mode now is based on Tailwind colors
+- Standard and Dark mode improvements
+
 ## 9.1.3 | 2020-07-19
 
 ### Changed
@@ -44,7 +53,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Emoji in alerts
 
-## 9 | 2020-07-15
+## 9.0 | 2020-07-15
 
 ### Added
 
@@ -72,7 +81,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Popup counters adjustment
 
-## 8.2.0 | 2019-12-17
+## 8.2 | 2019-12-17
 
 ### Changed
 
