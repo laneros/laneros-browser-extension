@@ -64,6 +64,7 @@
                 </div>
             </header>
             <section class="absolute left-0 z-50 w-full p-1 pt-2 px-6 border-b border-gray-100 hidden bg-gray-200 dark:bg-gray-900 dark:border-gray-900 search-form">
+                <h6 class="hidden">&nbsp;</h6>
                 <div class="relative">
                     <label for="keywords" class="hidden">&nbsp;</label>
                     <input class="appearance-none text-gray-600 py-2 px-3 placeholder-gray-500 placeholder-opacity-75 w-full rounded border border-gray-300 leading-tight focus:outline-none focus:border-gray-400 dark:text-gray-400 dark:bg-gray-700 dark:border-gray-600 dark:focus:border-gray-500"
@@ -116,7 +117,7 @@
                             <input class="appearance-none text-gray-600 py-2 px-3 placeholder-gray-500 placeholder-opacity-75 w-full rounded border border-gray-300 leading-tight focus:outline-none focus:border-gray-400 dark:text-gray-400 dark:bg-gray-700 dark:border-gray-600 dark:focus:border-gray-500"
                                    type="text" id="ctrl_pageLogin_login" name="login" required autofocus
                                    data-i18n="placeholder|title,label_nick|message_required_field">
-                            <small class="text-red-500 dark:text-red-600 invisible" data-i18n="html,message_required_field"></small>
+                            <small class="text-red-500 invisible" data-i18n="html,message_required_field"></small>
                         </div>
                         <div class="text-base mt-3">
                             <label for="ctrl_pageLogin_password">
@@ -126,7 +127,7 @@
                             <input class="appearance-none text-gray-600 py-2 px-3 placeholder-gray-500 placeholder-opacity-75 w-full rounded border border-gray-300 leading-tight focus:outline-none focus:border-gray-400 dark:text-gray-400 dark:bg-gray-700 dark:border-gray-600 dark:focus:border-gray-500"
                                    type="password" id="ctrl_pageLogin_password" name="password" required
                                    data-i18n="placeholder|title,label_password|message_required_field">
-                            <small class="text-red-500 dark:text-red-600 invisible" data-i18n="html,message_required_field"></small>
+                            <small class="text-red-500 invisible" data-i18n="html,message_required_field"></small>
                             <a href="lost-password/" class="external-link text-sm text-blue-600 hover:text-blue-700 float-right dark:text-blue-500 dark:hover:text-blue-400"
                                data-i18n="html,label_forgot"></a>
                         </div>
@@ -169,12 +170,12 @@
             <section class="section-user hidden">
                 <div class="grid grid-flow-col grid-cols-2 p-2 bg-gray-50 dark:bg-gray-900 hidden user-info-container">
                     <div class="flex items-center">
-                        <a class="external-link rounded" href="account/avatar" target="_blank">
-                            <img src="../dist/img/blank.png" alt="Avatar" class="avatar" width="50" height="50">
+                        <a class="external-link rounded avatar" href="account/avatar" target="_blank">
+                            <img class="rounded transform hover:scale-110" src="../dist/img/blank.png" width="50" height="50">
                         </a>
                         <h6 class="text-sm flex flex-col ml-2 user-info">
-                            <a class="external-link text-blue-600 dark:text-blue-500 hover:text-blue-700 dark:hover:text-blue-400 font-bold user-id-full"
-                               target="_blank" href="members/{user-id-full}"></a>
+                            <a class="external-link text-blue-600 dark:text-blue-500 hover:text-blue-700 dark:hover:text-blue-400 font-bold user-full-id"
+                               target="_blank" href="members/{user-full-id}"></a>
                             <small></small>
                         </h6>
                     </div>
@@ -196,7 +197,7 @@
                                 </svg>
                                 <span class="user-rating"></span>
                             </a>
-                            <a class="external-link hover:text-gray-900 dark:hover:text-gray-200 user-id-full" href="members/{user-id-full}/trophies">
+                            <a class="external-link hover:text-gray-900 dark:hover:text-gray-200 user-full-id" href="members/{user-full-id}/trophies">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
                                      class="fill-current w-5 h-5 mx-auto mb-1">
                                     <path d="M11.18,14.356c0-1.451,1.1-2.254,2.894-3.442C16.268,9.458,19,7.649,19,3.354
@@ -212,8 +213,8 @@
                             </a>
                         </div>
                         <div class="text-center grid grid-flow-col grid-cols-3">
-                            <a class="external-link user-id-full hover:text-gray-900 dark:hover:text-gray-200"
-                               href="feedback/{user-id-full}?reloadList=1&amountFilter%5B0%5D=1">
+                            <a class="external-link user-full-id hover:text-gray-900 dark:hover:text-gray-200"
+                               href="feedback/{user-full-id}?reloadList=1&amountFilter%5B0%5D=1">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
                                      class="fill-current w-5 h-5 mx-auto mb-1 text-green-500 hover:text-green-600 dark:hover:text-green-400">
                                     <path d="M10,0.4c-5.302,0-9.6,4.298-9.6,9.6s4.298,9.6,9.6,9.6c5.301,0,9.6-4.298,9.6-9.601
@@ -226,8 +227,8 @@
                                 </svg>
                                 <span class="user-feedback-positive"></span>
                             </a>
-                            <a class="external-link user-id-full text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-200"
-                               href="feedback/{user-id-full}?reloadList=1&amountFilter%5B0%5D=-1">
+                            <a class="external-link user-full-id text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-200"
+                               href="feedback/{user-full-id}?reloadList=1&amountFilter%5B0%5D=-1">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
                                      class="fill-current w-5 h-5 mx-auto mb-1 text-gray-500 hover:text-gray-600 dark:hover:text-gray-400">
                                     <path d="M10,0.4c-5.302,0-9.6,4.298-9.6,9.6s4.298,9.6,9.6,9.6c5.301,0,9.6-4.298,9.6-9.601
@@ -238,8 +239,8 @@
                                 </svg>
                                 <span class="user-feedback-neutral"></span>
                             </a>
-                            <a class="external-link user-id-full text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-200"
-                               href="feedback/{user-id-full}?reloadList=1&amountFilter%5B0%5D=0">
+                            <a class="external-link user-full-id text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-200"
+                               href="feedback/{user-full-id}?reloadList=1&amountFilter%5B0%5D=0">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
                                      class="fill-current w-5 h-5 mx-auto mb-1 text-red-500 hover:text-red-600 dark:hover:text-red-400">
                                     <path d="M10.001,0.4C4.698,0.4,0.4,4.698,0.4,10c0,5.303,4.298,9.601,9.601,9.601c5.301,0,9.6-4.298,9.6-9.601
@@ -260,9 +261,9 @@
                     <p class="text-sm py-1 text-red-500 dark:text-red-600" data-i18n="html,message_zero_sections"></p>
                 </div>
                 <div class="tab-container">
-                    <ul class="flex-1 flex items-center justify-start text-sm font-semibold bg-gray-300 dark:bg-gray-700 tab-list">
+                    <ul class="flex-1 flex items-center justify-start text-sm font-semibold border-t border-gray-800 bg-gray-300 dark:bg-gray-700 tab-list">
                         <li class="home-tab-nav">
-                            <a class="inline-block text-blue-500 px-3 p-2 hover:text-blue-600 hover:bg-gray-400 dark:text-blue-400 dark:hover:text-blue-100 dark:hover:bg-gray-600 hidden"
+                            <a class="inline-block text-blue-500 px-3 p-2 hover:text-blue-600 hover:bg-gray-400 dark:text-blue-400 dark:hover:text-blue-100 dark:hover:bg-gray-600"
                                href="#home" data-i18n="html,label_home"></a>
                         </li>
                         <li class="inbox-tab-nav">
@@ -292,7 +293,20 @@
                         </li>
                     </ul>
                     <div class="tab-content">
-                        <div class="tab bg-gray-100 dark:bg-gray-800 home-tab hidden" id="home">
+                        <div class="tab bg-gray-100 dark:bg-gray-800 home-tab" id="home">
+                            <div class="border-l-4 border-blue-500 bg-blue-100 text-blue-500 px-4 py-2 flex items-center dark:border-blue-600 dark:bg-blue-200 dark:text-blue-600 alert-processing hidden"
+                                 role="alert">
+                                <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"
+                                     preserveAspectRatio="xMidYMid" fill="currentColor">
+                                    <path stroke="none" d="M10 50A40 40 0 0 0 90 50A40 44 0 0 1 10 50"
+                                          transform="rotate(323.584 50 52)">
+                                        <animateTransform attributeName="transform" type="rotate" calcMode="linear"
+                                                          values="0 50 52;360 50 52" keyTimes="0;1" dur="1s"
+                                                          begin="0s" repeatCount="indefinite"></animateTransform>
+                                    </path>
+                                </svg>
+                                <p class="text-sm py-1 ml-2" data-i18n="html,message_processing"></p>
+                            </div>
                             <div class="border-l-4 border-red-500 bg-red-100 px-4 py-2 dark:border-red-600 dark:bg-red-200 hidden alert-home-message"
                                  role="alert">
                                 <p class="text-sm py-1 text-red-500 dark:text-red-600" data-i18n="html,message_zero_links"></p>
@@ -300,6 +314,10 @@
                             <div class="hidden user-links dark:text-gray-200">
                                 <div class="grid grid-flow-col grid-cols-2">
                                     <ul class="px-2 py-3">
+                                        <li class="mx-2 flex">
+                                            <a class="external-link border-l-2 border-transparent p-2 w-full hover:bg-gray-200 hover:border-gray-300 hover:text-gray-900 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:hover:text-gray-100"
+                                               href="whats-new/news-feed" data-i18n="html,label_news_feed"></a>
+                                        </li>
                                         <li class="mx-2 flex">
                                             <a class="external-link user-id border-l-2 border-transparent p-2 w-full hover:bg-gray-200 hover:border-gray-300 hover:text-gray-900 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:hover:text-gray-100"
                                                href="search/member?user_id={user-id}" data-i18n="html,label_your_content"></a>
@@ -326,8 +344,8 @@
                                                href="account/preferences" data-i18n="html,label_preferences"></a>
                                         </li>
                                         <li class="mx-2 flex">
-                                            <a class="external-link user-id-full border-l-2 border-transparent p-2 w-full hover:bg-gray-200 hover:border-gray-300 hover:text-gray-900 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:hover:text-gray-100"
-                                               href="feedback/{user-id-full}/preferences"
+                                            <a class="external-link user-full-id border-l-2 border-transparent p-2 w-full hover:bg-gray-200 hover:border-gray-300 hover:text-gray-900 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:hover:text-gray-100"
+                                               href="feedback/{user-full-id}/preferences"
                                                data-i18n="html,label_classifieds_preferences"></a>
                                         </li>
                                         <li class="mx-2 flex">
@@ -366,7 +384,7 @@
                                                 <small class="rounded-full bg-red-500 px-1 pb-px font-bold text-gray-100 text-center invisible alert-counter"></small>
                                             </a>
                                         </li>
-                                        <li class="mx-2 flex hidden">
+                                        <li class="mx-2 flex">
                                             <a class="external-link border-l-2 border-transparent p-2 w-full hover:bg-gray-200 hover:border-gray-300 hover:text-gray-900 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:hover:text-gray-100"
                                                href="account/bookmarks" data-i18n="html,label_bookmarks"></a>
                                         </li>
@@ -389,15 +407,11 @@
                                         </li>
                                         <li class="mx-2 flex">
                                             <a class="external-link border-l-2 border-transparent p-2 w-full hover:bg-gray-200 hover:border-gray-300 hover:text-gray-900 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:hover:text-gray-100"
-                                               href="account/change-username" data-i18n="html,label_nickname"></a>
+                                               href="account/username" data-i18n="html,label_nickname"></a>
                                         </li>
                                         <li class="mx-2 flex">
                                             <a class="external-link border-l-2 border-transparent p-2 w-full hover:bg-gray-200 hover:border-gray-300 hover:text-gray-900 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:hover:text-gray-100"
                                                href="account/delete" data-i18n="html,label_delete_account"></a>
-                                        </li>
-                                        <li class="mx-2 flex hidden">
-                                            <a class="external-link border-l-2 border-transparent p-2 w-full hover:bg-gray-200 hover:border-gray-300 hover:text-gray-900 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:hover:text-gray-100"
-                                               href="whats-new/news-feed" data-i18n="html,label_news_feed"></a>
                                         </li>
                                         <li class="mx-2 flex hidden">
                                             <a class="external-link border-l-2 border-transparent p-2 w-full hover:bg-gray-200 hover:border-gray-300 hover:text-gray-900 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:hover:text-gray-100"
@@ -406,6 +420,8 @@
                                         </li>
                                     </ul>
                                 </div>
+                            </div>
+                            <div class="profile-actions">
                                 <div class="grid grid-flow-col grid-cols-2 border-t border-b border-gray-300 dark:border-gray-700">
                                     <ul class="px-2 py-3">
                                         <li class="mx-2 flex">
@@ -430,15 +446,15 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <form action="members/{user-id-full}/post" method="post" name="statusPoster"
-                                      id="statusPoster" class="external-link w-full bg-gray-200 p-1 pb-0 dark:bg-gray-900 user-id-full">
+                                <form action="members/{user-full-id}/post" method="post" name="statusPoster"
+                                      id="statusPoster" class="external-link w-full bg-gray-200 p-1 pb-0 dark:bg-gray-900 user-full-id">
                                     <textarea name="message" id="message" rows="1" data-i18n="placeholder,label_update_status"
                                               class="appearance-none text-gray-600 p-1 py-2 placeholder-gray-500 placeholder-opacity-75 w-full rounded border border-gray-300 leading-tight focus:outline-none focus:border-gray-400 dark:text-gray-400 dark:bg-gray-700 dark:border-gray-600 dark:focus:border-gray-500"
                                               required></textarea>
                                     <label for="message"></label>
                                     <div class="status-message pb-1 hidden">
                                         <div class="flex items-center justify-between">
-                                            <span class="text-green-500 dark:text-green-600 status-length">140</span>
+                                            <span class="text-green-500 status-length">140</span>
                                             <button class="bg-blue-500 hover:bg-blue-700 border-blue-500 dark:border-blue-600 hover:border-blue-700 text-gray-100 font-bold py-1 px-2 rounded dark:hover:bg-blue-800 dark:bg-blue-600 dark:hover:border-blue-800"
                                                     data-i18n="html,button_post" type="submit"></button>
                                         </div>
@@ -468,22 +484,71 @@
                                 <p class="text-sm py-1 text-red-500 dark:text-red-600" data-i18n="html,message_zero_inbox"></p>
                             </div>
                             <div class="conversation-container">
-                                <div class="conversation-item hidden w-full">
-                                    <div class="border-b border-gray-200 dark:border-gray-700 p-3 flex items-start">
-                                        <a class="external-link conversation-avatar" target="_blank" href="#">
-                                            <img class="rounded transform hover:scale-110" alt=""
-                                                 src="../dist/img/blank.png" width="50" height="50">
+                                <div class="border-b border-gray-200 dark:border-gray-700 hidden conversation-item">
+                                    <div class="flex items-start p-3 pb-2">
+                                        <a class="p-1 external-link conversation-avatar" target="_blank" href="#">
+                                            <img class="w-16 rounded transform hover:scale-110" alt="" width="54" height="54"
+                                                 src="../dist/img/blank.png">
                                         </a>
-                                        <div class="conversation-body w-full ml-3">
-                                            <h6 class="text-base font-semibold">
-                                                <a class="conversation-title text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100"
+                                        <div class="px-2 w-full conversation-body">
+                                            <h6 class="text-base font-semibold pb-2">
+                                                <a class="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 conversation-title"
                                                    href="#" target="_blank">&nbsp;</a>
                                             </h6>
-                                            <p class="text-gray-500 dark:text-gray-400 text-xs conversation-with"></p>
-                                            <p class="flex justify-end text-xs">
-                                                <small class="conversation-time text-orange-500">&nbsp;</small>
-                                            </p>
+                                            <div class="flex flex-row">
+                                                <span class="pr-2" data-i18n="html,label_conversation_with"></span>
+                                                <ul class="flex flex-row items-end mb-px text-gray-500 dark:text-gray-400 text-xs conversation-with">
+                                                    <li class="pr-2 conversation-participant hidden">
+                                                        <a class="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300"
+                                                           href="#" target="_blank">&nbsp;</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
+                                        <div class="flex flex-col pl-1 space-y-1 items-end conversation-actions">
+                                            <a href="#" target="_blank" data-i18n="title,button_edit"
+                                               class="text-gray-400 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 p-1 mx-px border rounded border-gray-400 bg-gray-100 dark:border-gray-600 dark:bg-gray-900 hidden conversation-edit">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                                     class="fill-current w-4 h-4">
+                                                    <path fill="currentColor" d="M14.69,2.661c-1.894-1.379-3.242-1.349-3.754-1.266c-0.144,0.023-0.265,0.106-0.35,0.223l-4.62,6.374
+                                                        l-2.263,3.123c-0.277,0.382-0.437,0.836-0.462,1.307l-0.296,5.624c-0.021,0.405,0.382,0.698,0.76,0.553l5.256-2.01
+                                                        c0.443-0.17,0.828-0.465,1.106-0.849l1.844-2.545l5.036-6.949c0.089-0.123,0.125-0.273,0.1-0.423
+                                                        C16.963,5.297,16.56,4.021,14.69,2.661z M8.977,15.465l-2.043,0.789c-0.08,0.031-0.169,0.006-0.221-0.062
+                                                        c-0.263-0.335-0.576-0.667-1.075-1.03c-0.499-0.362-0.911-0.558-1.31-0.706c-0.08-0.03-0.131-0.106-0.126-0.192l0.122-2.186
+                                                        l0.549-0.755c0,0,1.229-0.169,2.833,0.998c1.602,1.166,1.821,2.388,1.821,2.388L8.977,15.465z"></path>
+                                                </svg>
+                                            </a>
+                                            <a href="#" target="_blank" data-i18n="title,button_star"
+                                               class="text-gray-400 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 p-1 mx-px border rounded border-gray-400 bg-gray-100 dark:border-gray-600 dark:bg-gray-900 hover:border-gray-800 conversation-star">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                                     class="fill-current w-4 h-4">
+                                                    <path fill="currentColor" d="M10,1.3l2.388,6.722H18.8l-5.232,3.948l1.871,6.928L10,14.744l-5.438,4.154l1.87-6.928L1.199,8.022h6.412
+	                                                    L10,1.3z"></path>
+                                                </svg>
+                                            </a>
+                                            <a href="#" target="_blank" data-i18n="title,button_mark_unread"
+                                               class="text-gray-400 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 p-1 mx-px border rounded border-gray-400 bg-gray-100 dark:border-gray-600 dark:bg-gray-900 hover:border-gray-800 external-link conversation-unread">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                                     class="fill-current w-4 h-4">
+                                                    <path fill="currentColor" d="M10,3c-3.866,0-7,3.133-7,7c0,3.865,3.134,7,7,7s7-3.135,7-7C17,6.133,13.866,3,10,3z"></path>
+                                                </svg>
+                                            </a>
+                                            <a href="#" target="_blank" data-i18n="title,button_leave"
+                                               class="text-gray-400 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 p-1 mx-px border rounded border-gray-400 bg-gray-100 dark:border-gray-600 dark:bg-gray-900 conversation-delete">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                                     class="fill-current w-4 h-4">
+                                                    <path fill="currentColor" d="M3.389,7.113L4.49,18.021C4.551,18.482,6.777,19.998,10,20c3.225-0.002,5.451-1.518,5.511-1.979
+                                                        l1.102-10.908C14.929,8.055,12.412,8.5,10,8.5C7.59,8.5,5.072,8.055,3.389,7.113z M13.168,1.51l-0.859-0.951
+                                                        C11.977,0.086,11.617,0,10.916,0H9.085c-0.7,0-1.061,0.086-1.392,0.559L6.834,1.51C4.264,1.959,2.4,3.15,2.4,4.029v0.17
+                                                        C2.4,5.746,5.803,7,10,7c4.198,0,7.601-1.254,7.601-2.801v-0.17C17.601,3.15,15.738,1.959,13.168,1.51z M12.07,4.34L11,3H9
+                                                        L7.932,4.34h-1.7c0,0,1.862-2.221,2.111-2.522C8.533,1.588,8.727,1.5,8.979,1.5h2.043c0.253,0,0.447,0.088,0.637,0.318
+                                                        C11.907,2.119,13.77,4.34,13.77,4.34H12.07z"></path>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-end w-full pt-2 p-3 text-xs alert-footer">
+                                        <time class="conversation-time text-orange-500"></time>
                                     </div>
                                 </div>
                             </div>
@@ -513,25 +578,32 @@
                                 <p class="text-sm py-1 text-red-500 dark:text-red-600" data-i18n="html,message_zero_alerts"></p>
                             </div>
                             <div class="alert-container">
-                                <div class="alert-item hidden w-full">
-                                    <div class="border-b border-gray-200 dark:border-gray-700 p-3 flex items-start">
-                                        <a class="external-link alert-avatar" target="_blank" href="#">
-                                            <img class="rounded transform hover:scale-110" alt=""
-                                                 src="../dist/img/blank.png" width="50" height="50">
+                                <div class="border-b border-gray-200 dark:border-gray-700 hidden alert-item">
+                                    <div class="flex items-start p-3 pb-2">
+                                        <a class="p-1 external-link alert-avatar" target="_blank" href="#">
+                                            <img class="w-16 rounded transform hover:scale-110" alt="" width="54" height="54"
+                                                 src="../dist/img/blank.png">
                                         </a>
-                                        <div class="alert-body w-full ml-3">
-                                            <p class="text-sm alert-content"></p>
-                                            <p class="flex justify-end text-xs">
-                                                <small class="alert-time text-orange-500"></small>
-                                            </p>
+                                        <p class="px-2 w-full text-sm alert-body"></p>
+                                        <div class="flex flex-col pl-1 space-y-1 items-end alert-actions">
+                                            <a href="account/alert-toggle?alert_id={alert-id}" target="_blank" data-i18n="title,button_mark_unread"
+                                               class="text-gray-400 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 p-1 mx-px border rounded border-gray-400 bg-gray-100 dark:border-gray-600 dark:bg-gray-900 hover:border-gray-800 external-link alert-mark">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                                     class="fill-current w-4 h-4">
+                                                    <path fill="currentColor" d="M10,3c-3.866,0-7,3.133-7,7c0,3.865,3.134,7,7,7s7-3.135,7-7C17,6.133,13.866,3,10,3z"></path>
+                                                </svg>
+                                            </a>
                                         </div>
+                                    </div>
+                                    <div class="flex justify-end w-full pt-2 p-3 text-xs alert-footer">
+                                        <time class="alert-time text-orange-500"></time>
                                     </div>
                                 </div>
                             </div>
                             <div class="flex justify-between p-3 bg-gray-200 dark:bg-gray-900">
                                 <a href="account/alerts" data-i18n="html,label_show_all"
                                    class="external-link text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100"></a>
-                                <a href="account/alert-preferences" data-i18n="html,label_alert_preferences"
+                                <a href="account/alerts/mark-read" data-i18n="html,label_all_read"
                                    class="external-link text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100"></a>
                             </div>
                         </div>
@@ -554,29 +626,64 @@
                                 <p class="text-sm py-1 text-red-500 dark:text-red-600" data-i18n="html,message_zero_subscriptions"></p>
                             </div>
                             <div class="thread-container">
-                                <div class="thread-item hidden w-full">
-                                    <div class="border-b border-gray-200 dark:border-gray-700 p-3 flex items-start">
-                                        <a class="external-link thread-avatar" target="_blank" href="#">
-                                            <img class="rounded transform hover:scale-110" alt=""
-                                                 src="../dist/img/blank.png" width="50" height="50">
+                                <div class="border-b border-gray-200 dark:border-gray-700 hidden thread-item">
+                                    <div class="flex items-start border-l-4 border-transparent p-3 pb-2 thread-poster">
+                                        <a class="p-1 external-link thread-avatar" target="_blank" href="#">
+                                            <img class="w-16 rounded transform hover:scale-110" alt="" width="54" height="54"
+                                                 src="../dist/img/blank.png">
                                         </a>
-                                        <div class="thread-body w-full ml-3">
-                                            <div class="w-full">
-                                                <h6 class="text-base font-semibold">
-                                                    <a class="thread-title text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100"
+                                        <div class="px-2 w-full thread-body">
+                                            <h6 class="text-base font-semibold pb-2">
+                                                <a class="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 thread-title"
+                                                   href="#" target="_blank">&nbsp;</a>
+                                            </h6>
+                                            <ul class="text-xs thread-info flex content-center divide-x divide-gray-500 dark:divide-gray-600">
+                                                <li class="pr-2">
+                                                    <a class="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300 thread-starter"
                                                        href="#" target="_blank">&nbsp;</a>
-                                                </h6>
-                                                <p class="text-xs thread-starter"></p>
-                                            </div>
-                                            <p class="flex justify-end items-end message-info mt-1 text-sm">
-                                                <small class="text-gray-500 dark:text-gray-400">
-                                                    <span data-i18n="html,label_last_message_by"></span>
-                                                    <span class="message-by"></span> -
-                                                    <span class="message-at"></span>
-                                                </small>
-                                            </p>
+                                                </li>
+                                                <li class="px-2 whitespace-nowrap">
+                                                    <a class="text-orange-500 hover:text-orange-600 dark:text-orange-400 dark:hover:text-orange-300 thread-time"
+                                                       href="#" target="_blank"></a>
+                                                </li>
+                                                <li class="pl-2">
+                                                    <a class="text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300 thread-forum"
+                                                       href="#" target="_blank"></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="flex flex-col pl-1 space-y-1 items-end thread-actions">
+                                            <a href="#" target="_blank" data-i18n="title,button_email"
+                                               class="text-gray-400 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 p-1 mx-px border rounded border-gray-400 bg-gray-100 dark:border-gray-600 dark:bg-gray-900 hover:border-gray-800 subscription-email">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                                     class="fill-current w-4 h-4">
+                                                    <path fill="currentColor" d="M1.574,5.286c0.488,0.262,7.248,3.894,7.5,4.029C9.326,9.45,9.652,9.514,9.98,9.514
+                                                        c0.328,0,0.654-0.064,0.906-0.199s7.012-3.767,7.5-4.029C18.875,5.023,19.337,4,18.44,4H1.521C0.624,4,1.086,5.023,1.574,5.286z
+                                                         M18.613,7.489c-0.555,0.289-7.387,3.849-7.727,4.027s-0.578,0.199-0.906,0.199s-0.566-0.021-0.906-0.199S1.941,7.777,1.386,7.488
+                                                        C0.996,7.284,1,7.523,1,7.707S1,15,1,15c0,0.42,0.566,1,1,1h16c0.434,0,1-0.58,1-1c0,0,0-7.108,0-7.292S19.004,7.285,18.613,7.489z"></path>
+                                                </svg>
+                                            </a>
+                                            <a href="#" target="_blank" data-i18n="title,button_unfollow"
+                                               class="text-gray-400 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 p-1 mx-px border rounded border-gray-400 bg-gray-100 dark:border-gray-600 dark:bg-gray-900 subscription-delete">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                                     class="fill-current w-4 h-4">
+                                                    <path fill="currentColor" d="M3.389,7.113L4.49,18.021C4.551,18.482,6.777,19.998,10,20c3.225-0.002,5.451-1.518,5.511-1.979
+                                                        l1.102-10.908C14.929,8.055,12.412,8.5,10,8.5C7.59,8.5,5.072,8.055,3.389,7.113z M13.168,1.51l-0.859-0.951
+                                                        C11.977,0.086,11.617,0,10.916,0H9.085c-0.7,0-1.061,0.086-1.392,0.559L6.834,1.51C4.264,1.959,2.4,3.15,2.4,4.029v0.17
+                                                        C2.4,5.746,5.803,7,10,7c4.198,0,7.601-1.254,7.601-2.801v-0.17C17.601,3.15,15.738,1.959,13.168,1.51z M12.07,4.34L11,3H9
+                                                        L7.932,4.34h-1.7c0,0,1.862-2.221,2.111-2.522C8.533,1.588,8.727,1.5,8.979,1.5h2.043c0.253,0,0.447,0.088,0.637,0.318
+                                                        C11.907,2.119,13.77,4.34,13.77,4.34H12.07z"></path>
+                                                </svg>
+                                            </a>
                                         </div>
                                     </div>
+                                    <p class="flex justify-end w-full pt-2 p-3 text-gray-500 dark:text-gray-400 text-xs border-l-4 border-transparent thread-poster thread-footer">
+                                        <span class="px-1" data-i18n="html,label_last_message_by"></span>
+                                        <a class="px-1 text-blue-500 hover:text-blue-600 dark:text-blue-400 dark:hover:text-blue-300 message-by"
+                                           href="#" target="_blank"></a> -
+                                        <a class="px-1 text-orange-500 hover:text-orange-600 dark:text-orange-400 dark:hover:text-orange-300 message-at"
+                                           href="#" target="_blank"></a>
+                                    </p>
                                 </div>
                             </div>
                             <div class="flex justify-between p-3 bg-gray-200 dark:bg-gray-900">
@@ -585,8 +692,8 @@
                             </div>
                         </div>
                         <div class="tab bg-gray-100 dark:bg-gray-800 bookmarks-tab hidden" id="bookmarks">
-                            <div class="border-l-4 border-blue-500 bg-blue-100 text-blue-500 px-4 py-2 flex items-center dark:border-blue-600 dark:bg-blue-200 dark:text-blue-600 alert-processing"
-                                 role="alert">
+                            <div role="alert"
+                                 class="border-l-4 border-blue-500 bg-blue-100 text-blue-500 px-4 py-2 flex items-center dark:border-blue-600 dark:bg-blue-200 dark:text-blue-600 alert-processing">
                                 <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"
                                      preserveAspectRatio="xMidYMid" fill="currentColor">
                                     <path stroke="none" d="M10 50A40 40 0 0 0 90 50A40 44 0 0 1 10 50"
@@ -603,36 +710,65 @@
                                 <p class="text-sm py-1 text-red-500 dark:text-red-600" data-i18n="html,message_zero_bookmarks"></p>
                             </div>
                             <div class="bookmark-container">
-                                <div class="bookmark-item hidden">
-                                    <div class="border-b border-gray-200 dark:border-gray-700 p-3 flex items-start">
-                                        <a class="external-link bookmark-avatar" target="_blank" href="#">
-                                            <img class="rounded transform hover:scale-110" alt=""
-                                                 src="../dist/img/blank.png" width="50" height="50">
+                                <div class="border-b border-gray-200 dark:border-gray-700 hidden bookmark-item">
+                                    <div class="flex items-start p-3 pb-2">
+                                        <a class="p-1 external-link bookmark-avatar" target="_blank" href="#">
+                                            <img class="w-16 rounded transform hover:scale-110" alt="" width="54" height="54"
+                                                 src="../dist/img/blank.png">
                                         </a>
-                                        <div class="bookmark-body w-full ml-3">
-                                            <div class="w-full">
-                                                <h6 class="text-base font-semibold">
-                                                    <a class="bookmark-title text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100"
-                                                       href="#" target="_blank">&nbsp;</a>
-                                                </h6>
-                                                <blockquote class="text-sm bookmark-message italic mt-1 pl-3 border-l-2 border-gray-500 text-gray-500 dark:border-gray-600 dark:text-gray-400"></blockquote>
-                                            </div>
-                                            <p class="flex justify-end items-end message-info mt-1 text-sm">
-                                                <small class="text-gray-500">
-                                                    <span>
-                                                        <a class="external-link bookmark-author text-blue-500 hover:text-blue-600 dark:text-blue-500 dark:hover:text-blue-400"
-                                                             target="_blank" href="#"></a>
-                                                    </span>
-                                                    <span class="px-1">-</span>
-                                                    <span class="bookmark-time text-orange-500"></span>
-                                                    <span class="bookmark-labels hidden">
-                                                        <span class="px-1">-</span>
-                                                        <span class="rounded mr-px px-1 border border-gray-500 bg-gray-200 hover:border-gray-600 dark:border-gray-400 dark:hover:border-gray-300 dark:hover:text-gray-300 dark:text-gray-400 dark:bg-gray-800 hidden bookmark-label"></span>
-                                                    </span>
-                                                </small>
-                                            </p>
+                                        <div class="px-2 w-full bookmark-body">
+                                            <h6 class="text-base font-semibold pb-2">
+                                                <a class="text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100 bookmark-title"
+                                                   href="#" target="_blank">&nbsp;</a>
+                                            </h6>
+                                            <blockquote class="text-sm italic mt-1 pl-3 border-l-2 border-gray-500 text-gray-500 dark:border-gray-600 dark:text-gray-400 bookmark-message"></blockquote>
+                                        </div>
+                                        <div class="flex flex-col pl-1 space-y-1 items-end bookmark-actions">
+                                            <a href="#" target="_blank" data-i18n="title,button_copy"
+                                               class="text-gray-400 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 p-1 mx-px border rounded border-gray-400 bg-gray-100 dark:border-gray-600 dark:bg-gray-900 hover:border-gray-800 bookmark-copy">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                                     class="fill-current w-4 h-4">
+                                                    <path fill="currentColor" d="M11,0H3C2.447,0,2,0.447,2,1v12c0,0.552,0.447,1,1,1h5v2h2v-2H8.001v-2H10v-2H8v2H4V2h6v4h2V1
+                                                        C12,0.448,11.553,0,11,0z M8,7v1h2V6H9C8.447,6,8,6.447,8,7z M12,20h2v-2h-2V20z M12,8h2V6h-2V8z M8,19c0,0.552,0.447,1,1,1h1v-2H8
+                                                        V19z M17,6h-1v2h2V7C18,6.448,17.553,6,17,6z M16,20h1c0.553,0,1-0.448,1-1v-1h-2V20z M16,12h2v-2h-2V12z M16,16h2v-2h-2V16z"></path>
+                                                </svg>
+                                            </a>
+                                            <a href="#" target="_blank" data-i18n="title,button_edit"
+                                               class="text-gray-400 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 p-1 mx-px border rounded border-gray-400 bg-gray-100 dark:border-gray-600 dark:bg-gray-900 bookmark-edit">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                                     class="fill-current w-4 h-4">
+                                                    <path fill="currentColor" d="M14.69,2.661c-1.894-1.379-3.242-1.349-3.754-1.266c-0.144,0.023-0.265,0.106-0.35,0.223l-4.62,6.374
+                                                        l-2.263,3.123c-0.277,0.382-0.437,0.836-0.462,1.307l-0.296,5.624c-0.021,0.405,0.382,0.698,0.76,0.553l5.256-2.01
+                                                        c0.443-0.17,0.828-0.465,1.106-0.849l1.844-2.545l5.036-6.949c0.089-0.123,0.125-0.273,0.1-0.423
+                                                        C16.963,5.297,16.56,4.021,14.69,2.661z M8.977,15.465l-2.043,0.789c-0.08,0.031-0.169,0.006-0.221-0.062
+                                                        c-0.263-0.335-0.576-0.667-1.075-1.03c-0.499-0.362-0.911-0.558-1.31-0.706c-0.08-0.03-0.131-0.106-0.126-0.192l0.122-2.186
+                                                        l0.549-0.755c0,0,1.229-0.169,2.833,0.998c1.602,1.166,1.821,2.388,1.821,2.388L8.977,15.465z"></path>
+                                                </svg>
+                                            </a>
+                                            <a href="#" target="_blank" data-i18n="title,button_delete"
+                                               class="text-gray-400 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 p-1 mx-px border rounded border-gray-400 bg-gray-100 dark:border-gray-600 dark:bg-gray-900 bookmark-delete">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                                     class="fill-current w-4 h-4">
+                                                    <path fill="currentColor" d="M3.389,7.113L4.49,18.021C4.551,18.482,6.777,19.998,10,20c3.225-0.002,5.451-1.518,5.511-1.979
+                                                        l1.102-10.908C14.929,8.055,12.412,8.5,10,8.5C7.59,8.5,5.072,8.055,3.389,7.113z M13.168,1.51l-0.859-0.951
+                                                        C11.977,0.086,11.617,0,10.916,0H9.085c-0.7,0-1.061,0.086-1.392,0.559L6.834,1.51C4.264,1.959,2.4,3.15,2.4,4.029v0.17
+                                                        C2.4,5.746,5.803,7,10,7c4.198,0,7.601-1.254,7.601-2.801v-0.17C17.601,3.15,15.738,1.959,13.168,1.51z M12.07,4.34L11,3H9
+                                                        L7.932,4.34h-1.7c0,0,1.862-2.221,2.111-2.522C8.533,1.588,8.727,1.5,8.979,1.5h2.043c0.253,0,0.447,0.088,0.637,0.318
+                                                        C11.907,2.119,13.77,4.34,13.77,4.34H12.07z"></path>
+                                                </svg>
+                                            </a>
                                         </div>
                                     </div>
+                                    <p class="flex justify-end w-full pt-2 p-3 text-gray-500 dark:text-gray-400 text-xs bookmark-footer">
+                                        <a class="external-link bookmark-author text-blue-500 hover:text-blue-600 dark:text-blue-500 dark:hover:text-blue-400"
+                                           target="_blank" href="#"></a>
+                                        <span class="px-1">-</span>
+                                        <time class="bookmark-time text-orange-500"></time>
+                                        <span class="bookmark-labels hidden">
+                                            <span class="px-1">-</span>
+                                            <span class="rounded mr-px px-1 pb-px border border-gray-400 bg-gray-200 hover:border-gray-600 hover:text-gray-600 dark:border-gray-500 dark:hover:border-gray-400 dark:hover:text-gray-300 dark:text-gray-500 dark:bg-gray-800 hidden bookmark-label"></span>
+                                        </span>
+                                    </p>
                                 </div>
                             </div>
                             <div class="flex justify-between p-3 bg-gray-200 dark:bg-gray-900">

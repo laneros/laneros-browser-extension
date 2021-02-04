@@ -234,7 +234,7 @@
     "message": "Preferencias en calificaciones"
   },
   "label_news_feed": {
-    "message": "Tus Noticias"
+    "message": "Tu feed de noticias"
   },
   "label_likes_received": {
     "message": "Reacciones recibidas"
@@ -290,13 +290,37 @@
   "label_last_message_by": {
     "message": "Último mensaje por"
   },
-  "header_dark_mode": {
-    "message": "Modo oscuro"
+  "button_copy": {
+    "message": "Copiar enlace"
   },
-  "text_dark_mode": {
-    "message": "Cambiar el color de tema de la extensión"
+  "button_edit": {
+    "message": "Editar"
   },
-  "label_dark_mode": {
-    "message": "Usar el modo oscuro"
+  "button_delete": {
+    "message": "Borrar"
+  },
+  "button_mark_read": {
+    "message": "Marcar como leida"
+  },
+  "button_mark_unread": {
+    "message": "Marcar como no leida"
+  },
+  "label_all_read": {
+    "message": "Marcar todas como leidas"
+  },
+  "button_email": {
+    "message": "Notificaciones por correo"
+  },
+  "button_unfollow": {
+    "message": "Dejar de seguir"
+  },
+  "label_conversation_with": {
+    "message": "Con:"
+  },
+  "button_star": {
+    "message": "Destacar"
+  },
+  "button_leave": {
+    "message": "Salir"
   }
 }

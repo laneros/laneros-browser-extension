@@ -290,13 +290,37 @@
   "label_last_message_by": {
     "message": "Last message by: "
   },
-  "header_dark_mode": {
-    "message": "Dark mode"
+  "button_copy": {
+    "message": "Copy link"
   },
-  "text_dark_mode": {
-    "message": "Change theme color of extension"
+  "button_edit": {
+    "message": "Edit"
   },
-  "label_dark_mode": {
-    "message": "Use dark mode"
+  "button_delete": {
+    "message": "Delete"
+  },
+  "button_mark_read": {
+    "message": "Mark as read"
+  },
+  "button_mark_unread": {
+    "message": "Mark as unread"
+  },
+  "label_all_read": {
+    "message": "Mark all as read"
+  },
+  "button_email": {
+    "message": "Email notifications"
+  },
+  "button_unfollow": {
+    "message": "Unfollow"
+  },
+  "label_conversation_with": {
+    "message": "With:"
+  },
+  "button_star": {
+    "message": "Star"
+  },
+  "button_leave": {
+    "message": "Leave"
   }
 }

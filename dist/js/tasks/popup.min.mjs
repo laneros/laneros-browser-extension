@@ -1,1 +1,1 @@
-import m from"../modules/log.min.mjs";import o from"../modules/popup.min.mjs";try{(new o).set_page()}catch(o){new m("Popup task").error(o)}
+import m from"../modules/log.min.mjs";import o from"../modules/popup.min.mjs";try{new o}catch(o){new m("Popup task").error(o)}
