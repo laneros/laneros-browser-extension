@@ -1,6 +1,6 @@
 # Laneros Browser Extension
 
-Designed for www.laneros.com, this extension allows access to a variety of options quickly:
+Designed for www.laneros.com, this extension allows access to a variety of options quickly, such as:
 
 1. Quick links to different user options
 2. Conversations
@@ -12,10 +12,13 @@ Also, it has a section where basic user information can be found
 
 Option to search in the site from the extension pop-up window
 
-Finally, it checks periodically (with interval adjustment in the extension's options) if there are new conversations, 
-new alerts or unread subscriptions and if so displays a consolidated notification or an individual notification
+Periodically checks (with adjustment of the interval in the extension options) if there are new replies in a
+conversation, new conversations, new alerts or unread subscriptions and if so, it displays a consolidated notification 
+or an individual notification.
 
-Available in normal and dark mode (configurable in the options)
+Dark mode available
+
+Quick actions, each item has different options according to its type to interact with it
 
 ## About Laneros
 
