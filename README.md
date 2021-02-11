@@ -1,5 +1,7 @@
 # Laneros Browser Extension
 
+![Externsion Home](https://www.laneros.com/attachments/screenshot-2021-02-04-134720-png.449106/)
+
 Designed for www.laneros.com, this extension allows access to a variety of options quickly, such as:
 
 1. Quick links to different user options
