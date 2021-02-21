@@ -167,6 +167,9 @@
   "label_search": {
     "message": "Buscar"
   },
+  "label_options": {
+    "message": "Opciones"
+  },
   "label_advanced_search": {
     "message": "Búsqueda avanzada"
   },

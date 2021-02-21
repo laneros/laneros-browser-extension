@@ -2,7 +2,7 @@
   "name": "__MSG_extension_name__",
   "short_name": "__MSG_extension_short_name__",
   "description": "__MSG_extension_description__",
-  "version": "10.0.1",
+  "version": "10.1",
   "manifest_version": 2,
   "options_page": "views/options.html",
   "default_locale": "es",
@@ -15,11 +15,11 @@
   ],
   "browser_action": {
     "default_title": "__MSG_extension_name__",
-    "default_icon": "dist/img/icon.png",
+    "default_icon": "dist/img/extension_icon.png",
     "default_popup": "views/popup.html"
   },
   "icons": {
-    "128": "dist/img/icon.png"
+    "128": "dist/img/extension_icon.png"
   },
   "homepage_url": "https://www.arthvrian.org",
   "background": {
